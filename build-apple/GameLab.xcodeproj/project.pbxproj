@@ -1,0 +1,938 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		508B034825E988B8000D29CE /* GLShadowNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B034725E988B8000D29CE /* GLShadowNode.cpp */; };
+		508B036025EC2A83000D29CE /* GLPhotonNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B035F25EC2A83000D29CE /* GLPhotonNode.cpp */; };
+		508B038E25ED5720000D29CE /* GLPhoton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B038D25ED5720000D29CE /* GLPhoton.cpp */; };
+		508B039A25EDAE16000D29CE /* GLPhotonNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B035F25EC2A83000D29CE /* GLPhotonNode.cpp */; };
+		508B039E25EDAE16000D29CE /* GLPhotonNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B035F25EC2A83000D29CE /* GLPhotonNode.cpp */; };
+		508B039F25EDAE21000D29CE /* GLShadowNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B034725E988B8000D29CE /* GLShadowNode.cpp */; };
+		508B03A325EDAE22000D29CE /* GLShadowNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B034725E988B8000D29CE /* GLShadowNode.cpp */; };
+		508B03A725EDAE30000D29CE /* GLPhoton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B038D25ED5720000D29CE /* GLPhoton.cpp */; };
+		508B03AB25EDAE30000D29CE /* GLPhoton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B038D25ED5720000D29CE /* GLPhoton.cpp */; };
+		EB0FF6172016EFB200517030 /* iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A71D74D846002FBAE6 /* iOS.xcassets */; };
+		EB0FF6182016EFB200517030 /* Landscape.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A81D74D846002FBAE6 /* Landscape.storyboard */; };
+		EB0FF6192016EFB200517030 /* Portrait.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A91D74D846002FBAE6 /* Portrait.storyboard */; };
+		EB0FF61A2016EFC500517030 /* json in Resources */ = {isa = PBXBuildFile; fileRef = EBFE7C041E19B496001007C2 /* json */; };
+		EB0FF61B2016EFC500517030 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = EB2BE9BA1D7498D2002FE78B /* textures */; };
+		EB0FF61D2016F06000517030 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE9B41D74952A002FE78B /* main.cpp */; };
+		EB0FF63B2016F42F00517030 /* libcugl-sim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0FF6152016EF4F00517030 /* libcugl-sim.a */; };
+		EB2BE9B61D74952A002FE78B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE9B41D74952A002FE78B /* main.cpp */; };
+		EB2BE9BB1D7498D2002FE78B /* textures in Resources */ = {isa = PBXBuildFile; fileRef = EB2BE9BA1D7498D2002FE78B /* textures */; };
+		EB42669621F68F6900A9DE61 /* DeviceMargins.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB42669221F68F6900A9DE61 /* DeviceMargins.plist */; };
+		EB42669721F68F6900A9DE61 /* DeviceMargins.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB42669221F68F6900A9DE61 /* DeviceMargins.plist */; };
+		EB4EB1A71E340509007BCF09 /* libcugl-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4EB1A61E3404F3007BCF09 /* libcugl-mac.a */; };
+		EB4EB1A81E340511007BCF09 /* libcugl-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4EB1A41E3404F3007BCF09 /* libcugl-ios.a */; };
+		EB7454AB1D74D846002FBAE6 /* iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A71D74D846002FBAE6 /* iOS.xcassets */; };
+		EB7454AC1D74D846002FBAE6 /* Landscape.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A81D74D846002FBAE6 /* Landscape.storyboard */; };
+		EB7454AD1D74D846002FBAE6 /* Portrait.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A91D74D846002FBAE6 /* Portrait.storyboard */; };
+		EB7454AE1D74D891002FBAE6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE9B41D74952A002FE78B /* main.cpp */; };
+		EB7454D01D750623002FBAE6 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = EB2BE9BA1D7498D2002FE78B /* textures */; };
+		EB97E88F25D1822600753535 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E88725D1822600753535 /* CoreVideo.framework */; };
+		EB97E89025D1822600753535 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E88825D1822600753535 /* Carbon.framework */; };
+		EB97E89125D1822600753535 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E88925D1822600753535 /* CoreGraphics.framework */; };
+		EB97E89225D1822600753535 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E88A25D1822600753535 /* Cocoa.framework */; };
+		EB97E89325D1822600753535 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E88B25D1822600753535 /* CoreAudio.framework */; };
+		EB97E89425D1822600753535 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E88C25D1822600753535 /* AudioToolbox.framework */; };
+		EB97E89525D1822600753535 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E88D25D1822600753535 /* AVFoundation.framework */; };
+		EB97E89625D1822600753535 /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E88E25D1822600753535 /* CoreHaptics.framework */; };
+		EB97E89C25D1827300753535 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E89725D1827300753535 /* IOKit.framework */; };
+		EB97E89D25D1827300753535 /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E89825D1827300753535 /* ForceFeedback.framework */; };
+		EB97E89E25D1827300753535 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E89925D1827300753535 /* Metal.framework */; };
+		EB97E89F25D1827300753535 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E89A25D1827300753535 /* OpenGL.framework */; };
+		EB97E8A025D1827300753535 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E89B25D1827300753535 /* GameController.framework */; };
+		EB97E8B525D1839000753535 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8A725D1839000753535 /* CoreAudio.framework */; };
+		EB97E8B625D1839000753535 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8A825D1839000753535 /* CoreGraphics.framework */; };
+		EB97E8B725D1839000753535 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8A925D1839000753535 /* GameController.framework */; };
+		EB97E8B825D1839000753535 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AA25D1839000753535 /* Foundation.framework */; };
+		EB97E8B925D1839000753535 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AB25D1839000753535 /* QuartzCore.framework */; };
+		EB97E8BA25D1839000753535 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AC25D1839000753535 /* CoreServices.framework */; };
+		EB97E8BB25D1839000753535 /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AD25D1839000753535 /* CoreHaptics.framework */; };
+		EB97E8BC25D1839000753535 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AE25D1839000753535 /* AudioToolbox.framework */; };
+		EB97E8BD25D1839000753535 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AF25D1839000753535 /* CoreBluetooth.framework */; };
+		EB97E8BE25D1839000753535 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8B025D1839000753535 /* OpenGLES.framework */; };
+		EB97E8BF25D1839000753535 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8B125D1839000753535 /* CoreMotion.framework */; };
+		EB97E8C025D1839000753535 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8B225D1839000753535 /* Metal.framework */; };
+		EB97E8C125D1839000753535 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8B325D1839000753535 /* CoreVideo.framework */; };
+		EB97E8C225D1839000753535 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8B425D1839000753535 /* AVFoundation.framework */; };
+		EB97E8C425D183B000753535 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8C325D183B000753535 /* UIKit.framework */; };
+		EB97E8C525D183EF00753535 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8A825D1839000753535 /* CoreGraphics.framework */; };
+		EB97E8C625D183EF00753535 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8C325D183B000753535 /* UIKit.framework */; };
+		EB97E8C725D183EF00753535 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AF25D1839000753535 /* CoreBluetooth.framework */; };
+		EB97E8C825D183EF00753535 /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AD25D1839000753535 /* CoreHaptics.framework */; };
+		EB97E8C925D183EF00753535 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8B325D1839000753535 /* CoreVideo.framework */; };
+		EB97E8CA25D183EF00753535 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8B225D1839000753535 /* Metal.framework */; };
+		EB97E8CB25D183EF00753535 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8B025D1839000753535 /* OpenGLES.framework */; };
+		EB97E8CC25D183EF00753535 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8B125D1839000753535 /* CoreMotion.framework */; };
+		EB97E8CD25D183EF00753535 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AB25D1839000753535 /* QuartzCore.framework */; };
+		EB97E8CE25D183EF00753535 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AA25D1839000753535 /* Foundation.framework */; };
+		EB97E8CF25D183EF00753535 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8A925D1839000753535 /* GameController.framework */; };
+		EB97E8D025D183EF00753535 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AC25D1839000753535 /* CoreServices.framework */; };
+		EB97E8D125D183EF00753535 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8B425D1839000753535 /* AVFoundation.framework */; };
+		EB97E8D225D183EF00753535 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8AE25D1839000753535 /* AudioToolbox.framework */; };
+		EB97E8D325D183EF00753535 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB97E8A725D1839000753535 /* CoreAudio.framework */; };
+		EBB8376B25E5921E00401672 /* GLApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8375F25E5921E00401672 /* GLApp.cpp */; };
+		EBB8376C25E5921E00401672 /* GLApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8375F25E5921E00401672 /* GLApp.cpp */; };
+		EBB8376D25E5921E00401672 /* GLApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8375F25E5921E00401672 /* GLApp.cpp */; };
+		EBB8376E25E5921E00401672 /* GLInputController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376025E5921E00401672 /* GLInputController.cpp */; };
+		EBB8376F25E5921E00401672 /* GLInputController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376025E5921E00401672 /* GLInputController.cpp */; };
+		EBB8377025E5921E00401672 /* GLInputController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376025E5921E00401672 /* GLInputController.cpp */; };
+		EBB8377125E5921E00401672 /* GLPhotonQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376125E5921E00401672 /* GLPhotonQueue.cpp */; };
+		EBB8377225E5921E00401672 /* GLPhotonQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376125E5921E00401672 /* GLPhotonQueue.cpp */; };
+		EBB8377325E5921E00401672 /* GLPhotonQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376125E5921E00401672 /* GLPhotonQueue.cpp */; };
+		EBB8377425E5921E00401672 /* GLGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376425E5921E00401672 /* GLGameScene.cpp */; };
+		EBB8377525E5921E00401672 /* GLGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376425E5921E00401672 /* GLGameScene.cpp */; };
+		EBB8377625E5921E00401672 /* GLGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376425E5921E00401672 /* GLGameScene.cpp */; };
+		EBB8377725E5921E00401672 /* GLLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376625E5921E00401672 /* GLLoadingScene.cpp */; };
+		EBB8377825E5921E00401672 /* GLLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376625E5921E00401672 /* GLLoadingScene.cpp */; };
+		EBB8377925E5921E00401672 /* GLLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376625E5921E00401672 /* GLLoadingScene.cpp */; };
+		EBB8377A25E5921E00401672 /* GLShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376825E5921E00401672 /* GLShip.cpp */; };
+		EBB8377B25E5921E00401672 /* GLShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376825E5921E00401672 /* GLShip.cpp */; };
+		EBB8377C25E5921E00401672 /* GLShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB8376825E5921E00401672 /* GLShip.cpp */; };
+		EBB8378425E59A8300401672 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = EBB8378325E59A8300401672 /* sounds */; };
+		EBB8378525E59A8300401672 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = EBB8378325E59A8300401672 /* sounds */; };
+		EBB8378625E59A8300401672 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = EBB8378325E59A8300401672 /* sounds */; };
+		EBB837A225E5F41F00401672 /* GLCollisionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB837A025E5F41F00401672 /* GLCollisionController.cpp */; };
+		EBB837A325E5F41F00401672 /* GLCollisionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB837A025E5F41F00401672 /* GLCollisionController.cpp */; };
+		EBB837A425E5F41F00401672 /* GLCollisionController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB837A025E5F41F00401672 /* GLCollisionController.cpp */; };
+		EBBF189B1D74904A008E2001 /* Mac.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBBF189A1D74904A008E2001 /* Mac.xcassets */; };
+		EBFE7C051E19B496001007C2 /* json in Resources */ = {isa = PBXBuildFile; fileRef = EBFE7C041E19B496001007C2 /* json */; };
+		EBFE7C091E19B4AC001007C2 /* json in Resources */ = {isa = PBXBuildFile; fileRef = EBFE7C041E19B496001007C2 /* json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EB0FF6142016EF4F00517030 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB4EB19D1E3404F3007BCF09 /* CUGL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB0FF5652016EC7E00517030;
+			remoteInfo = "cugl-sim";
+		};
+		EB4EB1A31E3404F3007BCF09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB4EB19D1E3404F3007BCF09 /* CUGL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB7453D71D74B0C5002FBAE6;
+			remoteInfo = "cugl-ios";
+		};
+		EB4EB1A51E3404F3007BCF09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB4EB19D1E3404F3007BCF09 /* CUGL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBBF18071D7485D1008E2001;
+			remoteInfo = "cugl-mac";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		508B034325E984B9000D29CE /* GLShadowNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLShadowNode.h; sourceTree = "<group>"; };
+		508B034725E988B8000D29CE /* GLShadowNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLShadowNode.cpp; sourceTree = "<group>"; };
+		508B035E25EC2A6D000D29CE /* GLPhotonNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLPhotonNode.h; sourceTree = "<group>"; };
+		508B035F25EC2A83000D29CE /* GLPhotonNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLPhotonNode.cpp; sourceTree = "<group>"; };
+		508B038C25ED56A5000D29CE /* GLPhoton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLPhoton.h; sourceTree = "<group>"; };
+		508B038D25ED5720000D29CE /* GLPhoton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLPhoton.cpp; sourceTree = "<group>"; };
+		EB0FF5FC2016EF4F00517030 /* GameLab (Sim).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameLab (Sim).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB2BE9B41D74952A002FE78B /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EB2BE9BA1D7498D2002FE78B /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
+		EB42669221F68F6900A9DE61 /* DeviceMargins.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceMargins.plist; sourceTree = "<group>"; };
+		EB4EB19D1E3404F3007BCF09 /* CUGL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CUGL.xcodeproj; path = "../cugl/build-apple/CUGL.xcodeproj"; sourceTree = "<group>"; };
+		EB74548C1D74D75C002FBAE6 /* GameLab (iOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameLab (iOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB7454A61D74D846002FBAE6 /* iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iOS-Info.plist"; sourceTree = "<group>"; };
+		EB7454A71D74D846002FBAE6 /* iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iOS.xcassets; sourceTree = "<group>"; };
+		EB7454A81D74D846002FBAE6 /* Landscape.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Landscape.storyboard; sourceTree = "<group>"; };
+		EB7454A91D74D846002FBAE6 /* Portrait.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Portrait.storyboard; sourceTree = "<group>"; };
+		EB97E88725D1822600753535 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		EB97E88825D1822600753535 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		EB97E88925D1822600753535 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EB97E88A25D1822600753535 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		EB97E88B25D1822600753535 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		EB97E88C25D1822600753535 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		EB97E88D25D1822600753535 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EB97E88E25D1822600753535 /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
+		EB97E89725D1827300753535 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		EB97E89825D1827300753535 /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = System/Library/Frameworks/ForceFeedback.framework; sourceTree = SDKROOT; };
+		EB97E89925D1827300753535 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		EB97E89A25D1827300753535 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		EB97E89B25D1827300753535 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
+		EB97E8A725D1839000753535 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8A825D1839000753535 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8A925D1839000753535 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8AA25D1839000753535 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8AB25D1839000753535 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8AC25D1839000753535 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8AD25D1839000753535 /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreHaptics.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8AE25D1839000753535 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8AF25D1839000753535 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreBluetooth.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8B025D1839000753535 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8B125D1839000753535 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8B225D1839000753535 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/Metal.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8B325D1839000753535 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8B425D1839000753535 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		EB97E8C325D183B000753535 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		EBB8375F25E5921E00401672 /* GLApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLApp.cpp; sourceTree = "<group>"; };
+		EBB8376025E5921E00401672 /* GLInputController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLInputController.cpp; sourceTree = "<group>"; };
+		EBB8376125E5921E00401672 /* GLPhotonQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLPhotonQueue.cpp; sourceTree = "<group>"; };
+		EBB8376225E5921E00401672 /* GLApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLApp.h; sourceTree = "<group>"; };
+		EBB8376325E5921E00401672 /* GLInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLInputController.h; sourceTree = "<group>"; };
+		EBB8376425E5921E00401672 /* GLGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GLGameScene.cpp; sourceTree = "<group>"; };
+		EBB8376525E5921E00401672 /* GLGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGameScene.h; sourceTree = "<group>"; };
+		EBB8376625E5921E00401672 /* GLLoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLLoadingScene.cpp; sourceTree = "<group>"; };
+		EBB8376725E5921E00401672 /* GLLoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLoadingScene.h; sourceTree = "<group>"; };
+		EBB8376825E5921E00401672 /* GLShip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLShip.cpp; sourceTree = "<group>"; };
+		EBB8376925E5921E00401672 /* GLShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShip.h; sourceTree = "<group>"; };
+		EBB8376A25E5921E00401672 /* GLPhotonQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPhotonQueue.h; sourceTree = "<group>"; };
+		EBB8378325E59A8300401672 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
+		EBB837A025E5F41F00401672 /* GLCollisionController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLCollisionController.cpp; sourceTree = "<group>"; };
+		EBB837A125E5F41F00401672 /* GLCollisionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCollisionController.h; sourceTree = "<group>"; };
+		EBBF18911D74904A008E2001 /* GameLab (Mac).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameLab (Mac).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBBF189A1D74904A008E2001 /* Mac.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Mac.xcassets; sourceTree = "<group>"; };
+		EBBF189F1D74904A008E2001 /* Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mac-Info.plist"; sourceTree = "<group>"; };
+		EBFE7C041E19B496001007C2 /* json */ = {isa = PBXFileReference; lastKnownFileType = folder; path = json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EB0FF5F92016EF4F00517030 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB97E8CD25D183EF00753535 /* QuartzCore.framework in Frameworks */,
+				EB97E8C525D183EF00753535 /* CoreGraphics.framework in Frameworks */,
+				EB97E8D225D183EF00753535 /* AudioToolbox.framework in Frameworks */,
+				EB97E8CF25D183EF00753535 /* GameController.framework in Frameworks */,
+				EB97E8CC25D183EF00753535 /* CoreMotion.framework in Frameworks */,
+				EB97E8C625D183EF00753535 /* UIKit.framework in Frameworks */,
+				EB97E8CA25D183EF00753535 /* Metal.framework in Frameworks */,
+				EB97E8CB25D183EF00753535 /* OpenGLES.framework in Frameworks */,
+				EB97E8C825D183EF00753535 /* CoreHaptics.framework in Frameworks */,
+				EB97E8C725D183EF00753535 /* CoreBluetooth.framework in Frameworks */,
+				EB97E8D325D183EF00753535 /* CoreAudio.framework in Frameworks */,
+				EB0FF63B2016F42F00517030 /* libcugl-sim.a in Frameworks */,
+				EB97E8C925D183EF00753535 /* CoreVideo.framework in Frameworks */,
+				EB97E8D025D183EF00753535 /* CoreServices.framework in Frameworks */,
+				EB97E8D125D183EF00753535 /* AVFoundation.framework in Frameworks */,
+				EB97E8CE25D183EF00753535 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB7454891D74D75C002FBAE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4EB1A81E340511007BCF09 /* libcugl-ios.a in Frameworks */,
+				EB97E8B825D1839000753535 /* Foundation.framework in Frameworks */,
+				EB97E8B525D1839000753535 /* CoreAudio.framework in Frameworks */,
+				EB97E8B625D1839000753535 /* CoreGraphics.framework in Frameworks */,
+				EB97E8C125D1839000753535 /* CoreVideo.framework in Frameworks */,
+				EB97E8BF25D1839000753535 /* CoreMotion.framework in Frameworks */,
+				EB97E8BB25D1839000753535 /* CoreHaptics.framework in Frameworks */,
+				EB97E8BD25D1839000753535 /* CoreBluetooth.framework in Frameworks */,
+				EB97E8BA25D1839000753535 /* CoreServices.framework in Frameworks */,
+				EB97E8BC25D1839000753535 /* AudioToolbox.framework in Frameworks */,
+				EB97E8C225D1839000753535 /* AVFoundation.framework in Frameworks */,
+				EB97E8C025D1839000753535 /* Metal.framework in Frameworks */,
+				EB97E8BE25D1839000753535 /* OpenGLES.framework in Frameworks */,
+				EB97E8B925D1839000753535 /* QuartzCore.framework in Frameworks */,
+				EB97E8C425D183B000753535 /* UIKit.framework in Frameworks */,
+				EB97E8B725D1839000753535 /* GameController.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBBF188E1D74904A008E2001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4EB1A71E340509007BCF09 /* libcugl-mac.a in Frameworks */,
+				EB97E89025D1822600753535 /* Carbon.framework in Frameworks */,
+				EB97E89225D1822600753535 /* Cocoa.framework in Frameworks */,
+				EB97E89325D1822600753535 /* CoreAudio.framework in Frameworks */,
+				EB97E89125D1822600753535 /* CoreGraphics.framework in Frameworks */,
+				EB97E88F25D1822600753535 /* CoreVideo.framework in Frameworks */,
+				EB97E89625D1822600753535 /* CoreHaptics.framework in Frameworks */,
+				EB97E89425D1822600753535 /* AudioToolbox.framework in Frameworks */,
+				EB97E89525D1822600753535 /* AVFoundation.framework in Frameworks */,
+				EB97E89E25D1827300753535 /* Metal.framework in Frameworks */,
+				EB97E89F25D1827300753535 /* OpenGL.framework in Frameworks */,
+				EB97E89C25D1827300753535 /* IOKit.framework in Frameworks */,
+				EB97E89D25D1827300753535 /* ForceFeedback.framework in Frameworks */,
+				EB97E8A025D1827300753535 /* GameController.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EB2BE9B71D749870002FE78B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EBFE7C041E19B496001007C2 /* json */,
+				EBB8378325E59A8300401672 /* sounds */,
+				EB2BE9BA1D7498D2002FE78B /* textures */,
+			);
+			name = Assets;
+			path = ../assets;
+			sourceTree = "<group>";
+		};
+		EB4880FC1D74AAB600EFC946 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB7454B01D74D8A9002FBAE6 /* Mac */,
+				EB7454B11D74D8B7002FBAE6 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB4EB19E1E3404F3007BCF09 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EB4EB1A61E3404F3007BCF09 /* libcugl-mac.a */,
+				EB4EB1A41E3404F3007BCF09 /* libcugl-ios.a */,
+				EB0FF6152016EF4F00517030 /* libcugl-sim.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EB7454B01D74D8A9002FBAE6 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				EB97E88825D1822600753535 /* Carbon.framework */,
+				EB97E88A25D1822600753535 /* Cocoa.framework */,
+				EB97E88B25D1822600753535 /* CoreAudio.framework */,
+				EB97E88925D1822600753535 /* CoreGraphics.framework */,
+				EB97E88E25D1822600753535 /* CoreHaptics.framework */,
+				EB97E88725D1822600753535 /* CoreVideo.framework */,
+				EB97E89925D1827300753535 /* Metal.framework */,
+				EB97E89A25D1827300753535 /* OpenGL.framework */,
+				EB97E88C25D1822600753535 /* AudioToolbox.framework */,
+				EB97E88D25D1822600753535 /* AVFoundation.framework */,
+				EB97E89825D1827300753535 /* ForceFeedback.framework */,
+				EB97E89B25D1827300753535 /* GameController.framework */,
+				EB97E89725D1827300753535 /* IOKit.framework */,
+			);
+			name = Mac;
+			sourceTree = "<group>";
+		};
+		EB7454B11D74D8B7002FBAE6 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EB97E8C325D183B000753535 /* UIKit.framework */,
+				EB97E8AE25D1839000753535 /* AudioToolbox.framework */,
+				EB97E8B425D1839000753535 /* AVFoundation.framework */,
+				EB97E8A725D1839000753535 /* CoreAudio.framework */,
+				EB97E8AF25D1839000753535 /* CoreBluetooth.framework */,
+				EB97E8A825D1839000753535 /* CoreGraphics.framework */,
+				EB97E8AD25D1839000753535 /* CoreHaptics.framework */,
+				EB97E8B125D1839000753535 /* CoreMotion.framework */,
+				EB97E8AC25D1839000753535 /* CoreServices.framework */,
+				EB97E8B325D1839000753535 /* CoreVideo.framework */,
+				EB97E8AA25D1839000753535 /* Foundation.framework */,
+				EB97E8A925D1839000753535 /* GameController.framework */,
+				EB97E8B225D1839000753535 /* Metal.framework */,
+				EB97E8B025D1839000753535 /* OpenGLES.framework */,
+				EB97E8AB25D1839000753535 /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		EBBF18881D74904A008E2001 = {
+			isa = PBXGroup;
+			children = (
+				EBBF18B11D749176008E2001 /* Source */,
+				EB2BE9B71D749870002FE78B /* Assets */,
+				EBBF18931D74904A008E2001 /* Resources */,
+				EB4880FC1D74AAB600EFC946 /* Frameworks */,
+				EBBF18921D74904A008E2001 /* Products */,
+				EB4EB19D1E3404F3007BCF09 /* CUGL.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		EBBF18921D74904A008E2001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBBF18911D74904A008E2001 /* GameLab (Mac).app */,
+				EB74548C1D74D75C002FBAE6 /* GameLab (iOS).app */,
+				EB0FF5FC2016EF4F00517030 /* GameLab (Sim).app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EBBF18931D74904A008E2001 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EB42669221F68F6900A9DE61 /* DeviceMargins.plist */,
+				EB7454A61D74D846002FBAE6 /* iOS-Info.plist */,
+				EB7454A71D74D846002FBAE6 /* iOS.xcassets */,
+				EB7454A81D74D846002FBAE6 /* Landscape.storyboard */,
+				EB7454A91D74D846002FBAE6 /* Portrait.storyboard */,
+				EBBF189A1D74904A008E2001 /* Mac.xcassets */,
+				EBBF189F1D74904A008E2001 /* Mac-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EBBF18B11D749176008E2001 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				EB2BE9B41D74952A002FE78B /* main.cpp */,
+				EBB8376225E5921E00401672 /* GLApp.h */,
+				EBB8375F25E5921E00401672 /* GLApp.cpp */,
+				EBB8376725E5921E00401672 /* GLLoadingScene.h */,
+				EBB8376625E5921E00401672 /* GLLoadingScene.cpp */,
+				EBB8376525E5921E00401672 /* GLGameScene.h */,
+				EBB8376425E5921E00401672 /* GLGameScene.cpp */,
+				EBB8376325E5921E00401672 /* GLInputController.h */,
+				EBB8376025E5921E00401672 /* GLInputController.cpp */,
+				EBB837A125E5F41F00401672 /* GLCollisionController.h */,
+				EBB837A025E5F41F00401672 /* GLCollisionController.cpp */,
+				EBB8376A25E5921E00401672 /* GLPhotonQueue.h */,
+				EBB8376125E5921E00401672 /* GLPhotonQueue.cpp */,
+				508B038C25ED56A5000D29CE /* GLPhoton.h */,
+				508B038D25ED5720000D29CE /* GLPhoton.cpp */,
+				EBB8376925E5921E00401672 /* GLShip.h */,
+				EBB8376825E5921E00401672 /* GLShip.cpp */,
+				508B034325E984B9000D29CE /* GLShadowNode.h */,
+				508B034725E988B8000D29CE /* GLShadowNode.cpp */,
+				508B035E25EC2A6D000D29CE /* GLPhotonNode.h */,
+				508B035F25EC2A83000D29CE /* GLPhotonNode.cpp */,
+			);
+			name = Source;
+			path = ../source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EB0FF5FB2016EF4F00517030 /* GameLab (Sim) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB0FF6162016EF4F00517030 /* Build configuration list for PBXNativeTarget "GameLab (Sim)" */;
+			buildPhases = (
+				EB0FF5F82016EF4F00517030 /* Sources */,
+				EB0FF5F92016EF4F00517030 /* Frameworks */,
+				EB0FF5FA2016EF4F00517030 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GameLab (Sim)";
+			productName = "HelloWorld (Sim)";
+			productReference = EB0FF5FC2016EF4F00517030 /* GameLab (Sim).app */;
+			productType = "com.apple.product-type.application";
+		};
+		EB74548B1D74D75C002FBAE6 /* GameLab (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB7454A01D74D75C002FBAE6 /* Build configuration list for PBXNativeTarget "GameLab (iOS)" */;
+			buildPhases = (
+				EB7454881D74D75C002FBAE6 /* Sources */,
+				EB7454891D74D75C002FBAE6 /* Frameworks */,
+				EB74548A1D74D75C002FBAE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GameLab (iOS)";
+			productName = "HelloWorld (iOS)";
+			productReference = EB74548C1D74D75C002FBAE6 /* GameLab (iOS).app */;
+			productType = "com.apple.product-type.application";
+		};
+		EBBF18901D74904A008E2001 /* GameLab (Mac) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBBF18A21D74904A008E2001 /* Build configuration list for PBXNativeTarget "GameLab (Mac)" */;
+			buildPhases = (
+				EBBF188D1D74904A008E2001 /* Sources */,
+				EBBF188E1D74904A008E2001 /* Frameworks */,
+				EBBF188F1D74904A008E2001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GameLab (Mac)";
+			productName = "HelloWorld (Mac)";
+			productReference = EBBF18911D74904A008E2001 /* GameLab (Mac).app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBBF18891D74904A008E2001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1240;
+				ORGANIZATIONNAME = "Game Design Initiative at Cornell";
+				TargetAttributes = {
+					EB0FF5FB2016EF4F00517030 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = G6P7H83FK6;
+						ProvisioningStyle = Automatic;
+					};
+					EB74548B1D74D75C002FBAE6 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = DXRW83XY8P;
+						ProvisioningStyle = Automatic;
+					};
+					EBBF18901D74904A008E2001 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = DXRW83XY8P;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = EBBF188C1D74904A008E2001 /* Build configuration list for PBXProject "GameLab" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EBBF18881D74904A008E2001;
+			productRefGroup = EBBF18921D74904A008E2001 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EB4EB19E1E3404F3007BCF09 /* Products */;
+					ProjectRef = EB4EB19D1E3404F3007BCF09 /* CUGL.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				EBBF18901D74904A008E2001 /* GameLab (Mac) */,
+				EB74548B1D74D75C002FBAE6 /* GameLab (iOS) */,
+				EB0FF5FB2016EF4F00517030 /* GameLab (Sim) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EB0FF6152016EF4F00517030 /* libcugl-sim.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcugl-sim.a";
+			remoteRef = EB0FF6142016EF4F00517030 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EB4EB1A41E3404F3007BCF09 /* libcugl-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcugl-ios.a";
+			remoteRef = EB4EB1A31E3404F3007BCF09 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EB4EB1A61E3404F3007BCF09 /* libcugl-mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcugl-mac.a";
+			remoteRef = EB4EB1A51E3404F3007BCF09 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EB0FF5FA2016EF4F00517030 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB0FF61A2016EFC500517030 /* json in Resources */,
+				EB0FF61B2016EFC500517030 /* textures in Resources */,
+				EBB8378625E59A8300401672 /* sounds in Resources */,
+				EB0FF6172016EFB200517030 /* iOS.xcassets in Resources */,
+				EB0FF6182016EFB200517030 /* Landscape.storyboard in Resources */,
+				EB0FF6192016EFB200517030 /* Portrait.storyboard in Resources */,
+				EB42669721F68F6900A9DE61 /* DeviceMargins.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB74548A1D74D75C002FBAE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB7454D01D750623002FBAE6 /* textures in Resources */,
+				EB7454AB1D74D846002FBAE6 /* iOS.xcassets in Resources */,
+				EBB8378525E59A8300401672 /* sounds in Resources */,
+				EB7454AC1D74D846002FBAE6 /* Landscape.storyboard in Resources */,
+				EBFE7C051E19B496001007C2 /* json in Resources */,
+				EB7454AD1D74D846002FBAE6 /* Portrait.storyboard in Resources */,
+				EB42669621F68F6900A9DE61 /* DeviceMargins.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBBF188F1D74904A008E2001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBFE7C091E19B4AC001007C2 /* json in Resources */,
+				EB2BE9BB1D7498D2002FE78B /* textures in Resources */,
+				EBB8378425E59A8300401672 /* sounds in Resources */,
+				EBBF189B1D74904A008E2001 /* Mac.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EB0FF5F82016EF4F00517030 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBB8377025E5921E00401672 /* GLInputController.cpp in Sources */,
+				EBB8377625E5921E00401672 /* GLGameScene.cpp in Sources */,
+				EBB8377C25E5921E00401672 /* GLShip.cpp in Sources */,
+				508B03AB25EDAE30000D29CE /* GLPhoton.cpp in Sources */,
+				EBB8377925E5921E00401672 /* GLLoadingScene.cpp in Sources */,
+				EBB8376D25E5921E00401672 /* GLApp.cpp in Sources */,
+				508B039E25EDAE16000D29CE /* GLPhotonNode.cpp in Sources */,
+				EBB837A425E5F41F00401672 /* GLCollisionController.cpp in Sources */,
+				EBB8377325E5921E00401672 /* GLPhotonQueue.cpp in Sources */,
+				508B03A325EDAE22000D29CE /* GLShadowNode.cpp in Sources */,
+				EB0FF61D2016F06000517030 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB7454881D74D75C002FBAE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBB8376F25E5921E00401672 /* GLInputController.cpp in Sources */,
+				EBB8377525E5921E00401672 /* GLGameScene.cpp in Sources */,
+				EBB8377B25E5921E00401672 /* GLShip.cpp in Sources */,
+				508B03A725EDAE30000D29CE /* GLPhoton.cpp in Sources */,
+				EBB8377825E5921E00401672 /* GLLoadingScene.cpp in Sources */,
+				EBB8376C25E5921E00401672 /* GLApp.cpp in Sources */,
+				508B039A25EDAE16000D29CE /* GLPhotonNode.cpp in Sources */,
+				EBB837A325E5F41F00401672 /* GLCollisionController.cpp in Sources */,
+				EBB8377225E5921E00401672 /* GLPhotonQueue.cpp in Sources */,
+				508B039F25EDAE21000D29CE /* GLShadowNode.cpp in Sources */,
+				EB7454AE1D74D891002FBAE6 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBBF188D1D74904A008E2001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBB8376E25E5921E00401672 /* GLInputController.cpp in Sources */,
+				EBB8377425E5921E00401672 /* GLGameScene.cpp in Sources */,
+				EBB8377A25E5921E00401672 /* GLShip.cpp in Sources */,
+				508B038E25ED5720000D29CE /* GLPhoton.cpp in Sources */,
+				508B034825E988B8000D29CE /* GLShadowNode.cpp in Sources */,
+				EBB8377725E5921E00401672 /* GLLoadingScene.cpp in Sources */,
+				EBB8376B25E5921E00401672 /* GLApp.cpp in Sources */,
+				EBB837A225E5F41F00401672 /* GLCollisionController.cpp in Sources */,
+				EBB8377125E5921E00401672 /* GLPhotonQueue.cpp in Sources */,
+				508B036025EC2A83000D29CE /* GLPhotonNode.cpp in Sources */,
+				EB2BE9B61D74952A002FE78B /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EB0FF60F2016EF4F00517030 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6P7H83FK6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/iOS-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(STATIC_LIB)";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.sim.GameLab;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EB0FF6102016EF4F00517030 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6P7H83FK6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/iOS-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(STATIC_LIB)";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.sim.GameLab;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EB7454A11D74D75C002FBAE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DXRW83XY8P;
+				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/iOS-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.GameLab.Tomsick;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EB7454A21D74D75C002FBAE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DXRW83XY8P;
+				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/iOS-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.GameLab.Tomsick;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBBF18A01D74904A008E2001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CUGL_INCLUDES = "\"$(SRCROOT)/../cugl/include\"";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(CUGL_INCLUDES)";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				VALIDATE_WORKSPACE_SKIPPED_SDK_FRAMEWORKS = "OpenGLES OpenGL";
+			};
+			name = Debug;
+		};
+		EBBF18A11D74904A008E2001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CUGL_INCLUDES = "\"$(SRCROOT)/../cugl/include\"";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(CUGL_INCLUDES)";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				VALIDATE_WORKSPACE_SKIPPED_SDK_FRAMEWORKS = "OpenGLES OpenGL";
+			};
+			name = Release;
+		};
+		EBBF18A31D74904A008E2001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DXRW83XY8P;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Mac-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.GameLab;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		EBBF18A41D74904A008E2001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DXRW83XY8P;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Mac-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.GameLab;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EB0FF6162016EF4F00517030 /* Build configuration list for PBXNativeTarget "GameLab (Sim)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB0FF60F2016EF4F00517030 /* Debug */,
+				EB0FF6102016EF4F00517030 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB7454A01D74D75C002FBAE6 /* Build configuration list for PBXNativeTarget "GameLab (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB7454A11D74D75C002FBAE6 /* Debug */,
+				EB7454A21D74D75C002FBAE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBBF188C1D74904A008E2001 /* Build configuration list for PBXProject "GameLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBBF18A01D74904A008E2001 /* Debug */,
+				EBBF18A11D74904A008E2001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBBF18A21D74904A008E2001 /* Build configuration list for PBXNativeTarget "GameLab (Mac)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBBF18A31D74904A008E2001 /* Debug */,
+				EBBF18A41D74904A008E2001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EBBF18891D74904A008E2001 /* Project object */;
+}

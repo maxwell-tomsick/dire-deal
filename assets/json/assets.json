@@ -1,0 +1,48 @@
+{
+	"textures": {
+		"background": {
+            "file":  "textures/ice.png"
+        },
+        "photon": {
+            "file":  "textures/photon.png"
+        },
+        "ship": {
+            "file":  "textures/ships.png"
+        },
+        "target": {
+            "file":  "textures/target.png"
+        }
+	},
+    "sounds" : {
+        "fusion" : {
+            "type": "sample",
+            "file": "sounds/fusion.ogg"
+        },
+        "laser" : {
+            "type": "sample",
+            "file": "sounds/laser.ogg"
+        }
+    },
+    "scene2s" : {
+        "lab" : {
+            "comment"   : "We do not have an asset loader for filmstrips yet, so we do not add the ships",
+            "type"      : "Node",
+            "format"    : {
+                "type" : "Anchored"
+            },
+            "children":  {
+                "background": {
+                    "type": "Image",
+                    "data": {
+                        "texture":  "background",
+                        "anchor":   [0.0,0.5]
+                    },
+                    "layout" : {
+                        "x_anchor" : "fill",
+                        "y_anchor" : "fill"
+                    }
+                }
+            }
+        }
+    }
+}
