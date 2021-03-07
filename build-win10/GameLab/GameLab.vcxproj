@@ -119,7 +119,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)..\source\;$(SolutionDir)..\cugl\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)..\source\;$(SolutionDir)..\cugl\include\;%(AdditionalIncludeDirectories);C:\Users\iainp\Documents\Workspace\DireDeal\source\</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <DisableSpecificWarnings>4068;4018;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -185,12 +185,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\source\Card.h" />
+    <ClInclude Include="..\..\source\Deck.h" />
     <ClInclude Include="..\..\source\GLApp.h" />
     <ClInclude Include="..\..\source\GLCollisionController.h" />
     <ClInclude Include="..\..\source\GLGameScene.h" />
     <ClInclude Include="..\..\source\GLInputController.h" />
     <ClInclude Include="..\..\source\GLLoadingScene.h" />
+    <ClInclude Include="..\..\source\GLPhoton.h" />
+    <ClInclude Include="..\..\source\GLPhotonNode.h" />
     <ClInclude Include="..\..\source\GLPhotonQueue.h" />
+    <ClInclude Include="..\..\source\GLShadowNode.h" />
     <ClInclude Include="..\..\source\GLShip.h" />
     <ClInclude Include="..\..\source\GLShadowNode.h" />
     <ClInclude Include="..\..\source\GLPhotonNode.h" />
@@ -203,7 +208,10 @@
     <ClCompile Include="..\..\source\GLGameScene.cpp" />
     <ClCompile Include="..\..\source\GLInputController.cpp" />
     <ClCompile Include="..\..\source\GLLoadingScene.cpp" />
+    <ClCompile Include="..\..\source\GLPhoton.cpp" />
+    <ClCompile Include="..\..\source\GLPhotonNode.cpp" />
     <ClCompile Include="..\..\source\GLPhotonQueue.cpp" />
+    <ClCompile Include="..\..\source\GLShadowNode.cpp" />
     <ClCompile Include="..\..\source\GLShip.cpp" />
     <ClCompile Include="..\..\source\GLShadowNode.cpp" />
     <ClCompile Include="..\..\source\GLPhotonNode.cpp" />

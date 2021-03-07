@@ -39,13 +39,19 @@
     <ClInclude Include="..\..\source\GLShip.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\GLShadowNode.h">
+    <ClInclude Include="..\..\source\GLPhoton.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\GLPhotonNode.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\GLPhoton.h">
+    <ClInclude Include="..\..\source\GLShadowNode.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Deck.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Card.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,13 +80,16 @@
     <ClCompile Include="..\..\source\GLShip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\GLShadowNode.cpp">
+    <ClCompile Include="..\..\source\GLPhoton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\GLPhotonNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\GLPhoton.cpp">
+    <ClCompile Include="..\..\source\GLShadowNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Deck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
