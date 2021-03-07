@@ -156,6 +156,8 @@ public:
      * @param photons     PhotonQueue for allocation
      */
     bool firePhoton(const std::shared_ptr<Ship>& ship);
+    
+    void buttonPress(const int r);
 };
 
 #endif /* __SG_GAME_SCENE_H__ */

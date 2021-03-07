@@ -18,7 +18,7 @@
 #include "GLCollisionController.h"
 
 using namespace cugl;
-using namespace std;
+//using namespace std;
 
 #pragma mark -
 #pragma mark Level Layout
@@ -76,11 +76,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      saveStrength.allocate("Roll Behind", {0,0,0,0}, {}, false, false);
      
      Card enemyAttacks1;
-     enemyAttacks1.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+     enemyAttacks1.allocate("Enemy Attacks1", 1, {rollBehind, block, saveStrength});
      Card enemyAttacks2;
-     enemyAttacks2.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+     enemyAttacks2.allocate("Enemy Attacks2", 1, {rollBehind, block, saveStrength});
      Card enemyAttacks3;
-     enemyAttacks3.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+     enemyAttacks3.allocate("Enemy Attacks3", 1, {rollBehind, block, saveStrength});
      
      _currentDeck = Deck();
      _nextDeck = Deck();
@@ -89,7 +89,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currentDeck.addCard(enemyAttacks2);
      _currentDeck.addCard(enemyAttacks3);
      
-     _currentDeck.printDeck();
+     _currentCard = _currentDeck.draw();
+     
+     //_currentDeck.printDeck();
      
     _blueSound = _assets->get<Sound>("laser");
     _redSound = _assets->get<Sound>("fusion");
@@ -112,20 +114,22 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _response3 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response3"));
     _response1->addListener([=](const std::string& name, bool down) {
         if (down) {
-            _currEvent->setText("Clicked 1");
+             buttonPress(0);
         }
         });
     _response2->addListener([=](const std::string& name, bool down) {
         if (down) {
-            _currEvent->setText("Clicked 2");
+             buttonPress(1);
         }
         });
     _response3->addListener([=](const std::string& name, bool down) {
         if (down) {
-            _currEvent->setText("Clicked 3");
+             buttonPress(2);
         }
         });
 
+     //_response1->setText(_currentCard.getResponse(0).getText());
+     
     if (_active) {
         _response1->activate();
         _response2->activate();
@@ -138,7 +142,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     //     CULog("Finish to %s",value.c_str());
     //     _result->setText(strcat("Result: ","asdF"));
     // });
-    _currEvent->setText("First Event");
+    _currEvent->setText(_currentCard.getText());
     // if (_active) {
     //     _field->activate();
     // }
@@ -312,5 +316,10 @@ bool GameScene::firePhoton(const std::shared_ptr<Ship>& ship) {
         return true;
     }
     return false;
+}
+
+void GameScene::buttonPress(const int r){
+     Response response = _currentCard.getResponse(r);
+     _currEvent->setText("Clicked " + std::to_string(r + 1));
 }
 

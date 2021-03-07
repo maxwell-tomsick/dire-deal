@@ -23,6 +23,10 @@ public:
     Response();
     
     void allocate(const string text, const std::vector<int> resources, const std::vector<int> cards, const bool win, const bool lose);
+    
+    string getText(){
+        return _text;
+    }
 };
 
 #endif /* Response_h */
