@@ -22,10 +22,10 @@
 #ifndef __GL_PHOTON_QUEUE_H__
 #define __GL_PHOTON_QUEUE_H__
 #include <cugl/cugl.h>
-#include <vector>
 #include "GLShip.h"
 #include "GLPhotonNode.h"
 #include "GLPhoton.h"
+#include <vector>
 
 /**
  * Model class representing an "particle system" of photons.

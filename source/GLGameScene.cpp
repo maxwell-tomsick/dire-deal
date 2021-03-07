@@ -73,6 +73,53 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _redSound = _assets->get<Sound>("fusion");
     addChild(scene);
     reset();
+
+    //text field
+    // Size dimen = Application::get()->getDisplaySize();
+    // dimen *= SCENE_WIDTH/dimen.width; // Lock the game to a reasonable resolution
+
+    // auto layer = assets->get<scene2::SceneNode>("textfield");
+    // layer->setContentSize(dimen);
+    // layer->doLayout(); // This rearranges the children to fit the screen
+    // addChild(layer);
+
+    // _field  = std::dynamic_pointer_cast<scene2::TextField>(assets->get<scene2::SceneNode>("lab_action"));
+    _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_currEvent"));
+    _response1 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response1"));
+    _response2 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response2"));
+    _response3 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response3"));
+    _response1->addListener([=](const std::string& name, bool down) {
+        if (down) {
+            _currEvent->setText("Clicked 1");
+        }
+        });
+    _response2->addListener([=](const std::string& name, bool down) {
+        if (down) {
+            _currEvent->setText("Clicked 2");
+        }
+        });
+    _response3->addListener([=](const std::string& name, bool down) {
+        if (down) {
+            _currEvent->setText("Clicked 3");
+        }
+        });
+
+    if (_active) {
+        _response1->activate();
+        _response2->activate();
+        _response3->activate();
+    }
+    // _field->addTypeListener([=](const std::string& name, const std::string& value) {
+    //     CULog("Change to %s",value.c_str());
+    // });
+    // _field->addExitListener([=](const std::string& name, const std::string& value) {
+    //     CULog("Finish to %s",value.c_str());
+    //     _result->setText(strcat("Result: ","asdF"));
+    // });
+    _currEvent->setText("First Event");
+    // if (_active) {
+    //     _field->activate();
+    // }
     return true;
 }
 
@@ -83,6 +130,8 @@ void GameScene::dispose() {
     if (_active) {
         removeAllChildren();
         _active = false;
+        _assets = nullptr;
+        Scene2::dispose();
     }
 }
 
@@ -104,7 +153,7 @@ void GameScene::reset() {
     
     auto shipTexture = _assets->get<Texture>("ship");
     auto targTexture = _assets->get<Texture>("target");
-     
+    flourish = 10;
      
     _blueShip = Ship::alloc(dimen.width*(2.0f / 3.0f), dimen.height*(1.0f / 2.0f), 90);
     _blueShip->setColor(Color4f(0.5f, 0.5f, 1.0f, 1.0f));   // Blue, but makes texture easier to see
@@ -195,6 +244,7 @@ void GameScene::update(float timestep) {
     collisions::checkInBounds(_blueShip, getBounds());
     collisions::checkInBounds(_redShip, getBounds());
     collisions::checkInBounds(_photons, getBounds());
+
 
 }
 

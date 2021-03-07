@@ -9,6 +9,7 @@
 #ifndef GLPhoton_h
 #define GLPhoton_h
 #include <cugl/cugl.h>
+#include <vector>
 
 /**
  * An inner class that represents a single Photon.

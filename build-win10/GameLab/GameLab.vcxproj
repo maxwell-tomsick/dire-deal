@@ -192,6 +192,9 @@
     <ClInclude Include="..\..\source\GLLoadingScene.h" />
     <ClInclude Include="..\..\source\GLPhotonQueue.h" />
     <ClInclude Include="..\..\source\GLShip.h" />
+    <ClInclude Include="..\..\source\GLShadowNode.h" />
+    <ClInclude Include="..\..\source\GLPhotonNode.h" />
+    <ClInclude Include="..\..\source\GLPhoton.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +205,9 @@
     <ClCompile Include="..\..\source\GLLoadingScene.cpp" />
     <ClCompile Include="..\..\source\GLPhotonQueue.cpp" />
     <ClCompile Include="..\..\source\GLShip.cpp" />
+    <ClCompile Include="..\..\source\GLShadowNode.cpp" />
+    <ClCompile Include="..\..\source\GLPhotonNode.cpp" />
+    <ClCompile Include="..\..\source\GLPhoton.cpp" />
     <ClCompile Include="..\..\source\main.cpp" />
   </ItemGroup>
   <ItemGroup>

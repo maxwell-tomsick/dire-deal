@@ -46,8 +46,8 @@ int main(int argc, char * argv[]) {
     LabApp app;
     
     // Set the properties of your application
-    app.setName("Game Lab");
-    app.setOrganization("GDIAC");
+    app.setName("Dire Deal");
+    app.setOrganization("Catana Studios");
     app.setHighDPI(true);
     app.setFPS(60.0f);
 

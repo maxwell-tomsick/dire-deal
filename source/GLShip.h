@@ -27,7 +27,6 @@
 #define __GL_SHIP_H__
 #include <cugl/cugl.h>
 #include "GLShadowNode.h"
-#include <vector>
 
 /** The number of frames until we can fire again */
 #define RELOAD_RATE 3

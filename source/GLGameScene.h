@@ -61,6 +61,17 @@ protected:
     /** The weapon fire sound for the red player */
     std::shared_ptr<cugl::Sound> _redSound;
 
+    int flourish;
+
+    
+    std::shared_ptr<cugl::scene2::TextField> _field;
+    std::shared_ptr<cugl::scene2::Label> _currEvent;
+    std::shared_ptr<cugl::scene2::Button> _response1;
+    std::shared_ptr<cugl::scene2::Button> _response2;
+    std::shared_ptr<cugl::scene2::Button> _response3;
+
+    bool _mouse;
+
 
 public:
 #pragma mark -

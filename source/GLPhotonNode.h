@@ -9,7 +9,6 @@
 #ifndef GLPhotonNode_h
 #define GLPhotonNode_h
 #include <cugl/cugl.h>
-#include <vector>
 #include "GLPhoton.h"
 
 class PhotonNode : public cugl::scene2::SceneNode {

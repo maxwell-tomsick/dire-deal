@@ -6,7 +6,7 @@
 //  Copyright © 2021 Game Design Initiative at Cornell. All rights reserved.
 //
 
-#include <stdio.h>
+// #include <stdio.h>
 #include <cugl/cugl.h>
 #include "GLPhoton.h"
 /** Number of animation frames a photon lives before deleted */

@@ -1,0 +1,61 @@
+{
+    "variables" : {
+        "size" : ["children","up","data","size"],
+        "text" : ["children","up","children","label","data","text"],
+        "font" : ["children","up","children","label","data","font"],
+        "priority" : ["layout","priority"],
+        "texture"  : ["children","up","children","patch","data","texture"],
+        "interior" : ["children","up","children","patch","data","interior"]
+    },
+    "contents" : {
+        "type"   : "Button",
+        "data"   : {
+            "anchor"   : [0.5,0.5],
+            "upnode"  : "up"
+        },
+        "children" : {
+            "up" : {
+                "type"      : "Node",
+                "data"      : {
+                    "size"   : [200,200]
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "children"  : {
+                    "patch" : {
+                        "type"   : "NinePatch",
+                        "data"   : {
+                            "texture"  : "reds",
+                            "interior" : [6,6,20,20]
+                        },
+                        "layout" : {
+                            "x_anchor" : "fill",
+                            "y_anchor" : "fill"
+                        }
+                    },
+                    "label" : {
+                        "type"   : "Label",
+                        "data"   : {
+                            "font"       : "sans",
+                            "text"       : "1",
+                            "foreground" : [255,255,255,255],
+                            "halign"     : "center",
+                            "valign"     : "middle"
+                        },
+                        "layout" : {
+                            "x_anchor" : "fill",
+                            "y_anchor" : "fill"
+                        }
+                    }
+                }
+            }
+        },
+      "layout": {
+        "x_anchor": "left",
+        "y_anchor": "bottom",
+        "x_offset": 0.8,
+        "y_offset": 0.1
+      }
+    }
+}

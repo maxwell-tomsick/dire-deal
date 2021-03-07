@@ -1,48 +1,137 @@
 {
-	"textures": {
-		"background": {
-            "file":  "textures/ice.png"
-        },
-        "photon": {
-            "file":  "textures/photon.png"
-        },
-        "ship": {
-            "file":  "textures/ships.png"
-        },
-        "target": {
-            "file":  "textures/target.png"
-        }
-	},
-    "sounds" : {
-        "fusion" : {
-            "type": "sample",
-            "file": "sounds/fusion.ogg"
-        },
-        "laser" : {
-            "type": "sample",
-            "file": "sounds/laser.ogg"
-        }
+  "textures": {
+    "background": {
+      "file": "textures/ice.png"
     },
-    "scene2s" : {
-        "lab" : {
-            "comment"   : "We do not have an asset loader for filmstrips yet, so we do not add the ships",
-            "type"      : "Node",
-            "format"    : {
-                "type" : "Anchored"
-            },
-            "children":  {
-                "background": {
-                    "type": "Image",
-                    "data": {
-                        "texture":  "background",
-                        "anchor":   [0.0,0.5]
-                    },
-                    "layout" : {
-                        "x_anchor" : "fill",
-                        "y_anchor" : "fill"
-                    }
-                }
-            }
-        }
+    "photon": {
+      "file": "textures/photon.png"
+    },
+    "ship": {
+      "file": "textures/ships.png"
+    },
+    "target": {
+      "file": "textures/target.png"
+    },
+    "redb": {
+      "file": "textures/red.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "reds": {
+      "file": "textures/red-small.png",
+      "minfilter": "linear",
+      "magfilter": "linear",
+      "wrapS": "clamp",
+      "wrapT": "clamp"
     }
+  },
+  "widgets": {
+    "largebutton": "widgets/largebutton.json",
+    "response1": "widgets/response1.json",
+    "response2": "widgets/response2.json",
+    "response3": "widgets/response3.json"
+  },
+  "sounds": {
+    "fusion": {
+      "type": "sample",
+      "file": "sounds/fusion.ogg"
+    },
+    "laser": {
+      "type": "sample",
+      "file": "sounds/laser.ogg"
+    }
+  },
+  "fonts": {
+    "felt": {
+      "file": "fonts/MarkerFelt.ttf",
+      "size": 32
+    },
+    "sans": {
+      "file": "fonts/Roboto-Bold.ttf",
+      "size": 32
+    }
+  },
+  "scene2s": {
+    "lab": {
+      "comment": "We do not have an asset loader for filmstrips yet, so we do not add the ships",
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "background": {
+          "type": "Image",
+          "data": {
+            "texture": "background",
+            "anchor": [ 0.0, 0.5 ]
+          },
+          "layout": {
+            "x_anchor": "fill",
+            "y_anchor": "fill"
+          }
+        },
+        "action": {
+          "type": "TextField",
+          "data": {
+            "font": "sans",
+            "text": "Edit me",
+            "foreground": [ 255, 255, 255, 255 ],
+            "background": [ 0, 0, 0, 255 ],
+            "size": [ 600, 80 ],
+            "anchor": [ 0.5, 0.5 ]
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "bottom",
+            "y_offset": -0.3
+          }
+        },
+        "currEvent": {
+          "type": "Label",
+          "data": {
+            "font": "sans",
+            "text": "Result:",
+            "foreground": [ 0, 0, 0, 255 ],
+            "size": [ 200, 80 ],
+            "anchor": [ 0.5, 0.5 ]
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "bottom",
+            "y_offset": 0.5
+          }
+        },
+        "response1": {
+          "type": "Widget",
+          "data": {
+            "key": "response1",
+            "variables": {
+              "size": [ 300, 100 ],
+              "text": "response 1"
+            }
+          }
+        },
+        "response2": {
+          "type": "Widget",
+          "data": {
+            "key": "response2",
+            "variables": {
+              "size": [ 300, 100 ],
+              "text": "response 2"
+            }
+          }
+        },
+        "response3": {
+          "type": "Widget",
+          "data": {
+            "key": "response3",
+            "variables": {
+              "size": [ 300, 100 ],
+              "text": "response 3"
+            }
+          }
+        }
+      }
+    }
+  }
 }
