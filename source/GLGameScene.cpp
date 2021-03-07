@@ -377,6 +377,8 @@ void GameScene::buttonPress(const int r){
      }
      _currentCard = _currentDeck.draw();
      _currEvent->setText(_currentCard.getText());
-     
+     _responseText1->setText(_currentCard.getResponse(0).getText());
+     _responseText2->setText(_currentCard.getResponse(1).getText());
+     _responseText3->setText(_currentCard.getResponse(2).getText());
 }
 
