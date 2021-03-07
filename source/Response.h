@@ -27,6 +27,10 @@ public:
     string getText(){
         return _text;
     }
+    
+    std::vector<int> getCards(){
+        return _cards;
+    }
 };
 
 #endif /* Response_h */

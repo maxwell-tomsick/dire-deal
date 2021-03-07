@@ -69,18 +69,18 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      //scene->setAngle(M_PI_2);
 
      Response rollBehind;
-     rollBehind.allocate("Roll Behind", {0,0,0,0}, {}, false, false);
+     rollBehind.allocate("Roll Behind", {0,0,0,0}, {1}, false, false);
      Response block;
-     block.allocate("Roll Behind", {0,0,0,0}, {}, false, false);
+     block.allocate("Block", {0,0,0,0}, {1}, false, false);
      Response saveStrength;
-     saveStrength.allocate("Roll Behind", {0,0,0,0}, {}, false, false);
+     saveStrength.allocate("Save Strength", {0,0,0,0}, {1}, false, false);
      
      Card enemyAttacks1;
-     enemyAttacks1.allocate("Enemy Attacks1", 1, {rollBehind, block, saveStrength});
+     enemyAttacks1.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
      Card enemyAttacks2;
-     enemyAttacks2.allocate("Enemy Attacks2", 1, {rollBehind, block, saveStrength});
+     enemyAttacks2.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
      Card enemyAttacks3;
-     enemyAttacks3.allocate("Enemy Attacks3", 1, {rollBehind, block, saveStrength});
+     enemyAttacks3.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
      
      _currentDeck = Deck();
      _nextDeck = Deck();
@@ -318,8 +318,61 @@ bool GameScene::firePhoton(const std::shared_ptr<Ship>& ship) {
     return false;
 }
 
+Card GameScene::getCard(const int id){
+     Card newCard;
+     switch(id){
+          case 1:
+               Response rollBehind;
+               rollBehind.allocate("Roll Behind", {0,0,0,0}, {1}, false, false);
+               Response block;
+               block.allocate("Roll Behind", {0,0,0,0}, {1}, false, false);
+               Response saveStrength;
+               saveStrength.allocate("Roll Behind", {0,0,0,0}, {1}, false, false);
+               newCard.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+               break;
+     }
+     return newCard;
+}
+
 void GameScene::buttonPress(const int r){
      Response response = _currentCard.getResponse(r);
-     _currEvent->setText("Clicked " + std::to_string(r + 1));
+     //_currEvent->setText("Clicked " + std::to_string(r + 1));
+     //_currentDeck.printDeck();
+     std::vector<int> cards =response.getCards();
+     for (int i = 0; i < cards.size(); i++){
+          Card newCard = getCard(cards[i]);
+          _nextDeck.addCard(newCard);
+     }
+     CULog("Next Deck:");
+     _nextDeck.printDeck();
+     CULog("Current Deck:");
+     _currentDeck.printDeck();
+     if (_currentDeck.getSize() == 0){
+          if (_nextDeck.getSize() > 0){
+               _currentDeck = _nextDeck;
+               _nextDeck = Deck();
+          } else {
+               Response rollBehind;
+               rollBehind.allocate("Roll Behind", {0,0,0,0}, {1}, false, false);
+               Response block;
+               block.allocate("Block", {0,0,0,0}, {1}, false, false);
+               Response saveStrength;
+               saveStrength.allocate("Save Strength", {0,0,0,0}, {1}, false, false);
+               Card enemyAttacks1;
+               enemyAttacks1.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+               Card enemyAttacks2;
+               enemyAttacks2.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+               Card enemyAttacks3;
+               enemyAttacks3.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+               _currentDeck = Deck();
+               _nextDeck = Deck();
+               _currentDeck.addCard(enemyAttacks1);
+               _currentDeck.addCard(enemyAttacks2);
+               _currentDeck.addCard(enemyAttacks3);
+          }
+     }
+     _currentCard = _currentDeck.draw();
+     _currEvent->setText(_currentCard.getText());
+     
 }
 

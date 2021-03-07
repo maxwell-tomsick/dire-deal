@@ -158,6 +158,8 @@ public:
     bool firePhoton(const std::shared_ptr<Ship>& ship);
     
     void buttonPress(const int r);
+    
+    Card getCard(const int id);
 };
 
 #endif /* __SG_GAME_SCENE_H__ */
