@@ -46,6 +46,10 @@ public:
 	Card draw();
     
     void printDeck();
+    
+    int getSize(){
+        return _deck.size();
+    }
 };
 
 #endif
