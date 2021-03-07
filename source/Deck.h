@@ -44,6 +44,8 @@ public:
 	 * Draw the top card of the deck, removing and returning it.
 	 */
 	Card draw();
+    
+    void printDeck();
 };
 
 #endif

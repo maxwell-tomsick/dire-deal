@@ -75,13 +75,21 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      Response saveStrength;
      saveStrength.allocate("Roll Behind", {0,0,0,0}, {}, false, false);
      
-     Card enemyAttacks;
-     enemyAttacks.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+     Card enemyAttacks1;
+     enemyAttacks1.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+     Card enemyAttacks2;
+     enemyAttacks2.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+     Card enemyAttacks3;
+     enemyAttacks3.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
      
      _currentDeck = Deck();
      _nextDeck = Deck();
 
-     _currentDeck.addCard(enemyAttacks);
+     _currentDeck.addCard(enemyAttacks1);
+     _currentDeck.addCard(enemyAttacks2);
+     _currentDeck.addCard(enemyAttacks3);
+     
+     _currentDeck.printDeck();
      
     _blueSound = _assets->get<Sound>("laser");
     _redSound = _assets->get<Sound>("fusion");

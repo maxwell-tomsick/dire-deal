@@ -41,3 +41,9 @@ Card Deck::draw() {
 	_deck.pop_front();
 	return c;
 }
+
+void Deck::printDeck(){
+    for (int i = 0; i < _deck.size(); i++){
+        CULog("%s",_deck[i].getText().c_str());
+    }
+}
