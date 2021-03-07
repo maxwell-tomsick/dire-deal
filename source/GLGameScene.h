@@ -17,6 +17,9 @@
 #include "GLInputController.h"
 #include "GLShip.h"
 #include "GLPhotonQueue.h"
+#include "Deck.h"
+#include "Card.h"
+#include "Response.h"
 
 
 /**
@@ -69,6 +72,10 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _response1;
     std::shared_ptr<cugl::scene2::Button> _response2;
     std::shared_ptr<cugl::scene2::Button> _response3;
+    
+    Deck _currentDeck;
+    Deck _nextDeck;
+    Card _currentCard;
 
     bool _mouse;
 

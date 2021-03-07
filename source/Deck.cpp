@@ -1,5 +1,4 @@
 #include "Deck.h"
-#include "Card.h"
 
 using namespace cugl;
 
@@ -21,7 +20,9 @@ Deck::~Deck() {
  * Shuffle a deck model, randomizing the order of cards.
  */
 void Deck::shuffle() {
-	random_shuffle(_deck.begin(), _deck.end());
+    std::random_device rd;
+    std::mt19937 g(rd());
+	std::shuffle(_deck.begin(), _deck.end(), g);
 }
 
 /**

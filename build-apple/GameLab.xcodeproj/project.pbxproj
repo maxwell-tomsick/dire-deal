@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5014BB5C25F54BA6004EFF48 /* Deck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB5625F54BA6004EFF48 /* Deck.cpp */; };
+		5014BB5D25F54BA6004EFF48 /* Deck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB5625F54BA6004EFF48 /* Deck.cpp */; };
+		5014BB5E25F54BA6004EFF48 /* Deck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB5625F54BA6004EFF48 /* Deck.cpp */; };
+		5014BB6325F54C91004EFF48 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 5014BB6225F54C91004EFF48 /* fonts */; };
+		5014BB6425F54C91004EFF48 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 5014BB6225F54C91004EFF48 /* fonts */; };
+		5014BB6525F54C91004EFF48 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 5014BB6225F54C91004EFF48 /* fonts */; };
+		5014BB7225F54CCF004EFF48 /* widgets in Resources */ = {isa = PBXBuildFile; fileRef = 5014BB7125F54CCF004EFF48 /* widgets */; };
+		5014BB7325F54CCF004EFF48 /* widgets in Resources */ = {isa = PBXBuildFile; fileRef = 5014BB7125F54CCF004EFF48 /* widgets */; };
+		5014BB7425F54CCF004EFF48 /* widgets in Resources */ = {isa = PBXBuildFile; fileRef = 5014BB7125F54CCF004EFF48 /* widgets */; };
+		5014BB7D25F556BE004EFF48 /* Response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB7C25F556BE004EFF48 /* Response.cpp */; };
+		5014BB7E25F556BE004EFF48 /* Response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB7C25F556BE004EFF48 /* Response.cpp */; };
+		5014BB7F25F556BE004EFF48 /* Response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB7C25F556BE004EFF48 /* Response.cpp */; };
+		5014BB8425F55E12004EFF48 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB8325F55E12004EFF48 /* Card.cpp */; };
+		5014BB8525F55E12004EFF48 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB8325F55E12004EFF48 /* Card.cpp */; };
+		5014BB8625F55E12004EFF48 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB8325F55E12004EFF48 /* Card.cpp */; };
 		508B034825E988B8000D29CE /* GLShadowNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B034725E988B8000D29CE /* GLShadowNode.cpp */; };
 		508B036025EC2A83000D29CE /* GLPhotonNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B035F25EC2A83000D29CE /* GLPhotonNode.cpp */; };
 		508B038E25ED5720000D29CE /* GLPhoton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508B038D25ED5720000D29CE /* GLPhoton.cpp */; };
@@ -131,6 +146,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5014BB5625F54BA6004EFF48 /* Deck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Deck.cpp; sourceTree = "<group>"; };
+		5014BB5A25F54BA6004EFF48 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		5014BB5B25F54BA6004EFF48 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		5014BB6225F54C91004EFF48 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		5014BB7125F54CCF004EFF48 /* widgets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = widgets; sourceTree = "<group>"; };
+		5014BB7B25F5539D004EFF48 /* Response.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
+		5014BB7C25F556BE004EFF48 /* Response.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Response.cpp; sourceTree = "<group>"; };
+		5014BB8325F55E12004EFF48 /* Card.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
 		508B034325E984B9000D29CE /* GLShadowNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLShadowNode.h; sourceTree = "<group>"; };
 		508B034725E988B8000D29CE /* GLShadowNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLShadowNode.cpp; sourceTree = "<group>"; };
 		508B035E25EC2A6D000D29CE /* GLPhotonNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLPhotonNode.h; sourceTree = "<group>"; };
@@ -270,6 +293,8 @@
 		EB2BE9B71D749870002FE78B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				5014BB7125F54CCF004EFF48 /* widgets */,
+				5014BB6225F54C91004EFF48 /* fonts */,
 				EBFE7C041E19B496001007C2 /* json */,
 				EBB8378325E59A8300401672 /* sounds */,
 				EB2BE9BA1D7498D2002FE78B /* textures */,
@@ -382,6 +407,12 @@
 				EBB8376225E5921E00401672 /* GLApp.h */,
 				EBB8375F25E5921E00401672 /* GLApp.cpp */,
 				EBB8376725E5921E00401672 /* GLLoadingScene.h */,
+				5014BB5B25F54BA6004EFF48 /* Card.h */,
+				5014BB8325F55E12004EFF48 /* Card.cpp */,
+				5014BB7B25F5539D004EFF48 /* Response.h */,
+				5014BB7C25F556BE004EFF48 /* Response.cpp */,
+				5014BB5625F54BA6004EFF48 /* Deck.cpp */,
+				5014BB5A25F54BA6004EFF48 /* Deck.h */,
 				EBB8376625E5921E00401672 /* GLLoadingScene.cpp */,
 				EBB8376525E5921E00401672 /* GLGameScene.h */,
 				EBB8376425E5921E00401672 /* GLGameScene.cpp */,
@@ -539,6 +570,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5014BB7425F54CCF004EFF48 /* widgets in Resources */,
 				EB0FF61A2016EFC500517030 /* json in Resources */,
 				EB0FF61B2016EFC500517030 /* textures in Resources */,
 				EBB8378625E59A8300401672 /* sounds in Resources */,
@@ -546,6 +578,7 @@
 				EB0FF6182016EFB200517030 /* Landscape.storyboard in Resources */,
 				EB0FF6192016EFB200517030 /* Portrait.storyboard in Resources */,
 				EB42669721F68F6900A9DE61 /* DeviceMargins.plist in Resources */,
+				5014BB6525F54C91004EFF48 /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +586,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5014BB7325F54CCF004EFF48 /* widgets in Resources */,
 				EB7454D01D750623002FBAE6 /* textures in Resources */,
 				EB7454AB1D74D846002FBAE6 /* iOS.xcassets in Resources */,
 				EBB8378525E59A8300401672 /* sounds in Resources */,
@@ -560,6 +594,7 @@
 				EBFE7C051E19B496001007C2 /* json in Resources */,
 				EB7454AD1D74D846002FBAE6 /* Portrait.storyboard in Resources */,
 				EB42669621F68F6900A9DE61 /* DeviceMargins.plist in Resources */,
+				5014BB6425F54C91004EFF48 /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,7 +602,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5014BB7225F54CCF004EFF48 /* widgets in Resources */,
 				EBFE7C091E19B4AC001007C2 /* json in Resources */,
+				5014BB6325F54C91004EFF48 /* fonts in Resources */,
 				EB2BE9BB1D7498D2002FE78B /* textures in Resources */,
 				EBB8378425E59A8300401672 /* sounds in Resources */,
 				EBBF189B1D74904A008E2001 /* Mac.xcassets in Resources */,
@@ -581,6 +618,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5014BB5E25F54BA6004EFF48 /* Deck.cpp in Sources */,
 				EBB8377025E5921E00401672 /* GLInputController.cpp in Sources */,
 				EBB8377625E5921E00401672 /* GLGameScene.cpp in Sources */,
 				EBB8377C25E5921E00401672 /* GLShip.cpp in Sources */,
@@ -588,10 +626,12 @@
 				EBB8377925E5921E00401672 /* GLLoadingScene.cpp in Sources */,
 				EBB8376D25E5921E00401672 /* GLApp.cpp in Sources */,
 				508B039E25EDAE16000D29CE /* GLPhotonNode.cpp in Sources */,
+				5014BB7F25F556BE004EFF48 /* Response.cpp in Sources */,
 				EBB837A425E5F41F00401672 /* GLCollisionController.cpp in Sources */,
 				EBB8377325E5921E00401672 /* GLPhotonQueue.cpp in Sources */,
 				508B03A325EDAE22000D29CE /* GLShadowNode.cpp in Sources */,
 				EB0FF61D2016F06000517030 /* main.cpp in Sources */,
+				5014BB8625F55E12004EFF48 /* Card.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +639,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5014BB5D25F54BA6004EFF48 /* Deck.cpp in Sources */,
 				EBB8376F25E5921E00401672 /* GLInputController.cpp in Sources */,
 				EBB8377525E5921E00401672 /* GLGameScene.cpp in Sources */,
 				EBB8377B25E5921E00401672 /* GLShip.cpp in Sources */,
@@ -606,10 +647,12 @@
 				EBB8377825E5921E00401672 /* GLLoadingScene.cpp in Sources */,
 				EBB8376C25E5921E00401672 /* GLApp.cpp in Sources */,
 				508B039A25EDAE16000D29CE /* GLPhotonNode.cpp in Sources */,
+				5014BB7E25F556BE004EFF48 /* Response.cpp in Sources */,
 				EBB837A325E5F41F00401672 /* GLCollisionController.cpp in Sources */,
 				EBB8377225E5921E00401672 /* GLPhotonQueue.cpp in Sources */,
 				508B039F25EDAE21000D29CE /* GLShadowNode.cpp in Sources */,
 				EB7454AE1D74D891002FBAE6 /* main.cpp in Sources */,
+				5014BB8525F55E12004EFF48 /* Card.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +660,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5014BB5C25F54BA6004EFF48 /* Deck.cpp in Sources */,
 				EBB8376E25E5921E00401672 /* GLInputController.cpp in Sources */,
 				EBB8377425E5921E00401672 /* GLGameScene.cpp in Sources */,
 				EBB8377A25E5921E00401672 /* GLShip.cpp in Sources */,
@@ -624,10 +668,12 @@
 				508B034825E988B8000D29CE /* GLShadowNode.cpp in Sources */,
 				EBB8377725E5921E00401672 /* GLLoadingScene.cpp in Sources */,
 				EBB8376B25E5921E00401672 /* GLApp.cpp in Sources */,
+				5014BB7D25F556BE004EFF48 /* Response.cpp in Sources */,
 				EBB837A225E5F41F00401672 /* GLCollisionController.cpp in Sources */,
 				EBB8377125E5921E00401672 /* GLPhotonQueue.cpp in Sources */,
 				508B036025EC2A83000D29CE /* GLPhotonNode.cpp in Sources */,
 				EB2BE9B61D74952A002FE78B /* main.cpp in Sources */,
+				5014BB8425F55E12004EFF48 /* Card.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

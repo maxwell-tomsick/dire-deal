@@ -68,11 +68,25 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     //scene->setAnchor(Vec2::ANCHOR_CENTER);
      //scene->setAngle(M_PI_2);
 
+     Response rollBehind;
+     rollBehind.allocate("Roll Behind", {0,0,0,0}, {}, false, false);
+     Response block;
+     block.allocate("Roll Behind", {0,0,0,0}, {}, false, false);
+     Response saveStrength;
+     saveStrength.allocate("Roll Behind", {0,0,0,0}, {}, false, false);
+     
+     Card enemyAttacks;
+     enemyAttacks.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+     
+     _currentDeck = Deck();
+     _nextDeck = Deck();
 
+     _currentDeck.addCard(enemyAttacks);
+     
     _blueSound = _assets->get<Sound>("laser");
     _redSound = _assets->get<Sound>("fusion");
     addChild(scene);
-    reset();
+    //reset();
 
     //text field
     // Size dimen = Application::get()->getDisplaySize();
@@ -191,7 +205,7 @@ void GameScene::reset() {
  */
 void GameScene::update(float timestep) {
     // Read the keyboard for each controller.
-    _redController.readInput();
+    /*_redController.readInput();
     _blueController.readInput();
      _redShip->setBounds(getBounds());
      _blueShip->setBounds(getBounds());
@@ -244,6 +258,8 @@ void GameScene::update(float timestep) {
     collisions::checkInBounds(_blueShip, getBounds());
     collisions::checkInBounds(_redShip, getBounds());
     collisions::checkInBounds(_photons, getBounds());
+     */
+     
 
 
 }
