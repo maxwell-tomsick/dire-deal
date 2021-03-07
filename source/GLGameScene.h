@@ -70,8 +70,11 @@ protected:
     std::shared_ptr<cugl::scene2::TextField> _field;
     std::shared_ptr<cugl::scene2::Label> _currEvent;
     std::shared_ptr<cugl::scene2::Button> _response1;
+    std::shared_ptr<cugl::scene2::Label> _responseText1;
     std::shared_ptr<cugl::scene2::Button> _response2;
+    std::shared_ptr<cugl::scene2::Label> _responseText2;
     std::shared_ptr<cugl::scene2::Button> _response3;
+    std::shared_ptr<cugl::scene2::Label> _responseText3; 
     
     Deck _currentDeck;
     Deck _nextDeck;
