@@ -15,6 +15,7 @@ private:
     int _size;
     std::shared_ptr<cugl::Texture> _frontTexture;
     std::shared_ptr<cugl::Texture> _backTexture;
+    bool _drawFront;
     
 public:
     DeckNode() : SceneNode() {}
@@ -38,6 +39,10 @@ public:
     
     void setSize(int size){
         _size = size;
+    }
+    
+    void setDrawFront(bool drawFront){
+        _drawFront = drawFront;
     }
 };
 

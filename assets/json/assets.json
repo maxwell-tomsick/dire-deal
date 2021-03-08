@@ -1,7 +1,7 @@
 {
   "textures": {
     "background": {
-      "file": "textures/ice.png"
+      "file": "textures/Gamescreen.png"
     },
     "photon": {
       "file": "textures/photon.png"
@@ -27,7 +27,7 @@
       "magfilter": "linear"
     },
     "reds": {
-      "file": "textures/red-small.png",
+      "file": "textures/blue-small.png",
       "minfilter": "linear",
       "magfilter": "linear",
       "wrapS": "clamp",
@@ -62,9 +62,24 @@
     "sans2": {
       "file": "fonts/Roboto-Bold.ttf",
       "size": 18
+    },
+    "sans3": {
+      "file": "fonts/Roboto-Bold.ttf",
+      "size": 28
     }
   },
   "scene2s": {
+      "background": {
+        "type": "Image",
+        "data": {
+          "texture": "background",
+          "anchor": [ 0.0, 0.5 ]
+        },
+        "layout": {
+          "x_anchor": "fill",
+          "y_anchor": "fill"
+        }
+      },
     "lab": {
       "comment": "We do not have an asset loader for filmstrips yet, so we do not add the ships",
       "type": "Node",
@@ -72,21 +87,10 @@
         "type": "Anchored"
       },
       "children": {
-        "background": {
-          "type": "Image",
-          "data": {
-            "texture": "background",
-            "anchor": [ 0.0, 0.5 ]
-          },
-          "layout": {
-            "x_anchor": "fill",
-            "y_anchor": "fill"
-          }
-        },
         "action": {
           "type": "TextField",
           "data": {
-            "font": "sans",
+            "font": "sans3",
             "text": "Edit me",
             "foreground": [ 255, 255, 255, 255 ],
             "background": [ 0, 0, 0, 255 ],
@@ -104,14 +108,15 @@
           "data": {
             "font": "sans",
             "text": "Result:",
-            "foreground": [ 0, 0, 0, 255 ],
+            "foreground": [ 212, 175, 55, 255 ],
             "size": [ 200, 80 ],
             "anchor": [ 0.5, 0.5 ]
           },
           "layout": {
             "x_anchor": "center",
             "y_anchor": "bottom",
-            "y_offset": 0.5
+            "y_offset": 0.5,
+            "x_offset": -0.05
           }
         },
         "response1": {
@@ -119,7 +124,7 @@
           "data": {
             "key": "response1",
             "variables": {
-              "size": [ 300, 100 ],
+              "size": [ 400, 100 ],
               "text": "response 1"
             }
           }
@@ -129,7 +134,7 @@
           "data": {
             "key": "response2",
             "variables": {
-              "size": [ 300, 100 ],
+              "size": [ 400, 100 ],
               "text": "response 2"
             }
           }
@@ -139,7 +144,7 @@
           "data": {
             "key": "response3",
             "variables": {
-              "size": [ 300, 100 ],
+              "size": [ 400, 100 ],
               "text": "response 3"
             }
           }

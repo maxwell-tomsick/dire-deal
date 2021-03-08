@@ -68,8 +68,8 @@
       "layout": {
         "x_anchor": "left",
         "y_anchor": "bottom",
-        "x_offset": 0.2,
-        "y_offset": 0.1
+        "x_offset": 0.8,
+        "y_offset": 0.5
       }
     }
 }

@@ -16,9 +16,15 @@ void DeckNode::draw(const std::shared_ptr<cugl::SpriteBatch>& batch,
     Vec2 origin = _frontTexture->getSize()/2;
     Mat4 trans;
     trans.scale(0.4f);
-    trans.translate(200, 400, 0);
+    trans.translate(180, 350, 0);
     for (int i = 0; i < _size; i++){
         batch->draw(_backTexture,tint,origin,trans * transform);
         trans.translate(10,10,0);
+    }
+    if (_drawFront){
+        Mat4 transf;
+        transf.scale(0.5f);
+        transf.translate(585, 350, 0);
+        batch->draw(_frontTexture,tint,origin,transf * transform);
     }
 } 
