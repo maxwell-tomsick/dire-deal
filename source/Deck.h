@@ -10,6 +10,7 @@
 
 #include <cugl/cugl.h>
 #include "Card.h"
+#include "DeckNode.h"
 
 /** 
  *  Model class representing a deck of cards.
@@ -17,6 +18,7 @@
 class Deck {
 private:
 	deque<Card> _deck;
+    
 
 public:
 	/**
@@ -50,6 +52,7 @@ public:
     int getSize(){
         return static_cast<int>(_deck.size());
     }
+    
 };
 
 #endif

@@ -94,6 +94,16 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _blueSound = _assets->get<Sound>("laser");
     _redSound = _assets->get<Sound>("fusion");
     addChild(scene);
+     auto cardFrontTexture = _assets->get<Texture>("cardFront");
+     auto cardBackTexture1 = _assets->get<Texture>("cardBack1");
+     //auto cardBackTexture2 = _assets->get<Texture>("cardBack2");
+     
+     _deckNode = DeckNode::alloc();
+     _deckNode->setSize(_currentDeck.getSize());
+     _deckNode->setBackTexture(cardBackTexture1);
+     _cardBack = 1;
+     _deckNode->setFrontTexture(cardFrontTexture);
+     addChild(_deckNode);
     //reset();
 
     //text field
@@ -113,7 +123,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _responseText2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_label"));
     _response3 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response3"));
     _responseText3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_label"));
-
+     
+     
+     
     _response1->addListener([=](const std::string& name, bool down) {
         if (down) {
              buttonPress(0);
@@ -162,6 +174,7 @@ void GameScene::dispose() {
         removeAllChildren();
         _active = false;
         _assets = nullptr;
+         _deckNode = nullptr;
         Scene2::dispose();
     }
 }
@@ -234,6 +247,7 @@ void GameScene::update(float timestep) {
           _responseText1->setText(_currentCard.getResponse(0).getText());
           _responseText2->setText(_currentCard.getResponse(1).getText());
           _responseText3->setText(_currentCard.getResponse(2).getText());
+          _deckNode->setSize(_currentDeck.getSize());
      }
     // Read the keyboard for each controller.
     /*_redController.readInput();
@@ -410,6 +424,16 @@ void GameScene::buttonPress(const int r){
      //CULog("Current Deck:");
      //_currentDeck.printDeck();
      if (_currentDeck.getSize() == 0){
+          _currEvent->setText("Shuffling Next Event Deck...");
+          if (_cardBack == 1){
+               auto cardBackTexture = _assets->get<Texture>("cardBack2");
+               _deckNode->setBackTexture(cardBackTexture);
+               _cardBack = 2;
+          } else {
+               auto cardBackTexture = _assets->get<Texture>("cardBack1");
+               _deckNode->setBackTexture(cardBackTexture);
+               _cardBack = 1;
+          }
           if (_nextDeck.getSize() > 0){
                _currentDeck = _nextDeck;
                _nextDeck = Deck();
@@ -432,6 +456,8 @@ void GameScene::buttonPress(const int r){
                _currentDeck.addCard(enemyAttacks2);
                _currentDeck.addCard(enemyAttacks3);
           }
+     } else {
+          _currEvent->setVisible(false);
      }
      //_response1->setDown(false);
      //_response1->deactivate();
@@ -440,8 +466,7 @@ void GameScene::buttonPress(const int r){
      _response1->setVisible(false);
      _response2->setVisible(false);
      _response3->setVisible(false);
-     _currEvent->setVisible(false);
-     _pause = 60;
+     _pause = 40;
      /*
      _currentCard = _currentDeck.draw();
      _currEvent->setText(_currentCard.getText());

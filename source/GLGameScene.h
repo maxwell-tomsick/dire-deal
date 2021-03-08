@@ -74,8 +74,10 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _response2;
     std::shared_ptr<cugl::scene2::Label> _responseText2;
     std::shared_ptr<cugl::scene2::Button> _response3;
-    std::shared_ptr<cugl::scene2::Label> _responseText3; 
-    
+    std::shared_ptr<cugl::scene2::Label> _responseText3;
+    std::shared_ptr<cugl::scene2::PolygonNode> _cardFront;
+    std::shared_ptr<DeckNode> _deckNode;
+    int _cardBack;
     Deck _currentDeck;
     Deck _nextDeck;
     Card _currentCard;

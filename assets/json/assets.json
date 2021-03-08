@@ -6,6 +6,15 @@
     "photon": {
       "file": "textures/photon.png"
     },
+    "cardFront": {
+      "file": "textures/card_template.png"
+    },
+    "cardBack1": {
+      "file": "textures/card_back_3_v2.png"
+    },
+    "cardBack2": {
+      "file": "textures/card_back_3_v3.png"
+    },
     "ship": {
       "file": "textures/ships.png"
     },
