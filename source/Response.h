@@ -31,6 +31,14 @@ public:
     std::vector<int> getCards(){
         return _cards;
     }
+    
+    bool getWin(){
+        return _win;
+    }
+    
+    bool getLose(){
+        return _lose;
+    }
 };
 
 #endif /* Response_h */
