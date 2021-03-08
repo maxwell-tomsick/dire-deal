@@ -73,8 +73,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      Response secondResponse;
      Response thirdResponse;
      firstResponse.allocate("Roll Behind", "Shuffle in Enemy Exposed", {0,0,0,0}, {2}, false, false);
-     secondResponse.allocate("Block", "No effect", {0,0,0,0}, {1}, false, false);
-     thirdResponse.allocate("Take Hit", "Shuffle in Player Wounded", {0,0,0,0}, {1,5}, false, false);
+     secondResponse.allocate("Block", "Shuffle in Enemy Attacks", {0,0,0,0}, {1}, false, false);
+     thirdResponse.allocate("Take Hit", "Shuffle in Player Wounded and Enemy Attacks", {0,0,0,0}, {1,5}, false, false);
      
      Card enemyAttacks1;
      enemyAttacks1.allocate("Enemy Attacks", 1, {firstResponse, secondResponse, thirdResponse});
