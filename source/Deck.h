@@ -48,7 +48,7 @@ public:
     void printDeck();
     
     int getSize(){
-        return _deck.size();
+        return static_cast<int>(_deck.size());
     }
 };
 

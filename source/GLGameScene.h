@@ -81,6 +81,7 @@ protected:
     Card _currentCard;
 
     bool _mouse;
+    int _pause;
 
 
 public:

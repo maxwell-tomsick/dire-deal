@@ -83,7 +83,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      
      _currentDeck = Deck();
      _nextDeck = Deck();
-
+     _pause = 0;
      _currentDeck.addCard(enemyAttacks1);
      _currentDeck.addCard(enemyAttacks2);
      _currentDeck.addCard(enemyAttacks3);
@@ -221,6 +221,20 @@ void GameScene::reset() {
  * @param timestep  The amount of time (in seconds) since the last frame
  */
 void GameScene::update(float timestep) {
+     if (_pause > 1){
+          _pause--;
+     } else if (_pause == 1){
+          _currEvent->setVisible(true);
+          _response1->setVisible(true);
+          _response2->setVisible(true);
+          _response3->setVisible(true);
+          _pause = 0;
+          _currentCard = _currentDeck.draw();
+          _currEvent->setText(_currentCard.getText());
+          _responseText1->setText(_currentCard.getResponse(0).getText());
+          _responseText2->setText(_currentCard.getResponse(1).getText());
+          _responseText3->setText(_currentCard.getResponse(2).getText());
+     }
     // Read the keyboard for each controller.
     /*_redController.readInput();
     _blueController.readInput();
@@ -419,10 +433,21 @@ void GameScene::buttonPress(const int r){
                _currentDeck.addCard(enemyAttacks3);
           }
      }
+     //_response1->setDown(false);
+     //_response1->deactivate();
+     //_response2->deactivate();
+     //_response3->deactivate();
+     _response1->setVisible(false);
+     _response2->setVisible(false);
+     _response3->setVisible(false);
+     _currEvent->setVisible(false);
+     _pause = 60;
+     /*
      _currentCard = _currentDeck.draw();
      _currEvent->setText(_currentCard.getText());
      _responseText1->setText(_currentCard.getResponse(0).getText());
      _responseText2->setText(_currentCard.getResponse(1).getText());
      _responseText3->setText(_currentCard.getResponse(2).getText());
+      */
 }
 
