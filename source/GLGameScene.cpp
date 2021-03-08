@@ -63,6 +63,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     
     // Acquire the scene built by the asset loader and resize it the scene
      std::shared_ptr<scene2::SceneNode> background = _assets->get<scene2::SceneNode>("background");
+     background->setContentSize(dimen);
+     background->doLayout();
      addChild(background);
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("lab");
     scene->setContentSize(dimen);
@@ -247,6 +249,7 @@ void GameScene::update(float timestep) {
      if (_pause > 1){
           _pause--;
      } else if (_pause == 1){
+          _currEvent->setColor(Color4::WHITE);
           _currEvent->setVisible(true);
           _response1->setVisible(true);
           _response2->setVisible(true);
@@ -439,6 +442,7 @@ void GameScene::buttonPress(const int r){
      //_currentDeck.printDeck();
      if (_currentDeck.getSize() == 0){
           _currEvent->setText("Shuffling Next Event Deck...");
+          _currEvent->setColor(Color4::BLACK);
           if (_cardBack == 1){
                auto cardBackTexture = _assets->get<Texture>("cardBack2");
                _deckNode->setBackTexture(cardBackTexture);

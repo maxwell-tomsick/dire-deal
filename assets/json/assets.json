@@ -73,7 +73,7 @@
         "type": "Image",
         "data": {
           "texture": "background",
-          "anchor": [ 0.0, 0.5 ]
+          "anchor": [ 0, 0 ]
         },
         "layout": {
           "x_anchor": "fill",
