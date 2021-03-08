@@ -13,14 +13,16 @@ using namespace cugl;
 
 Response::Response() {
     _text = "";
+    _outcome = "";
     _resources = {0,0,0,0};
     _cards = {};
     _win = false;
     _lose = false;
 }
 
-void Response::allocate(const string text, const std::vector<int> resources, const std::vector<int> cards, const bool win, const bool lose){
+void Response::allocate(const string text, const string outcome, const std::vector<int> resources, const std::vector<int> cards, const bool win, const bool lose){
     _text = text;
+    _outcome = outcome;
     _resources = resources;
     _cards = cards;
     _win = win;

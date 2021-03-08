@@ -197,12 +197,12 @@
     <ClInclude Include="..\..\source\GLPhotonQueue.h" />
     <ClInclude Include="..\..\source\GLShadowNode.h" />
     <ClInclude Include="..\..\source\GLShip.h" />
-    <ClInclude Include="..\..\source\GLShadowNode.h" />
-    <ClInclude Include="..\..\source\GLPhotonNode.h" />
-    <ClInclude Include="..\..\source\GLPhoton.h" />
+    <ClInclude Include="..\..\source\Response.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\source\Card.cpp" />
+    <ClCompile Include="..\..\source\Deck.cpp" />
     <ClCompile Include="..\..\source\GLApp.cpp" />
     <ClCompile Include="..\..\source\GLCollisionController.cpp" />
     <ClCompile Include="..\..\source\GLGameScene.cpp" />
@@ -213,10 +213,8 @@
     <ClCompile Include="..\..\source\GLPhotonQueue.cpp" />
     <ClCompile Include="..\..\source\GLShadowNode.cpp" />
     <ClCompile Include="..\..\source\GLShip.cpp" />
-    <ClCompile Include="..\..\source\GLShadowNode.cpp" />
-    <ClCompile Include="..\..\source\GLPhotonNode.cpp" />
-    <ClCompile Include="..\..\source\GLPhoton.cpp" />
     <ClCompile Include="..\..\source\main.cpp" />
+    <ClCompile Include="..\..\source\Response.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameLab.rc" />

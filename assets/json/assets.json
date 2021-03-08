@@ -58,6 +58,10 @@
     "sans": {
       "file": "fonts/Roboto-Bold.ttf",
       "size": 32
+    },
+    "sans2": {
+      "file": "fonts/Roboto-Bold.ttf",
+      "size": 18
     }
   },
   "scene2s": {
