@@ -34,18 +34,32 @@
                             "y_anchor" : "fill"
                         }
                     },
-                    "label" : {
-                        "type"   : "Label",
-                        "data"   : {
-                            "font"       : "sans",
-                            "text"       : "1",
-                            "foreground" : [255,255,255,255],
-                            "halign"     : "center",
-                            "valign"     : "middle"
+                    "label": {
+                        "type": "Label",
+                        "data": {
+                            "font": "sans",
+                            "text": "1",
+                            "foreground": [ 255, 255, 255, 255 ],
+                            "halign": "center",
+                            "valign": "top"
                         },
-                        "layout" : {
-                            "x_anchor" : "fill",
-                            "y_anchor" : "fill"
+                        "layout": {
+                            "x_anchor": "fill",
+                            "y_anchor": "fill"
+                        }
+                    },
+                    "outcome": {
+                        "type": "Label",
+                        "data": {
+                            "font": "sans2",
+                            "text": "1",
+                            "foreground": [ 255, 255, 255, 255 ],
+                            "halign": "center",
+                            "valign": "bottom"
+                        },
+                        "layout": {
+                            "x_anchor": "fill",
+                            "y_anchor": "fill"
                         }
                     }
                 }

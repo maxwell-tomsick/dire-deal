@@ -14,6 +14,7 @@
 class Response {
 private:
     string _text;
+    string _outcome;
     std::vector<int> _resources;
     std::vector<int> _cards;
     bool _win;
@@ -22,10 +23,14 @@ private:
 public:
     Response();
     
-    void allocate(const string text, const std::vector<int> resources, const std::vector<int> cards, const bool win, const bool lose);
+    void allocate(const string text, const string outcome, const std::vector<int> resources, const std::vector<int> cards, const bool win, const bool lose);
     
     string getText(){
         return _text;
+    }
+
+    string getOutcome() {
+        return _outcome;
     }
     
     std::vector<int> getCards(){

@@ -70,9 +70,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      Response firstResponse;
      Response secondResponse;
      Response thirdResponse;
-     firstResponse.allocate("Roll Behind", {0,0,0,0}, {2}, false, false);
-     secondResponse.allocate("Block", {0,0,0,0}, {1}, false, false);
-     thirdResponse.allocate("Take Hit", {0,0,0,0}, {1,5}, false, false);
+     firstResponse.allocate("Roll Behind", "Shuffle in Enemy Exposed", {0,0,0,0}, {2}, false, false);
+     secondResponse.allocate("Block", "No effect", {0,0,0,0}, {1}, false, false);
+     thirdResponse.allocate("Take Hit", "Shuffle in Player Wounded", {0,0,0,0}, {1,5}, false, false);
      
      Card enemyAttacks1;
      enemyAttacks1.allocate("Enemy Attacks", 1, {firstResponse, secondResponse, thirdResponse});
@@ -109,10 +109,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_currEvent"));
     _response1 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response1"));
     _responseText1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_label"));
+    _responseOutcome1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_outcome"));
     _response2 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response2"));
     _responseText2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_label"));
+    _responseOutcome2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_outcome"));
     _response3 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response3"));
     _responseText3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_label"));
+    _responseOutcome3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_outcome"));
+
 
     _response1->addListener([=](const std::string& name, bool down) {
         if (down) {
@@ -146,8 +150,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // });
     _currEvent->setText(_currentCard.getText());
      _responseText1->setText(_currentCard.getResponse(0).getText());
+     _responseOutcome1->setText(_currentCard.getResponse(0).getOutcome());
      _responseText2->setText(_currentCard.getResponse(1).getText());
+     _responseOutcome2->setText(_currentCard.getResponse(1).getOutcome());
      _responseText3->setText(_currentCard.getResponse(2).getText());
+     _responseOutcome3->setText(_currentCard.getResponse(2).getOutcome());
     // if (_active) {
     //     _field->activate();
     // }
@@ -232,8 +239,12 @@ void GameScene::update(float timestep) {
           _currentCard = _currentDeck.draw();
           _currEvent->setText(_currentCard.getText());
           _responseText1->setText(_currentCard.getResponse(0).getText());
+          _responseOutcome1->setText(_currentCard.getResponse(0).getOutcome());
           _responseText2->setText(_currentCard.getResponse(1).getText());
+          _responseOutcome2->setText(_currentCard.getResponse(1).getOutcome());
           _responseText3->setText(_currentCard.getResponse(2).getText());
+          _responseOutcome3->setText(_currentCard.getResponse(2).getOutcome());
+
      }
     // Read the keyboard for each controller.
     /*_redController.readInput();
@@ -344,45 +355,45 @@ Card GameScene::getCard(const int id){
      Response thirdResponse;
      switch(id){
           case 1:
-               firstResponse.allocate("Roll Behind", {0,0,0,0}, {2}, false, false);
-               secondResponse.allocate("Block", {0,0,0,0}, {1}, false, false);
-               thirdResponse.allocate("Take Hit", {0,0,0,0}, {1,5}, false, false);
+               firstResponse.allocate("Roll Behind", "Shuffle in Enemy Exposed", {0,0,0,0}, {2}, false, false);
+               secondResponse.allocate("Block", "No effect", {0,0,0,0}, {1}, false, false);
+               thirdResponse.allocate("Take Hit", "Shuffle in Player Wounded", {0,0,0,0}, {1,5}, false, false);
                newCard.allocate("Enemy Attacks", 1, {firstResponse, secondResponse, thirdResponse});
                break;
           case 2:
-               firstResponse.allocate("Stab", {0,0,0,0}, {1,3}, false, false);
-               secondResponse.allocate("Heavy Slash", {0,0,0,0}, {4,7}, false, false);
-               thirdResponse.allocate("Maintain Spacing", {0,0,0,0}, {1}, false, false);
+               firstResponse.allocate("Stab", "Shuffle in Enemy Wounded", {0,0,0,0}, {1,3}, false, false);
+               secondResponse.allocate("Heavy Slash", "Shuffle in Enemy Maimed", {0,0,0,0}, {4,7}, false, false);
+               thirdResponse.allocate("Maintain Spacing", "Gain 2 resources next turn", {0,0,0,0}, {1}, false, false);
                newCard.allocate("Enemy Exposed", 2, {firstResponse, secondResponse, thirdResponse});
                break;
           case 3:
-               firstResponse.allocate("Maim", {0,0,0,0}, {4}, false, false);
-               secondResponse.allocate("Slash", {0,0,0,0}, {2,3}, false, false);
-               thirdResponse.allocate("Tease", {0,0,0,0}, {3,3,7}, false, false);
+               firstResponse.allocate("Maim", "Shuffle in Enemy Maimed", {0,0,0,0}, {4}, false, false);
+               secondResponse.allocate("Slash", "Shuffle in Enemy Maimed", {0,0,0,0}, {2,3}, false, false);
+               thirdResponse.allocate("Tease", "Gain 2 resources next turn", {0,0,0,0}, {3,3,7}, false, false);
                newCard.allocate("Enemy Wounded", 3, {firstResponse, secondResponse, thirdResponse});
                break;
           case 4:
-               firstResponse.allocate("Execute", {0,0,0,0}, {}, true, false);
-               secondResponse.allocate("Crush", {0,0,0,0}, {}, true, false);
-               thirdResponse.allocate("Taunt", {0,0,0,0}, {4,4,7}, false, false);
+               firstResponse.allocate("Execute", "Win", {0,0,0,0}, {}, true, false);
+               secondResponse.allocate("Crush", "Win", {0,0,0,0}, {}, true, false);
+               thirdResponse.allocate("Taunt", "Gain 2 resources next turn", {0,0,0,0}, {4,4,7}, false, false);
                newCard.allocate("Enemy Maimed", 4, {firstResponse, secondResponse, thirdResponse});
                break;
           case 5:
-               firstResponse.allocate("Disengage", {0,0,0,0}, {1,5}, false, false);
-               secondResponse.allocate("Save Strength", {0,0,0,0}, {6}, false, false);
-               thirdResponse.allocate("Stand", {0,0,0,0}, {2,7}, false, false);
+               firstResponse.allocate("Disengage", "Shuffle in Enemy Attacks", {0,0,0,0}, {1,5}, false, false);
+               secondResponse.allocate("Save Strength", "Shuffle in Player Maimed", {0,0,0,0}, {6}, false, false);
+               thirdResponse.allocate("Stand", "Shuffle in Enemy Attacks/Enranged", {0,0,0,0}, {2,7}, false, false);
                newCard.allocate("Player Wounded", 5, {firstResponse, secondResponse, thirdResponse});
                break;
           case 6:
-               firstResponse.allocate("Concede", {0,0,0,0}, {}, false, true);
-               secondResponse.allocate("Concede", {0,0,0,0}, {}, false, true);
-               thirdResponse.allocate("Concede", {0,0,0,0}, {}, false, true);
+               firstResponse.allocate("Concede", "Lose", {0,0,0,0}, {}, false, true);
+               secondResponse.allocate("Concede", "Lose", {0,0,0,0}, {}, false, true);
+               thirdResponse.allocate("Concede", "Lose", {0,0,0,0}, {}, false, true);
                newCard.allocate("Player Maimed", 6, {firstResponse, secondResponse, thirdResponse});
                break;
           case 7:
-               firstResponse.allocate("Almost Dodge", {0,0,0,0}, {2,5}, false, false);
-               secondResponse.allocate("Eye for an Eye", {0,0,0,0}, {3,6}, false, false);
-               thirdResponse.allocate("Double Down", {0,0,0,0}, {7,7}, false, false);
+               firstResponse.allocate("Almost Dodge", "Shuffle in Enemy Exposed", {0,0,0,0}, {2,5}, false, false);
+               secondResponse.allocate("Eye for an Eye", "Shuffle in Player/Enemy Wounded", {0,0,0,0}, {3,6}, false, false);
+               thirdResponse.allocate("Double Down", "Shuffle in Enemy Enranged", {0,0,0,0}, {7,7}, false, false);
                newCard.allocate("Enemy Enraged", 7, {firstResponse, secondResponse, thirdResponse});
                break;
      }
@@ -415,11 +426,11 @@ void GameScene::buttonPress(const int r){
                _nextDeck = Deck();
           } else {
                Response rollBehind;
-               rollBehind.allocate("Roll Behind", {0,0,0,0}, {1}, false, false);
+               rollBehind.allocate("Roll Behind", "Shuffle in Enemy Exposed", {0,0,0,0}, {1}, false, false);
                Response block;
-               block.allocate("Block", {0,0,0,0}, {1}, false, false);
+               block.allocate("Block", "No effect", {0,0,0,0}, {1}, false, false);
                Response saveStrength;
-               saveStrength.allocate("Save Strength", {0,0,0,0}, {1}, false, false);
+               saveStrength.allocate("Save Strength","Shuffle in Player Maimed", {0,0,0,0}, {1}, false, false);
                Card enemyAttacks1;
                enemyAttacks1.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
                Card enemyAttacks2;
