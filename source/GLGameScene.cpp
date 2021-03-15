@@ -71,26 +71,44 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     scene->doLayout(); // Repositions the HUD;
     //scene->setAnchor(Vec2::ANCHOR_CENTER);
      //scene->setAngle(M_PI_2);
-     Response firstResponse;
-     Response secondResponse;
-     Response thirdResponse;
-     firstResponse.allocate("Roll Behind", "Shuffle in Enemy Exposed", {0,0,0,0}, {2}, false, false);
-     secondResponse.allocate("Block", "Shuffle in Enemy Attacks", {0,0,0,0}, {1}, false, false);
-     thirdResponse.allocate("Take Hit", "Shuffle in Player Wounded and Enemy Attacks", {0,0,0,0}, {1,5}, false, false);
      
-     Card enemyAttacks1;
-     enemyAttacks1.allocate("Enemy Attacks", 1, {firstResponse, secondResponse, thirdResponse});
-     Card enemyAttacks2;
-     enemyAttacks2.allocate("Enemy Attacks", 1, {firstResponse, secondResponse, thirdResponse});
-     Card enemyAttacks3;
-     enemyAttacks3.allocate("Enemy Attacks", 1, {firstResponse, secondResponse, thirdResponse});
+     _cards = {};
+     _responses = {};
+     std::shared_ptr<JsonReader> jsonReaderCard = JsonReader::alloc("json/allCards.json");
+     std::shared_ptr<JsonValue> cardsJson = jsonReaderCard->readJson()->get("Cards");
+     for (int i = 0; i < cardsJson->size(); i++){
+          std::shared_ptr<JsonValue> jsonCard = cardsJson->get(i);
+          int id = jsonCard->get("id")->asInt();
+          string name = jsonCard->get("name")->asString();
+          string texture = jsonCard->get("texture")->asString();
+          std::vector<int> responses = jsonCard->get("reactions")->asIntArray();
+          int guaranteed =jsonCard->get("guaranteed")->asInt();
+          Card card;
+          card.allocate(name, id, texture, responses, guaranteed);
+          _cards[id] = card;
+     }
+     std::shared_ptr<JsonReader> jsonReaderResponse = JsonReader::alloc("json/allReactions.json");
+     std::shared_ptr<JsonValue> responsesJson = jsonReaderResponse->readJson()->get("Responses");
+     for (int i = 0; i < responsesJson->size(); i++){
+          std::shared_ptr<JsonValue> jsonResponse = responsesJson->get(i);
+          int id = jsonResponse->get("id")->asInt();
+          string name = jsonResponse->get("name")->asString();
+          string description = jsonResponse->get("description")->asString();
+          std::vector<int> addToDeck = jsonResponse->get("addToDeck")->asIntArray();
+          bool win = jsonResponse->get("win")->asBool();
+          bool lose = jsonResponse->get("lose")->asBool();
+          Response response;
+          response.allocate(name, description, {0,0,0,0}, addToDeck, win, lose);
+          _responses[id] = response;
+     }
+     //cout << cardsArray->asString();
      
      _currentDeck = Deck();
      _nextDeck = Deck();
      _pause = 0;
-     _currentDeck.addCard(enemyAttacks1);
-     _currentDeck.addCard(enemyAttacks2);
-     _currentDeck.addCard(enemyAttacks3);
+     _currentDeck.addCard(_cards[0]);
+     _currentDeck.addCard(_cards[0]);
+     _currentDeck.addCard(_cards[0]);
      
      _currentCard = _currentDeck.draw();
      //_currentDeck.printDeck();
@@ -166,12 +184,19 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     //     _result->setText(strcat("Result: ","asdF"));
     // });
     _currEvent->setText(_currentCard.getText());
-     _responseText1->setText(_currentCard.getResponse(0).getText());
-     _responseOutcome1->setText(_currentCard.getResponse(0).getOutcome());
-     _responseText2->setText(_currentCard.getResponse(1).getText());
-     _responseOutcome2->setText(_currentCard.getResponse(1).getOutcome());
-     _responseText3->setText(_currentCard.getResponse(2).getText());
-     _responseOutcome3->setText(_currentCard.getResponse(2).getOutcome());
+     std::vector<int> twoResponses = _currentCard.getTwoRandomResponses();
+     _responseId1=twoResponses[0];
+     _responseId2=twoResponses[1];
+     _responseId3=_currentCard.getGuaranteed();
+     _responseText1->setText(_responses[_responseId1].getText());
+     _responseOutcome1->setText(_responses[_responseId1].getOutcome());
+     _responseText2->setText(_responses[_responseId2].getText());
+     _responseOutcome2->setText(_responses[_responseId2].getOutcome());
+     _responseText3->setText(_responses[_responseId3].getText());
+     _responseOutcome3->setText(_responses[_responseId3].getOutcome());
+     _responseId1=twoResponses[0];
+     _responseId2=twoResponses[1];
+     _responseId3=_currentCard.getGuaranteed();
     // if (_active) {
     //     _field->activate();
     // }
@@ -257,13 +282,20 @@ void GameScene::update(float timestep) {
           _pause = 0;
           _currentCard = _currentDeck.draw();
           _currEvent->setText(_currentCard.getText());
-          _responseText1->setText(_currentCard.getResponse(0).getText());
-          _responseOutcome1->setText(_currentCard.getResponse(0).getOutcome());
-          _responseText2->setText(_currentCard.getResponse(1).getText());
-          _responseOutcome2->setText(_currentCard.getResponse(1).getOutcome());
-          _responseText3->setText(_currentCard.getResponse(2).getText());
+          std::vector<int> twoResponses = _currentCard.getTwoRandomResponses();
+          _responseId1=twoResponses[0];
+          _responseId2=twoResponses[1];
+          _responseId3=_currentCard.getGuaranteed();
+          _responseText1->setText(_responses[_responseId1].getText());
+          _responseOutcome1->setText(_responses[_responseId1].getOutcome());
+          _responseText2->setText(_responses[_responseId2].getText());
+          _responseOutcome2->setText(_responses[_responseId2].getOutcome());
+          _responseText3->setText(_responses[_responseId3].getText());
+          _responseOutcome3->setText(_responses[_responseId3].getOutcome());
+          _responseId1=twoResponses[0];
+          _responseId2=twoResponses[1];
+          _responseId3=_currentCard.getGuaranteed();
           _deckNode->setSize(_currentDeck.getSize());
-          _responseOutcome3->setText(_currentCard.getResponse(2).getOutcome());
           _deckNode->setDrawFront(true);
      }
     // Read the keyboard for each controller.
@@ -368,6 +400,7 @@ bool GameScene::firePhoton(const std::shared_ptr<Ship>& ship) {
     return false;
 }
 
+/*
 Card GameScene::getCard(const int id){
      Card newCard;
      Response firstResponse;
@@ -378,50 +411,58 @@ Card GameScene::getCard(const int id){
                firstResponse.allocate("Roll Behind", "Shuffle in Enemy Exposed", {0,0,0,0}, {2}, false, false);
                secondResponse.allocate("Block", "Shuffle in Enemy Attacks", {0,0,0,0}, {1}, false, false);
                thirdResponse.allocate("Take Hit", "Shuffle in Player Wounded and Enemy Attacks", {0,0,0,0}, {1,5}, false, false);
-               newCard.allocate("Enemy Attacks", 1, {firstResponse, secondResponse, thirdResponse});
+               newCard.allocate("Enemy Attacks", 1, "",{0, 0, 0});
                break;
           case 2:
                firstResponse.allocate("Stab", "Shuffle in Enemy Attacks and Enemy Wounded", {0,0,0,0}, {1,3}, false, false);
                secondResponse.allocate("Heavy Slash", "Shuffle in Enemy Maimed and Enemy Enraged", {0,0,0,0}, {4,7}, false, false);
                thirdResponse.allocate("Maintain Spacing", "Shuiffle in Enemy Attacks", {0,0,0,0}, {1}, false, false);
-               newCard.allocate("Enemy Exposed", 2, {firstResponse, secondResponse, thirdResponse});
+               newCard.allocate("Enemy Exposed", 2, "",{0, 0, 0});
                break;
           case 3:
                firstResponse.allocate("Maim", "Shuffle in Enemy Maimed", {0,0,0,0}, {4}, false, false);
                secondResponse.allocate("Slash", "Shuffle in Exposed and Enemy Wounded", {0,0,0,0}, {2,3}, false, false);
                thirdResponse.allocate("Tease", "Shuffle in 2 Enemy Wounded and Enemy Enraged", {0,0,0,0}, {3,3,7}, false, false);
-               newCard.allocate("Enemy Wounded", 3, {firstResponse, secondResponse, thirdResponse});
+               newCard.allocate("Enemy Wounded", 3, "",{firstResponse, secondResponse, thirdResponse});
                break;
           case 4:
                firstResponse.allocate("Execute", "Win", {0,0,0,0}, {}, true, false);
                secondResponse.allocate("Crush", "Win", {0,0,0,0}, {}, true, false);
                thirdResponse.allocate("Taunt", "Shuffle in 2 Enemy Maimed and Enemy Enraged", {0,0,0,0}, {4,4,7}, false, false);
-               newCard.allocate("Enemy Maimed", 4, {firstResponse, secondResponse, thirdResponse});
+               newCard.allocate("Enemy Maimed", 4, "",{firstResponse, secondResponse, thirdResponse});
                break;
           case 5:
                firstResponse.allocate("Disengage", "Shuffle in Enemy Attacks and Player Wounded", {0,0,0,0}, {1,5}, false, false);
                secondResponse.allocate("Save Strength", "Shuffle in Player Maimed", {0,0,0,0}, {6}, false, false);
                thirdResponse.allocate("Stand", "Shuffle in Enemy Attacks and Enemy Enranged", {0,0,0,0}, {2,7}, false, false);
-               newCard.allocate("Player Wounded", 5, {firstResponse, secondResponse, thirdResponse});
+               newCard.allocate("Player Wounded", 5, "",{firstResponse, secondResponse, thirdResponse});
                break;
           case 6:
                firstResponse.allocate("Concede", "Lose", {0,0,0,0}, {}, false, true);
                secondResponse.allocate("Concede", "Lose", {0,0,0,0}, {}, false, true);
                thirdResponse.allocate("Concede", "Lose", {0,0,0,0}, {}, false, true);
-               newCard.allocate("Player Maimed", 6, {firstResponse, secondResponse, thirdResponse});
+               newCard.allocate("Player Maimed", 6, "",{firstResponse, secondResponse, thirdResponse});
                break;
           case 7:
                firstResponse.allocate("Almost Dodge", "Shuffle in Enemy Exposed and Player Wounded", {0,0,0,0}, {2,5}, false, false);
                secondResponse.allocate("Eye for an Eye", "Shuffle in Player Wounded and Enemy Wounded", {0,0,0,0}, {3,6}, false, false);
                thirdResponse.allocate("Double Down", "Shuffle in 2 Enemy Enranged", {0,0,0,0}, {7,7}, false, false);
-               newCard.allocate("Enemy Enraged", 7, {firstResponse, secondResponse, thirdResponse});
+               newCard.allocate("Enemy Enraged", 7, "",{firstResponse, secondResponse, thirdResponse});
                break;
      }
      return newCard;
 }
+*/
 
 void GameScene::buttonPress(const int r){
-     Response response = _currentCard.getResponse(r);
+     Response response;
+     if (r == 0){
+          response=_responses[_responseId1];
+     } else if (r == 1){
+          response=_responses[_responseId2];
+     } else {
+          response=_responses[_responseId3];
+     }
      if (response.getWin()){
           _currEvent->setText("YOU WIN!");
           return;
@@ -433,7 +474,7 @@ void GameScene::buttonPress(const int r){
      //_currentDeck.printDeck();
      std::vector<int> cards =response.getCards();
      for (int i = 0; i < cards.size(); i++){
-          Card newCard = getCard(cards[i]);
+          Card newCard = _cards[cards[i]];
           _nextDeck.addCard(newCard);
      }
      //CULog("Next Deck:");
@@ -463,11 +504,11 @@ void GameScene::buttonPress(const int r){
                Response saveStrength;
                saveStrength.allocate("Save Strength","Shuffle in Player Maimed", {0,0,0,0}, {1}, false, false);
                Card enemyAttacks1;
-               enemyAttacks1.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+               enemyAttacks1.allocate("Enemy Attacks", 1, "",{0,0,0},2);
                Card enemyAttacks2;
-               enemyAttacks2.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+               enemyAttacks2.allocate("Enemy Attacks", 1, "",{0,0,0},2);
                Card enemyAttacks3;
-               enemyAttacks3.allocate("Enemy Attacks", 1, {rollBehind, block, saveStrength});
+               enemyAttacks3.allocate("Enemy Attacks", 1, "",{0,0,0},2);
                _currentDeck = Deck();
                _nextDeck = Deck();
                _currentDeck.addCard(enemyAttacks1);

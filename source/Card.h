@@ -11,12 +11,13 @@ class Card {
 private:
 	string _text; // do we want this to be a string?
 	int _id;
-    std::vector<Response> _responses; // responses;
+    int _guaranteed;
+    std::vector<int> _responses; // responses;
 
 public:
     Card();
     
-    void allocate(const string text, const int id, const std::vector<Response> responses);
+    void allocate(const string text, const int id, const string texture, const std::vector<int> responses, const int guaranteed);
     
     string getText(){
         return _text;
@@ -26,9 +27,16 @@ public:
         return _id;
     }
     
-    Response getResponse(int i){
+    int getResponse(int i){
         return _responses[i];
     }
+    
+    std::vector<int> getTwoRandomResponses();
+    
+    int getGuaranteed(){
+        return _guaranteed;
+    }
+    
 
 };
 #endif

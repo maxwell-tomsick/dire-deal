@@ -14,6 +14,7 @@
 #define __SG_GAME_SCENE_H__
 #include <cugl/cugl.h>
 #include <vector>
+#include <map>
 #include "GLInputController.h"
 #include "GLShip.h"
 #include "GLPhotonQueue.h"
@@ -82,6 +83,12 @@ protected:
     int _cardBack;
     std::shared_ptr<cugl::scene2::Label> _responseOutcome3;
     
+    int _responseId1;
+    int _responseId2;
+    int _responseId3;
+    
+    std::map<int, Card> _cards;
+    std::map<int, Response> _responses;
     Deck _currentDeck;
     Deck _nextDeck;
     Card _currentCard;

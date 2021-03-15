@@ -1,0 +1,18 @@
+{
+  [
+
+    {
+      "enemyName": "Wolven Thug",
+      "enemyTexture": "wolvenThug.jpg",
+      "deck": [ 1, 2 ],
+      "background": "background.jpg"
+    },
+    {
+      "enemyName": "Cave Slime",
+      "enemyTexture": "caveSlime.jpg",
+      "deck": [ 1, 2 ],
+      "background": "cave.jpg"
+    }
+  ]
+}
+

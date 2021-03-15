@@ -1,0 +1,1284 @@
+{
+  "Responses":{
+    "Slash1":{
+      "id": 0,
+      "name":"Duck",
+      "description":"Shuffle SLASH into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 0,
+        "lunge": 2,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [0],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+    "Slash2":{
+      "id": 1,
+      "name":"Block",
+      "description":"Shuffle GRAB into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 0,
+        "lunge": 0,
+        "block": 2
+      },
+      "reward": 0,
+      "addToDeck": [0],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Slash3":{
+      "id": 2,
+      "name":"Parry",
+      "description":"Shuffle GUARD into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [2],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Slash4":{
+      "id": 3,
+      "name":"Side Step",
+      "description":"Shuffle RALLY into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Slash5":{
+      "id": 4,
+      "name":"Jump Back",
+      "description":"Shuffle RALLY and GUARD into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [1,2],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Slash6":{
+      "id": 5,
+      "name":"Save Strength",
+      "description":"Shuffle WOUND into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [14],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Rally1":{
+      "id": 6,
+      "name":"Approach",
+      "description":"Shuffle SLASH into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [0],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Rally2":{
+      "id": 79,
+      "name":"Attack",
+      "description":"Shuffle GUARD and RALLY into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [1,2],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Rally3":{
+      "id": 7,
+      "name":"Reposition",
+      "description":"Shuffle GUARD and SLASH into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [0,2],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Rally4":{
+      "id": 8,
+      "name":"Brace",
+      "description":"Shuffle CLEAVE into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [4],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Rally5":{
+      "id": 9,
+      "name":"Bide Time",
+      "description":"Shuffle 2 CLEAVE into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [4,4],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Guard1":{
+      "id": 10,
+      "name":"Bait",
+      "description":"Shuffle SLASH into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [0],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Guard2":{
+      "id": 11,
+      "name":"Grab",
+      "description":"Shuffle GRAPPLED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [5],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Guard3":{
+      "id": 12,
+      "name":"Guard",
+      "description":"Shuffle GRAB into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [3],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Guard4":{
+      "id": 13,
+      "name":"Bide Time",
+      "description":"Shuffle RALLY into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grab1":{
+      "id": 14,
+      "name":"Attack",
+      "description":"Shuffle GRAB and GUARD into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [3,2],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grab2":{
+      "id": 15,
+      "name":"Twist",
+      "description":"Shuffle GRAPPLED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [5],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grab3":{
+      "id": 16,
+      "name":"Disentangle",
+      "description":"Shuffle RALLY into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grab4":{
+      "id": 17,
+      "name":"Break Free",
+      "description":"Shuffle GUARD into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [2],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grab5":{
+      "id": 18,
+      "name":"Struggle",
+      "description":"Shuffle SLASH into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [0,2],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grab6":{
+      "id": 19,
+      "name":"Bide Time",
+      "description":"Shuffle GRAB and SLASH into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [0,3],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Cleave1":{
+      "id": 20,
+      "name":"Jump Back",
+      "description":"Shuffle RALLY into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Cleave2":{
+      "id": 21,
+      "name":"Roll Behind",
+      "description":"Shuffle EXPOSED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [6],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Cleave3":{
+      "id": 22,
+      "name":"Dodge",
+      "description":"Shuffle SLASH into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [0],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Cleave4":{
+      "id": 23,
+      "name":"Block",
+      "description":"Shuffle GRAB into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [2],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Cleave5":{
+      "id": 24,
+      "name":"Save Strength",
+      "description":"Shuffle WOUND into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [14],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grappled1":{
+      "id": 25,
+      "name":"Firm Grip",
+      "description":"Shuffle GRAPPLED and GUARD into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [2,5],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grappled2":{
+      "id": 26,
+      "name":"Headbutt",
+      "description":"Shuffle STUNNED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [7],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grappled3":{
+      "id": 27,
+      "name":"Dagger Stab",
+      "description":"Shuffle INJURED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [8],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grappled4":{
+      "id": 28,
+      "name":"Slam Down",
+      "description":"Shuffle EXPOSED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [6],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grappled5":{
+      "id": 29,
+      "name":"Loosen Grip",
+      "description":"Shuffle SLASH and GRAB into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [0,3],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Grappled6":{
+      "id": 30,
+      "name":"Save Strength",
+      "description":"Shuffle WOUND into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [14],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Exposed1":{
+      "id": 31,
+      "name":"Light on Your Toes",
+      "description":"Shuffle EXPOSED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [6],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Exposed2":{
+      "id": 32,
+      "name":"Tackle",
+      "description":"Shuffle GRAPPLED and GUARD into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [2,5],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Exposed3":{
+      "id": 33,
+      "name":"Back Slash",
+      "description":"Shuffle INJURED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [8],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Exposed4":{
+      "id": 34,
+      "name":"Square Kick",
+      "description":"Shuffle STUNNED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [7],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Exposed5":{
+      "id": 35,
+      "name":"Tease",
+      "description":"Shuffle ENRAGED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [15],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Injured1":{
+      "id": 36,
+      "name":"Knock Away",
+      "description":"Shuffle INJURED and GUARD into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [8,2],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Injured2":{
+      "id": 37,
+      "name":"Run Through",
+      "description":"Shuffle IMPALED and RALLY into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [9,1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Injured3":{
+      "id": 38,
+      "name":"Shield Bash",
+      "description":"Shuffle CRUSHED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [10],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Injured4":{
+      "id": 39,
+      "name":"Eye Slash",
+      "description":"Shuffle SLASH and BLINDED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [0,11],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Injured5":{
+      "id": 40,
+      "name":"Tease",
+      "description":"Shuffle EXPOSED and ENRAGED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [6,12],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Impaled1":{
+      "id": 41,
+      "name":"Pin",
+      "description":"Shuffle IMPALED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [9],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Impaled2":{
+      "id": 42,
+      "name":"Hammer Kick",
+      "description":"Shuffle CRUSHED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [10],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Impaled3":{
+      "id": 43,
+      "name":"Eye Gouge",
+      "description":"Shuffle BLINDED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [11],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Impaled4":{
+      "id": 44,
+      "name":"Taunt",
+      "description":"Shuffle ENRAGED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [12],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Crushed1":{
+      "id": 45,
+      "name":"Boot Stomp",
+      "description":"Shuffle CRUSHED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [10],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Crushed2":{
+      "id": 46,
+      "name":"Bring the Hammer Down",
+      "description":"Shuffle INCAPACITATED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [17],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Crushed3":{
+      "id": 47,
+      "name":"Eye Gouge",
+      "description":"Shuffle BLINDED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [11],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Crushed4":{
+      "id": 48,
+      "name":"Back Off",
+      "description":"Shuffle INJURED and STUNNED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [7,8],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Stunned1":{
+      "id": 49,
+      "name":"Wrangle",
+      "description":"Shuffle GRAPPLED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [5],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Stunned2":{
+      "id": 50,
+      "name":"Eye Stab",
+      "description":"Shuffle BLINDED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [11],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Stunned3":{
+      "id": 51,
+      "name":"Skewer",
+      "description":"Shuffle IMPALED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [9],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Stunned4":{
+      "id": 52,
+      "name":"Blunt Strike",
+      "description":"Shuffle CRUSHED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [10],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Stunned5":{
+      "id": 53,
+      "name":"Bide Time",
+      "description":"Shuffle LASH OUT into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [13],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Blinded1":{
+      "id": 54,
+      "name":"Discombobulate",
+      "description":"Shuffle BLINDED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [11],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Blinded2":{
+      "id": 55,
+      "name":"Decapitate",
+      "description":"Shuffle INCAPACITATED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [17],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Blinded3":{
+      "id": 56,
+      "name":"Power Slam",
+      "description":"Shuffle CRUSHED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [10],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Blinded4":{
+      "id": 57,
+      "name":"Perforate",
+      "description":"Shuffle IMPALED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [9],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Blinded5":{
+      "id": 58,
+      "name":"Back Off",
+      "description":"Shuffle LASH OUT into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [13],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Enraged1":{
+      "id": 59,
+      "name":"Rolling Slice",
+      "description":"Shuffle INJURED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [8],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Enraged2":{
+      "id": 60,
+      "name":"Reposition",
+      "description":"Shuffle SLASH and RALLY into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [0,1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Enraged3":{
+      "id": 61,
+      "name":"Cape FLourish",
+      "description":"Shuffle BLINDED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [11],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Enraged4":{
+      "id": 62,
+      "name":"Back Off",
+      "description":"Shuffle LASH OUT into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [13],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "LashOut1":{
+      "id": 63,
+      "name":"Skewer",
+      "description":"Shuffle IMPALED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [9],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "LashOut2":{
+      "id": 64,
+      "name":"Roll Behind",
+      "description":"Shuffle EXPOSED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [6],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "LashOut3":{
+      "id": 65,
+      "name":"Shield Bash",
+      "description":"Shuffle STUNNED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [7],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "LashOut4":{
+      "id": 66,
+      "name":"Save Strength",
+      "description":"Shuffle WOUND into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [14],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Wound1":{
+      "id": 67,
+      "name":"Guard",
+      "description":"Shuffle WOUND into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [14],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Wound2":{
+      "id": 68,
+      "name":"Cover",
+      "description":"Shuffle SLASH into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [0],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Wound3":{
+      "id": 69,
+      "name":"Step Back",
+      "description":"Shuffle RALLY into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Wound4":{
+      "id": 70,
+      "name":"Tease",
+      "description":"Shuffle ENRAGED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [12],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Wound5":{
+      "id": 71,
+      "name":"Save Strength",
+      "description":"Shuffle MAIM into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [15],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Maim1":{
+      "id": 72,
+      "name":"Desparate Guard",
+      "description":"Shuffle MAIM into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [15],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Maim2":{
+      "id": 73,
+      "name":"Disengage",
+      "description":"Shuffle RALLY into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Maim3":{
+      "id": 74,
+      "name":"Taunt",
+      "description":"Shuffle ENRAGED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [12],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Maim4":{
+      "id": 75,
+      "name":"Desparate Roll",
+      "description":"Shuffle WOUND into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [14],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Maim5":{
+      "id": 76,
+      "name":"Save Strength",
+      "description":"Shuffle EXECUTE into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [16],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+        "Win":{
+      "id": 77,
+      "name":"Win",
+      "description":"Win the fight",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [],
+      "delete": [],
+      "win": true,
+      "lose":false
+    },
+        "Lose":{
+      "id": 78,
+      "name":"Lose",
+      "description":"Lose the fight",
+      "cost": {
+        "heavy": 0,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [],
+      "delete": [],
+      "win": false,
+      "lose":true
+    }
+  }
+}

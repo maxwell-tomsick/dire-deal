@@ -1,0 +1,130 @@
+{
+  "Cards":{
+    "Slash":{
+      "id": 0,
+      "name": "Slash",
+      "texture": "slash.jpg",
+      "reactions": [0,1,2,3,4],
+      "guaranteed": 5
+    },
+    "Rally":{
+      "id": 1,
+      "name": "Rally",
+      "texture": "rally.jpg",
+      "reactions": [6,7,8,79],
+      "guaranteed": 9
+    },
+    "Guard":{
+      "id": 2,
+      "name": "Guard",
+      "texture": "guard.jpg",
+      "reactions": [10,11,12],
+      "guaranteed": 13
+    },
+    "Grab":{
+      "id": 3,
+      "name": "Grab",
+      "texture": "grab.jpg",
+      "reactions": [14,15,16,17,18],
+      "guaranteed": 19
+    },
+    "Cleave":{
+      "id": 4,
+      "name": "Cleave",
+      "texture": "cleave.jpg",
+      "reactions": [20,21,22,23],
+      "guaranteed": 24
+    },
+    "Grappled":{
+      "id": 5,
+      "name": "Grappled",
+      "texture": "grappled.jpg",
+      "reactions": [25,26,27,29,29],
+      "guaranteed": 30
+    },
+    "Exposed":{
+      "id": 6,
+      "name": "Grappled",
+      "texture": "grappled.jpg",
+      "reactions": [31,32,33,34],
+      "guaranteed": 35
+    },
+    "Stunned":{
+      "id": 7,
+      "name": "Stunned",
+      "texture": "stunned.jpg",
+      "reactions": [49,50,51,52],
+      "guaranteed": 53
+    },
+    "Injured":{
+      "id": 8,
+      "name": "Injured",
+      "texture": "injured.jpg",
+      "reactions": [36,37,38,39],
+      "guaranteed": 40
+    },
+    "Impaled":{
+      "id": 9,
+      "name": "Impaled",
+      "texture": "impaled.jpg",
+      "reactions": [41,42,43],
+      "guaranteed": 44
+    },
+    "Crushed":{
+      "id": 10,
+      "name": "Crushed",
+      "texture": "crushed.jpg",
+      "reactions": [45,46,47],
+      "guaranteed": 48
+    },
+    "Blinded":{
+      "id": 11,
+      "name": "Blinded",
+      "texture": "blinded.jpg",
+      "reactions": [54,55,56,57],
+      "guaranteed": 58
+    },
+    "Enraged":{
+      "id": 12,
+      "name": "Enraged",
+      "texture": "enraged.jpg",
+      "reactions": [59,60,61],
+      "guaranteed": 62
+    },
+    "Lash Out":{
+      "id": 13,
+      "name": "Lash Out",
+      "texture": "enraged.jpg",
+      "reactions": [63,64,65],
+      "guaranteed": 66
+    },
+    "Wound":{
+      "id": 14,
+      "name": "Wound",
+      "texture": "wound.jpg",
+      "reactions": [67,68,69,70],
+      "guaranteed": 71
+    },
+    "Maim":{
+      "id": 15,
+      "name": "Maim",
+      "texture": "maim.jpg",
+      "reactions": [72,73,74,75],
+      "guaranteed": 76
+    },
+    "Execute":{
+      "id": 16,
+      "name": "Execute",
+      "texture": "execute.jpg",
+      "reactions": [78,78],
+      "guaranteed": 78
+    },
+    "Incapacitated":{
+      "id": 17,
+      "name": "Incapacitated",
+      "texture": "incapacitated.jpg",
+      "reactions": [77,77],
+      "guaranteed": 77
+    }
+  }
+}
