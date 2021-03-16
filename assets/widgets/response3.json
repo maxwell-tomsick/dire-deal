@@ -61,6 +61,20 @@
                             "x_anchor": "fill",
                             "y_anchor": "fill"
                         }
+                    },
+                    "costs": {
+                        "type": "Label",
+                        "data": {
+                            "font": "sans2",
+                            "text": "1",
+                            "foreground": [ 255, 255, 255, 255 ],
+                            "halign": "center",
+                            "valign": "middle"
+                        },
+                        "layout": {
+                            "x_anchor": "fill",
+                            "y_anchor": "fill"
+                        }
                     }
                 }
             }

@@ -34,6 +34,14 @@ void Deck::addCard(Card c) {
 }
 
 /**
+* Add a card c to the front of the deck.
+* @param c		card to add to deck
+*/
+void Deck::addCardFront(Card c) {
+	_deck.push_front(c);
+}
+
+/**
  * Draw the top card of the deck, removing and returning it.
  */
 Card Deck::draw() {

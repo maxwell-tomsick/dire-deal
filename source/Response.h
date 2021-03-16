@@ -32,6 +32,10 @@ public:
     string getOutcome() {
         return _outcome;
     }
+
+    std::vector<int> getResources() {
+        return _resources;
+    }
     
     std::vector<int> getCards(){
         return _cards;

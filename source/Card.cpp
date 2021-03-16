@@ -7,6 +7,7 @@
 //
 
 #include <cugl/cugl.h>
+#include <numeric>
 #include "Card.h"
 
 using namespace cugl;

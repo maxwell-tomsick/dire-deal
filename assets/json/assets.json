@@ -119,6 +119,22 @@
             "x_offset": -0.05
           }
         },
+        "resourceCount": {
+          "type": "Label",
+          "data": {
+            "font": "sans",
+            "text": "Resources",
+            "foreground": [ 0, 0, 0, 255 ],
+            "size": [ 400, 100 ],
+            "anchor": [ 0.5, 0.5 ]
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "x_offset": 0.8,
+            "y_offset": 0.9
+          }
+        },
         "response1": {
           "type": "Widget",
           "data": {

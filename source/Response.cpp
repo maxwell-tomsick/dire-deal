@@ -7,6 +7,7 @@
 //
 
 #include <cugl/cugl.h>
+#include <sstream>
 #include "Response.h"
 
 using namespace cugl;

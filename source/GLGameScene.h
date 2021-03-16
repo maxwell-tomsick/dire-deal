@@ -69,19 +69,24 @@ protected:
 
     
     std::shared_ptr<cugl::scene2::TextField> _field;
+    std::shared_ptr<cugl::scene2::Label> _resourceCount;
     std::shared_ptr<cugl::scene2::Label> _currEvent;
     std::shared_ptr<cugl::scene2::Button> _response1;
     std::shared_ptr<cugl::scene2::Label> _responseText1;
+    std::shared_ptr<cugl::scene2::Label> _responseCost1;
     std::shared_ptr<cugl::scene2::Label> _responseOutcome1;
     std::shared_ptr<cugl::scene2::Button> _response2;
     std::shared_ptr<cugl::scene2::Label> _responseText2;
+    std::shared_ptr<cugl::scene2::Label> _responseCost2;
     std::shared_ptr<cugl::scene2::Label> _responseOutcome2;
     std::shared_ptr<cugl::scene2::Button> _response3;
     std::shared_ptr<cugl::scene2::Label> _responseText3;
+    std::shared_ptr<cugl::scene2::Label> _responseCost3;
+    std::shared_ptr<cugl::scene2::Label> _responseOutcome3;
+
     std::shared_ptr<cugl::scene2::PolygonNode> _cardFront;
     std::shared_ptr<DeckNode> _deckNode;
     int _cardBack;
-    std::shared_ptr<cugl::scene2::Label> _responseOutcome3;
     
     int _responseId1;
     int _responseId2;
@@ -89,11 +94,13 @@ protected:
     
     std::map<int, Card> _cards;
     std::map<int, Response> _responses;
+    std::vector<int> _resources;
     Deck _currentDeck;
     Deck _nextDeck;
     Card _currentCard;
 
     bool _mouse;
+    bool _keepCards; // true when trying to select response with insufficient resources
     int _pause;
 
 
@@ -177,6 +184,13 @@ public:
     void buttonPress(const int r);
     
     Card getCard(const int id);
+
+    /**
+     * Converts a resource vector into a string representation for displaying.
+     * 
+     * @param resources     int vector of length 4
+     */
+    string resourceString(std::vector<int> resources);
 };
 
 #endif /* __SG_GAME_SCENE_H__ */

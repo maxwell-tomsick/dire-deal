@@ -43,6 +43,12 @@ public:
 	void addCard(Card c);
 
 	/**
+	 * Add a card c to the front of the deck.
+	 * @param c		card to add to deck
+	 */
+	void addCardFront(Card c);
+
+	/**
 	 * Draw the top card of the deck, removing and returning it.
 	 */
 	Card draw();
