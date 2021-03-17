@@ -98,8 +98,9 @@ protected:
     std::map<int, Card> _cards;
     std::map<int, Response> _responses;
     std::vector<int> _resources;
-    Deck _currentDeck;
-    Deck _nextDeck;
+    std::vector<int> _currentDeck;
+    std::vector<int> _nextDeck;
+    
     Card _currentCard;
 
     bool _mouse;

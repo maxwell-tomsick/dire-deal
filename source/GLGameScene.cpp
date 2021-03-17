@@ -104,18 +104,22 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      }
      //cout << cardsArray->asString();
      
-     _resources = { 10, 10, 10, 10 };
-     _currentDeck = Deck();
-     _nextDeck = Deck();
+     _resources = { 10, 12, 12, 10 };
+     _currentDeck = {};
+     _nextDeck = {};
      _keepCards = false;
      _pause = 0;
-     _currentDeck.addCard(_cards[0]);
-     _currentDeck.addCard(_cards[0]);
-     _currentDeck.addCard(_cards[0]);
-     _currentDeck.addCard(_cards[0]);
-     _currentDeck.addCard(_cards[0]);
-     
-     _currentCard = _currentDeck.draw();
+
+     _currentDeck.push_back(0);
+     _currentDeck.push_back(0);
+     _currentDeck.push_back(1);
+     _currentDeck.push_back(2);
+     _currentDeck.push_back(3);
+     std::random_device rd;
+     std::mt19937 g(rd());
+      std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
+     _currentCard = _cards[_currentDeck.back()];
+     _currentDeck.pop_back();
      //_currentDeck.printDeck();
      
     _blueSound = _assets->get<Sound>("laser");
@@ -125,7 +129,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      //auto cardBackTexture2 = _assets->get<Texture>("cardBack2");
      
      _deckNode = DeckNode::alloc();
-     _deckNode->setSize(_currentDeck.getSize());
+     _deckNode->setSize(int(_currentDeck.size()));
      _deckNode->setBackTexture(cardBackTexture1);
      _cardBack = 1;
      _deckNode->setFrontTexture(cardFrontTexture);
@@ -306,7 +310,8 @@ void GameScene::update(float timestep) {
           _response3->setColor(Color4::WHITE);
           _response3->setVisible(true);
           _pause = 0;
-          _currentCard = _currentDeck.draw();
+          _currentCard = _cards[_currentDeck.back()];
+          _currentDeck.pop_back();
           _currEvent->setText(_currentCard.getText());
           _burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
           _resourceCount->setText(resourceString(_resources));
@@ -328,7 +333,7 @@ void GameScene::update(float timestep) {
           // _responseId1=twoResponses[0];
           // _responseId2=twoResponses[1];
           // _responseId3=_currentCard.getGuaranteed();
-          _deckNode->setSize(_currentDeck.getSize());
+          _deckNode->setSize(int(_currentDeck.size()));
           _deckNode->setDrawFront(true);
      }
     // Read the keyboard for each controller.
@@ -525,9 +530,9 @@ void GameScene::buttonPress(const int r){
                       _responseText3->setText("Insufficient Resources");
                       _response3->setColor(Color4::GRAY);
                   }
-                  _currentDeck.addCardFront(_currentCard);
-                  _keepCards = true;
-                  _pause = 40;
+                  //_currentDeck.addCardFront(_currentCard);
+                  //_keepCards = true;
+                  //_pause = 40;
                   return;
               }
           }
@@ -545,15 +550,15 @@ void GameScene::buttonPress(const int r){
           //_currentDeck.printDeck();
           std::vector<int> cards =response.getCards();
           for (int i = 0; i < cards.size(); i++){
-               Card newCard = _cards[cards[i]];
-               _nextDeck.addCard(newCard);
+               int newCard = cards[i];
+               _nextDeck.push_back(newCard);
           }
      }
      //CULog("Next Deck:");
      //_nextDeck.printDeck();
      //CULog("Current Deck:");
      //_currentDeck.printDeck();
-     if (_currentDeck.getSize() == 0){
+     if (_currentDeck.size() == 0){
           _currEvent->setText("Shuffling Next Event Deck...");
           _currEvent->setColor(Color4::BLACK);
           if (_cardBack == 1){
@@ -565,9 +570,12 @@ void GameScene::buttonPress(const int r){
                _deckNode->setBackTexture(cardBackTexture);
                _cardBack = 1;
           }
-          if (_nextDeck.getSize() > 0){
+          if (_nextDeck.size() > 0){
                _currentDeck = _nextDeck;
-               _nextDeck = Deck();
+               std::random_device rd;
+               std::mt19937 g(rd());
+                std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
+               _nextDeck = {};
           } else {
                _currEvent->setText("YOU DIED!");
                return;
