@@ -112,6 +112,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currentDeck.addCard(_cards[0]);
      _currentDeck.addCard(_cards[0]);
      _currentDeck.addCard(_cards[0]);
+     _currentDeck.addCard(_cards[0]);
+     _currentDeck.addCard(_cards[0]);
      
      _currentCard = _currentDeck.draw();
      //_currentDeck.printDeck();
