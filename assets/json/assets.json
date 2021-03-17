@@ -32,13 +32,21 @@
       "magfilter": "linear",
       "wrapS": "clamp",
       "wrapT": "clamp"
+    },
+    "redss": {
+      "file": "textures/red-small.png",
+      "minfilter": "linear",
+      "magfilter": "linear",
+      "wrapS": "clamp",
+      "wrapT": "clamp"
     }
   },
   "widgets": {
     "largebutton": "widgets/largebutton.json",
     "response1": "widgets/response1.json",
     "response2": "widgets/response2.json",
-    "response3": "widgets/response3.json"
+    "response3": "widgets/response3.json",
+    "burn": "widgets/burn.json"
   },
   "sounds": {
     "fusion": {
@@ -162,6 +170,16 @@
             "variables": {
               "size": [ 400, 100 ],
               "text": "response 3"
+            }
+          }
+        },
+        "burn": {
+          "type": "Widget",
+          "data": {
+            "key": "burn",
+            "variables": {
+              "size": [ 350, 50 ],
+              "text": "BURN"
             }
           }
         }

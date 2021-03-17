@@ -74,7 +74,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      
      _cards = {};
      _responses = {};
-     std::shared_ptr<JsonReader> jsonReaderCard = JsonReader::alloc("json/allCards.json");
+     std::shared_ptr<JsonReader> jsonReaderCard = JsonReader::alloc("json/cards.json");
      std::shared_ptr<JsonValue> cardsJson = jsonReaderCard->readJson()->get("Cards");
      for (int i = 0; i < cardsJson->size(); i++){
           std::shared_ptr<JsonValue> jsonCard = cardsJson->get(i);
@@ -82,12 +82,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
           string name = jsonCard->get("name")->asString();
           string texture = jsonCard->get("texture")->asString();
           std::vector<int> responses = jsonCard->get("reactions")->asIntArray();
-          int guaranteed =jsonCard->get("guaranteed")->asInt();
+          std::vector<int> resources = jsonCard->get("resources")->asIntArray();
           Card card;
-          card.allocate(name, id, texture, responses, guaranteed);
+          card.allocate(name, id, texture, responses, resources);
           _cards[id] = card;
      }
-     std::shared_ptr<JsonReader> jsonReaderResponse = JsonReader::alloc("json/allReactions.json");
+     std::shared_ptr<JsonReader> jsonReaderResponse = JsonReader::alloc("json/responses.json");
      std::shared_ptr<JsonValue> responsesJson = jsonReaderResponse->readJson()->get("Responses");
      for (int i = 0; i < responsesJson->size(); i++){
           std::shared_ptr<JsonValue> jsonResponse = responsesJson->get(i);
@@ -158,7 +158,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _responseText3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_label"));
     _responseCost3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_costs"));
     _responseOutcome3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_outcome"));
-
+     
+     _burn = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_burn"));
+     _burnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_burn_up_label"));
      
     _response1->addListener([=](const std::string& name, bool down) {
         if ( (!(_pause > 1)) & down ) {
@@ -175,6 +177,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
              buttonPress(2);
         }
         });
+     _burn->addListener([=](const std::string& name, bool down) {
+         if ( (!(_pause > 1)) & down ) {
+              buttonPress(-1);
+         }
+         });
 
      //_response1->setText(_currentCard.getResponse(0).getText());
      
@@ -182,6 +189,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         _response1->activate();
         _response2->activate();
         _response3->activate();
+         _burn->activate();
     }
     // _field->addTypeListener([=](const std::string& name, const std::string& value) {
     //     CULog("Change to %s",value.c_str());
@@ -191,11 +199,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     //     _result->setText(strcat("Result: ","asdF"));
     // });
     _currEvent->setText(_currentCard.getText());
+     _burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
     _resourceCount->setText(resourceString(_resources));
-    std::vector<int> twoResponses = _currentCard.getTwoRandomResponses();
-    _responseId1=twoResponses[0];
-    _responseId2=twoResponses[1];
-    _responseId3=_currentCard.getGuaranteed();
+    std::vector<int> threeResponses = _currentCard.getThreeRandomResponses();
+    _responseId1=threeResponses[0];
+    _responseId2=threeResponses[1];
+     _responseId3=threeResponses[2];
     _responseText1->setText(_responses[_responseId1].getText());
     _responseCost1->setText(resourceString(_responses[_responseId1].getResources()));
     _responseOutcome1->setText(_responses[_responseId1].getOutcome());
@@ -205,9 +214,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _responseText3->setText(_responses[_responseId3].getText());
     _responseCost3->setText(resourceString(_responses[_responseId3].getResources()));
     _responseOutcome3->setText(_responses[_responseId3].getOutcome());
-    _responseId1=twoResponses[0];
-    _responseId2=twoResponses[1];
-    _responseId3=_currentCard.getGuaranteed();
+    _responseId1=threeResponses[0];
+    _responseId2=threeResponses[1];
+     _responseId3=threeResponses[2];
     // if (_active) {
     //     _field->activate();
     // }
@@ -297,12 +306,13 @@ void GameScene::update(float timestep) {
           _pause = 0;
           _currentCard = _currentDeck.draw();
           _currEvent->setText(_currentCard.getText());
+          _burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
           _resourceCount->setText(resourceString(_resources));
           if (!_keepCards) {
-              std::vector<int> twoResponses = _currentCard.getTwoRandomResponses();
-              _responseId1 = twoResponses[0];
-              _responseId2 = twoResponses[1];
-              _responseId3 = _currentCard.getGuaranteed();
+              std::vector<int> threeResponses = _currentCard.getThreeRandomResponses();
+              _responseId1 = threeResponses[0];
+              _responseId2 = threeResponses[1];
+               _responseId3 = threeResponses[2];
           }
           _responseText1->setText(_responses[_responseId1].getText());
           _responseCost1->setText(resourceString(_responses[_responseId1].getResources()));
@@ -477,59 +487,65 @@ Card GameScene::getCard(const int id){
 
 string GameScene::resourceString(std::vector<int> resources) {
     std::stringstream s;
-    s << "H: " << resources[0] << ", ";
+    s << "Bl: " << resources[0] << ", ";
     s << "F: " << resources[1] << ", ";
     s << "L: " << resources[2] << ", ";
-    s << "B: " << resources[3];
+    s << "Br: " << resources[3];
 
     return s.str();
 }
 
 void GameScene::buttonPress(const int r){
-     Response response;
-     if (r == 0){
-          response=_responses[_responseId1];
-     } else if (r == 1){
-          response=_responses[_responseId2];
+     if (r == -1){
+          for (int i = 0; i < _resources.size(); i++) {
+               _resources[i] += _currentCard.getResource(i);
+          }
      } else {
-          response=_responses[_responseId3];
-     }
-     std::vector<int> cost = response.getResources();
-     for (int i = 0; i < cost.size(); i++) {
-         if (_resources[i] < cost[i]) {
-             if (r == 0) {
-                 _responseText1->setText("Insufficient Resources");
-                 _response1->setColor(Color4::GRAY);
-             } else if (r == 1) {
-                 _responseText2->setText("Insufficient Resources");
-                 _response2->setColor(Color4::GRAY);
-             }
-             else if (r == 2) {
-                 _responseText3->setText("Insufficient Resources");
-                 _response3->setColor(Color4::GRAY);
-             }
-             _currentDeck.addCardFront(_currentCard);
-             _keepCards = true;
-             _pause = 40;
-             return;
-         }
-     }
-     for (int i = 0; i < cost.size(); i++) {
-         _resources[i] -= cost[i];
-     }
-     if (response.getWin()){
-          _currEvent->setText("YOU WIN!");
-          return;
-     } else if (response.getLose()){
-          _currEvent->setText("YOU DIED!");
-          return;
-     }
-     //_currEvent->setText("Clicked " + std::to_string(r + 1));
-     //_currentDeck.printDeck();
-     std::vector<int> cards =response.getCards();
-     for (int i = 0; i < cards.size(); i++){
-          Card newCard = _cards[cards[i]];
-          _nextDeck.addCard(newCard);
+          Response response;
+          if (r == 0){
+               response=_responses[_responseId1];
+          } else if (r == 1){
+               response=_responses[_responseId2];
+          } else {
+               response=_responses[_responseId3];
+          }
+          std::vector<int> cost = response.getResources();
+          for (int i = 0; i < cost.size(); i++) {
+              if (_resources[i] < cost[i]) {
+                  if (r == 0) {
+                      _responseText1->setText("Insufficient Resources");
+                      _response1->setColor(Color4::GRAY);
+                  } else if (r == 1) {
+                      _responseText2->setText("Insufficient Resources");
+                      _response2->setColor(Color4::GRAY);
+                  }
+                  else if (r == 2) {
+                      _responseText3->setText("Insufficient Resources");
+                      _response3->setColor(Color4::GRAY);
+                  }
+                  _currentDeck.addCardFront(_currentCard);
+                  _keepCards = true;
+                  _pause = 40;
+                  return;
+              }
+          }
+          for (int i = 0; i < cost.size(); i++) {
+              _resources[i] -= cost[i];
+          }
+          if (response.getWin()){
+               _currEvent->setText("YOU WIN!");
+               return;
+          } else if (response.getLose()){
+               _currEvent->setText("YOU DIED!");
+               return;
+          }
+          //_currEvent->setText("Clicked " + std::to_string(r + 1));
+          //_currentDeck.printDeck();
+          std::vector<int> cards =response.getCards();
+          for (int i = 0; i < cards.size(); i++){
+               Card newCard = _cards[cards[i]];
+               _nextDeck.addCard(newCard);
+          }
      }
      //CULog("Next Deck:");
      //_nextDeck.printDeck();
@@ -551,23 +567,8 @@ void GameScene::buttonPress(const int r){
                _currentDeck = _nextDeck;
                _nextDeck = Deck();
           } else {
-               Response rollBehind;
-               rollBehind.allocate("Roll Behind", "Shuffle in Enemy Exposed", {0,0,0,0}, {1}, false, false);
-               Response block;
-               block.allocate("Block", "No effect", {0,0,0,0}, {1}, false, false);
-               Response saveStrength;
-               saveStrength.allocate("Save Strength","Shuffle in Player Maimed", {0,0,0,0}, {1}, false, false);
-               Card enemyAttacks1;
-               enemyAttacks1.allocate("Enemy Attacks", 1, "",{0,0,0},2);
-               Card enemyAttacks2;
-               enemyAttacks2.allocate("Enemy Attacks", 1, "",{0,0,0},2);
-               Card enemyAttacks3;
-               enemyAttacks3.allocate("Enemy Attacks", 1, "",{0,0,0},2);
-               _currentDeck = Deck();
-               _nextDeck = Deck();
-               _currentDeck.addCard(enemyAttacks1);
-               _currentDeck.addCard(enemyAttacks2);
-               _currentDeck.addCard(enemyAttacks3);
+               _currEvent->setText("YOU DIED!");
+               return;
           }
      } else {
           _currEvent->setVisible(false);

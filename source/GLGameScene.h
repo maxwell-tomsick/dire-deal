@@ -83,6 +83,9 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _responseText3;
     std::shared_ptr<cugl::scene2::Label> _responseCost3;
     std::shared_ptr<cugl::scene2::Label> _responseOutcome3;
+    
+    std::shared_ptr<cugl::scene2::Button> _burn;
+    std::shared_ptr<cugl::scene2::Label> _burnText;
 
     std::shared_ptr<cugl::scene2::PolygonNode> _cardFront;
     std::shared_ptr<DeckNode> _deckNode;
