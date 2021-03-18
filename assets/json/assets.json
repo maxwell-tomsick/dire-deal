@@ -1,7 +1,7 @@
 {
   "textures": {
     "background": {
-      "file": "textures/Gamescreen.png"
+      "file": "textures/background-with-box.jpg"
     },
     "photon": {
       "file": "textures/photon.png"
@@ -26,12 +26,20 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
-    "reds": {
-      "file": "textures/blue-small.png",
-      "minfilter": "linear",
-      "magfilter": "linear",
-      "wrapS": "clamp",
-      "wrapT": "clamp"
+    "response1": {
+      "file": "textures/responses/response-1.png"
+    },
+    "response2": {
+      "file": "textures/responses/response-2.png"
+    },
+    "response3": {
+      "file": "textures/responses/response-3.png"
+    },
+    "response4": {
+      "file": "textures/responses/response-4.png"
+    },
+    "response5": {
+      "file": "textures/responses/response-5.png"
     },
     "redss": {
       "file": "textures/red-small.png",
@@ -39,6 +47,60 @@
       "magfilter": "linear",
       "wrapS": "clamp",
       "wrapT": "clamp"
+    },
+    "glow1": {
+      "file": "textures/responses/response-1-glow-overlay.png"
+    },
+    "glow2": {
+      "file": "textures/responses/response-2-glow-overlay.png"
+    },
+    "glow3": {
+      "file": "textures/responses/response-3-glow-overlay.png"
+    },
+    "glow4": {
+      "file": "textures/responses/response-4-glow-overlay.png"
+    },
+    "glow5": {
+      "file": "textures/responses/response-5-glow-overlay.png"
+    },
+    "bidetime": {
+      "file": "textures/cards/bidetime.png"
+    },
+    "blinded": {
+      "file": "textures/cards/blinded.png"
+    },
+    "crushed": {
+      "file": "textures/cards/crushed.png"
+    },
+    "exposed": {
+      "file": "textures/cards/exposed.png"
+    },
+    "grab": {
+      "file": "textures/cards/grab.png"
+    },
+    "grappled": {
+      "file": "textures/cards/grappled.png"
+    },
+    "guard": {
+      "file": "textures/cards/guard.png"
+    },
+    "impaled": {
+      "file": "textures/cards/impaled.png"
+    },
+    "incapacitated": {
+      "file": "textures/cards/incapacitated.png"
+    },
+    "slash": {
+      "file": "textures/cards/slash.png"
+    },
+    "staggered": {
+      "file": "textures/cards/staggered.png"
+    },
+    "stunned": {
+      "file": "textures/cards/stunned.png"
+    },
+    "wounded": {
+      "file": "textures/cards/wounded.png"
     }
   },
   "widgets": {
@@ -64,15 +126,15 @@
       "size": 32
     },
     "sans": {
-      "file": "fonts/Roboto-Bold.ttf",
+      "file": "fonts/rise-of-kingdom.regular.ttf",
       "size": 32
     },
     "sans2": {
-      "file": "fonts/Roboto-Bold.ttf",
+      "file": "fonts/rise-of-kingdom.regular.ttf",
       "size": 18
     },
     "sans3": {
-      "file": "fonts/Roboto-Bold.ttf",
+      "file": "fonts/rise-of-kingdom.regular.ttf",
       "size": 28
     }
   },
@@ -148,7 +210,6 @@
           "data": {
             "key": "response1",
             "variables": {
-              "size": [ 400, 100 ],
               "text": "response 1"
             }
           }
@@ -158,7 +219,6 @@
           "data": {
             "key": "response2",
             "variables": {
-              "size": [ 400, 100 ],
               "text": "response 2"
             }
           }
@@ -168,7 +228,6 @@
           "data": {
             "key": "response3",
             "variables": {
-              "size": [ 400, 100 ],
               "text": "response 3"
             }
           }

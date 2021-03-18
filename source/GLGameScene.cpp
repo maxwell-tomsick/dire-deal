@@ -80,11 +80,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
           std::shared_ptr<JsonValue> jsonCard = cardsJson->get(i);
           int id = jsonCard->get("id")->asInt();
           string name = jsonCard->get("name")->asString();
-          string texture = jsonCard->get("texture")->asString();
+          string tex = jsonCard->get("texture")->asString();
+          auto texture = _assets->get<Texture>(tex);
           std::vector<int> responses = jsonCard->get("reactions")->asIntArray();
           std::vector<int> resources = jsonCard->get("resources")->asIntArray();
+          int level = jsonCard->get("level")->asInt();
           Card card;
-          card.allocate(name, id, texture, responses, resources);
+          card.allocate(name, id, texture, responses, resources, level);
           _cards[id] = card;
      }
      std::shared_ptr<JsonReader> jsonReaderResponse = JsonReader::alloc("json/responses.json");
@@ -124,7 +126,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      
     _blueSound = _assets->get<Sound>("laser");
     _redSound = _assets->get<Sound>("fusion");
-     auto cardFrontTexture = _assets->get<Texture>("cardFront");
      auto cardBackTexture1 = _assets->get<Texture>("cardBack1");
      //auto cardBackTexture2 = _assets->get<Texture>("cardBack2");
      
@@ -132,7 +133,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _deckNode->setSize(int(_currentDeck.size()));
      _deckNode->setBackTexture(cardBackTexture1);
      _cardBack = 1;
-     _deckNode->setFrontTexture(cardFrontTexture);
+     _deckNode->setFrontTexture(_currentCard.getTexture());
      _deckNode->setDrawFront(true);
      addChild(_deckNode);
     addChild(scene);
@@ -164,9 +165,19 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _responseText3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_label"));
     _responseCost3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_costs"));
     _responseOutcome3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_outcome"));
+     _responseTexture1 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response1_up"));
+     _responseGlow1 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response1_up_glow"));
+     _responseTexture2 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response2_up"));
+     _responseGlow2 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response2_up_glow"));
+     _responseTexture3 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response3_up"));
+     _responseGlow3 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response3_up_glow"));
      
      _burn = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_burn"));
      _burnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_burn_up_label"));
+     
+     
+     //_response3->setVisible(false);
+     //_response2->setVisible(false);
      
     _response1->addListener([=](const std::string& name, bool down) {
         if ( (!(_pause > 1)) & down ) {
@@ -204,6 +215,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     //     CULog("Finish to %s",value.c_str());
     //     _result->setText(strcat("Result: ","asdF"));
     // });
+     _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
      _burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
     _resourceCount->setText(resourceString(_resources));
@@ -223,10 +235,33 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _responseId1=threeResponses[0];
     _responseId2=threeResponses[1];
      _responseId3=threeResponses[2];
+     responseUpdate(_responseId1, 1);
+     responseUpdate(_responseId2, 2);
+     responseUpdate(_responseId3, 3);
     // if (_active) {
     //     _field->activate();
     // }
     return true;
+}
+
+void GameScene::responseUpdate(const int responseId, const int response) {
+     int id = _responses[responseId].getCards()[0];
+     int level = _cards[id].getLevel();
+     string responseAddress = "response" + std::to_string(level);
+     string glowAddress = "glow" + std::to_string(level);
+     auto responseTexture = _assets->get<Texture>(responseAddress);
+     auto responseGlow = _assets->get<Texture>(glowAddress);
+     switch (response){
+          case 1:
+               _responseTexture1->setTexture(responseTexture);
+               _responseGlow1->setTexture(responseGlow);
+          case 2:
+               _responseTexture2->setTexture(responseTexture);
+               _responseGlow2->setTexture(responseGlow);
+          case 3:
+               _responseTexture3->setTexture(responseTexture);
+               _responseGlow3->setTexture(responseGlow);
+     }
 }
 
 /**
@@ -301,7 +336,6 @@ void GameScene::update(float timestep) {
           _pause--;
      } else if (_pause == 1){
           _currEvent->setColor(Color4::WHITE);
-          _currEvent->setVisible(true);
           _resourceCount->setVisible(true);
           _response1->setColor(Color4::WHITE);
           _response1->setVisible(true);
@@ -313,6 +347,7 @@ void GameScene::update(float timestep) {
           _currentCard = _cards[_currentDeck.back()];
           _currentDeck.pop_back();
           _currEvent->setText(_currentCard.getText());
+          _deckNode->setFrontTexture(_currentCard.getTexture());
           _burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
           _resourceCount->setText(resourceString(_resources));
           if (!_keepCards) {
@@ -330,6 +365,9 @@ void GameScene::update(float timestep) {
           _responseText3->setText(_responses[_responseId3].getText());
           _responseCost3->setText(resourceString(_responses[_responseId3].getResources()));
           _responseOutcome3->setText(_responses[_responseId3].getOutcome());
+          responseUpdate(_responseId1, 1);
+          responseUpdate(_responseId2, 2);
+          responseUpdate(_responseId3, 3);
           // _responseId1=twoResponses[0];
           // _responseId2=twoResponses[1];
           // _responseId3=_currentCard.getGuaranteed();
@@ -541,9 +579,11 @@ void GameScene::buttonPress(const int r){
           }
           if (response.getWin()){
                _currEvent->setText("YOU WIN!");
+               _currEvent->setVisible(true);
                return;
           } else if (response.getLose()){
                _currEvent->setText("YOU DIED!");
+               _currEvent->setVisible(true);
                return;
           }
           //_currEvent->setText("Clicked " + std::to_string(r + 1));
@@ -577,7 +617,9 @@ void GameScene::buttonPress(const int r){
                 std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
                _nextDeck = {};
           } else {
+               _deckNode->setVisible(false);
                _currEvent->setText("YOU DIED!");
+               _currEvent->setVisible(true);
                return;
           }
      } else {

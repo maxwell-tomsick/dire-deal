@@ -17,13 +17,16 @@ Card::Card(){
     _id = 0;
     _responses = {};
     _resources = {};
+    _level = 1;
 }
 
-void Card::allocate(const string text, const int id, const string texture, const std::vector<int> responses, const std::vector<int> resources){
+void Card::allocate(const string text, const int id, const std::shared_ptr<cugl::Texture> texture, const std::vector<int> responses, const std::vector<int> resources, const int level){
     _text = text;
     _id = id;
     _responses = responses;
     _resources = resources;
+    _texture = texture;
+    _level = level;
 }
 
 std::vector<int> Card::getThreeRandomResponses(){

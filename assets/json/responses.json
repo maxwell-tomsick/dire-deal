@@ -715,7 +715,7 @@
         "block": 0
       },
       "reward": 0,
-      "addToDeck": [],
+      "addToDeck": [12],
       "delete": [],
       "win": true,
       "lose":false

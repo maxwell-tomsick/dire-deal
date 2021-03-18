@@ -4,7 +4,8 @@
         "text" : ["children","up","children","label","data","text"],
         "font" : ["children","up","children","label","data","font"],
         "priority" : ["layout","priority"],
-        "texture"  : ["children","up","children","patch","data","texture"],
+        "texture"  : ["children","up","data","texture"],
+        "glow"  : ["children","up","children","glow","data","texture"],
         "interior" : ["children","up","children","patch","data","interior"]
     },
     "contents" : {
@@ -15,23 +16,25 @@
         },
         "children" : {
             "up" : {
-                "type"      : "Node",
-                "data"      : {
-                    "size"   : [200,200]
+                "type"   : "NinePatch",
+                "data"   : {
+                    "texture"  : "response1",
+                    "scale" : 0.675
                 },
                 "format"    : {
                     "type"  : "Anchored"
                 },
                 "children"  : {
-                    "patch" : {
+                    "glow" : {
                         "type"   : "NinePatch",
                         "data"   : {
-                            "texture"  : "reds",
-                            "interior" : [6,6,20,20]
+                            "texture"  : "glow1"
                         },
                         "layout" : {
-                            "x_anchor" : "fill",
-                            "y_anchor" : "fill"
+                            "x_anchor" : "left",
+                            "y_anchor" : "bottom",
+                            "x_offset": -0.1,
+                            "y_offset": -0.3
                         }
                     },
                     "label": {
@@ -45,7 +48,8 @@
                         },
                         "layout": {
                             "x_anchor": "fill",
-                            "y_anchor": "fill"
+                            "y_anchor": "bottom",
+                            "y_offset": 0.6
                         }
                     },
                     "outcome": {
@@ -58,8 +62,10 @@
                             "valign": "bottom"
                         },
                         "layout": {
-                            "x_anchor": "fill",
-                            "y_anchor": "fill"
+                            "x_anchor": "left",
+                            "y_anchor": "bottom",
+                            "x_offset": 0.5,
+                            "y_offset": 0.2
                         }
                     },
                     "costs": {
@@ -83,7 +89,8 @@
         "x_anchor": "left",
         "y_anchor": "bottom",
         "x_offset": 0.8,
-        "y_offset": 0.3
+        "y_offset": 0.625
       }
     }
 }
+
