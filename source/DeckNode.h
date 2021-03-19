@@ -13,9 +13,12 @@
 class DeckNode : public cugl::scene2::SceneNode {
 private:
     int _size;
+    int _nextSize;
     std::shared_ptr<cugl::Texture> _frontTexture;
     std::shared_ptr<cugl::Texture> _backTexture;
+    std::shared_ptr<cugl::Texture> _backTexture2;
     bool _drawFront;
+    cugl::Size _dimen;
     
 public:
     DeckNode() : SceneNode() {}
@@ -33,12 +36,29 @@ public:
     void setBackTexture(std::shared_ptr<cugl::Texture> texture){
         _backTexture = texture;
     }
+    void setNextBackTexture(std::shared_ptr<cugl::Texture> texture){
+        _backTexture2 = texture;
+    }
+    
+    void swapTextures(){
+        std::shared_ptr<cugl::Texture> temp = _backTexture;
+        _backTexture = _backTexture2;
+        _backTexture2 = temp;
+    }
+    
     void setFrontTexture(std::shared_ptr<cugl::Texture> texture){
         _frontTexture = texture;
+    }
+    void setDimen(cugl::Size dimen){
+        _dimen = dimen;
     }
     
     void setSize(int size){
         _size = size;
+    }
+    
+    void setNextSize(int size){
+        _nextSize = size;
     }
     
     void setDrawFront(bool drawFront){

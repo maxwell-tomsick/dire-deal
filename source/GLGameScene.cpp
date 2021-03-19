@@ -127,12 +127,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _blueSound = _assets->get<Sound>("laser");
     _redSound = _assets->get<Sound>("fusion");
      auto cardBackTexture1 = _assets->get<Texture>("cardBack1");
-     //auto cardBackTexture2 = _assets->get<Texture>("cardBack2");
+     auto cardBackTexture2 = _assets->get<Texture>("cardBack2");
      
      _deckNode = DeckNode::alloc();
      _deckNode->setSize(int(_currentDeck.size()));
+     _deckNode->setNextSize(0);
      _deckNode->setBackTexture(cardBackTexture1);
-     _cardBack = 1;
+     _deckNode->setNextBackTexture(cardBackTexture2);
+     _deckNode->setDimen(dimen);
      _deckNode->setFrontTexture(_currentCard.getTexture());
      _deckNode->setDrawFront(true);
      addChild(_deckNode);
@@ -152,29 +154,36 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 
     // _field  = std::dynamic_pointer_cast<scene2::TextField>(assets->get<scene2::SceneNode>("lab_action"));
     _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_currEvent"));
-    _resourceCount = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_resourceCount"));
+    //_resourceCount = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_resourceCount"));
     _response1 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response1"));
     _responseText1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_label"));
-    _responseCost1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_costs"));
-    _responseOutcome1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_outcome"));
+    _responseCost1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_costs"));//
+    //_responseOutcome1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_outcome"));
     _response2 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response2"));
     _responseText2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_label"));
-    _responseCost2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_costs"));
-    _responseOutcome2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_outcome"));
+    //_responseCost2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_costs"));
+    //_responseOutcome2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_outcome"));
     _response3 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response3"));
     _responseText3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_label"));
-    _responseCost3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_costs"));
-    _responseOutcome3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_outcome"));
+    //_responseCost3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_costs"));
+    //_responseOutcome3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_outcome"));
      _responseTexture1 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response1_up"));
+     _responseCard1 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response1_up_card"));
+     _responseCard2 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response2_up_card"));
+     _responseCard3 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response3_up_card"));
      _responseGlow1 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response1_up_glow"));
      _responseTexture2 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response2_up"));
      _responseGlow2 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response2_up_glow"));
      _responseTexture3 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response3_up"));
      _responseGlow3 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response3_up_glow"));
-     
      _burn = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_burn"));
      _burnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_burn_up_label"));
+     _bladeText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_blade_amount"));
+     _brawnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_brawn_amount"));
+     _flourishText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_flourish_amount"));
+     _lungeText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_lunge_amount"));
      
+    
      
      //_response3->setVisible(false);
      //_response2->setVisible(false);
@@ -218,26 +227,30 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
      _burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
-    _resourceCount->setText(resourceString(_resources));
+    //_resourceCount->setText(resourceString(_resources));
     std::vector<int> threeResponses = _currentCard.getThreeRandomResponses();
     _responseId1=threeResponses[0];
     _responseId2=threeResponses[1];
      _responseId3=threeResponses[2];
     _responseText1->setText(_responses[_responseId1].getText());
-    _responseCost1->setText(resourceString(_responses[_responseId1].getResources()));
-    _responseOutcome1->setText(_responses[_responseId1].getOutcome());
+    //_responseCost1->setText(resourceString(_responses[_responseId1].getResources()));
+    //_responseOutcome1->setText(_responses[_responseId1].getOutcome());
     _responseText2->setText(_responses[_responseId2].getText());
-    _responseCost2->setText(resourceString(_responses[_responseId2].getResources()));
-    _responseOutcome2->setText(_responses[_responseId2].getOutcome());
+    //_responseCost2->setText(resourceString(_responses[_responseId2].getResources()));
+    //_responseOutcome2->setText(_responses[_responseId2].getOutcome());
     _responseText3->setText(_responses[_responseId3].getText());
-    _responseCost3->setText(resourceString(_responses[_responseId3].getResources()));
-    _responseOutcome3->setText(_responses[_responseId3].getOutcome());
+    //_responseCost3->setText(resourceString(_responses[_responseId3].getResources()));
+    //_responseOutcome3->setText(_responses[_responseId3].getOutcome());
     _responseId1=threeResponses[0];
     _responseId2=threeResponses[1];
      _responseId3=threeResponses[2];
      responseUpdate(_responseId1, 1);
      responseUpdate(_responseId2, 2);
      responseUpdate(_responseId3, 3);
+     _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+     _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+     _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+     setResources();
     // if (_active) {
     //     _field->activate();
     // }
@@ -262,6 +275,9 @@ void GameScene::responseUpdate(const int responseId, const int response) {
                _responseTexture3->setTexture(responseTexture);
                _responseGlow3->setTexture(responseGlow);
      }
+     setResponseResources(1);
+     setResponseResources(2);
+     setResponseResources(3);
 }
 
 /**
@@ -336,7 +352,7 @@ void GameScene::update(float timestep) {
           _pause--;
      } else if (_pause == 1){
           _currEvent->setColor(Color4::WHITE);
-          _resourceCount->setVisible(true);
+          //_resourceCount->setVisible(true);
           _response1->setColor(Color4::WHITE);
           _response1->setVisible(true);
           _response2->setColor(Color4::WHITE);
@@ -349,7 +365,7 @@ void GameScene::update(float timestep) {
           _currEvent->setText(_currentCard.getText());
           _deckNode->setFrontTexture(_currentCard.getTexture());
           _burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
-          _resourceCount->setText(resourceString(_resources));
+          //_resourceCount->setText(resourceString(_resources));
           if (!_keepCards) {
               std::vector<int> threeResponses = _currentCard.getThreeRandomResponses();
               _responseId1 = threeResponses[0];
@@ -357,21 +373,25 @@ void GameScene::update(float timestep) {
                _responseId3 = threeResponses[2];
           }
           _responseText1->setText(_responses[_responseId1].getText());
-          _responseCost1->setText(resourceString(_responses[_responseId1].getResources()));
-          _responseOutcome1->setText(_responses[_responseId1].getOutcome());
+          //_responseCost1->setText(resourceString(_responses[_responseId1].getResources()));
+          //_responseOutcome1->setText(_responses[_responseId1].getOutcome());
           _responseText2->setText(_responses[_responseId2].getText());
-          _responseCost2->setText(resourceString(_responses[_responseId2].getResources()));
-          _responseOutcome2->setText(_responses[_responseId2].getOutcome());
+          //_responseCost2->setText(resourceString(_responses[_responseId2].getResources()));
+          //_responseOutcome2->setText(_responses[_responseId2].getOutcome());
           _responseText3->setText(_responses[_responseId3].getText());
-          _responseCost3->setText(resourceString(_responses[_responseId3].getResources()));
-          _responseOutcome3->setText(_responses[_responseId3].getOutcome());
+          //_responseCost3->setText(resourceString(_responses[_responseId3].getResources()));
+          //_responseOutcome3->setText(_responses[_responseId3].getOutcome());
           responseUpdate(_responseId1, 1);
           responseUpdate(_responseId2, 2);
           responseUpdate(_responseId3, 3);
+          _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+          _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+          _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
           // _responseId1=twoResponses[0];
           // _responseId2=twoResponses[1];
           // _responseId3=_currentCard.getGuaranteed();
           _deckNode->setSize(int(_currentDeck.size()));
+          _deckNode->setNextSize(int(_nextDeck.size()));
           _deckNode->setDrawFront(true);
      }
     // Read the keyboard for each controller.
@@ -544,6 +564,7 @@ void GameScene::buttonPress(const int r){
      if (r == -1){
           for (int i = 0; i < _resources.size(); i++) {
                _resources[i] += _currentCard.getResource(i);
+               setResources();
           }
      } else {
           Response response;
@@ -558,14 +579,17 @@ void GameScene::buttonPress(const int r){
           for (int i = 0; i < cost.size(); i++) {
               if (_resources[i] < cost[i]) {
                   if (r == 0) {
-                      _responseText1->setText("Insufficient Resources");
+                      _responseText1->setText("Need Resources");
+                       _responseText1->setForeground(Color4::WHITE);
                       _response1->setColor(Color4::GRAY);
                   } else if (r == 1) {
-                      _responseText2->setText("Insufficient Resources");
+                      _responseText2->setText("Need Resources");
+                       _responseText2->setForeground(Color4::WHITE);
                       _response2->setColor(Color4::GRAY);
                   }
                   else if (r == 2) {
-                      _responseText3->setText("Insufficient Resources");
+                      _responseText3->setText("Need Resources");
+                       _responseText3->setForeground(Color4::WHITE);
                       _response3->setColor(Color4::GRAY);
                   }
                   //_currentDeck.addCardFront(_currentCard);
@@ -576,6 +600,7 @@ void GameScene::buttonPress(const int r){
           }
           for (int i = 0; i < cost.size(); i++) {
               _resources[i] -= cost[i];
+               setResources();
           }
           if (response.getWin()){
                _currEvent->setText("YOU WIN!");
@@ -601,15 +626,8 @@ void GameScene::buttonPress(const int r){
      if (_currentDeck.size() == 0){
           _currEvent->setText("Shuffling Next Event Deck...");
           _currEvent->setColor(Color4::BLACK);
-          if (_cardBack == 1){
-               auto cardBackTexture = _assets->get<Texture>("cardBack2");
-               _deckNode->setBackTexture(cardBackTexture);
-               _cardBack = 2;
-          } else {
-               auto cardBackTexture = _assets->get<Texture>("cardBack1");
-               _deckNode->setBackTexture(cardBackTexture);
-               _cardBack = 1;
-          }
+          _deckNode->swapTextures();
+          _deckNode->setNextSize(0);
           if (_nextDeck.size() > 0){
                _currentDeck = _nextDeck;
                std::random_device rd;
@@ -644,3 +662,52 @@ void GameScene::buttonPress(const int r){
       */
 }
 
+void GameScene::setResources(){
+     _bladeText->setText(to_string(_resources[0]));
+     _flourishText->setText(to_string(_resources[1]));
+     _lungeText->setText(to_string(_resources[2]));
+     _brawnText->setText(to_string(_resources[3]));
+}
+
+void GameScene::setResponseResources(const int response){
+     std::vector<int> cost = _responses[_responseId3].getResources();
+     if (response == 1){
+          cost = _responses[_responseId1].getResources();
+     } else if (response ==2){
+          cost = _responses[_responseId2].getResources();
+     }
+     int acc = 1;
+     std::shared_ptr<cugl::scene2::NinePatch> responseResourcePointer;
+     std::shared_ptr<cugl::scene2::Label> responseResourceAmountPointer;
+     for (int i = 0; i < cost.size(); i++){
+          if (cost[i] > 0){
+               string path = "lab_response" + to_string(response) + "_up_resource" + to_string(acc);
+               string amountPath = "lab_response" + to_string(response) + "_up_resource" + to_string(acc) + "_amount";
+               responseResourcePointer = std::dynamic_pointer_cast<scene2::NinePatch>(_assets->get<scene2::SceneNode>(path));
+               responseResourceAmountPointer = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>(amountPath));
+               responseResourcePointer->setVisible(true);
+               responseResourceAmountPointer->setVisible(true);
+               acc += 1;
+               string resource = "brawn";
+               if (i == 0){
+                    resource = "blade";
+               } else if (i == 1){
+                    resource = "flourish";
+               } else if (i == 2){
+                    resource = "lunge";
+               }
+               responseResourcePointer->setTexture(_assets->get<Texture>(resource));
+               responseResourceAmountPointer->setText(to_string(cost[i]));
+          }
+     }
+     for (int j = acc; j <= 4; j++){
+          string path = "lab_response" + to_string(response) + "_up_resource" + to_string(j);
+          string amountPath = "lab_response" + to_string(response) + "_up_resource" + to_string(j) + "_amount";
+          responseResourcePointer = std::dynamic_pointer_cast<scene2::NinePatch>(_assets->get<scene2::SceneNode>(path));
+          responseResourceAmountPointer = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>(amountPath));
+          responseResourcePointer->setVisible(false);
+          responseResourceAmountPointer->setVisible(false);
+     }
+     responseResourcePointer = nullptr;
+     responseResourceAmountPointer = nullptr;
+}

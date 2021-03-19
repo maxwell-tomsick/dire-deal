@@ -73,6 +73,7 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _currEvent;
     std::shared_ptr<cugl::scene2::Button> _response1;
     std::shared_ptr<cugl::scene2::NinePatch> _responseTexture1;
+    std::shared_ptr<cugl::scene2::NinePatch> _responseCard1;
     std::shared_ptr<cugl::scene2::NinePatch> _responseGlow1;
     std::shared_ptr<cugl::scene2::Label> _responseText1;
     std::shared_ptr<cugl::scene2::Label> _responseCost1;
@@ -82,13 +83,20 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _responseCost2;
     std::shared_ptr<cugl::scene2::Label> _responseOutcome2;
     std::shared_ptr<cugl::scene2::NinePatch> _responseTexture2;
+    std::shared_ptr<cugl::scene2::NinePatch> _responseCard2;
     std::shared_ptr<cugl::scene2::NinePatch> _responseGlow2;
     std::shared_ptr<cugl::scene2::Button> _response3;
     std::shared_ptr<cugl::scene2::Label> _responseText3;
     std::shared_ptr<cugl::scene2::Label> _responseCost3;
     std::shared_ptr<cugl::scene2::Label> _responseOutcome3;
     std::shared_ptr<cugl::scene2::NinePatch> _responseTexture3;
+    std::shared_ptr<cugl::scene2::NinePatch> _responseCard3;
     std::shared_ptr<cugl::scene2::NinePatch> _responseGlow3;
+    
+    std::shared_ptr<cugl::scene2::Label> _bladeText;
+    std::shared_ptr<cugl::scene2::Label> _brawnText;
+    std::shared_ptr<cugl::scene2::Label> _flourishText;
+    std::shared_ptr<cugl::scene2::Label> _lungeText;
     
     std::shared_ptr<cugl::scene2::Button> _burn;
     std::shared_ptr<cugl::scene2::Label> _burnText;
@@ -203,6 +211,12 @@ public:
     string resourceString(std::vector<int> resources);
     
     void responseUpdate(const int responseId, const int response);
+    
+    void setResources();
+    
+    void setResponseResources(const int response);
+    
+    
 };
 
 #endif /* __SG_GAME_SCENE_H__ */

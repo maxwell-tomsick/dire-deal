@@ -1,10 +1,16 @@
 {
   "textures": {
     "background": {
-      "file": "textures/background-with-box.jpg"
+      "file": "textures/background-with-box-and-border.jpg"
+    },
+    "cardHolder": {
+      "file": "textures/card-holder.png"
     },
     "photon": {
       "file": "textures/photon.png"
+    },
+    "box": {
+      "file": "textures/background-box-overlay.jpg"
     },
     "cardFront": {
       "file": "textures/card_template.png"
@@ -63,6 +69,9 @@
     "glow5": {
       "file": "textures/responses/response-5-glow-overlay.png"
     },
+    "sword": {
+      "file": "textures/sword.png"
+    },
     "bidetime": {
       "file": "textures/cards/bidetime.png"
     },
@@ -101,6 +110,18 @@
     },
     "wounded": {
       "file": "textures/cards/wounded.png"
+    },
+    "blade": {
+      "file": "textures/resources/resource-blade.png"
+    },
+    "brawn": {
+      "file": "textures/resources/resource-brawn.png"
+    },
+    "lunge": {
+      "file": "textures/resources/resource-lunge.png"
+    },
+    "flourish": {
+      "file": "textures/resources/resource-flourish.png"
     }
   },
   "widgets": {
@@ -129,9 +150,17 @@
       "file": "fonts/rise-of-kingdom.regular.ttf",
       "size": 32
     },
+    "sans4": {
+      "file": "fonts/rise-of-kingdom.regular.ttf",
+      "size": 110
+    },
     "sans2": {
       "file": "fonts/rise-of-kingdom.regular.ttf",
       "size": 18
+    },
+    "sans5": {
+      "file": "fonts/rise-of-kingdom.regular.ttf",
+      "size": 48
     },
     "sans3": {
       "file": "fonts/rise-of-kingdom.regular.ttf",
@@ -148,6 +177,157 @@
         "layout": {
           "x_anchor": "fill",
           "y_anchor": "fill"
+        },
+        "format"    : {
+            "type"  : "Anchored"
+        },
+        "children":{
+            "cardHolder": {
+                "type": "Image",
+                "data": {
+                    "texture": "cardHolder",
+                    "scale": 0.675,
+                    "anchor": [ 0.5, 0.5 ]
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "y_offset": 0.33,
+                    "x_offset": 0.52
+                }
+            },
+            "blade": {
+                "type": "Image",
+                "data": {
+                    "texture": "blade",
+                    "scale": 0.675
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "y_offset": 0.78,
+                    "x_offset": 0.65
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "children": {
+                    "amount": {
+                        "type": "TextField",
+                        "data": {
+                          "font": "sans4",
+                          "text": "1",
+                          "foreground": [ 241,231,95, 255 ],
+                          "halign": "center",
+                          "valign": "true middle",
+                          "anchor": [ 0.5, 0.5 ]
+                        },
+                        "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle"
+                        }
+                    }
+                }
+            },
+            "flourish": {
+                "type": "Image",
+                "data": {
+                    "texture": "flourish",
+                    "scale": 0.675
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "y_offset": 0.78,
+                    "x_offset": 0.73
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "children": {
+                    "amount": {
+                        "type": "TextField",
+                        "data": {
+                          "font": "sans4",
+                          "text": "1",
+                          "foreground": [ 241,231,95, 255 ],
+                          "halign": "center",
+                          "valign": "true middle",
+                          "anchor": [ 0.5, 0.5 ]
+                        },
+                        "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle"
+                        }
+                    }
+                }
+            },
+            "lunge": {
+                "type": "Image",
+                "data": {
+                    "texture": "lunge",
+                    "scale": 0.675
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "y_offset": 0.78,
+                    "x_offset": 0.81
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "children": {
+                    "amount": {
+                        "type": "TextField",
+                        "data": {
+                          "font": "sans4",
+                          "text": "1",
+                          "foreground": [ 241,231,95, 255 ],
+                          "halign": "center",
+                          "valign": "true middle",
+                          "anchor": [ 0.5, 0.5 ]
+                        },
+                        "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle"
+                        }
+                    }
+                }
+            },
+            "brawn": {
+                "type": "Image",
+                "data": {
+                    "texture": "brawn",
+                    "scale": 0.675
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "y_offset": 0.78,
+                    "x_offset": 0.89
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "children": {
+                    "amount": {
+                        "type": "TextField",
+                        "data": {
+                          "font": "sans4",
+                          "text": "1",
+                          "foreground": [ 241,231,95, 255 ],
+                          "halign": "center",
+                          "valign": "true middle",
+                          "anchor": [ 0.5, 0.5 ]
+                        },
+                        "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle"
+                        }
+                    }
+                }
+            }
         }
       },
     "lab": {
@@ -189,22 +369,6 @@
             "x_offset": -0.05
           }
         },
-        "resourceCount": {
-          "type": "Label",
-          "data": {
-            "font": "sans",
-            "text": "Resources",
-            "foreground": [ 0, 0, 0, 255 ],
-            "size": [ 400, 100 ],
-            "anchor": [ 0.5, 0.5 ]
-          },
-          "layout": {
-            "x_anchor": "left",
-            "y_anchor": "bottom",
-            "x_offset": 0.8,
-            "y_offset": 0.9
-          }
-        },
         "response1": {
           "type": "Widget",
           "data": {
@@ -241,6 +405,19 @@
               "text": "BURN"
             }
           }
+        },
+        "topsword": {
+            "type": "Image",
+            "data": {
+                "texture": "sword",
+                "scale": 0.675
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.695,
+                "x_offset": 0.635
+            }
         }
       }
     }
