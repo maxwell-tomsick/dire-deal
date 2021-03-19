@@ -177,7 +177,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _responseTexture3 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response3_up"));
      _responseGlow3 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response3_up_glow"));
      _burn = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_burn"));
-     _burnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_burn_up_label"));
+     _burnTexture =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_burn_up"));
+     _burnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_burn_up_amount"));
      _bladeText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_blade_amount"));
      _brawnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_brawn_amount"));
      _flourishText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_flourish_amount"));
@@ -226,7 +227,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // });
      _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
-     _burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
+     setBurnText();
+     //_burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
     //_resourceCount->setText(resourceString(_resources));
     std::vector<int> threeResponses = _currentCard.getThreeRandomResponses();
     _responseId1=threeResponses[0];
@@ -364,7 +366,8 @@ void GameScene::update(float timestep) {
           _currentDeck.pop_back();
           _currEvent->setText(_currentCard.getText());
           _deckNode->setFrontTexture(_currentCard.getTexture());
-          _burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
+          setBurnText();
+          //_burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
           //_resourceCount->setText(resourceString(_resources));
           if (!_keepCards) {
               std::vector<int> threeResponses = _currentCard.getThreeRandomResponses();
@@ -710,4 +713,21 @@ void GameScene::setResponseResources(const int response){
      }
      responseResourcePointer = nullptr;
      responseResourceAmountPointer = nullptr;
+}
+
+void GameScene::setBurnText(){
+     for (int i = 0; i < 4; i ++){
+          if (_currentCard.getResource(i) > 0){
+               _burnText->setText(to_string(_currentCard.getResource(i)));
+               string resource = "brawn";
+               if (i == 0){
+                    resource = "blade";
+               } else if (i == 1){
+                    resource = "flourish";
+               } else if (i == 2){
+                    resource = "lunge";
+               }
+               _burnTexture->setTexture(_assets->get<Texture>(resource));
+          }
+     }
 }

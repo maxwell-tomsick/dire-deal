@@ -6,6 +6,12 @@
     "cardHolder": {
       "file": "textures/card-holder.png"
     },
+    "enemy": {
+      "file": "textures/enemy-thug.png"
+    },
+    "enemyLabel": {
+      "file": "textures/enemy-label.png"
+    },
     "photon": {
       "file": "textures/photon.png"
     },
@@ -165,6 +171,14 @@
     "sans3": {
       "file": "fonts/rise-of-kingdom.regular.ttf",
       "size": 28
+    },
+    "sans6": {
+      "file": "fonts/rise-of-kingdom.regular.ttf",
+      "size": 84
+    },
+    "sans7": {
+      "file": "fonts/rise-of-kingdom.regular.ttf",
+      "size": 38
     }
   },
   "scene2s": {
@@ -395,6 +409,70 @@
               "text": "response 3"
             }
           }
+        },
+        "enemyLabel": {
+            "type": "NinePatch",
+            "data": {
+                "texture": "enemyLabel",
+                "scale": 0.67
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.833,
+                "x_offset": 0.045
+            },
+            "format"    : {
+                "type"  : "Anchored"
+            },
+            "children":{
+                "number": {
+                    "type": "Label",
+                    "data": {
+                      "font": "sans7",
+                      "text": "Goon 1:",
+                      "foreground": [ 207,166,93,255 ],
+                      "halign": "left",
+                      "valign": "true middle",
+                      "anchor": [ 0.5, 0.5 ]
+                    },
+                    "layout": {
+                      "x_anchor": "center",
+                      "y_anchor": "middle",
+                      "y_offset": 0.1,
+                      "x_offset": -0.31
+                    }
+                },
+                "name": {
+                    "type": "Label",
+                    "data": {
+                      "font": "sans6",
+                      "text": "THUG",
+                      "foreground": [ 207,166,93,255 ],
+                      "halign": "left",
+                      "valign": "true middle",
+                      "anchor": [ 0.5, 0.5 ]
+                    },
+                    "layout": {
+                      "x_anchor": "center",
+                      "y_anchor": "middle",
+                      "y_offset": -0.1
+                    }
+                }
+            }
+        },
+        "enemy": {
+            "type": "NinePatch",
+            "data": {
+                "texture": "enemy",
+                "scale": 0.67
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.03,
+                "x_offset": 0.00
+            }
         },
         "burn": {
           "type": "Widget",

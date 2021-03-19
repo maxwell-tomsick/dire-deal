@@ -100,6 +100,7 @@ protected:
     
     std::shared_ptr<cugl::scene2::Button> _burn;
     std::shared_ptr<cugl::scene2::Label> _burnText;
+    std::shared_ptr<cugl::scene2::NinePatch> _burnTexture;
 
     std::shared_ptr<cugl::scene2::PolygonNode> _cardFront;
     std::shared_ptr<DeckNode> _deckNode;
@@ -215,6 +216,8 @@ public:
     void setResources();
     
     void setResponseResources(const int response);
+    
+    void setBurnText();
     
     
 };
