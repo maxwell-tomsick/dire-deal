@@ -34,6 +34,8 @@ using namespace cugl;
 #define SHIP_SIZE   18
 /** Maximum number of photons allowed on screen at a time. */
 #define MAX_PHOTONS 512
+/** The key for the event handlers */
+#define LISTENER_KEY        1
 
 #pragma mark -
 #pragma mark Constructors
@@ -183,39 +185,80 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _brawnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_brawn_amount"));
      _flourishText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_flourish_amount"));
      _lungeText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_lunge_amount"));
-     
-    
-     
-     //_response3->setVisible(false);
-     //_response2->setVisible(false);
-     
+     _displayCard =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard"));
+     bool success = true;
+#ifndef CU_TOUCH_SCREEN
+     success = Input::activate<Keyboard>();
+     success = success && Input::activate<Mouse>();
+     _mouse = Input::get<Mouse>();
+     _mouse->setPointerAwareness(cugl::Mouse::PointerAwareness::ALWAYS);
+     _response1->addListener([=](const std::string& name, bool down) {
+          if ( (!(_pause > 1)) & down) {
+              buttonPress(0);
+          }
+         });
+     _response2->addListener([=](const std::string& name, bool down) {
+         if ( (!(_pause > 1)) & down) {
+              buttonPress(1);
+         }
+         });
+     _response3->addListener([=](const std::string& name, bool down) {
+         if ( (!(_pause > 1)) & down) {
+              buttonPress(2);
+         }
+         });
+      _burn->addListener([=](const std::string& name, bool down) {
+          if ( (!(_pause > 1)) & down) {
+               buttonPress(-1);
+          }
+          });
+     if (_active) {
+         _response1->activate();
+         _response2->activate();
+         _response3->activate();
+          _burn->activate();
+     }
+#else
+     Touchscreen* touch = Input::get<Touchscreen>();
+     touch->addBeginListener(LISTENER_KEY,[=](const cugl::TouchEvent& event, bool focus) {
+         this->touchBeganCB(event,focus);
+     });
+     touch->addEndListener(LISTENER_KEY,[=](const cugl::TouchEvent& event, bool focus) {
+         this->touchEndedCB(event,focus);
+     });
+     touch->addMotionListener(LISTENER_KEY,[=](const cugl::TouchEvent& event, const cugl::Vec2& previous, bool focus) {
+       this->touchesMovedCB(event, previous, focus);
+     });
+#endif
+     /*
     _response1->addListener([=](const std::string& name, bool down) {
-        if ( (!(_pause > 1)) & down ) {
+         if ( (!(_pause > 1)) & down) {
+              _response1->setPosition(0, 0);
+         } else if ( (!(_pause > 1)) & !down & _response1->containsScreen(mouse->pointerPosition())) {
              buttonPress(0);
-        }
+         } else {
+              _response1->setVisible(true);
+         }
         });
     _response2->addListener([=](const std::string& name, bool down) {
-        if ( (!(_pause > 1)) & down ) {
+        if ( (!(_pause > 1)) & !down & _response2->containsScreen(mouse->pointerPosition())) {
              buttonPress(1);
         }
         });
     _response3->addListener([=](const std::string& name, bool down) {
-        if ( (!(_pause > 1)) & down ) {
+        if ( (!(_pause > 1)) & !down & _response3->containsScreen(mouse->pointerPosition())) {
              buttonPress(2);
         }
         });
      _burn->addListener([=](const std::string& name, bool down) {
-         if ( (!(_pause > 1)) & down ) {
+         if ( (!(_pause > 1)) & !down & _burn->containsScreen(mouse->pointerPosition())) {
               buttonPress(-1);
          }
          });
-
+*/
      //_response1->setText(_currentCard.getResponse(0).getText());
      
     if (_active) {
-        _response1->activate();
-        _response2->activate();
-        _response3->activate();
          _burn->activate();
     }
     // _field->addTypeListener([=](const std::string& name, const std::string& value) {
@@ -256,7 +299,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // if (_active) {
     //     _field->activate();
     // }
-    return true;
+    return success;
 }
 
 void GameScene::responseUpdate(const int responseId, const int response) {
@@ -397,6 +440,24 @@ void GameScene::update(float timestep) {
           _deckNode->setNextSize(int(_nextDeck.size()));
           _deckNode->setDrawFront(true);
      }
+#ifndef CU_TOUCH_SCREEN
+     if (!(_pause > 1)) {
+          if (_response1->containsScreen(_mouse->pointerPosition())) {
+               _displayCard->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+               _displayCard->setVisible(true);
+          }
+          else if (_response2->containsScreen(_mouse->pointerPosition())) {
+               _displayCard->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+               _displayCard->setVisible(true);
+          }
+          else if (_response3->containsScreen(_mouse->pointerPosition())) {
+               _displayCard->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+               _displayCard->setVisible(true);
+          } else {
+               _displayCard->setVisible(false);
+          }
+     }
+#endif
     // Read the keyboard for each controller.
     /*_redController.readInput();
     _blueController.readInput();
@@ -729,5 +790,73 @@ void GameScene::setBurnText(){
                }
                _burnTexture->setTexture(_assets->get<Texture>(resource));
           }
+     }
+}
+
+void GameScene::touchBeganCB(const cugl::TouchEvent& event, bool focus) {
+     if (!(_pause > 1)){
+          touchBegan(event.position);
+     }
+}
+
+void GameScene::touchEndedCB(const cugl::TouchEvent& event, bool focus) {
+     if (!(_pause > 1)){
+          touchEnded(event.position);
+     }
+}
+
+void GameScene::touchBegan(const cugl::Vec2& pos) {
+     if (_response1->containsScreen(pos)) {
+          _displayCard->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+          _displayCard->setVisible(true);
+     }
+     else if (_response2->containsScreen(pos)) {
+          _displayCard->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+          _displayCard->setVisible(true);
+     }
+     else if (_response3->containsScreen(pos)) {
+          _displayCard->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+          _displayCard->setVisible(true);
+     } else {
+          _displayCard->setVisible(false);
+     }
+}
+
+void GameScene::touchEnded(const cugl::Vec2& pos) {
+     _displayCard->setVisible(false);
+     if (_response1->containsScreen(pos)) {
+          buttonPress(0);
+     }
+     else if (_response2->containsScreen(pos)) {
+          buttonPress(1);
+     }
+     else if (_response3->containsScreen(pos)) {
+          buttonPress(2);
+     }
+     else if (_burn->containsScreen(pos)) {
+          buttonPress(-1);
+     }
+}
+
+void GameScene::touchesMovedCB(const cugl::TouchEvent& event, const cugl::Vec2& previous, bool focus){
+     if (!(_pause > 1)){
+          touchMoved(event.position);
+     }
+}
+
+void GameScene::touchMoved(const cugl::Vec2& pos){
+     if (_response1->containsScreen(pos)) {
+          _displayCard->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+          _displayCard->setVisible(true);
+     }
+     else if (_response2->containsScreen(pos)) {
+          _displayCard->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+          _displayCard->setVisible(true);
+     }
+     else if (_response3->containsScreen(pos)) {
+          _displayCard->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+          _displayCard->setVisible(true);
+     } else {
+          _displayCard->setVisible(false);
      }
 }

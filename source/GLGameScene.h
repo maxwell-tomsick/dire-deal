@@ -101,6 +101,7 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _burn;
     std::shared_ptr<cugl::scene2::Label> _burnText;
     std::shared_ptr<cugl::scene2::NinePatch> _burnTexture;
+    std::shared_ptr<cugl::scene2::NinePatch> _displayCard;
 
     std::shared_ptr<cugl::scene2::PolygonNode> _cardFront;
     std::shared_ptr<DeckNode> _deckNode;
@@ -118,7 +119,7 @@ protected:
     
     Card _currentCard;
 
-    bool _mouse;
+    cugl::Mouse* _mouse;
     bool _keepCards; // true when trying to select response with insufficient resources
     int _pause;
 
@@ -219,7 +220,61 @@ public:
     
     void setBurnText();
     
+    /**
+     * Callback for the beginning of a touch event
+     *
+     * @param t     The touch information
+     * @param event The associated event
+     */
+    void touchBeganCB(const cugl::TouchEvent& event, bool focus);
     
+    /**
+     * Callback for the end of a touch event
+     *
+     * @param t     The touch information
+     * @param event The associated event
+     */
+    void touchEndedCB(const cugl::TouchEvent& event, bool focus);
+    
+    /**
+     * Callback for a mouse release event.
+     *
+     * @param t     The touch information
+     * @param event The associated event
+     */
+    void touchesMovedCB(const cugl::TouchEvent& event, const cugl::Vec2& previous, bool focus);
+    
+    /**
+     * Handles touchBegan and mousePress events using shared logic.
+     *
+     * Depending on the platform, the appropriate callback (i.e. touch or mouse)
+     * will call into this method to handle the Event.
+     *
+     * @param pos         the position of the touch
+     */
+    void touchBegan(const cugl::Vec2& pos);
+
+
+    /**
+     * Handles touchEnded and mouseReleased events using shared logic.
+     *
+     * Depending on the platform, the appropriate callback (i.e. touch or mouse)
+     * will call into this method to handle the Event.
+     *
+     * @param pos         the position of the touch
+     */
+    void touchEnded(const cugl::Vec2& pos);
+    
+    /**
+     * Handles touchMoved and mouseDragged events using shared logic.
+     *
+     * Depending on the platform, the appropriate callback (i.e. touch or mouse)
+     * will call into this method to handle the Event.
+     *
+     * @param timestamp     the timestamp of the event
+     * @param pos         the position of the touch
+     */
+    void touchMoved(const cugl::Vec2& pos);
 };
 
 #endif /* __SG_GAME_SCENE_H__ */
