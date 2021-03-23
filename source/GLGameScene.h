@@ -102,6 +102,8 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _burnText;
     std::shared_ptr<cugl::scene2::NinePatch> _burnTexture;
     std::shared_ptr<cugl::scene2::NinePatch> _displayCard;
+    std::shared_ptr<cugl::scene2::NinePatch> _displayCardBurnTexture;
+    std::shared_ptr<cugl::scene2::Label> _displayCardBurnText;
 
     std::shared_ptr<cugl::scene2::PolygonNode> _cardFront;
     std::shared_ptr<DeckNode> _deckNode;
@@ -219,6 +221,8 @@ public:
     void setResponseResources(const int response);
     
     void setBurnText();
+
+    void setDisplayCardBurnText(Card displayCard);
     
     /**
      * Callback for the beginning of a touch event

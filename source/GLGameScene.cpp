@@ -186,6 +186,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _flourishText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_flourish_amount"));
      _lungeText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_lunge_amount"));
      _displayCard =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard"));
+     _displayCardBurnTexture =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount"));
+     _displayCardBurnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount_amount"));
      bool success = true;
 #ifndef CU_TOUCH_SCREEN
      success = Input::activate<Keyboard>();
@@ -442,16 +444,23 @@ void GameScene::update(float timestep) {
      }
 #ifndef CU_TOUCH_SCREEN
      if (!(_pause > 1)) {
+          Card displayCard;
           if (_response1->containsScreen(_mouse->pointerPosition())) {
-               _displayCard->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+               displayCard = _cards[_responses[_responseId1].getCards()[0]];
+               setDisplayCardBurnText(displayCard);
+               _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           }
           else if (_response2->containsScreen(_mouse->pointerPosition())) {
-               _displayCard->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+              displayCard = _cards[_responses[_responseId2].getCards()[0]];
+               setDisplayCardBurnText(displayCard);
+               _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           }
           else if (_response3->containsScreen(_mouse->pointerPosition())) {
-               _displayCard->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+              displayCard = _cards[_responses[_responseId3].getCards()[0]];
+               setDisplayCardBurnText(displayCard);
+               _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           } else {
                _displayCard->setVisible(false);
@@ -793,6 +802,23 @@ void GameScene::setBurnText(){
      }
 }
 
+void GameScene::setDisplayCardBurnText(Card displayCard){
+     for (int i = 0; i < 4; i ++){
+          if (displayCard.getResource(i) > 0){
+               _displayCardBurnText->setText(to_string(displayCard.getResource(i)));
+               string resource = "brawn";
+               if (i == 0){
+                    resource = "blade";
+               } else if (i == 1){
+                    resource = "flourish";
+               } else if (i == 2){
+                    resource = "lunge";
+               }
+               _displayCardBurnTexture->setTexture(_assets->get<Texture>(resource));
+          }
+     }
+}
+
 void GameScene::touchBeganCB(const cugl::TouchEvent& event, bool focus) {
      if (!(_pause > 1)){
           touchBegan(event.position);
@@ -806,16 +832,23 @@ void GameScene::touchEndedCB(const cugl::TouchEvent& event, bool focus) {
 }
 
 void GameScene::touchBegan(const cugl::Vec2& pos) {
+     Card displayCard;
      if (_response1->containsScreen(pos)) {
-          _displayCard->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+         displayCard = _cards[_responses[_responseId1].getCards()[0]];
+          setDisplayCardBurnText(displayCard);
+          _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      }
      else if (_response2->containsScreen(pos)) {
-          _displayCard->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+         displayCard = _cards[_responses[_responseId2].getCards()[0]];
+          setDisplayCardBurnText(displayCard);
+          _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      }
      else if (_response3->containsScreen(pos)) {
-          _displayCard->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+         displayCard = _cards[_responses[_responseId3].getCards()[0]];
+          setDisplayCardBurnText(displayCard);
+          _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      } else {
           _displayCard->setVisible(false);
@@ -845,16 +878,23 @@ void GameScene::touchesMovedCB(const cugl::TouchEvent& event, const cugl::Vec2& 
 }
 
 void GameScene::touchMoved(const cugl::Vec2& pos){
+    Card displayCard;
      if (_response1->containsScreen(pos)) {
-          _displayCard->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+         displayCard = _cards[_responses[_responseId1].getCards()[0]];
+          setDisplayCardBurnText(displayCard);
+          _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      }
      else if (_response2->containsScreen(pos)) {
-          _displayCard->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+         displayCard = _cards[_responses[_responseId2].getCards()[0]];
+          setDisplayCardBurnText(displayCard);
+          _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      }
      else if (_response3->containsScreen(pos)) {
-          _displayCard->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+         displayCard = _cards[_responses[_responseId3].getCards()[0]];
+          setDisplayCardBurnText(displayCard);
+          _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      } else {
           _displayCard->setVisible(false);
