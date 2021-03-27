@@ -1,4 +1,4 @@
-package edu.cornell.gdiac.gamelab;
+package catana_games.dire_deall;
 
 import org.junit.Test;
 

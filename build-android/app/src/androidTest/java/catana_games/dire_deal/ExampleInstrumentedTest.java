@@ -1,4 +1,4 @@
-package edu.cornell.gdiac.gamelab;
+package catana_games.dire_deal;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("edu.cornell.gdiac.gamelab", appContext.getPackageName());
+        assertEquals("catana_games.dire_deal", appContext.getPackageName());
     }
 }

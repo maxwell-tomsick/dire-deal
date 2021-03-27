@@ -1,4 +1,4 @@
-package edu.cornell.gdiac.gamelab;
+package catana_games.dire_deal;
 
 import org.libsdl.app.*;
 import android.os.*;
@@ -6,7 +6,7 @@ import android.os.*;
 /**
  * Default application entry point
  */
-public class GameLab extends SDLActivity {
+public class DireDeal extends SDLActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

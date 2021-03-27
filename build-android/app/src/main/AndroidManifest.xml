@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.cornell.gdiac.gamelab">
+    package="catana_games.dire_deal">
 
     <!-- OpenGL ES 3.0 -->
     <uses-feature android:glEsVersion="0x00030000" />
@@ -15,7 +15,7 @@
         android:allowBackup="true"
         android:theme="@style/CUGLTheme"
         android:hardwareAccelerated="true" >
-        <activity android:name=".GameLab"
+        <activity android:name=".DireDeal"
             android:label="@string/app_name"
             android:configChanges="keyboardHidden|orientation"
             android:theme="@style/CUGLTheme.Launcher"
