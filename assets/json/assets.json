@@ -326,7 +326,7 @@
                 "layout": {
                     "x_anchor": "left",
                     "y_anchor": "bottom",
-                    "y_offset": 0.33,
+                    "y_offset": 0.29,
                     "x_offset": 0.52
                 }
             },
@@ -633,6 +633,23 @@
               "text": "BURN"
             }
           }
+        },
+        "goon": {
+            "type": "Label",
+            "data": {
+              "font": "sans5",
+              "text": "Goon:",
+              "foreground": [ 207,166,93,255 ],
+              "halign": "left",
+              "valign": "true middle",
+              "anchor": [ 0.5, 0.5 ]
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.695,
+                "x_offset": 0.635
+            }
         },
         "topsword": {
             "type": "Image",

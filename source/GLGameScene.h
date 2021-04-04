@@ -97,6 +97,7 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _brawnText;
     std::shared_ptr<cugl::scene2::Label> _flourishText;
     std::shared_ptr<cugl::scene2::Label> _lungeText;
+    std::shared_ptr<cugl::scene2::Label> _goon;
     
     std::shared_ptr<cugl::scene2::Button> _burn;
     std::shared_ptr<cugl::scene2::Label> _burnText;
