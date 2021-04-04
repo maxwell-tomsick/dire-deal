@@ -17,8 +17,11 @@ private:
     std::shared_ptr<cugl::Texture> _frontTexture;
     std::shared_ptr<cugl::Texture> _backTexture;
     std::shared_ptr<cugl::Texture> _backTexture2;
-    bool _drawFront;
+    int _drawFront;
     cugl::Size _dimen;
+    bool _drag;
+    cugl::Vec2 _currCardPos;
+    cugl::Vec2 _offset;
     
 public:
     DeckNode() : SceneNode() {}
@@ -61,8 +64,24 @@ public:
         _nextSize = size;
     }
     
-    void setDrawFront(bool drawFront){
+    void setDrawFront(int drawFront){
         _drawFront = drawFront;
+    }
+    
+    void setDrag(bool drag){
+        _drag = drag;
+    }
+    
+    bool getDrag(){
+        return _drag;
+    }
+    
+    void setCurrCardPos(cugl::Vec2 pos){
+        _currCardPos = pos;
+    }
+    
+    void setOffset(cugl::Vec2 pos){
+        _offset = pos;
     }
 };
 

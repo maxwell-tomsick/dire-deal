@@ -104,26 +104,31 @@ protected:
     std::shared_ptr<cugl::scene2::NinePatch> _displayCard;
     std::shared_ptr<cugl::scene2::NinePatch> _displayCardBurnTexture;
     std::shared_ptr<cugl::scene2::Label> _displayCardBurnText;
-
+    std::shared_ptr<cugl::scene2::Button> _currCardButton;
     std::shared_ptr<cugl::scene2::PolygonNode> _cardFront;
     std::shared_ptr<DeckNode> _deckNode;
+    std::shared_ptr<cugl::scene2::AnimationNode> _shuffleFlip;
+    std::shared_ptr<cugl::scene2::AnimationNode> _currentFlip;
+    std::shared_ptr<cugl::scene2::AnimationNode> _enemyIdle;
     int _cardBack;
     
     int _responseId1;
     int _responseId2;
     int _responseId3;
-    
     std::map<int, Card> _cards;
     std::map<int, Response> _responses;
     std::vector<int> _resources;
     std::vector<int> _currentDeck;
     std::vector<int> _nextDeck;
-    
+    cugl::Size _dimen;
+    cugl::Vec2 _vel;
+    float _scl;
+    int _movement;
     Card _currentCard;
-
+    bool _flipSwitch;
+    int _act = 0;
     cugl::Mouse* _mouse;
     bool _keepCards; // true when trying to select response with insufficient resources
-    int _pause;
 
 
 public:

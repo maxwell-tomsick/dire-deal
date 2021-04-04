@@ -23,14 +23,24 @@ void DeckNode::draw(const std::shared_ptr<cugl::SpriteBatch>& batch,
         batch->draw(_backTexture,tint,origin,trans * transform);
         trans.translate(0,height * 0.0125f,0);
     }
-    if (_drawFront){
-        batch->draw(_frontTexture,tint,origin,trans * transform);
-    }
     Mat4 transf;
     transf.scale(0.25f);
     transf.translate(width * 0.48f, height * 0.775f, 0);
     for (int i = 0; i < _nextSize; i++){
-        batch->draw(_backTexture2,tint,origin,transf * transform);
+        batch->draw(_backTexture,tint,origin,transf * transform);
         transf.translate(width * 0.0125f,0,0);
+    }
+    if (_drag){
+        Mat4 tr;
+        tr.scale(0.43f);
+        Vec2 pos = Vec2(_currCardPos.x, -1 * _currCardPos.y) + _offset;
+        tr.translate(pos.x,pos.y,0);
+        batch->draw(_frontTexture,tint,origin,tr * transform);
+    } else {
+        if (_drawFront == 0){
+            batch->draw(_frontTexture,tint,origin,trans * transform);
+        } else if (_drawFront == 1) {
+            batch->draw(_backTexture,tint,origin,trans * transform);
+        }
     }
 } 

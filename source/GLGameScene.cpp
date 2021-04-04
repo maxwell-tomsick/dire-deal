@@ -59,7 +59,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     } else if (!Scene2::init(dimen)) {
         return false;
     }
-    
+     _dimen = dimen;
     // Start up the input handler
     _assets = assets;
     
@@ -112,8 +112,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currentDeck = {};
      _nextDeck = {};
      _keepCards = false;
-     _pause = 0;
-
+     _movement = 0;
      _currentDeck.push_back(0);
      _currentDeck.push_back(0);
      _currentDeck.push_back(1);
@@ -138,9 +137,26 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _deckNode->setNextBackTexture(cardBackTexture2);
      _deckNode->setDimen(dimen);
      _deckNode->setFrontTexture(_currentCard.getTexture());
-     _deckNode->setDrawFront(true);
+     _deckNode->setDrawFront(0);
+     _enemyIdle =std::make_shared<scene2::AnimationNode>();
+     _enemyIdle->initWithFilmstrip(assets->get<Texture>("enemyIdle"), 8, 10, 77);
+     _enemyIdle->setScale(0.9f);
+     _enemyIdle->setPosition(dimen.width * 0.2f, dimen.height*0.46f);
+     addChild(_enemyIdle);
+     addChild(scene);
      addChild(_deckNode);
-    addChild(scene);
+     _shuffleFlip = std::make_shared<scene2::AnimationNode>();
+     _shuffleFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 5, 6, 30);
+     _shuffleFlip->setScale(0.21f);
+     _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
+     _shuffleFlip->setVisible(false);
+     _currentFlip = std::make_shared<scene2::AnimationNode>();
+     _currentFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 5, 6, 30);
+     _currentFlip->setScale(0.614f);
+     _currentFlip->setFrame(0);
+     _currentFlip->setVisible(false);
+     addChild(_currentFlip);
+     addChild(_shuffleFlip);
      
      
     //reset();
@@ -186,35 +202,50 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _flourishText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_flourish_amount"));
      _lungeText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_lunge_amount"));
      _displayCard =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard"));
+     _currCardButton =std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_currCard"));
      _displayCardBurnTexture =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount"));
      _displayCardBurnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount_amount"));
+     _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.33f + 0.0125f * _currentDeck.size()));
      bool success = true;
 #ifndef CU_TOUCH_SCREEN
      success = Input::activate<Keyboard>();
      success = success && Input::activate<Mouse>();
      _mouse = Input::get<Mouse>();
      _mouse->setPointerAwareness(cugl::Mouse::PointerAwareness::ALWAYS);
+     _currCardButton->addListener([=](const std::string& name, bool down) {
+          if ( (_movement == 0) & down & _act == 20) {
+               _deckNode->setOffset(Vec2(_dimen.width * 0.52f - _mouse->pointerPosition().x, _dimen.height * (0.33f + 0.0125f * _currentDeck.size()) + _mouse->pointerPosition().y));
+               _deckNode->setDrag(true);
+          }
+          if ( (_movement == 5) & down) {
+               _movement = 6;
+          }
+          if (!down){
+               _deckNode->setDrag(false);
+          }
+         });
      _response1->addListener([=](const std::string& name, bool down) {
-          if ( (!(_pause > 1)) & down) {
+          if ( (_movement == 0) & down) {
               buttonPress(0);
           }
          });
      _response2->addListener([=](const std::string& name, bool down) {
-         if ( (!(_pause > 1)) & down) {
+         if ( (_movement == 0) & down) {
               buttonPress(1);
          }
          });
      _response3->addListener([=](const std::string& name, bool down) {
-         if ( (!(_pause > 1)) & down) {
+         if ( (_movement == 0) & down) {
               buttonPress(2);
          }
          });
       _burn->addListener([=](const std::string& name, bool down) {
-          if ( (!(_pause > 1)) & down) {
+          if ( (_movement == 0) & down) {
                buttonPress(-1);
           }
           });
      if (_active) {
+          _currCardButton->activate();
          _response1->activate();
          _response2->activate();
          _response3->activate();
@@ -395,25 +426,91 @@ void GameScene::reset() {
  * @param timestep  The amount of time (in seconds) since the last frame
  */
 void GameScene::update(float timestep) {
-     if (_pause > 1){
-          _pause--;
-     } else if (_pause == 1){
+     if (_act < 20){
+          _act ++;
+     }
+     /*
+     int frame = _shuffleFlip->getFrame();
+     frame -= 1;
+     if (frame <= 0){
+          frame = _shuffleFlip->getSize() - 1;
+     }
+      _shuffleFlip->setFrame(frame);
+      */
+     if (_deckNode->getDrag()){
+          _deckNode->setCurrCardPos(_mouse->pointerPosition());
+     }
+     if (_movement == 1){
+          _displayCard->setVisible(false);
+          _shuffleFlip->setPosition(_shuffleFlip->getPosition() + _vel);
+          _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.21)/40.0f);
+          if (_shuffleFlip->getPosition().x <= _dimen.width * 0.52f){
+               _movement = 2;
+          }
+     } else if (_movement == 2){
+          int frame = _shuffleFlip->getFrame();
+          frame -= 1;
+          if (frame <= 0){
+               _movement = 3;
+               _vel =Vec2(_dimen.width * (0.48f + 0.0125f * (_nextDeck.size()-1)), _dimen.height * 0.775f) - _shuffleFlip->getPosition();
+               _vel.scale(0.025f);
+               _scl = 0.3546f;
+               //frame = _shuffleFlip->getSize() - 1;
+          }
+           _shuffleFlip->setFrame(frame);
+     } else if (_movement == 3){
+          _shuffleFlip->setPosition(_shuffleFlip->getPosition() + _vel);
+          _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.61f)/40.0f);
+          if (_shuffleFlip->getPosition().y >= _dimen.height * 0.775f || _shuffleFlip->getPosition().y + _vel.y > _dimen.height * 0.775f){
+               _movement = 4;
+          }
+     }
+     int enemyFrame = _enemyIdle->getFrame();
+     enemyFrame += 1;
+     if (enemyFrame == _enemyIdle->getSize()){
+          enemyFrame = 0;
+     }
+     _enemyIdle->setFrame(enemyFrame);
+     if(_movement == 4){
+          _shuffleFlip->setVisible(false);
+          _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
           _currEvent->setColor(Color4::WHITE);
           //_resourceCount->setVisible(true);
           _response1->setColor(Color4::WHITE);
-          _response1->setVisible(true);
+          _responseText1->setForeground(Color4::BLACK);
+          _responseText2->setForeground(Color4::BLACK);
+          _responseText3->setForeground(Color4::BLACK);
           _response2->setColor(Color4::WHITE);
-          _response2->setVisible(true);
           _response3->setColor(Color4::WHITE);
-          _response3->setVisible(true);
-          _pause = 0;
+          //_burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
+          //_resourceCount->setText(resourceString(_resources));
+          if (_currentDeck.size() == 0){
+               _currEvent->setText("Shuffling Next Event Deck...");
+               _currEvent->setColor(Color4::BLACK);
+               //_deckNode->swapTextures();
+               _deckNode->setNextSize(0);
+               if (_nextDeck.size() > 0){
+                    _currentDeck = _nextDeck;
+                    std::random_device rd;
+                    std::mt19937 g(rd());
+                     std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
+                    _nextDeck = {};
+               } else {
+                    _deckNode->setVisible(false);
+                    _currEvent->setText("YOU DIED!");
+                    _currEvent->setVisible(true);
+                    return;
+               }
+          } else {
+               _currEvent->setVisible(false);
+          }
           _currentCard = _cards[_currentDeck.back()];
           _currentDeck.pop_back();
           _currEvent->setText(_currentCard.getText());
           _deckNode->setFrontTexture(_currentCard.getTexture());
+          string flipTexture = _currentCard.getText() + "Flip";
+          _currentFlip->setTexture(_assets->get<Texture>(flipTexture));
           setBurnText();
-          //_burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
-          //_resourceCount->setText(resourceString(_resources));
           if (!_keepCards) {
               std::vector<int> threeResponses = _currentCard.getThreeRandomResponses();
               _responseId1 = threeResponses[0];
@@ -438,12 +535,33 @@ void GameScene::update(float timestep) {
           // _responseId1=twoResponses[0];
           // _responseId2=twoResponses[1];
           // _responseId3=_currentCard.getGuaranteed();
+          _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.33f + 0.0125f * _currentDeck.size()));
+          _currentFlip->setPosition(_dimen.width * 0.52f, _dimen.height * (0.33f + 0.0125f * _currentDeck.size()));
           _deckNode->setSize(int(_currentDeck.size()));
           _deckNode->setNextSize(int(_nextDeck.size()));
-          _deckNode->setDrawFront(true);
+          //_deckNode->setDrawFront(1);
+          _currentFlip->setVisible(true);
+          _movement = 5;
+     }
+     if (_movement == 6){
+          int flipFrame = _currentFlip->getFrame();
+          flipFrame += 1;
+          if (flipFrame == _currentFlip->getSize()){
+               _movement = 7;
+               _currentFlip->setVisible(false);
+               flipFrame = 0;
+          }
+          _currentFlip->setFrame(flipFrame);
+     }
+     if (_movement == 7){
+          _response1->setVisible(true);
+          _response2->setVisible(true);
+          _response3->setVisible(true);
+          _deckNode->setDrawFront(0);
+          _movement = 0;
      }
 #ifndef CU_TOUCH_SCREEN
-     if (!(_pause > 1)) {
+     if ((_movement == 0) & !_deckNode->getDrag()) {
           Card displayCard;
           if (_response1->containsScreen(_mouse->pointerPosition())) {
                displayCard = _cards[_responses[_responseId1].getCards()[0]];
@@ -643,11 +761,16 @@ void GameScene::buttonPress(const int r){
           Response response;
           if (r == 0){
                response=_responses[_responseId1];
+               _shuffleFlip->setPosition(_dimen.width * 0.9085f, _dimen.height*0.175f);
           } else if (r == 1){
                response=_responses[_responseId2];
+               _shuffleFlip->setPosition(_dimen.width * 0.9085f, _dimen.height*0.4f);
           } else {
                response=_responses[_responseId3];
+               _shuffleFlip->setPosition(_dimen.width * 0.9085f, _dimen.height*0.6245f);
           }
+          //_shuffleFlip->setScale(0.21f);
+          //_shuffleFlip->setScale(0.61f);
           std::vector<int> cost = response.getResources();
           for (int i = 0; i < cost.size(); i++) {
               if (_resources[i] < cost[i]) {
@@ -689,6 +812,8 @@ void GameScene::buttonPress(const int r){
           std::vector<int> cards =response.getCards();
           for (int i = 0; i < cards.size(); i++){
                int newCard = cards[i];
+               string flipTexture = _cards[newCard].getText() + "Flip";
+               _shuffleFlip->setTexture(_assets->get<Texture>(flipTexture));
                _nextDeck.push_back(newCard);
           }
      }
@@ -696,26 +821,6 @@ void GameScene::buttonPress(const int r){
      //_nextDeck.printDeck();
      //CULog("Current Deck:");
      //_currentDeck.printDeck();
-     if (_currentDeck.size() == 0){
-          _currEvent->setText("Shuffling Next Event Deck...");
-          _currEvent->setColor(Color4::BLACK);
-          _deckNode->swapTextures();
-          _deckNode->setNextSize(0);
-          if (_nextDeck.size() > 0){
-               _currentDeck = _nextDeck;
-               std::random_device rd;
-               std::mt19937 g(rd());
-                std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
-               _nextDeck = {};
-          } else {
-               _deckNode->setVisible(false);
-               _currEvent->setText("YOU DIED!");
-               _currEvent->setVisible(true);
-               return;
-          }
-     } else {
-          _currEvent->setVisible(false);
-     }
      //_response1->setDown(false);
      //_response1->deactivate();
      //_response2->deactivate();
@@ -723,9 +828,18 @@ void GameScene::buttonPress(const int r){
      _response1->setVisible(false);
      _response2->setVisible(false);
      _response3->setVisible(false);
-     _deckNode->setDrawFront(false);
+     _deckNode->setDrawFront(2);
+     _scl = 0.61f;
+     _shuffleFlip->setScale(0.21f);
+     _shuffleFlip->setVisible(true);
+     if (r== -1){
+          _movement = 4;
+     } else {
+          _movement = 1;
+     }
+     _vel = Vec2(_dimen.width * 0.52f, _dimen.height * (0.33f + 0.0125f * _currentDeck.size())) - _shuffleFlip->getPosition();
+     _vel.scale(0.025f);
      _keepCards = false;
-     _pause = 40;
      /*
      _currentCard = _currentDeck.draw();
      _currEvent->setText(_currentCard.getText());
@@ -820,13 +934,13 @@ void GameScene::setDisplayCardBurnText(Card displayCard){
 }
 
 void GameScene::touchBeganCB(const cugl::TouchEvent& event, bool focus) {
-     if (!(_pause > 1)){
+     if ((_movement == 0) & !_deckNode->getDrag()){
           touchBegan(event.position);
      }
 }
 
 void GameScene::touchEndedCB(const cugl::TouchEvent& event, bool focus) {
-     if (!(_pause > 1)){
+     if ((_movement == 0) & !_deckNode->getDrag()){
           touchEnded(event.position);
      }
 }
@@ -872,7 +986,7 @@ void GameScene::touchEnded(const cugl::Vec2& pos) {
 }
 
 void GameScene::touchesMovedCB(const cugl::TouchEvent& event, const cugl::Vec2& previous, bool focus){
-     if (!(_pause > 1)){
+     if (_movement == 0 ){
           touchMoved(event.position);
      }
 }
