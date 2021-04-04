@@ -33,7 +33,7 @@ void DeckNode::draw(const std::shared_ptr<cugl::SpriteBatch>& batch,
     if (_drag){
         Mat4 tr;
         tr.scale(0.43f);
-        Vec2 pos = Vec2(_currCardPos.x, -1 * _currCardPos.y) + _offset;
+        Vec2 pos = Vec2(_currCardPos.x, _currCardPos.y) + _offset;
         tr.translate(pos.x,pos.y,0);
         batch->draw(_frontTexture,tint,origin,tr * transform);
     } else {

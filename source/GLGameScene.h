@@ -122,6 +122,7 @@ protected:
     std::vector<int> _nextDeck;
     cugl::Size _dimen;
     cugl::Vec2 _vel;
+    cugl::Vec2 _prev;
     float _scl;
     int _movement;
     Card _currentCard;
