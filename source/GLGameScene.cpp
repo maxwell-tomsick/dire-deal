@@ -444,6 +444,8 @@ void GameScene::update(float timestep) {
       */
      if (_win) {
          _deckNode->setVisible(false);
+         _displayCard->setVisible(false);
+         _goon->setVisible(false);
          _currEvent->setText("YOU WIN!");
          _currEvent->setVisible(true);
          return;
@@ -819,7 +821,6 @@ void GameScene::buttonPress(const int r){
           }
           if (response.getWin()){
                _win = true;
-               _displayCard->setVisible(false);
           } else if (response.getLose()){
                _currEvent->setText("YOU DIED!");
                _currEvent->setVisible(true);
