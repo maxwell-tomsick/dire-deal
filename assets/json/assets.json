@@ -1,5 +1,44 @@
 {
   "textures": {
+    "Bide TimeFlip": {
+      "file": "textures/cardflips/card-bidetime-spritesheet.png"
+    },
+    "SlashFlip": {
+      "file": "textures/cardflips/card-slash-spritesheet.png"
+    },
+    "GuardFlip": {
+      "file": "textures/cardflips/card-guard-spritesheet.png"
+    },
+    "GrabFlip": {
+      "file": "textures/cardflips/card-grab-spritesheet.png"
+    },
+    "GrappledFlip": {
+      "file": "textures/cardflips/card-grappled-spritesheet.png"
+    },
+    "ExposedFlip": {
+      "file": "textures/cardflips/card-exposed-spritesheet.png"
+    },
+    "StaggeredFlip": {
+      "file": "textures/cardflips/card-staggered-spritesheet.png"
+    },
+    "StunnedFlip": {
+      "file": "textures/cardflips/card-stunned-spritesheet.png"
+    },
+    "WoundedFlip": {
+      "file": "textures/cardflips/card-wounded-spritesheet.png"
+    },
+    "BlindedFlip": {
+      "file": "textures/cardflips/card-blinded-spritesheet.png"
+    },
+    "CrushedFlip": {
+      "file": "textures/cardflips/card-crushed-spritesheet.png"
+    },
+    "ImpaledFlip": {
+      "file": "textures/cardflips/card-impaled-spritesheet.png"
+    },
+    "IncapacitatedFlip": {
+      "file": "textures/cardflips/card-incapacitated-spritesheet.png"
+    },
     "background": {
       "file": "textures/background-with-box-and-border.jpg",
       "minfilter": "linear",
@@ -14,6 +53,9 @@
       "file": "textures/enemy-thug.png",
       "minfilter": "linear",
       "magfilter": "linear"
+    },
+    "enemyIdle": {
+      "file": "textures/sprite_thug_idle.png"
     },
     "enemyLabel": {
       "file": "textures/enemy-label.png",
@@ -429,6 +471,35 @@
         "type": "Anchored"
       },
       "children": {
+          "currCard": {
+              "type"   : "Button",
+              "data"   : {
+                  "anchor"   : [0.5,0.5],
+                  "upnode"  : "up",
+                  "visible":false
+              },
+              "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "bottom"
+              },
+              "format"    : {
+                  "type"  : "Anchored"
+              },
+              "children": {
+                  "up" : {
+                      "type"   : "NinePatch",
+                      "data"   : {
+                          "texture": "slash",
+                          "scale": 0.43,
+                          "anchor": [ 0.5, 0.5 ]
+                      },
+                      "layout" : {
+                          "x_anchor": "center",
+                          "y_anchor": "middle"
+                      }
+                  }
+              }
+          },
         "action": {
           "type": "TextField",
           "data": {
@@ -543,7 +614,8 @@
             "type": "NinePatch",
             "data": {
                 "texture": "enemy",
-                "scale": 0.67
+                "scale": 0.67,
+                "visible": false
             },
             "layout": {
                 "x_anchor": "left",
