@@ -538,6 +538,7 @@ void GameScene::update(float timestep) {
                     _nextDeck = {};
                     _movement = 9;
                } else {
+                   _goon->setVisible(false);
                     _deckNode->setVisible(false);
                     _currEvent->setText("YOU DIED!");
                     _currEvent->setVisible(true);

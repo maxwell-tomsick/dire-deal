@@ -216,6 +216,7 @@ public:
     
     Card getCard(const int id);
 
+
     /**
      * Converts a resource vector into a string representation for displaying.
      * 
