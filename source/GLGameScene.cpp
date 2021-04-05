@@ -128,8 +128,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currentDeck.pop_back();
      //_currentDeck.printDeck();
      
-    _blueSound = _assets->get<Sound>("laser");
-    _redSound = _assets->get<Sound>("fusion");
      auto cardBackTexture1 = _assets->get<Texture>("cardBack1");
      auto cardBackTexture2 = _assets->get<Texture>("cardBack2");
      
@@ -163,8 +161,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      addChild(_currentFlip);
      addChild(_shuffleFlip);
      _currentBurn = std::make_shared<scene2::AnimationNode>();
-     _currentBurn->initWithFilmstrip(assets->get<Texture>("cardBurn"), 5, 6, 27);
-     _currentBurn->setScale(3.2);
+     _currentBurn->initWithFilmstrip(assets->get<Texture>("SlashBurn"), 8, 11, 88);
+     _currentBurn->setScale(1.3f);
      _currentBurn->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
      _currentBurn->setFrame(0);
      _currentBurn->setVisible(false);
@@ -538,7 +536,7 @@ void GameScene::update(float timestep) {
                     _nextDeck = {};
                     _movement = 9;
                } else {
-                   _goon->setVisible(false);
+                    _goon->setVisible(false);
                     _deckNode->setVisible(false);
                     _currEvent->setText("YOU DIED!");
                     _currEvent->setVisible(true);
@@ -924,6 +922,8 @@ void GameScene::buttonPress(const int r){
           _movement = 8;
 #ifndef CU_TOUCH_SCREEN
           _currentBurn->setPosition(_deckNode->screenToNodeCoords(_mouse->pointerPosition()) + _deckNode->getOffset());
+          string burnTexture = _currentCard.getText() + "Burn";
+          _currentBurn->setTexture(_assets->get<Texture>(burnTexture));
 #endif
           _currentBurn->setVisible(true);
      } else {
@@ -1086,6 +1086,8 @@ void GameScene::touchEnded(const cugl::Vec2& pos) {
      } else {
           if (_burn->containsScreen(pos)) {
                _currentBurn->setPosition(_deckNode->screenToNodeCoords(pos) + _deckNode->getOffset());
+               string burnTexture = _currentCard.getText() + "Burn";
+               _currentBurn->setTexture(_assets->get<Texture>(burnTexture));
                buttonPress(-1);
           }
           _deckNode->setDrag(false);

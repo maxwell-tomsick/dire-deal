@@ -1,7 +1,67 @@
 {
   "textures": {
-      "cardBurn": {
-        "file": "textures/crushed_card_burn_spritesheet.png",
+      "Bide TimeBurn": {
+        "file": "textures/cardburns/bidetime_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "SlashBurn": {
+        "file": "textures/cardburns/slash_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "GuardBurn": {
+        "file": "textures/cardburns/guard_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "GrabBurn": {
+        "file": "textures/cardburns/grab_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "GrappledBurn": {
+        "file": "textures/cardburns/grappled_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "ExposedBurn": {
+        "file": "textures/cardburns/exposed_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "StaggeredBurn": {
+        "file": "textures/cardburns/staggered_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "StunnedBurn": {
+        "file": "textures/cardburns/stunned_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "WoundedBurn": {
+        "file": "textures/cardburns/wounded_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "BlindedBurn": {
+        "file": "textures/cardburns/blinded_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "CrushedBurn": {
+        "file": "textures/cardburns/crushed_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "ImpaledBurn": {
+        "file": "textures/cardburns/impaled_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "ImncapacitatedBurn": {
+        "file": "textures/cardburns/incapacitated_burn.png",
         "minfilter": "linear",
         "magfilter": "linear"
       },
@@ -93,16 +153,6 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
-    "photon": {
-      "file": "textures/photon.png",
-      "minfilter": "linear",
-      "magfilter": "linear"
-    },
-    "box": {
-      "file": "textures/background-box-overlay.jpg",
-      "minfilter": "linear",
-      "magfilter": "linear"
-    },
     "cardFront": {
       "file": "textures/card_template.png",
       "minfilter": "linear",
@@ -115,21 +165,6 @@
     },
     "cardBack2": {
       "file": "textures/card_back_3_v3.png",
-      "minfilter": "linear",
-      "magfilter": "linear"
-    },
-    "ship": {
-      "file": "textures/ships.png",
-      "minfilter": "linear",
-      "magfilter": "linear"
-    },
-    "target": {
-      "file": "textures/target.png",
-      "minfilter": "linear",
-      "magfilter": "linear"
-    },
-    "redb": {
-      "file": "textures/red.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -157,13 +192,6 @@
       "file": "textures/responses/response-5.png",
       "minfilter": "linear",
       "magfilter": "linear"
-    },
-    "redss": {
-      "file": "textures/red-small.png",
-      "minfilter": "linear",
-      "magfilter": "linear",
-      "wrapS": "clamp",
-      "wrapT": "clamp"
     },
     "glow1": {
       "file": "textures/responses/response-1-glow-overlay.png",
@@ -287,16 +315,6 @@
     "response2": "widgets/response2.json",
     "response3": "widgets/response3.json",
     "burn": "widgets/burn.json"
-  },
-  "sounds": {
-    "fusion": {
-      "type": "sample",
-      "file": "sounds/fusion.ogg"
-    },
-    "laser": {
-      "type": "sample",
-      "file": "sounds/laser.ogg"
-    }
   },
   "fonts": {
     "felt": {
