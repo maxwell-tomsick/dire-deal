@@ -111,6 +111,7 @@ protected:
     std::shared_ptr<cugl::scene2::AnimationNode> _shuffleFlip;
     std::shared_ptr<cugl::scene2::AnimationNode> _currentFlip;
     std::shared_ptr<cugl::scene2::AnimationNode> _enemyIdle;
+    std::shared_ptr<cugl::scene2::AnimationNode> _currentBurn;
     int _cardBack;
     
     int _responseId1;
@@ -132,7 +133,7 @@ protected:
     cugl::Mouse* _mouse;
     bool _keepCards; // true when trying to select response with insufficient resources
     bool _win;
-
+    bool _doBurn;
 
 public:
 #pragma mark -

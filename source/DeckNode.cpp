@@ -18,17 +18,17 @@ void DeckNode::draw(const std::shared_ptr<cugl::SpriteBatch>& batch,
     trans.scale(0.43f);
     int width = _dimen.width;
     int height = _dimen.height;
-    trans.translate(width * 0.52f, height * 0.29f, 0);
+    trans.translate(width * 0.52f, height * 0.5f, 0);
     for (int i = 0; i < _size; i++){
         batch->draw(_backTexture,tint,origin,trans * transform);
         trans.translate(0,height * 0.0125f,0);
     }
     Mat4 transf;
-    transf.scale(0.25f);
-    transf.translate(width * 0.48f, height * 0.81f, 0);
+    transf.scale(0.25f + _scaler);
+    transf.translate(width * 0.48f+ _offset2.x, height+ _offset2.y, 0);
     for (int i = 0; i < _nextSize; i++){
         batch->draw(_backTexture,tint,origin,transf * transform);
-        transf.translate(width * 0.0125f,0,0);
+        transf.translate(width * _hoffset,height * _voffset ,0);
     }
     if (_drag){
         Mat4 tr;

@@ -22,6 +22,10 @@ private:
     bool _drag;
     cugl::Vec2 _currCardPos;
     cugl::Vec2 _offset;
+    float _hoffset;
+    float _voffset;
+    float _scaler;
+    cugl::Vec2 _offset2;
     
 public:
     DeckNode() : SceneNode() {}
@@ -82,6 +86,49 @@ public:
     
     void setOffset(cugl::Vec2 pos){
         _offset = pos;
+    }
+    
+    cugl::Vec2 getOffset(){
+        return _offset;
+    }
+    
+    void setHOffset(float h){
+        _hoffset = h;
+    }
+    
+    float getHOffset(){
+        return _hoffset;
+    }
+    
+    void setScaler(float s){
+        _scaler = s;
+    }
+    
+    float getScaler(){
+        return _scaler;
+    }
+    
+    void setVOffset(float v){
+        _voffset = v;
+    }
+    
+    float getVOffset(){
+        return _voffset;
+    }
+    
+    void setOffsetVector(cugl::Vec2 v){
+        _offset2 = v;
+    }
+    
+    cugl::Vec2 getOffsetVector(){
+        return _offset2;
+    }
+    
+    void reset(){
+        _hoffset = 0.0125f;
+        _voffset = 0;
+        _scaler = 0;
+        _offset2 = cugl::Vec2(0,0);
     }
 };
 

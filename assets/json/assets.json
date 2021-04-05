@@ -1,5 +1,10 @@
 {
   "textures": {
+      "cardBurn": {
+        "file": "textures/crushed_card_burn_spritesheet.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
     "Bide TimeFlip": {
       "file": "textures/cardflips/card-bidetime-spritesheet.png",
       "minfilter": "linear",
@@ -352,7 +357,7 @@
                 "layout": {
                     "x_anchor": "left",
                     "y_anchor": "bottom",
-                    "y_offset": 0.29,
+                    "y_offset": 0.5,
                     "x_offset": 0.52
                 }
             },
