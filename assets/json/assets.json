@@ -1,37 +1,59 @@
 {
   "textures": {
     "background": {
-      "file": "textures/background-with-box-and-border.jpg"
+      "file": "textures/background-with-box-and-border.jpg",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "cardHolder": {
-      "file": "textures/card-holder.png"
+      "file": "textures/card-holder.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "enemy": {
-      "file": "textures/enemy-thug.png"
+      "file": "textures/enemy-thug.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "enemyLabel": {
-      "file": "textures/enemy-label.png"
+      "file": "textures/enemy-label.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "photon": {
-      "file": "textures/photon.png"
+      "file": "textures/photon.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "box": {
-      "file": "textures/background-box-overlay.jpg"
+      "file": "textures/background-box-overlay.jpg",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "cardFront": {
-      "file": "textures/card_template.png"
+      "file": "textures/card_template.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "cardBack1": {
-      "file": "textures/card_back_3_v2.png"
+      "file": "textures/card_back_3_v2.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "cardBack2": {
-      "file": "textures/card_back_3_v3.png"
+      "file": "textures/card_back_3_v3.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "ship": {
-      "file": "textures/ships.png"
+      "file": "textures/ships.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "target": {
-      "file": "textures/target.png"
+      "file": "textures/target.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "redb": {
       "file": "textures/red.png",
@@ -39,19 +61,29 @@
       "magfilter": "linear"
     },
     "response1": {
-      "file": "textures/responses/response-1.png"
+      "file": "textures/responses/response-1.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "response2": {
-      "file": "textures/responses/response-2.png"
+      "file": "textures/responses/response-2.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "response3": {
-      "file": "textures/responses/response-3.png"
+      "file": "textures/responses/response-3.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "response4": {
-      "file": "textures/responses/response-4.png"
+      "file": "textures/responses/response-4.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "response5": {
-      "file": "textures/responses/response-5.png"
+      "file": "textures/responses/response-5.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "redss": {
       "file": "textures/red-small.png",
@@ -61,73 +93,119 @@
       "wrapT": "clamp"
     },
     "glow1": {
-      "file": "textures/responses/response-1-glow-overlay.png"
+      "file": "textures/responses/response-1-glow-overlay.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "glow2": {
-      "file": "textures/responses/response-2-glow-overlay.png"
+      "file": "textures/responses/response-2-glow-overlay.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "glow3": {
-      "file": "textures/responses/response-3-glow-overlay.png"
+      "file": "textures/responses/response-3-glow-overlay.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "glow4": {
-      "file": "textures/responses/response-4-glow-overlay.png"
+      "file": "textures/responses/response-4-glow-overlay.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "glow5": {
-      "file": "textures/responses/response-5-glow-overlay.png"
+      "file": "textures/responses/response-5-glow-overlay.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "sword": {
-      "file": "textures/sword.png"
+      "file": "textures/sword.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "bidetime": {
-      "file": "textures/cards/bidetime.png"
+      "file": "textures/cards/bidetime.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "blinded": {
-      "file": "textures/cards/blinded.png"
+      "file": "textures/cards/blinded.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "crushed": {
-      "file": "textures/cards/crushed.png"
+      "file": "textures/cards/crushed.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "exposed": {
-      "file": "textures/cards/exposed.png"
+      "file": "textures/cards/exposed.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "grab": {
-      "file": "textures/cards/grab.png"
+      "file": "textures/cards/grab.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "grappled": {
-      "file": "textures/cards/grappled.png"
+      "file": "textures/cards/grappled.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "guard": {
-      "file": "textures/cards/guard.png"
+      "file": "textures/cards/guard.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "impaled": {
-      "file": "textures/cards/impaled.png"
+      "file": "textures/cards/impaled.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "incapacitated": {
-      "file": "textures/cards/incapacitated.png"
+      "file": "textures/cards/incapacitated.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "slash": {
-      "file": "textures/cards/slash.png"
+      "file": "textures/cards/slash.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "staggered": {
-      "file": "textures/cards/staggered.png"
+      "file": "textures/cards/staggered.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "stunned": {
-      "file": "textures/cards/stunned.png"
+      "file": "textures/cards/stunned.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "wounded": {
-      "file": "textures/cards/wounded.png"
+      "file": "textures/cards/wounded.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "blade": {
-      "file": "textures/resources/resource-blade.png"
+      "file": "textures/resources/resource-blade.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "brawn": {
-      "file": "textures/resources/resource-brawn.png"
+      "file": "textures/resources/resource-brawn.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "lunge": {
-      "file": "textures/resources/resource-lunge.png"
+      "file": "textures/resources/resource-lunge.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "flourish": {
-      "file": "textures/resources/resource-flourish.png"
+      "file": "textures/resources/resource-flourish.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     }
   },
   "widgets": {
