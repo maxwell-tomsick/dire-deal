@@ -207,7 +207,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currCardButton =std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_currCard"));
      _displayCardBurnTexture =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount"));
      _displayCardBurnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount_amount"));
-     _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.33f + 0.0125f * _currentDeck.size()));
+     _goon = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_goon"));
+     _goon->setPosition(_dimen.width * 0.52f, _dimen.height * (0.564f + 0.0125f * _currentDeck.size()));
+     _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.29f + 0.0125f * _currentDeck.size()));
      bool success = true;
 #ifndef CU_TOUCH_SCREEN
      success = Input::activate<Keyboard>();
@@ -217,7 +219,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currCardButton->addListener([=](const std::string& name, bool down) {
           if ( (_movement == 0) & down & _act == 60) {
                Vec2 pos = _deckNode->screenToNodeCoords(_mouse->pointerPosition());
-               _deckNode->setOffset(Vec2(_dimen.width * 0.52f - pos.x, _dimen.height * (0.33f + 0.0125f * _currentDeck.size()) - pos.y));
+               _deckNode->setOffset(Vec2(_dimen.width * 0.52f - pos.x, _dimen.height * (0.29f + 0.0125f * _currentDeck.size()) - pos.y));
                _deckNode->setDrag(true);
           }
           if ( (_movement == 5) & down) {
@@ -455,8 +457,12 @@ void GameScene::update(float timestep) {
           _displayCard->setVisible(false);
           _shuffleFlip->setPosition(_shuffleFlip->getPosition() + _vel);
           _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.21)/40.0f);
-          if (_shuffleFlip->getPosition().x <= _dimen.width * 0.52f ||
-              _shuffleFlip->getPosition().x + _vel.x < _dimen.width * 0.52f){
+          bool stop = _shuffleFlip->getPosition().x <= _dimen.width * 0.52f ||
+          _shuffleFlip->getPosition().x + _vel.x < _dimen.width * 0.52f;
+#ifndef CU_TOUCH_SCREEN
+          stop = _shuffleFlip->getPosition().x <= _dimen.width * 0.52f;
+#endif
+          if (stop){
                _movement = 2;
           }
      } else if (_movement == 2){
@@ -464,7 +470,7 @@ void GameScene::update(float timestep) {
           frame -= 1;
           if (frame <= 0){
                _movement = 3;
-               _vel =Vec2(_dimen.width * (0.48f + 0.0125f * (_nextDeck.size()-1)), _dimen.height * 0.775f) - _shuffleFlip->getPosition();
+               _vel =Vec2(_dimen.width * (0.48f + 0.0125f * (_nextDeck.size()-1)), _dimen.height * 0.81f) - _shuffleFlip->getPosition();
                _vel.scale(0.025f);
                _scl = 0.3546f;
                //frame = _shuffleFlip->getSize() - 1;
@@ -473,7 +479,7 @@ void GameScene::update(float timestep) {
      } else if (_movement == 3){
           _shuffleFlip->setPosition(_shuffleFlip->getPosition() + _vel);
           _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.61f)/40.0f);
-          if (_shuffleFlip->getPosition().y >= _dimen.height * 0.775f || _shuffleFlip->getPosition().y + _vel.y > _dimen.height * 0.775f){
+          if (_shuffleFlip->getPosition().y >= _dimen.height * 0.81f || _shuffleFlip->getPosition().y + _vel.y > _dimen.height * 0.81f){
                _movement = 4;
           }
      }
@@ -518,6 +524,7 @@ void GameScene::update(float timestep) {
           }
           _currentCard = _cards[_currentDeck.back()];
           _currentDeck.pop_back();
+          _goon->setPosition(_dimen.width * 0.52f, _dimen.height * (0.564f + 0.0125f * (_currentDeck.size())));
           _currEvent->setText(_currentCard.getText());
           _deckNode->setFrontTexture(_currentCard.getTexture());
           string flipTexture = _currentCard.getText() + "Flip";
@@ -547,8 +554,8 @@ void GameScene::update(float timestep) {
           // _responseId1=twoResponses[0];
           // _responseId2=twoResponses[1];
           // _responseId3=_currentCard.getGuaranteed();
-          _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.33f + 0.0125f * _currentDeck.size()));
-          _currentFlip->setPosition(_dimen.width * 0.52f, _dimen.height * (0.33f + 0.0125f * _currentDeck.size()));
+          _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.29f + 0.0125f * _currentDeck.size()));
+          _currentFlip->setPosition(_dimen.width * 0.52f, _dimen.height * (0.29f + 0.0125f * _currentDeck.size()));
           _deckNode->setSize(int(_currentDeck.size()));
           _deckNode->setNextSize(int(_nextDeck.size()));
           //_deckNode->setDrawFront(1);
@@ -835,6 +842,11 @@ void GameScene::buttonPress(const int r){
      _response1->setVisible(false);
      _response2->setVisible(false);
      _response3->setVisible(false);
+     if (_currentDeck.size() == 0){
+          _goon->setPosition(_dimen.width * 0.52f, _dimen.height * (0.564f));
+     } else {
+          _goon->setPosition(_dimen.width * 0.52f, _dimen.height * (0.564f + 0.0125f * (_currentDeck.size() -1)));
+     }
      _deckNode->setDrawFront(2);
      _scl = 0.61f;
      if (!_win) {
@@ -846,7 +858,7 @@ void GameScene::buttonPress(const int r){
      } else {
           _movement = 1;
      }
-     _vel = Vec2(_dimen.width * 0.52f, _dimen.height * (0.33f + 0.0125f * _currentDeck.size())) - _shuffleFlip->getPosition();
+     _vel = Vec2(_dimen.width * 0.52f, _dimen.height * (0.29f + 0.0125f * _currentDeck.size())) - _shuffleFlip->getPosition();
      _vel.scale(0.025f);
      _keepCards = false;
      /*
@@ -961,7 +973,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
      if (_currCardButton->containsScreen(pos)) {
           //_deckNode->setOffset(Vec2(_dimen.width * 0.52f - pos.x, _dimen.height * (0.33f + 0.0125f * _currentDeck.size()) + pos.y));
           Vec2 posi = _deckNode->screenToNodeCoords(pos);
-          _deckNode->setOffset(Vec2(_dimen.width * 0.52f - posi.x, _dimen.height * (0.33f + 0.0125f * _currentDeck.size()) - posi.y));
+          _deckNode->setOffset(Vec2(_dimen.width * 0.52f - posi.x, _dimen.height * (0.29f + 0.0125f * _currentDeck.size()) - posi.y));
           _deckNode->setDrag(true);
           _deckNode->setCurrCardPos(posi);
      }
