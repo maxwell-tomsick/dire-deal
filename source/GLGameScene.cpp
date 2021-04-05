@@ -516,6 +516,7 @@ void GameScene::update(float timestep) {
                      std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
                     _nextDeck = {};
                } else {
+                   _goon->setVisible(false);
                     _deckNode->setVisible(false);
                     _currEvent->setText("YOU DIED!");
                     _currEvent->setVisible(true);

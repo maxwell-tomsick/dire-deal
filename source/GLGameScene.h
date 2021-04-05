@@ -215,6 +215,10 @@ public:
     
     Card getCard(const int id);
 
+    bool getComplete() {
+        return _complete;
+    }
+
     /**
      * Converts a resource vector into a string representation for displaying.
      * 
