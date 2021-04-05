@@ -113,6 +113,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currentDeck = {};
      _nextDeck = {};
      _keepCards = false;
+     _win = false;
      _movement = 0;
      _currentDeck.push_back(0);
      _currentDeck.push_back(0);
@@ -439,6 +440,12 @@ void GameScene::update(float timestep) {
      }
       _shuffleFlip->setFrame(frame);
       */
+     if (_win) {
+         _deckNode->setVisible(false);
+         _currEvent->setText("YOU WIN!");
+         _currEvent->setVisible(true);
+         return;
+     }
      if (_deckNode->getDrag()){
 #ifndef CU_TOUCH_SCREEN
           _deckNode->setCurrCardPos(_deckNode->screenToNodeCoords(_mouse->pointerPosition()));
@@ -804,9 +811,8 @@ void GameScene::buttonPress(const int r){
                setResources();
           }
           if (response.getWin()){
-               _currEvent->setText("YOU WIN!");
-               _currEvent->setVisible(true);
-               return;
+               _win = true;
+               _displayCard->setVisible(false);
           } else if (response.getLose()){
                _currEvent->setText("YOU DIED!");
                _currEvent->setVisible(true);
@@ -826,17 +832,15 @@ void GameScene::buttonPress(const int r){
      //_nextDeck.printDeck();
      //CULog("Current Deck:");
      //_currentDeck.printDeck();
-     //_response1->setDown(false);
-     //_response1->deactivate();
-     //_response2->deactivate();
-     //_response3->deactivate();
      _response1->setVisible(false);
      _response2->setVisible(false);
      _response3->setVisible(false);
      _deckNode->setDrawFront(2);
      _scl = 0.61f;
-     _shuffleFlip->setScale(0.21f);
-     _shuffleFlip->setVisible(true);
+     if (!_win) {
+         _shuffleFlip->setScale(0.21f);
+         _shuffleFlip->setVisible(true);
+     }
      if (r== -1){
           _movement = 4;
      } else {

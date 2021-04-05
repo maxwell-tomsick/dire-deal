@@ -1,43 +1,69 @@
 {
   "textures": {
     "Bide TimeFlip": {
-      "file": "textures/cardflips/card-bidetime-spritesheet.png"
+      "file": "textures/cardflips/card-bidetime-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "SlashFlip": {
-      "file": "textures/cardflips/card-slash-spritesheet.png"
+      "file": "textures/cardflips/card-slash-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "GuardFlip": {
-      "file": "textures/cardflips/card-guard-spritesheet.png"
+      "file": "textures/cardflips/card-guard-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "GrabFlip": {
-      "file": "textures/cardflips/card-grab-spritesheet.png"
+      "file": "textures/cardflips/card-grab-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "GrappledFlip": {
-      "file": "textures/cardflips/card-grappled-spritesheet.png"
+      "file": "textures/cardflips/card-grappled-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "ExposedFlip": {
-      "file": "textures/cardflips/card-exposed-spritesheet.png"
+      "file": "textures/cardflips/card-exposed-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "StaggeredFlip": {
-      "file": "textures/cardflips/card-staggered-spritesheet.png"
+      "file": "textures/cardflips/card-staggered-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "StunnedFlip": {
-      "file": "textures/cardflips/card-stunned-spritesheet.png"
+      "file": "textures/cardflips/card-stunned-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "WoundedFlip": {
-      "file": "textures/cardflips/card-wounded-spritesheet.png"
+      "file": "textures/cardflips/card-wounded-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "BlindedFlip": {
-      "file": "textures/cardflips/card-blinded-spritesheet.png"
+      "file": "textures/cardflips/card-blinded-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "CrushedFlip": {
-      "file": "textures/cardflips/card-crushed-spritesheet.png"
+      "file": "textures/cardflips/card-crushed-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "ImpaledFlip": {
-      "file": "textures/cardflips/card-impaled-spritesheet.png"
+      "file": "textures/cardflips/card-impaled-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "IncapacitatedFlip": {
-      "file": "textures/cardflips/card-incapacitated-spritesheet.png"
+      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "background": {
       "file": "textures/background-with-box-and-border.jpg",

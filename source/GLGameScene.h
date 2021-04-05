@@ -130,6 +130,7 @@ protected:
     int _act = 0;
     cugl::Mouse* _mouse;
     bool _keepCards; // true when trying to select response with insufficient resources
+    bool _win;
 
 
 public:
