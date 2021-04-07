@@ -130,6 +130,7 @@ public:
         _scaler = 0;
         _offset2 = cugl::Vec2(0,0);
     }
+
 };
 
 #endif /* DeckNode_h */

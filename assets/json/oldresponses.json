@@ -653,7 +653,7 @@
       "reward": 0,
       "addToDeck": [12],
       "delete": [],
-      "win": false,
+      "win": true,
       "lose":false
     },
     "Impaled1":{
@@ -701,7 +701,7 @@
       "reward": 0,
       "addToDeck": [12],
       "delete": [],
-      "win": false,
+      "win": true,
       "lose":false
     },
     "Win":{

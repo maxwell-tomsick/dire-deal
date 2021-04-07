@@ -366,7 +366,7 @@
         },
         "children":{
             "cardHolder": {
-                "type": "Image",
+                "type": "NinePatch",
                 "data": {
                     "texture": "cardHolder",
                     "scale": 0.675,
@@ -637,7 +637,7 @@
                     "layout": {
                       "x_anchor": "center",
                       "y_anchor": "middle",
-                      "y_offset": 0.1,
+                      "y_offset": 0.15,
                       "x_offset": -0.31
                     }
                 },
@@ -645,7 +645,7 @@
                     "type": "Label",
                     "data": {
                       "font": "sans6",
-                      "text": "THUG",
+                      "text": "WOLVEN THUG",
                       "foreground": [ 207,166,93,255 ],
                       "halign": "left",
                       "valign": "true middle",
@@ -654,7 +654,7 @@
                     "layout": {
                       "x_anchor": "center",
                       "y_anchor": "middle",
-                      "y_offset": -0.1
+                      "y_offset": -0.2
                     }
                 }
             }

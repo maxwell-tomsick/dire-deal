@@ -98,6 +98,7 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _flourishText;
     std::shared_ptr<cugl::scene2::Label> _lungeText;
     std::shared_ptr<cugl::scene2::Label> _goon;
+    std::shared_ptr<cugl::scene2::Label> _goonNumber;
     
     std::shared_ptr<cugl::scene2::Button> _burn;
     std::shared_ptr<cugl::scene2::Label> _burnText;
@@ -112,6 +113,7 @@ protected:
     std::shared_ptr<cugl::scene2::AnimationNode> _currentFlip;
     std::shared_ptr<cugl::scene2::AnimationNode> _enemyIdle;
     std::shared_ptr<cugl::scene2::AnimationNode> _currentBurn;
+    std::shared_ptr<cugl::scene2::NinePatch> _cardHolder;
     int _cardBack;
     
     int _responseId1;
@@ -136,6 +138,7 @@ protected:
     bool _keepCards; // true when trying to select response with insufficient resources
     bool _win;
     bool _doBurn;
+    int _fight;
 
 public:
 #pragma mark -

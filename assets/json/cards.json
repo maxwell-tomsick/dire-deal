@@ -4,7 +4,7 @@
       "id": 0,
       "name": "Slash",
       "texture": "slash",
-      "reactions": [0,1,2,3],
+      "reactions": [0,1],
       "resources": {
           "blade": 0,
           "flourish": 0,

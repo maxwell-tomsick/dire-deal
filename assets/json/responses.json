@@ -15,7 +15,7 @@
         3
       ],
       "delete": [],
-      "win": false,
+      "win": true,
       "lose": false
     },
     "Guard": {
