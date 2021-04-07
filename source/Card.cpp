@@ -29,11 +29,25 @@ void Card::allocate(const string text, const int id, const std::shared_ptr<cugl:
     _level = level;
 }
 
-std::vector<int> Card::getThreeRandomResponses(){
-    std::vector<unsigned int> indices(_responses.size());
-    std::iota(indices.begin(), indices.end(), 0);
-    std::random_device rd;
-    std::mt19937 g(rd());
-    std::shuffle(indices.begin(), indices.end(), g);
-    return {_responses[indices[0]],_responses[indices[1]],_responses[indices[2]]};
+std::vector<int> Card::getRandomResponses(){
+    if (_responses.size() >= 3) {
+        std::vector<unsigned int> indices(_responses.size());
+        std::iota(indices.begin(), indices.end(), 0);
+        std::random_device rd;
+        std::mt19937 g(rd());
+        std::shuffle(indices.begin(), indices.end(), g);
+        return {_responses[indices[0]],_responses[indices[1]],_responses[indices[2]]};
+    } else {
+        std::vector<unsigned int> indices(_responses.size());
+        std::iota(indices.begin(), indices.end(), 0);
+        std::random_device rd;
+        std::mt19937 g(rd());
+        std::shuffle(indices.begin(), indices.end(), g);
+        std::vector<int> returnedResponses;
+        for (int i = 0; i < _responses.size(); i++){
+            returnedResponses.push_back(_responses[indices[i]]);
+        }
+
+        return returnedResponses;
+    }
 }

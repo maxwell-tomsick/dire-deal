@@ -1,73 +1,9 @@
 {
-  "Responses":{
-    "Slash1":{
-      "id": 0,
-      "name":"Block",
-      "description":"Shuffle GRAB into the Deck",
-      "cost": {
-        "blade": 0,
-        "flourish": 0,
-        "lunge": 0,
-        "brawn": 1
-      },
-      "reward": 0,
-      "addToDeck": [3],
-      "delete": [],
-      "win": false,
-      "lose":false
-    },
-    "Slash2":{
-      "id": 1,
-      "name":"Side Step",
-      "description":"Shuffle BIDE TIME into the Deck",
-      "cost": {
-        "blade": 0,
-        "flourish": 0,
-        "lunge": 1,
-        "brawn": 0
-      },
-      "reward": 0,
-      "addToDeck": [1],
-      "delete": [],
-      "win": false,
-      "lose":false
-    },
-    "Slash3":{
-      "id": 2,
-      "name":"Parry",
-      "description":"Shuffle GUARD into the Deck",
-      "cost": {
-        "blade": 0,
-        "flourish": 1,
-        "lunge": 0,
-        "brawn": 0
-      },
-      "reward": 0,
-      "addToDeck": [2],
-      "delete": [],
-      "win": false,
-      "lose":false
-    },
-    "Slash4":{
-      "id": 3,
-      "name":"Roll Behind",
-      "description":"Shuffle EXPOSED into the Deck",
-      "cost": {
-        "blade": 0,
-        "flourish": 0,
-        "lunge": 2,
-        "brawn": 0
-      },
-      "reward": 0,
-      "addToDeck": [5],
-      "delete": [],
-      "win": false,
-      "lose":false
-    },
-    "BideTime1":{
+  "Responses": {
+    "Lunge": {
       "id": 4,
-      "name":"Lunge",
-      "description":"Shuffle GRAB into the Deck",
+      "name": "Lunge",
+      "description": "Shuffle GRAB into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -75,15 +11,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [3],
+      "addToDeck": [
+        3
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "BideTime2":{
+    "Guard": {
       "id": 5,
-      "name":"Guard",
-      "description":"Shuffle SLASH into the Deck",
+      "name": "Guard",
+      "description": "Shuffle SLASH into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -91,15 +29,17 @@
         "brawn": 1
       },
       "reward": 0,
-      "addToDeck": [0],
+      "addToDeck": [
+        0
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "BideTime3":{
+    "Stab": {
       "id": 6,
-      "name":"Stab",
-      "description":"Shuffle GUARD into the Deck",
+      "name": "Stab",
+      "description": "Shuffle GUARD into the Deck",
       "cost": {
         "blade": 1,
         "flourish": 0,
@@ -107,15 +47,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [2],
+      "addToDeck": [
+        2
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "BideTime4":{
+    "Feint": {
       "id": 7,
-      "name":"Feint",
-      "description":"Shuffle STAGGERED into the Deck",
+      "name": "Feint",
+      "description": "Shuffle STAGGERED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 1,
@@ -123,15 +65,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [6],
+      "addToDeck": [
+        6
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Guard1":{
+    "Strike": {
       "id": 8,
-      "name":"Strike",
-      "description":"Shuffle GRAB into the Deck",
+      "name": "Strike",
+      "description": "Shuffle GRAB into the Deck",
       "cost": {
         "blade": 1,
         "flourish": 0,
@@ -139,15 +83,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [3],
+      "addToDeck": [
+        3
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Guard2":{
+    "Probe": {
       "id": 9,
-      "name":"Probe",
-      "description":"Shuffle SLASH into the Deck",
+      "name": "Probe",
+      "description": "Shuffle SLASH into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 1,
@@ -155,15 +101,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [0],
+      "addToDeck": [
+        0
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Guard3":{
+    "Jump Back": {
       "id": 10,
-      "name":"Jump Back",
-      "description":"Shuffle BIDE TIME into the Deck",
+      "name": "Jump Back",
+      "description": "Shuffle BIDE TIME into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -171,15 +119,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [1],
+      "addToDeck": [
+        1
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Guard4":{
+    "Grasp": {
       "id": 11,
-      "name":"Grab",
-      "description":"Shuffle GRAPPLED into the Deck",
+      "name": "Grasp",
+      "description": "Shuffle GRAPPLED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 2,
@@ -187,15 +137,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [4],
+      "addToDeck": [
+        4
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Grab1":{
+    "Break Free": {
       "id": 12,
-      "name":"Break Free",
-      "description":"Shuffle BIDE TIME into the Deck",
+      "name": "Break Free",
+      "description": "Shuffle BIDE TIME into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -203,15 +155,17 @@
         "brawn": 1
       },
       "reward": 0,
-      "addToDeck": [1],
+      "addToDeck": [
+        1
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Grab2":{
+    "Twist": {
       "id": 13,
-      "name":"Twist",
-      "description":"Shuffle GRAPPLED into the Deck",
+      "name": "Twist",
+      "description": "Shuffle GRAPPLED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 2,
@@ -219,15 +173,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [4],
+      "addToDeck": [
+        4
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Grab3":{
+    "Kick": {
       "id": 14,
-      "name":"Kick",
-      "description":"Shuffle STAGGERED into the Deck",
+      "name": "Kick",
+      "description": "Shuffle STAGGERED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -235,15 +191,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [6],
+      "addToDeck": [
+        6
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Grappled1":{
+    "Firm Grip": {
       "id": 15,
-      "name":"Firm Grip",
-      "description":"Shuffle GRAPPLED into the Deck",
+      "name": "Firm Grip",
+      "description": "Shuffle GRAPPLED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 2,
@@ -251,15 +209,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [4],
+      "addToDeck": [
+        4
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Grappled2":{
+    "Wrench": {
       "id": 16,
-      "name":"Wrench",
-      "description":"Shuffle STAGGERED into the Deck",
+      "name": "Wrench",
+      "description": "Shuffle STAGGERED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -267,15 +227,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [6],
+      "addToDeck": [
+        6
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Grappled3":{
+    "Face Grab": {
       "id": 17,
-      "name":"Face Grab",
-      "description":"Shuffle BLINDED into the Deck",
+      "name": "Face Grab",
+      "description": "Shuffle BLINDED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 3,
@@ -283,15 +245,17 @@
         "brawn": 1
       },
       "reward": 0,
-      "addToDeck": [9],
+      "addToDeck": [
+        9
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Grappled4":{
+    "Headbutt": {
       "id": 18,
-      "name":"Headbutt",
-      "description":"Shuffle STUNNED into the Deck",
+      "name": "Headbutt",
+      "description": "Shuffle STUNNED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -299,15 +263,17 @@
         "brawn": 2
       },
       "reward": 0,
-      "addToDeck": [7],
+      "addToDeck": [
+        7
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Exposed1":{
+    "Evade": {
       "id": 19,
-      "name":"Evade",
-      "description":"Shuffle EXPOSED into the Deck",
+      "name": "Evade",
+      "description": "Shuffle EXPOSED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -315,15 +281,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [5],
+      "addToDeck": [
+        5
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Exposed2":{
+    "Whack": {
       "id": 20,
-      "name":"Whack",
-      "description":"Shuffle STUNNED into the Deck",
+      "name": "Whack",
+      "description": "Shuffle STUNNED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -331,15 +299,17 @@
         "brawn": 1
       },
       "reward": 0,
-      "addToDeck": [7],
+      "addToDeck": [
+        7
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Exposed3":{
+    "Cut Above the Eyes": {
       "id": 21,
-      "name":"Cut Above the Eyes",
-      "description":"Shuffle BLINDED into the Deck",
+      "name": "Cut Above the Eyes",
+      "description": "Shuffle BLINDED into the Deck",
       "cost": {
         "blade": 1,
         "flourish": 3,
@@ -347,15 +317,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [9],
+      "addToDeck": [
+        9
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Exposed4":{
+    "Backstab": {
       "id": 22,
-      "name":"Backstab",
-      "description":"Shuffle WOUNDED into the Deck",
+      "name": "Backstab",
+      "description": "Shuffle WOUNDED into the Deck",
       "cost": {
         "blade": 1,
         "flourish": 0,
@@ -363,15 +335,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [8],
+      "addToDeck": [
+        8
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Staggered1":{
+    "Juke": {
       "id": 23,
-      "name":"Juke",
-      "description":"Shuffle EXPOSED into the Deck",
+      "name": "Juke",
+      "description": "Shuffle EXPOSED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 1,
@@ -379,15 +353,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [5],
+      "addToDeck": [
+        5
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Staggered2":{
+    "Tackle": {
       "id": 24,
-      "name":"Tackle",
-      "description":"Shuffle GRAPPLED into the Deck",
+      "name": "Tackle",
+      "description": "Shuffle GRAPPLED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -395,15 +371,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [4],
+      "addToDeck": [
+        4
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Staggered3":{
+    "Blunt Strike": {
       "id": 25,
-      "name":"Blunt Strike",
-      "description":"Shuffle STUNNED into the Deck",
+      "name": "Blunt Strike",
+      "description": "Shuffle STUNNED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 3,
@@ -411,15 +389,17 @@
         "brawn": 1
       },
       "reward": 0,
-      "addToDeck": [7],
+      "addToDeck": [
+        7
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Staggered4":{
+    "Quick Slice": {
       "id": 26,
-      "name":"Quick Slice",
-      "description":"Shuffle WOUNDED into the Deck",
+      "name": "Quick Slice",
+      "description": "Shuffle WOUNDED into the Deck",
       "cost": {
         "blade": 1,
         "flourish": 3,
@@ -427,15 +407,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [8],
+      "addToDeck": [
+        8
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Stunned1":{
+    "Eye Stab": {
       "id": 27,
-      "name":"Eye Stab",
-      "description":"Shuffle BLINDED into the Deck",
+      "name": "Eye Stab",
+      "description": "Shuffle BLINDED into the Deck",
       "cost": {
         "blade": 1,
         "flourish": 3,
@@ -443,15 +425,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [9],
+      "addToDeck": [
+        9
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Stunned2":{
+    "Shield Bash": {
       "id": 28,
-      "name":"Shield Bash",
-      "description":"Shuffle WOUNDED into the Deck",
+      "name": "Shield Bash",
+      "description": "Shuffle WOUNDED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -459,15 +443,17 @@
         "brawn": 4
       },
       "reward": 0,
-      "addToDeck": [8],
+      "addToDeck": [
+        8
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Stunned3":{
+    "Run Through": {
       "id": 29,
-      "name":"Run Through",
-      "description":"Shuffle IMPALED into the Deck",
+      "name": "Run Through",
+      "description": "Shuffle IMPALED into the Deck",
       "cost": {
         "blade": 2,
         "flourish": 0,
@@ -475,15 +461,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [11],
+      "addToDeck": [
+        11
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Stunned4":{
+    "Suplex": {
       "id": 30,
-      "name":"Suplex",
-      "description":"Shuffle CRUSHED into the Deck",
+      "name": "Suplex",
+      "description": "Shuffle CRUSHED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -491,15 +479,17 @@
         "brawn": 2
       },
       "reward": 0,
-      "addToDeck": [10],
+      "addToDeck": [
+        10
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Wounded1":{
+    "Wound": {
       "id": 31,
-      "name":"Wound",
-      "description":"Shuffle WOUNDED into the Deck",
+      "name": "Wound",
+      "description": "Shuffle WOUNDED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 3,
@@ -507,15 +497,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [8],
+      "addToDeck": [
+        8
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Wounded2":{
+    "Hammer Kick": {
       "id": 32,
-      "name":"Hammer Kick",
-      "description":"Shuffle CRUSHED into the Deck",
+      "name": "Hammer Kick",
+      "description": "Shuffle CRUSHED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -523,15 +515,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [10],
+      "addToDeck": [
+        10
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Wounded3":{
+    "Pierce": {
       "id": 33,
-      "name":"Pierce",
-      "description":"Shuffle IMPALED into the Deck",
+      "name": "Pierce",
+      "description": "Shuffle IMPALED into the Deck",
       "cost": {
         "blade": 2,
         "flourish": 4,
@@ -539,15 +533,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [11],
+      "addToDeck": [
+        11
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Blinded1":{
+    "Discombobulate": {
       "id": 34,
-      "name":"Discombobulate",
-      "description":"Shuffle BLINDED into the Deck",
+      "name": "Discombobulate",
+      "description": "Shuffle BLINDED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -555,15 +551,17 @@
         "brawn": 4
       },
       "reward": 0,
-      "addToDeck": [9],
+      "addToDeck": [
+        9
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Blinded2":{
+    "Mangle": {
       "id": 35,
-      "name":"Mangle",
-      "description":"Shuffle WOUNDED into the Deck",
+      "name": "Mangle",
+      "description": "Shuffle WOUNDED into the Deck",
       "cost": {
         "blade": 2,
         "flourish": 0,
@@ -571,15 +569,17 @@
         "brawn": 2
       },
       "reward": 0,
-      "addToDeck": [8],
+      "addToDeck": [
+        8
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Blinded3":{
+    "Impale": {
       "id": 36,
-      "name":"Impale",
-      "description":"Shuffle IMPALED into the Deck",
+      "name": "Impale",
+      "description": "Shuffle IMPALED into the Deck",
       "cost": {
         "blade": 6,
         "flourish": 0,
@@ -587,15 +587,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [11],
+      "addToDeck": [
+        11
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Blinded4":{
+    "Ankle Slash": {
       "id": 37,
-      "name":"Ankle Slash",
-      "description":"Shuffle CRUSHED into the Deck",
+      "name": "Ankle Slash",
+      "description": "Shuffle CRUSHED into the Deck",
       "cost": {
         "blade": 6,
         "flourish": 0,
@@ -603,15 +605,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [10],
+      "addToDeck": [
+        10
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Crushed1":{
+    "Skewer": {
       "id": 38,
-      "name":"Skewer",
-      "description":"Shuffle IMPALED into the Deck",
+      "name": "Skewer",
+      "description": "Shuffle IMPALED into the Deck",
       "cost": {
         "blade": 2,
         "flourish": 2,
@@ -619,15 +623,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [11],
+      "addToDeck": [
+        11
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Crushed2":{
+    "Boot Stomp": {
       "id": 39,
-      "name":"Boot Stomp",
-      "description":"Shuffle CRUSHED into the Deck",
+      "name": "Boot Stomp",
+      "description": "Shuffle CRUSHED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -635,15 +641,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [10],
+      "addToDeck": [
+        10
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Crushed3":{
+    "Pulverize": {
       "id": 40,
-      "name":"Pulverize",
-      "description":"Shuffle INCAPACITATED into the Deck",
+      "name": "Pulverize",
+      "description": "Shuffle INCAPACITATED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -651,15 +659,17 @@
         "brawn": 8
       },
       "reward": 0,
-      "addToDeck": [12],
+      "addToDeck": [
+        12
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Impaled1":{
+    "Perforate": {
       "id": 41,
-      "name":"Perforate",
-      "description":"Shuffle IMPALED into the Deck",
+      "name": "Perforate",
+      "description": "Shuffle IMPALED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 6,
@@ -667,15 +677,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [11],
+      "addToDeck": [
+        11
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Impaled2":{
+    "Shield Crush": {
       "id": 42,
-      "name":"Shield Crush",
-      "description":"Shuffle CRUSHED into the Deck",
+      "name": "Shield Crush",
+      "description": "Shuffle CRUSHED into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -683,15 +695,17 @@
         "brawn": 6
       },
       "reward": 0,
-      "addToDeck": [10],
+      "addToDeck": [
+        10
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Impaled3":{
+    "Decapitate": {
       "id": 43,
-      "name":"Decapitate",
-      "description":"Shuffle INCAPACITATED into the Deck",
+      "name": "Decapitate",
+      "description": "Shuffle INCAPACITATED into the Deck",
       "cost": {
         "blade": 8,
         "flourish": 0,
@@ -699,15 +713,17 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [12],
+      "addToDeck": [
+        12
+      ],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose": false
     },
-    "Win":{
+    "Win": {
       "id": 44,
-      "name":"Win",
-      "description":"Win the fight",
+      "name": "Win",
+      "description": "Win the fight",
       "cost": {
         "heavy": 0,
         "flourish": 0,
@@ -715,10 +731,84 @@
         "block": 0
       },
       "reward": 0,
-      "addToDeck": [12],
+      "addToDeck": [
+        12
+      ],
       "delete": [],
       "win": true,
-      "lose":false
+      "lose": false
+    },
+    "Parry": {
+      "id": 2,
+      "name": "Parry",
+      "description": "Shuffle GUARD into the Deck",
+      "cost": {
+        "blade": 1,
+        "flourish": 1,
+        "lunge": 1,
+        "brawn": 1
+      },
+      "reward": 0,
+      "addToDeck": [
+        2
+      ],
+      "delete": [],
+      "win": false,
+      "lose": false
+    },
+    "Roll Behind": {
+      "id": 3,
+      "name": "Roll Behind",
+      "description": "Shuffle EXPOSED into the Deck",
+      "cost": {
+        "blade": 1,
+        "flourish": 1,
+        "lunge": 2,
+        "brawn": 1
+      },
+      "reward": 0,
+      "addToDeck": [
+        5
+      ],
+      "delete": [],
+      "win": false,
+      "lose": false
+    },
+    "Side Step": {
+      "id": 1,
+      "name": "Side Step",
+      "description": "Shuffle BIDE TIME into the Deck",
+      "cost": {
+        "blade": 1,
+        "flourish": 1,
+        "lunge": 1,
+        "brawn": 1
+      },
+      "reward": 0,
+      "addToDeck": [
+        1
+      ],
+      "delete": [],
+      "win": false,
+      "lose": false
+    },
+    "Block": {
+      "id": 0,
+      "name": "Block",
+      "description": "Shuffle GRAB into the Deck",
+      "cost": {
+        "blade": 1,
+        "flourish": 1,
+        "lunge": 0,
+        "brawn": 1
+      },
+      "reward": 0,
+      "addToDeck": [
+        3
+      ],
+      "delete": [],
+      "win": false,
+      "lose": false
     }
   }
 }

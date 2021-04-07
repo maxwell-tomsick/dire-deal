@@ -45,7 +45,7 @@ public:
         return _texture;
     }
     
-    std::vector<int> getThreeRandomResponses();
+    std::vector<int> getRandomResponses();
     
 
 };

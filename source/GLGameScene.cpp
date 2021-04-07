@@ -116,6 +116,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _win = false;
      _doBurn = false;
      _movement = 5;
+     _display2 = true;
+     _display3 = true;
      _currentDeck.push_back(0);
      _currentDeck.push_back(0);
      _currentDeck.push_back(1);
@@ -287,75 +289,76 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
        this->touchesMovedCB(event, previous, focus);
      });
 #endif
-     /*
-    _response1->addListener([=](const std::string& name, bool down) {
-         if ( (!(_pause > 1)) & down) {
-              _response1->setPosition(0, 0);
-         } else if ( (!(_pause > 1)) & !down & _response1->containsScreen(mouse->pointerPosition())) {
-             buttonPress(0);
-         } else {
-              _response1->setVisible(true);
-         }
-        });
-    _response2->addListener([=](const std::string& name, bool down) {
-        if ( (!(_pause > 1)) & !down & _response2->containsScreen(mouse->pointerPosition())) {
-             buttonPress(1);
-        }
-        });
-    _response3->addListener([=](const std::string& name, bool down) {
-        if ( (!(_pause > 1)) & !down & _response3->containsScreen(mouse->pointerPosition())) {
-             buttonPress(2);
-        }
-        });
-     _burn->addListener([=](const std::string& name, bool down) {
-         if ( (!(_pause > 1)) & !down & _burn->containsScreen(mouse->pointerPosition())) {
-              buttonPress(-1);
-         }
-         });
-*/
-     //_response1->setText(_currentCard.getResponse(0).getText());
-     
     if (_active) {
          _burn->activate();
     }
-    // _field->addTypeListener([=](const std::string& name, const std::string& value) {
-    //     CULog("Change to %s",value.c_str());
-    // });
-    // _field->addExitListener([=](const std::string& name, const std::string& value) {
-    //     CULog("Finish to %s",value.c_str());
-    //     _result->setText(strcat("Result: ","asdF"));
-    // });
      _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
      setBurnText();
      //_burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
     //_resourceCount->setText(resourceString(_resources));
-    std::vector<int> threeResponses = _currentCard.getThreeRandomResponses();
-    _responseId1=threeResponses[0];
-    _responseId2=threeResponses[1];
-     _responseId3=threeResponses[2];
-    _responseText1->setText(_responses[_responseId1].getText());
-    //_responseCost1->setText(resourceString(_responses[_responseId1].getResources()));
-    //_responseOutcome1->setText(_responses[_responseId1].getOutcome());
-    _responseText2->setText(_responses[_responseId2].getText());
-    //_responseCost2->setText(resourceString(_responses[_responseId2].getResources()));
-    //_responseOutcome2->setText(_responses[_responseId2].getOutcome());
-    _responseText3->setText(_responses[_responseId3].getText());
-    //_responseCost3->setText(resourceString(_responses[_responseId3].getResources()));
-    //_responseOutcome3->setText(_responses[_responseId3].getOutcome());
-    _responseId1=threeResponses[0];
-    _responseId2=threeResponses[1];
-     _responseId3=threeResponses[2];
-     responseUpdate(_responseId1, 1);
-     responseUpdate(_responseId2, 2);
-     responseUpdate(_responseId3, 3);
-     _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
-     _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
-     _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
-     setResources();
-    // if (_active) {
-    //     _field->activate();
-    // }
+    std::vector<int> displayedResponses = _currentCard.getRandomResponses();
+    if(displayedResponses.size() >= 3){
+          _responseId1=displayedResponses[0];
+          _responseId2=displayedResponses[1];
+          _responseId3=displayedResponses[2];
+          _responseText1->setText(_responses[_responseId1].getText());
+          _responseText2->setText(_responses[_responseId2].getText());
+          _responseText3->setText(_responses[_responseId3].getText());
+          _responseId1=displayedResponses[0];
+          _responseId2=displayedResponses[1];
+          _responseId3=displayedResponses[2];
+          responseUpdate(_responseId1, 1);
+          responseUpdate(_responseId2, 2);
+          responseUpdate(_responseId3, 3);
+          _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+          _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+          _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+          _display2 = true;
+          _display3 = true;
+          setResources();     
+    } else if (displayedResponses.size() == 2){
+          _responseId1=displayedResponses[0];
+          _responseId2=displayedResponses[1];
+          _responseId3=displayedResponses[0];
+          _responseText1->setText(_responses[_responseId1].getText());
+          _responseText2->setText(_responses[_responseId2].getText());
+          _responseText3->setText(_responses[_responseId1].getText());
+          _responseId1=displayedResponses[0];
+          _responseId2=displayedResponses[1];
+          _responseId3=displayedResponses[0];
+          responseUpdate(_responseId1, 1);
+          responseUpdate(_responseId2, 2);
+          responseUpdate(_responseId3, 1);
+          _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+          _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+          _responseCard3->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+          _response3->setVisible(false);
+          _display2 = true;
+          _display3 = false;
+          setResources(); 
+    } else {
+         _responseId1=displayedResponses[0];
+          _responseId2=displayedResponses[0];
+          _responseId3=displayedResponses[0];
+          _responseText1->setText(_responses[_responseId1].getText());
+          _responseText2->setText(_responses[_responseId1].getText());
+          _responseText3->setText(_responses[_responseId1].getText());
+          _responseId1=displayedResponses[0];
+          _responseId2=displayedResponses[0];
+          _responseId3=displayedResponses[0];
+          responseUpdate(_responseId1, 1);
+          responseUpdate(_responseId2, 1);
+          responseUpdate(_responseId3, 1);
+          _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+          _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+          _responseCard3->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+          _response2->setVisible(false);
+          _response3->setVisible(false);
+          _display2 = false;
+          _display3 = false;
+          setResources(); 
+    }
     return success;
 }
 
@@ -554,35 +557,50 @@ void GameScene::update(float timestep) {
           _currentFlip->setTexture(_assets->get<Texture>(flipTexture));
           setBurnText();
           if (!_keepCards) {
-              std::vector<int> threeResponses = _currentCard.getThreeRandomResponses();
-              _responseId1 = threeResponses[0];
-              _responseId2 = threeResponses[1];
-               _responseId3 = threeResponses[2];
+               std::vector<int> displayedResponses = _currentCard.getRandomResponses();
+               if (displayedResponses.size() > 2) {
+                    _responseId1 = displayedResponses[0];
+                    _responseId2 = displayedResponses[1];
+                    _responseId3 = displayedResponses[2];
+                    _display2 = true;
+                    _display3 = true;
+               } else if (displayedResponses.size() > 1) {
+                    _responseId1 = displayedResponses[0];
+                    _responseId2 = displayedResponses[1];
+                    _display2 = true;
+                    _display3 = false;
+               } else {
+                    _responseId1 = displayedResponses[0];
+                    _display2 = false;
+                    _display3 = false;
+               }
           }
           _responseText1->setText(_responses[_responseId1].getText());
-          //_responseCost1->setText(resourceString(_responses[_responseId1].getResources()));
-          //_responseOutcome1->setText(_responses[_responseId1].getOutcome());
-          _responseText2->setText(_responses[_responseId2].getText());
-          //_responseCost2->setText(resourceString(_responses[_responseId2].getResources()));
-          //_responseOutcome2->setText(_responses[_responseId2].getOutcome());
-          _responseText3->setText(_responses[_responseId3].getText());
-          //_responseCost3->setText(resourceString(_responses[_responseId3].getResources()));
-          //_responseOutcome3->setText(_responses[_responseId3].getOutcome());
+          if (_display2){
+               _responseText2->setText(_responses[_responseId2].getText());
+          }
+          if (_display3){
+               _responseText3->setText(_responses[_responseId3].getText());
+          }
           responseUpdate(_responseId1, 1);
-          responseUpdate(_responseId2, 2);
-          responseUpdate(_responseId3, 3);
+          if (_display2){
+               responseUpdate(_responseId2, 2);
+          }
+          if (_display3){
+               responseUpdate(_responseId3, 3);
+          }
           _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
-          _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
-          _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
-          // _responseId1=twoResponses[0];
-          // _responseId2=twoResponses[1];
-          // _responseId3=_currentCard.getGuaranteed();
+          if (_display2){
+               _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+          }
+          if (_display3){
+               _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+          }
           _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
           _currentFlip->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
           if (_movement == 4){
                _deckNode->setSize(int(_currentDeck.size()));
                _deckNode->setNextSize(int(_nextDeck.size()));
-               //_deckNode->setDrawFront(1);
                _currentFlip->setVisible(true);
                _movement = 5;
           }
@@ -599,8 +617,8 @@ void GameScene::update(float timestep) {
      }
      if (_movement == 7){
           _response1->setVisible(true);
-          _response2->setVisible(true);
-          _response3->setVisible(true);
+          _response2->setVisible(_display2);
+          _response3->setVisible(_display3);
           _deckNode->setDrawFront(0);
           _movement = 0;
      }
@@ -670,63 +688,6 @@ void GameScene::update(float timestep) {
           }
      }
 #endif
-    // Read the keyboard for each controller.
-    /*_redController.readInput();
-    _blueController.readInput();
-     _redShip->setBounds(getBounds());
-     _blueShip->setBounds(getBounds());
-     if (_redController.didPressJump() && _redShip->getJumping() == 0) {
-          _redShip->jump();
-     }
-     if (_blueController.didPressJump() && _blueShip->getJumping() == 0) {
-          _blueShip->jump();
-     }
-    // Move the photons forward, and add new ones if necessary.
-    if (_redController.didPressFire() && firePhoton(_redShip)) {
-        // The last argument is force=true.  It makes sure only one instance plays.
-        AudioEngine::get()->play("redfire", _redSound, false, 1.0f, true);
-    }
-    if (_blueController.didPressFire() && firePhoton(_blueShip)) {
-        // The last argument is force=true.  It makes sure only one instance plays.
-        AudioEngine::get()->play("bluefire", _blueSound, false, 1.0f, true);
-    }
-
-     _redShip->fall();
-     if (_redShip->getJumping() == 0){
-          _redShip->setScale(1);
-     } else {
-          float j = _redShip->getJumping();
-          float scale = -(j * j)/640.0f + j/8.0f;
-          _redShip->setScale(max(scale, 1.0f));
-     }
-     _blueShip->fall();
-     if (_blueShip->getJumping() == 0){
-          _blueShip->setScale(1);
-     } else {
-          float j = _blueShip->getJumping();
-          float scale = -(j * j)/640.0f + j/8.0f;
-          _blueShip->setScale(max(scale, 1.0f));
-     }
-     
-    // Move the ships and photons forward (ignoring collisions)
-    _redShip->move( _redController.getForward(),  _redController.getTurn());
-    _blueShip->move(_blueController.getForward(), _blueController.getTurn());
-    _photons->update();
-
-    // Change the target position.
-    _redShip->acquireTarget(_blueShip);
-    _blueShip->acquireTarget(_redShip);
-
-    // This call handles BOTH ships.
-    collisions::checkForCollision(_blueShip, _redShip, getBounds());
-    collisions::checkForCollision(_blueShip, _photons, getBounds());
-    collisions::checkForCollision(_redShip,  _photons, getBounds());
-    collisions::checkInBounds(_blueShip, getBounds());
-    collisions::checkInBounds(_redShip, getBounds());
-    collisions::checkInBounds(_photons, getBounds());
-     */
-     
-
 
 }
 
@@ -772,59 +733,6 @@ bool GameScene::firePhoton(const std::shared_ptr<Ship>& ship) {
     return false;
 }
 
-/*
-Card GameScene::getCard(const int id){
-     Card newCard;
-     Response firstResponse;
-     Response secondResponse;
-     Response thirdResponse;
-     switch(id){
-          case 1:
-               firstResponse.allocate("Roll Behind", "Shuffle in Enemy Exposed", {0,0,0,0}, {2}, false, false);
-               secondResponse.allocate("Block", "Shuffle in Enemy Attacks", {0,0,0,0}, {1}, false, false);
-               thirdResponse.allocate("Take Hit", "Shuffle in Player Wounded and Enemy Attacks", {0,0,0,0}, {1,5}, false, false);
-               newCard.allocate("Enemy Attacks", 1, "",{0, 0, 0});
-               break;
-          case 2:
-               firstResponse.allocate("Stab", "Shuffle in Enemy Attacks and Enemy Wounded", {0,0,0,0}, {1,3}, false, false);
-               secondResponse.allocate("Heavy Slash", "Shuffle in Enemy Maimed and Enemy Enraged", {0,0,0,0}, {4,7}, false, false);
-               thirdResponse.allocate("Maintain Spacing", "Shuiffle in Enemy Attacks", {0,0,0,0}, {1}, false, false);
-               newCard.allocate("Enemy Exposed", 2, "",{0, 0, 0});
-               break;
-          case 3:
-               firstResponse.allocate("Maim", "Shuffle in Enemy Maimed", {0,0,0,0}, {4}, false, false);
-               secondResponse.allocate("Slash", "Shuffle in Exposed and Enemy Wounded", {0,0,0,0}, {2,3}, false, false);
-               thirdResponse.allocate("Tease", "Shuffle in 2 Enemy Wounded and Enemy Enraged", {0,0,0,0}, {3,3,7}, false, false);
-               newCard.allocate("Enemy Wounded", 3, "",{firstResponse, secondResponse, thirdResponse});
-               break;
-          case 4:
-               firstResponse.allocate("Execute", "Win", {0,0,0,0}, {}, true, false);
-               secondResponse.allocate("Crush", "Win", {0,0,0,0}, {}, true, false);
-               thirdResponse.allocate("Taunt", "Shuffle in 2 Enemy Maimed and Enemy Enraged", {0,0,0,0}, {4,4,7}, false, false);
-               newCard.allocate("Enemy Maimed", 4, "",{firstResponse, secondResponse, thirdResponse});
-               break;
-          case 5:
-               firstResponse.allocate("Disengage", "Shuffle in Enemy Attacks and Player Wounded", {0,0,0,0}, {1,5}, false, false);
-               secondResponse.allocate("Save Strength", "Shuffle in Player Maimed", {0,0,0,0}, {6}, false, false);
-               thirdResponse.allocate("Stand", "Shuffle in Enemy Attacks and Enemy Enranged", {0,0,0,0}, {2,7}, false, false);
-               newCard.allocate("Player Wounded", 5, "",{firstResponse, secondResponse, thirdResponse});
-               break;
-          case 6:
-               firstResponse.allocate("Concede", "Lose", {0,0,0,0}, {}, false, true);
-               secondResponse.allocate("Concede", "Lose", {0,0,0,0}, {}, false, true);
-               thirdResponse.allocate("Concede", "Lose", {0,0,0,0}, {}, false, true);
-               newCard.allocate("Player Maimed", 6, "",{firstResponse, secondResponse, thirdResponse});
-               break;
-          case 7:
-               firstResponse.allocate("Almost Dodge", "Shuffle in Enemy Exposed and Player Wounded", {0,0,0,0}, {2,5}, false, false);
-               secondResponse.allocate("Eye for an Eye", "Shuffle in Player Wounded and Enemy Wounded", {0,0,0,0}, {3,6}, false, false);
-               thirdResponse.allocate("Double Down", "Shuffle in 2 Enemy Enranged", {0,0,0,0}, {7,7}, false, false);
-               newCard.allocate("Enemy Enraged", 7, "",{firstResponse, secondResponse, thirdResponse});
-               break;
-     }
-     return newCard;
-}
-*/
 
 string GameScene::resourceString(std::vector<int> resources) {
     std::stringstream s;
@@ -932,13 +840,6 @@ void GameScene::buttonPress(const int r){
      _vel = Vec2(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size())) - _shuffleFlip->getPosition();
      _vel.scale(0.025f);
      _keepCards = false;
-     /*
-     _currentCard = _currentDeck.draw();
-     _currEvent->setText(_currentCard.getText());
-     _responseText1->setText(_currentCard.getResponse(0).getText());
-     _responseText2->setText(_currentCard.getResponse(1).getText());
-     _responseText3->setText(_currentCard.getResponse(2).getText());
-      */
 }
 
 void GameScene::setResources(){

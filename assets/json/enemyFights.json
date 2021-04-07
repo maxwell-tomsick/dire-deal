@@ -1,17 +1,17 @@
 {
-  [
+  "Fights":[
 
     {
       "enemyName": "Wolven Thug",
-      "enemyTexture": "wolvenThug.jpg",
+      "enemyTexture": "wolvenThug",
       "deck": [ 1, 2 ],
-      "background": "background.jpg"
+      "background": "background"
     },
     {
       "enemyName": "Cave Slime",
-      "enemyTexture": "caveSlime.jpg",
+      "enemyTexture": "caveSlime",
       "deck": [ 1, 2 ],
-      "background": "cave.jpg"
+      "background": "cave"
     }
   ]
 }

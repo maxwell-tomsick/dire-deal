@@ -127,6 +127,8 @@ protected:
     cugl::Vec2 _prev;
     float _scl;
     int _movement;
+    bool _display2;
+    bool _display3;
     Card _currentCard;
     bool _flipSwitch;
     int _act = 0;
