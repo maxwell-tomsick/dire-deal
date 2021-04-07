@@ -409,7 +409,6 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
-     _fight += 1;
      _goonNumber->setText("Goon " + std::to_string(_fight + 1) + ":");
      string cardstring = "json/cards.json";
      if (_fight == 1){
@@ -878,6 +877,21 @@ void GameScene::buttonPress(const int r){
      _vel.scale(0.025f);
      _keepCards = false;
      if (win){
+          _fight += 1;
+          if (_fight > 3){
+               _deckNode->setVisible(false);
+              _displayCard->setVisible(false);
+              _goon->setVisible(false);
+              _currEvent->setText("YOU WIN!");
+              _currEvent->setVisible(true);
+               _currentFlip->setVisible(false);
+               _cardHolder->setVisible(false);
+               _enemyIdle->setVisible(false);
+               _shuffleFlip->setVisible(false);
+               _currEvent->setColor(Color4::WHITE);
+               _movement = 11;
+              return;
+          }
            reset();
           _shuffleFlip->setVisible(false);
           _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
@@ -936,18 +950,6 @@ void GameScene::buttonPress(const int r){
           _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
           _currentFlip->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
           _currentFlip->setVisible(true);
-          if (_fight > 3){
-               _deckNode->setVisible(false);
-              _displayCard->setVisible(false);
-              _goon->setVisible(false);
-              _currEvent->setText("YOU WIN!");
-              _currEvent->setVisible(true);
-               _currentFlip->setVisible(false);
-               _cardHolder->setVisible(false);
-               _enemyIdle->setVisible(false);
-               _movement = 11;
-              return;
-          }
      }
 }
 
