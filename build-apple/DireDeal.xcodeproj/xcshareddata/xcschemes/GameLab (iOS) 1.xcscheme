@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EB74548B1D74D75C002FBAE6"
-               BuildableName = "GameLab (iOS).app"
-               BlueprintName = "GameLab (iOS)"
-               ReferencedContainer = "container:GameLab.xcodeproj">
+               BuildableName = "DireDeal (iOS).app"
+               BlueprintName = "DireDeal (iOS)"
+               ReferencedContainer = "container:DireDeal.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EB74548B1D74D75C002FBAE6"
-            BuildableName = "GameLab (iOS).app"
-            BlueprintName = "GameLab (iOS)"
-            ReferencedContainer = "container:GameLab.xcodeproj">
+            BuildableName = "DireDeal (iOS).app"
+            BlueprintName = "DireDeal (iOS)"
+            ReferencedContainer = "container:DireDeal.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EB74548B1D74D75C002FBAE6"
-            BuildableName = "GameLab (iOS).app"
-            BlueprintName = "GameLab (iOS)"
-            ReferencedContainer = "container:GameLab.xcodeproj">
+            BuildableName = "DireDeal (iOS).app"
+            BlueprintName = "DireDeal (iOS)"
+            ReferencedContainer = "container:DireDeal.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -165,12 +165,12 @@
 		508B035F25EC2A83000D29CE /* GLPhotonNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLPhotonNode.cpp; sourceTree = "<group>"; };
 		508B038C25ED56A5000D29CE /* GLPhoton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLPhoton.h; sourceTree = "<group>"; };
 		508B038D25ED5720000D29CE /* GLPhoton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLPhoton.cpp; sourceTree = "<group>"; };
-		EB0FF5FC2016EF4F00517030 /* GameLab (Sim).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameLab (Sim).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB0FF5FC2016EF4F00517030 /* DireDeal (Sim).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DireDeal (Sim).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2BE9B41D74952A002FE78B /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		EB2BE9BA1D7498D2002FE78B /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
 		EB42669221F68F6900A9DE61 /* DeviceMargins.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceMargins.plist; sourceTree = "<group>"; };
 		EB4EB19D1E3404F3007BCF09 /* CUGL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CUGL.xcodeproj; path = "../cugl/build-apple/CUGL.xcodeproj"; sourceTree = "<group>"; };
-		EB74548C1D74D75C002FBAE6 /* GameLab (iOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameLab (iOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB74548C1D74D75C002FBAE6 /* DireDeal (iOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DireDeal (iOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB7454A61D74D846002FBAE6 /* iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iOS-Info.plist"; sourceTree = "<group>"; };
 		EB7454A71D74D846002FBAE6 /* iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iOS.xcassets; sourceTree = "<group>"; };
 		EB7454A81D74D846002FBAE6 /* Landscape.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Landscape.storyboard; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 		EBB8378325E59A8300401672 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
 		EBB837A025E5F41F00401672 /* GLCollisionController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLCollisionController.cpp; sourceTree = "<group>"; };
 		EBB837A125E5F41F00401672 /* GLCollisionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCollisionController.h; sourceTree = "<group>"; };
-		EBBF18911D74904A008E2001 /* GameLab (Mac).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameLab (Mac).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBBF18911D74904A008E2001 /* DireDeal (Mac).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DireDeal (Mac).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBBF189A1D74904A008E2001 /* Mac.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Mac.xcassets; sourceTree = "<group>"; };
 		EBBF189F1D74904A008E2001 /* Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mac-Info.plist"; sourceTree = "<group>"; };
 		EBFE7C041E19B496001007C2 /* json */ = {isa = PBXFileReference; lastKnownFileType = folder; path = json; sourceTree = "<group>"; };
@@ -384,9 +384,9 @@
 		EBBF18921D74904A008E2001 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EBBF18911D74904A008E2001 /* GameLab (Mac).app */,
-				EB74548C1D74D75C002FBAE6 /* GameLab (iOS).app */,
-				EB0FF5FC2016EF4F00517030 /* GameLab (Sim).app */,
+				EBBF18911D74904A008E2001 /* DireDeal (Mac).app */,
+				EB74548C1D74D75C002FBAE6 /* DireDeal (iOS).app */,
+				EB0FF5FC2016EF4F00517030 /* DireDeal (Sim).app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -445,9 +445,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EB0FF5FB2016EF4F00517030 /* GameLab (Sim) */ = {
+		EB0FF5FB2016EF4F00517030 /* DireDeal (Sim) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB0FF6162016EF4F00517030 /* Build configuration list for PBXNativeTarget "GameLab (Sim)" */;
+			buildConfigurationList = EB0FF6162016EF4F00517030 /* Build configuration list for PBXNativeTarget "DireDeal (Sim)" */;
 			buildPhases = (
 				EB0FF5F82016EF4F00517030 /* Sources */,
 				EB0FF5F92016EF4F00517030 /* Frameworks */,
@@ -457,14 +457,14 @@
 			);
 			dependencies = (
 			);
-			name = "GameLab (Sim)";
+			name = "DireDeal (Sim)";
 			productName = "HelloWorld (Sim)";
-			productReference = EB0FF5FC2016EF4F00517030 /* GameLab (Sim).app */;
+			productReference = EB0FF5FC2016EF4F00517030 /* DireDeal (Sim).app */;
 			productType = "com.apple.product-type.application";
 		};
-		EB74548B1D74D75C002FBAE6 /* GameLab (iOS) */ = {
+		EB74548B1D74D75C002FBAE6 /* DireDeal (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB7454A01D74D75C002FBAE6 /* Build configuration list for PBXNativeTarget "GameLab (iOS)" */;
+			buildConfigurationList = EB7454A01D74D75C002FBAE6 /* Build configuration list for PBXNativeTarget "DireDeal (iOS)" */;
 			buildPhases = (
 				EB7454881D74D75C002FBAE6 /* Sources */,
 				EB7454891D74D75C002FBAE6 /* Frameworks */,
@@ -474,14 +474,14 @@
 			);
 			dependencies = (
 			);
-			name = "GameLab (iOS)";
+			name = "DireDeal (iOS)";
 			productName = "HelloWorld (iOS)";
-			productReference = EB74548C1D74D75C002FBAE6 /* GameLab (iOS).app */;
+			productReference = EB74548C1D74D75C002FBAE6 /* DireDeal (iOS).app */;
 			productType = "com.apple.product-type.application";
 		};
-		EBBF18901D74904A008E2001 /* GameLab (Mac) */ = {
+		EBBF18901D74904A008E2001 /* DireDeal (Mac) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EBBF18A21D74904A008E2001 /* Build configuration list for PBXNativeTarget "GameLab (Mac)" */;
+			buildConfigurationList = EBBF18A21D74904A008E2001 /* Build configuration list for PBXNativeTarget "DireDeal (Mac)" */;
 			buildPhases = (
 				EBBF188D1D74904A008E2001 /* Sources */,
 				EBBF188E1D74904A008E2001 /* Frameworks */,
@@ -491,9 +491,9 @@
 			);
 			dependencies = (
 			);
-			name = "GameLab (Mac)";
+			name = "DireDeal (Mac)";
 			productName = "HelloWorld (Mac)";
-			productReference = EBBF18911D74904A008E2001 /* GameLab (Mac).app */;
+			productReference = EBBF18911D74904A008E2001 /* DireDeal (Mac).app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -522,7 +522,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EBBF188C1D74904A008E2001 /* Build configuration list for PBXProject "GameLab" */;
+			buildConfigurationList = EBBF188C1D74904A008E2001 /* Build configuration list for PBXProject "DireDeal" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -541,9 +541,9 @@
 			);
 			projectRoot = "";
 			targets = (
-				EBBF18901D74904A008E2001 /* GameLab (Mac) */,
-				EB74548B1D74D75C002FBAE6 /* GameLab (iOS) */,
-				EB0FF5FB2016EF4F00517030 /* GameLab (Sim) */,
+				EBBF18901D74904A008E2001 /* DireDeal (Mac) */,
+				EB74548B1D74D75C002FBAE6 /* DireDeal (iOS) */,
+				EB0FF5FB2016EF4F00517030 /* DireDeal (Sim) */,
 			);
 		};
 /* End PBXProject section */
@@ -716,6 +716,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(STATIC_LIB)";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.sim.GameLab;
+				PRODUCT_NAME = "DireDeal (Sim)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -747,6 +748,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(STATIC_LIB)";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.sim.GameLab;
+				PRODUCT_NAME = "DireDeal (Sim)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -771,6 +773,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.GameLab.Tomsick;
+				PRODUCT_NAME = "DireDeal (iOS)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -793,6 +796,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.GameLab.Tomsick;
+				PRODUCT_NAME = "DireDeal (iOS)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -929,6 +933,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.DireDeal;
+				PRODUCT_NAME = "DireDeal (Mac)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -945,6 +950,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.DireDeal;
+				PRODUCT_NAME = "DireDeal (Mac)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -952,7 +958,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EB0FF6162016EF4F00517030 /* Build configuration list for PBXNativeTarget "GameLab (Sim)" */ = {
+		EB0FF6162016EF4F00517030 /* Build configuration list for PBXNativeTarget "DireDeal (Sim)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB0FF60F2016EF4F00517030 /* Debug */,
@@ -961,7 +967,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EB7454A01D74D75C002FBAE6 /* Build configuration list for PBXNativeTarget "GameLab (iOS)" */ = {
+		EB7454A01D74D75C002FBAE6 /* Build configuration list for PBXNativeTarget "DireDeal (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB7454A11D74D75C002FBAE6 /* Debug */,
@@ -970,7 +976,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EBBF188C1D74904A008E2001 /* Build configuration list for PBXProject "GameLab" */ = {
+		EBBF188C1D74904A008E2001 /* Build configuration list for PBXProject "DireDeal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBBF18A01D74904A008E2001 /* Debug */,
@@ -979,7 +985,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EBBF18A21D74904A008E2001 /* Build configuration list for PBXNativeTarget "GameLab (Mac)" */ = {
+		EBBF18A21D74904A008E2001 /* Build configuration list for PBXNativeTarget "DireDeal (Mac)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBBF18A31D74904A008E2001 /* Debug */,
