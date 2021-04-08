@@ -28,7 +28,7 @@
 //  Version: 2/21/21
 
 // Include your application class
-#include "GLApp.h"
+#include "App.h"
 
 using namespace cugl;
 
@@ -47,7 +47,7 @@ int main(int argc, char * argv[]) {
     
     // Set the properties of your application
     app.setName("Dire Deal");
-    app.setOrganization("Catana Studios");
+    app.setOrganization("Catana Games");
     app.setHighDPI(true);
     app.setFPS(60.0f);
 

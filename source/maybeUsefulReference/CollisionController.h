@@ -21,11 +21,9 @@
 //  Based on original GameX Ship Demo by Rama C. Hoetzlein, 2002
 //  Version: 2/21/21
 //
-#ifndef __GL_COLLISION_CONTROLLER_H__
-#define __GL_COLLISION_CONTROLLER_H__
+#ifndef __COLLISION_CONTROLLER_H__
+#define __COLLISION_CONTROLLER_H__
 #include <cugl/cugl.h>
-#include "GLShip.h"
-#include "GLPhotonQueue.h"
 
 /**
  * Namespace of functions implementing simple game physics.
@@ -81,4 +79,4 @@ void checkInBounds(const std::shared_ptr<Ship>& ship, const cugl::Rect bounds);
 void checkInBounds(const std::shared_ptr<PhotonQueue>& photons, const cugl::Rect bounds);
 }
 
-#endif /* __GL_COLLISION_CONTROLLER_H__ */
+#endif /* __COLLISION_CONTROLLER_H__ */

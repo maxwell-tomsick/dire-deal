@@ -10,11 +10,11 @@
 //  Author: Walker White
 //  Version: 2/21/21
 //
-#ifndef __GL_APP_H__
-#define __GL_APP_H__
+#ifndef __APP_H__
+#define __APP_H__
 #include <cugl/cugl.h>
-#include "GLGameScene.h"
-#include "GLLoadingScene.h"
+#include "GameScene.h"
+#include "LoadingScene.h"
 
 /**
  * This class represents the application root for the ship demo.
@@ -133,4 +133,4 @@ public:
     virtual void draw() override;
 };
 
-#endif /* __GL_APP_H__ */
+#endif /* __APP_H__ */

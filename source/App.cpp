@@ -10,7 +10,7 @@
 //  Author: Walker White
 //  Version: 2/21/21
 //
-#include "GLApp.h"
+#include "App.h"
 
 using namespace cugl;
 

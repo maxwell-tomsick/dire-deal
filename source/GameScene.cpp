@@ -14,8 +14,7 @@
 #include <iostream>
 #include <sstream>
 
-#include "GLGameScene.h"
-#include "GLCollisionController.h"
+#include "GameScene.h"
 
 using namespace cugl;
 //using namespace std;
@@ -26,14 +25,6 @@ using namespace cugl;
 /** Regardless of logo, lock the height to this */
 #define SCENE_HEIGHT  720
 
-/** Number of rows in the ship image filmstrip */
-#define SHIP_ROWS   4
-/** Number of columns in this ship image filmstrip */
-#define SHIP_COLS   5
-/** Number of elements in this ship image filmstrip */
-#define SHIP_SIZE   18
-/** Maximum number of photons allowed on screen at a time. */
-#define MAX_PHOTONS 512
 /** The key for the event handlers */
 #define LISTENER_KEY        1
 #define SWIPE_LENGTH    50
@@ -72,8 +63,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("lab");
     scene->setContentSize(dimen);
     scene->doLayout(); // Repositions the HUD;
-    //scene->setAnchor(Vec2::ANCHOR_CENTER);
-     //scene->setAngle(M_PI_2);
+
      _fight = 0;
      _cards = {};
      _responses = {};
@@ -118,13 +108,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _display2 = true;
      _display3 = true;
      _currentDeck.push_back(0);
-     /*
-     _currentDeck.push_back(0);
-     _currentDeck.push_back(0);
-     _currentDeck.push_back(1);
-     _currentDeck.push_back(2);
-     _currentDeck.push_back(3);
-      */
      std::random_device rd;
      std::mt19937 g(rd());
       std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
@@ -173,32 +156,16 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      addChild(_currentBurn);
      
      
-    //reset();
 
-    //text field
-    // Size dimen = Application::get()->getDisplaySize();
-    // dimen *= SCENE_WIDTH/dimen.width; // Lock the game to a reasonable resolution
 
-    // auto layer = assets->get<scene2::SceneNode>("textfield");
-    // layer->setContentSize(dimen);
-    // layer->doLayout(); // This rearranges the children to fit the screen
-    // addChild(layer);
-
-    // _field  = std::dynamic_pointer_cast<scene2::TextField>(assets->get<scene2::SceneNode>("lab_action"));
     _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_currEvent"));
-    //_resourceCount = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_resourceCount"));
     _response1 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response1"));
     _responseText1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_label"));
     _responseCost1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_costs"));//
-    //_responseOutcome1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_outcome"));
     _response2 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response2"));
     _responseText2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_label"));
-    //_responseCost2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_costs"));
-    //_responseOutcome2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_outcome"));
     _response3 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response3"));
     _responseText3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_label"));
-    //_responseCost3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_costs"));
-    //_responseOutcome3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_outcome"));
      _responseTexture1 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response1_up"));
      _responseCard1 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response1_up_card"));
      _responseCard2 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_response2_up_card"));
@@ -503,14 +470,6 @@ void GameScene::update(float timestep) {
      if (_act < 60){
           _act ++;
      }
-     /*
-     int frame = _shuffleFlip->getFrame();
-     frame -= 1;
-     if (frame <= 0){
-          frame = _shuffleFlip->getSize() - 1;
-     }
-      _shuffleFlip->setFrame(frame);
-      */
      if (_deckNode->getDrag()){
 #ifndef CU_TOUCH_SCREEN
           _deckNode->setCurrCardPos(_deckNode->screenToNodeCoords(_mouse->pointerPosition()));
@@ -536,7 +495,6 @@ void GameScene::update(float timestep) {
                _vel =Vec2(_dimen.width * (0.48f + 0.0125f * (_nextDeck.size()-1)), _dimen.height) - _shuffleFlip->getPosition();
                _vel.scale(0.025f);
                _scl = 0.3546f;
-               //frame = _shuffleFlip->getSize() - 1;
           }
            _shuffleFlip->setFrame(frame);
      } else if (_movement == 3){
@@ -556,19 +514,15 @@ void GameScene::update(float timestep) {
           _shuffleFlip->setVisible(false);
           _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
           _currEvent->setColor(Color4::WHITE);
-          //_resourceCount->setVisible(true);
           _response1->setColor(Color4::WHITE);
           _responseText1->setForeground(Color4::BLACK);
           _responseText2->setForeground(Color4::BLACK);
           _responseText3->setForeground(Color4::BLACK);
           _response2->setColor(Color4::WHITE);
           _response3->setColor(Color4::WHITE);
-          //_burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
-          //_resourceCount->setText(resourceString(_resources));
           if (_currentDeck.size() == 0){
                _currEvent->setText("Shuffling Next Event Deck...");
                _currEvent->setColor(Color4::BLACK);
-               //_deckNode->swapTextures();
                if (_nextDeck.size() > 0){
                     _deckNode->setNextSize(int(_nextDeck.size()));
                     _currentDeck = _nextDeck;
@@ -691,7 +645,6 @@ void GameScene::update(float timestep) {
                _deckNode->setNextSize(0);
                _deckNode->setSize(int(_currentDeck.size()));
                _deckNode->setNextSize(int(_nextDeck.size()));
-               //_deckNode->setDrawFront(1);
                _currentFlip->setVisible(true);
                _movement = 5;
           }
@@ -754,25 +707,6 @@ void GameScene::render(const std::shared_ptr<cugl::SpriteBatch>& batch) {
       */
 }
 
-/**
- * Fires a photon from the ship, adding it to the PhotonQueue.
- *
- * This is not inside either PhotonQueue or Ship because it is a relationship
- * between to objects.  As we will see in class, we do not want to code binary
- * relationships that way (because it increases dependencies).
- *
- * @param ship      Ship firing the photon
- * @param photons     PhotonQueue for allocation
- */
-bool GameScene::firePhoton(const std::shared_ptr<Ship>& ship) {
-    // Only process if enough time has passed since last.
-    if (ship->canFireWeapon()) {
-        _photons->addPhoton(ship);
-        ship->reloadWeapon();
-        return true;
-    }
-    return false;
-}
 
 
 string GameScene::resourceString(std::vector<int> resources) {
@@ -804,8 +738,7 @@ void GameScene::buttonPress(const int r){
                response=_responses[_responseId3];
                _shuffleFlip->setPosition(_dimen.width * 0.9085f, _dimen.height*0.175f);
           }
-          //_shuffleFlip->setScale(0.21f);
-          //_shuffleFlip->setScale(0.61f);
+
           std::vector<int> cost = response.getResources();
           for (int i = 0; i < cost.size(); i++) {
               if (_resources[i] < cost[i]) {
@@ -823,9 +756,7 @@ void GameScene::buttonPress(const int r){
                        _responseText3->setForeground(Color4::WHITE);
                       _response3->setColor(Color4::GRAY);
                   }
-                  //_currentDeck.addCardFront(_currentCard);
-                  //_keepCards = true;
-                  //_pause = 40;
+
                   return;
               }
           }
@@ -833,8 +764,7 @@ void GameScene::buttonPress(const int r){
               _resources[i] -= cost[i];
                setResources();
           }
-          //_currEvent->setText("Clicked " + std::to_string(r + 1));
-          //_currentDeck.printDeck();
+
           std::vector<int> cards =response.getCards();
           for (int i = 0; i < cards.size(); i++){
                int newCard = cards[i];

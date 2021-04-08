@@ -10,14 +10,12 @@
 //  Based on original GameX Ship Demo by Rama C. Hoetzlein, 2002
 //  Version: 2/21/21
 //
-#ifndef __SG_GAME_SCENE_H__
-#define __SG_GAME_SCENE_H__
+#ifndef __GAME_SCENE_H__
+#define __GAME_SCENE_H__
 #include <cugl/cugl.h>
 #include <vector>
 #include <map>
-#include "GLInputController.h"
-#include "GLShip.h"
-#include "GLPhotonQueue.h"
+#include "InputController.h"
 #include "Deck.h"
 #include "Card.h"
 #include "Response.h"
@@ -49,25 +47,8 @@ protected:
     /** Controller for the blue player */
     InputController _redController;
 
-    /** Location and animation information for blue ship (MODEL CLASS) */
-    std::shared_ptr<Ship> _blueShip;
-    /** Location and animation information for red ship (MODEL CLASS) */
-    std::shared_ptr<Ship> _redShip;
-    /** Location and animation information for blue target (MODEL CLASS) */
-    std::shared_ptr<cugl::scene2::PolygonNode> _blueTarget;
-    /** Location and animation information for red target (MODEL CLASS) */
-    std::shared_ptr<cugl::scene2::PolygonNode> _redTarget;
-    /** Shared memory pool for photons. (MODEL CLASS) */
-    std::shared_ptr<PhotonQueue> _photons;
-    
-    /** The weapon fire sound for the blue player */
-    std::shared_ptr<cugl::Sound> _blueSound;
-    /** The weapon fire sound for the red player */
+    //saved this line from lab in case of reference to add sound
     std::shared_ptr<cugl::Sound> _redSound;
-
-    int flourish;
-
-    
     std::shared_ptr<cugl::scene2::TextField> _field;
     std::shared_ptr<cugl::scene2::Label> _resourceCount;
     std::shared_ptr<cugl::scene2::Label> _currEvent;
@@ -205,17 +186,6 @@ public:
      */
     void reset() override;
 
-    /**
-     * Fires a photon from the ship, adding it to the PhotonQueue.
-     *
-     * This is not inside either PhotonQueue or Ship because it is a relationship
-     * between to objects.  As we will see in class, we do not want to code binary
-     * relationships that way (because it increases dependencies).
-     *
-     * @param ship      Ship firing the photon
-     * @param photons     PhotonQueue for allocation
-     */
-    bool firePhoton(const std::shared_ptr<Ship>& ship);
     
     void buttonPress(const int r);
     
@@ -296,4 +266,4 @@ public:
     void touchMoved(const cugl::Vec2& pos);
 };
 
-#endif /* __SG_GAME_SCENE_H__ */
+#endif /* __GAME_SCENE_H__ */

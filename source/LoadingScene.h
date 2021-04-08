@@ -14,8 +14,8 @@
 //  Author: Walker White
 //  Version: 2/21/21
 //
-#ifndef __GL_LOADING_SCENE_H__
-#define __GL_LOADING_SCENE_H__
+#ifndef __LOADING_SCENE_H__
+#define __LOADING_SCENE_H__
 #include <cugl/cugl.h>
 
 
@@ -111,4 +111,4 @@ public:
     bool isPending( ) const;
 };
 
-#endif /* __GL_LOADING_SCENE_H__ */
+#endif /* __LOADING_SCENE_H__ */

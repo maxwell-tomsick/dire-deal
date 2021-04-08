@@ -188,16 +188,10 @@
     <ClInclude Include="..\..\source\Card.h" />
     <ClInclude Include="..\..\source\Deck.h" />
     <ClInclude Include="..\..\source\DeckNode.h" />
-    <ClInclude Include="..\..\source\GLApp.h" />
-    <ClInclude Include="..\..\source\GLCollisionController.h" />
-    <ClInclude Include="..\..\source\GLGameScene.h" />
-    <ClInclude Include="..\..\source\GLInputController.h" />
-    <ClInclude Include="..\..\source\GLLoadingScene.h" />
-    <ClInclude Include="..\..\source\GLPhoton.h" />
-    <ClInclude Include="..\..\source\GLPhotonNode.h" />
-    <ClInclude Include="..\..\source\GLPhotonQueue.h" />
-    <ClInclude Include="..\..\source\GLShadowNode.h" />
-    <ClInclude Include="..\..\source\GLShip.h" />
+    <ClInclude Include="..\..\source\App.h" />
+    <ClInclude Include="..\..\source\GameScene.h" />
+    <ClInclude Include="..\..\source\InputController.h" />
+    <ClInclude Include="..\..\source\LoadingScene.h" />
     <ClInclude Include="..\..\source\Response.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
@@ -205,16 +199,10 @@
     <ClCompile Include="..\..\source\Card.cpp" />
     <ClCompile Include="..\..\source\Deck.cpp" />
     <ClCompile Include="..\..\source\DeckNode.cpp" />
-    <ClCompile Include="..\..\source\GLApp.cpp" />
-    <ClCompile Include="..\..\source\GLCollisionController.cpp" />
-    <ClCompile Include="..\..\source\GLGameScene.cpp" />
-    <ClCompile Include="..\..\source\GLInputController.cpp" />
-    <ClCompile Include="..\..\source\GLLoadingScene.cpp" />
-    <ClCompile Include="..\..\source\GLPhoton.cpp" />
-    <ClCompile Include="..\..\source\GLPhotonNode.cpp" />
-    <ClCompile Include="..\..\source\GLPhotonQueue.cpp" />
-    <ClCompile Include="..\..\source\GLShadowNode.cpp" />
-    <ClCompile Include="..\..\source\GLShip.cpp" />
+    <ClCompile Include="..\..\source\App.cpp" />
+    <ClCompile Include="..\..\source\GameScene.cpp" />
+    <ClCompile Include="..\..\source\InputController.cpp" />
+    <ClCompile Include="..\..\source\LoadingScene.cpp" />
     <ClCompile Include="..\..\source\main.cpp" />
     <ClCompile Include="..\..\source\Response.cpp" />
   </ItemGroup>

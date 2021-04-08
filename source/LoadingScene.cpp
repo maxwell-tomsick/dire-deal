@@ -14,7 +14,7 @@
 //  Author: Walker White
 //  Version: 2/21/21
 //
-#include "GLLoadingScene.h"
+#include "LoadingScene.h"
 
 using namespace cugl;
 

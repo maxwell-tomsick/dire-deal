@@ -6,6 +6,8 @@
 //  Copyright © 2021 Game Design Initiative at Cornell. All rights reserved.
 //
 
+
+// ***Im saving this since it looks kind of useful for cool drawing?
 #include "GLPhotonNode.h"
 /** Number of animation frames a photon lives before deleted */
 #define MAX_AGE         100

@@ -12,8 +12,8 @@
 //  Based on original GameX Ship Demo by Rama C. Hoetzlein, 2002
 //  Version: 2/21/21
 //
-#ifndef __GL_INPUT_CONTROLLER_H__
-#define __GL_INPUT_CONTROLLER_H__
+#ifndef __INPUT_CONTROLLER_H__
+#define __INPUT_CONTROLLER_H__
 #include <cugl/cugl.h>
 
 /**
@@ -28,12 +28,6 @@ class InputController {
 private:
     /** Player id, to identify which keys map to this player */
     int _player;
-
-    /** How much forward are we going? */
-    float _forward;
-    
-    /** How much are we turning? */
-    float _turning;
     
     /** Did we press the fire button? */
     bool _didFire;
@@ -50,50 +44,16 @@ private:
     cugl::Vec2 _rtouch;
 
 public:
+     // Left this from lab in case of reference - Rose
+    // /**
+    //  * Returns the player for this controller
+    //  *
+    //  * @return the player for this controller
+    //  */
+    // int getPlayer() const {
+    //     return _player;
+    // }
     /**
-     * Returns the player for this controller
-     *
-     * @return the player for this controller
-     */
-    int getPlayer() const {
-        return _player;
-    }
-    
-    /**
-     * Returns the amount of forward movement.
-     *
-     * -1 = backward, 1 = forward, 0 = still
-     *
-     * @return amount of forward movement.
-     */
-    float getForward() const {
-        return _forward;
-    }
-
-    /**
-     * Returns the amount to turn the ship.
-     *
-     * -1 = clockwise, 1 = counter-clockwise, 0 = still
-     *
-     * @return amount to turn the ship.
-     */
-    float getTurn() const {
-        return _turning;
-    }
-
-    /**
-     * Returns whether the fire button was pressed.
-     *
-     * @return whether the fire button was pressed.
-     */
-    bool didPressFire() const {
-        return _didFire;
-    }
-
-    bool didPressJump() const {
-        return _didJump;
-    }
-    
     /**
      * Creates a new input controller with the default settings
      *
@@ -158,4 +118,4 @@ public:
     void touchesMovedCB(const cugl::TouchEvent& event, const cugl::Vec2& previous, bool focus);
 };
 
-#endif /* __GL_INPUT_CONTROLLER_H__ */
+#endif /* __INPUT_CONTROLLER_H__ */

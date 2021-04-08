@@ -13,7 +13,7 @@
 //  Version: 2/21/21
 //
 #include <cugl/cugl.h>
-#include "GLInputController.h"
+#include "InputController.h"
 
 using namespace cugl;
 
@@ -29,9 +29,6 @@ using namespace cugl;
  */
 InputController::InputController() :
 _player(0),
-_forward(0),
-_turning(0),
-_didFire(false),
 _upperLeft(false),
 _upperRight(false),
 _lowerLeft(false),
@@ -39,7 +36,6 @@ _lowerRight(false),
 _lowerRightRight(false),
 _lowerRightLeft(false),
 _middleLeft(false),
-_didJump(false),
 _swipeDown(false),
 _swipeUp(false){
 }
@@ -88,101 +84,41 @@ bool InputController::init(int id) {
  */
 void InputController::readInput() {
 #ifdef CU_MOBILE
+    // Left this from lab in case of reference - Rose
     // YOU NEED TO PUT SOME CODE HERE
-    _forward = _turning = 0;
-    _didFire = false;
-    _didJump = false;
-    if (_player == 0) {
-        Vec3 acc = Input::get<Accelerometer>()->getAcceleration();
-        float pitch = atan2(-acc.x, sqrt(acc.y*acc.y + acc.z*acc.z));
-        bool left = (pitch > EVENT_ACCEL_THRESH);
-        bool right = (pitch < -EVENT_ACCEL_THRESH);
-        if (left){
-            _turning = 1;
-        } else if (right) {
-            _turning = -1;
-        }
-        if (_upperLeft){
-            _forward = -1;
-        } else if (_middleLeft){
-            _forward = 1;
-        }
-        if (_upperRight){
-            _didFire = true;
-        }
-        if (_swipeDown){
-            _didJump = true;
-            _swipeDown = false;
-        }
-    } else {
-        Vec3 acc = Input::get<Accelerometer>()->getAcceleration();
-        float pitch2 = atan2(-acc.y, sqrt(acc.x*acc.x + acc.z*acc.z));
-        bool down = ((M_PI / 8) +pitch2 < -EVENT_ACCEL_THRESH * 0.75f);
-        bool up = ((M_PI / 8) + pitch2 > EVENT_ACCEL_THRESH * 0.75f && pitch2 < EVENT_ACCEL_THRESH * 0.75f);
-        if (_lowerRightLeft){
-            _turning = -1;
-        } else if (_lowerRightRight) {
-            _turning = 1;
-        }
-        if (up){
-            _forward = 1;
-        } else if (down){
-            _forward = -1;
-        }
-        if (_lowerLeft){
-            _didFire = true;
-        }
-        if (_swipeUp){
-            _didJump = true;
-            _swipeUp = false;
-        }
-    }
+    // _forward = _turning = 0;
+    // if (_player == 0) {
+    //     Vec3 acc = Input::get<Accelerometer>()->getAcceleration();
+    //     float pitch = atan2(-acc.x, sqrt(acc.y*acc.y + acc.z*acc.z));
+    //     bool left = (pitch > EVENT_ACCEL_THRESH);
+    //     bool right = (pitch < -EVENT_ACCEL_THRESH);
+    //     if (left){
+    //         _turning = 1;
+    //     } else if (right) {
+    //         _turning = -1;
+    //     }
+
 #else
+
+    // Left this from lab in case of reference - Rose
     // Figure out, based on which player we are, which keys
     // control our actions (depends on player).
-    KeyCode up, left, right, down, shoot, jump;
-    if (_player == 0) {
-        up    = KeyCode::ARROW_UP;
-        down  = KeyCode::ARROW_DOWN;
-        left  = KeyCode::ARROW_LEFT;
-        right = KeyCode::ARROW_RIGHT;
-        shoot = KeyCode::SPACE;
-        jump = KeyCode::COMMA;
-    } else {
-        up    = KeyCode::W;
-        down  = KeyCode::S;
-        left  = KeyCode::A;
-        right = KeyCode::D;
-        shoot = KeyCode::X;
-        jump = KeyCode::C;
-    }
-    
-    // Convert keyboard state into game commands
-    _forward = _turning = 0;
-    _didFire = false;
-    _didJump = false;
+    // KeyCode up, left, right, down, shoot, jump;
+    // if (_player == 0) {
+    //     up    = KeyCode::ARROW_UP;
+    //     shoot = KeyCode::SPACE;
+    //     jump = KeyCode::COMMA;
 
-    // Movement forward/backward
-    Keyboard* keys = Input::get<Keyboard>();
-    if (keys->keyDown(up) && !keys->keyDown(down)) {
-        _forward = 1;
-    } else if (keys->keyDown(down) && !keys->keyDown(up)) {
-        _forward = -1;
-    }
-    // Movement left/right
-    if (keys->keyDown(left) && !keys->keyDown(right)) {
-        _turning = -1;
-    } else if (keys->keyDown(right) && !keys->keyDown(left)) {
-        _turning = 1;
-    }
+    // Left this from lab in case of reference - Rose
+       // Convert keyboard state into game commands
+    // _forward = _turning = 0;
+    // Keyboard* keys = Input::get<Keyboard>();
+    // if (keys->keyDown(up) && !keys->keyDown(down)) {
+    //     _forward = 1;
+    // } else if (keys->keyDown(down) && !keys->keyDown(up)) {
+    //     _forward = -1;
+    // }
 
-    // Shooting
-    if (keys->keyDown(shoot)) {
-        _didFire = true;
-    }
-    if (keys->keyDown(jump)) {
-        _didJump = true;
-    }
 #endif
 }
 
@@ -196,10 +132,6 @@ void InputController::readInput() {
  */
 void InputController::touchBeganCB(const cugl::TouchEvent& event, bool focus) {
     Size dimen = Application::get()->getDisplaySize();
-    //CULog("%f",Application::get()->getDisplaySize().height);
-    //CULog("%f",event.position.y);
-    //CULog("%f",Application::get()->getDisplaySize().width);
-    //CULog("%f",event.position.x);
     if (event.position.x > 2 * dimen.width/3 && event.position.y <= dimen.height/2 && !_lowerRight){
         _upperRight = true;
     } else if (event.position.x > 2 * dimen.width/3 && event.position.y > dimen.height/2 && !_upperRight){
