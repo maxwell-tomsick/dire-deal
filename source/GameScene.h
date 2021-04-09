@@ -95,6 +95,8 @@ protected:
     std::shared_ptr<cugl::scene2::AnimationNode> _enemyIdle;
     std::shared_ptr<cugl::scene2::AnimationNode> _currentBurn;
     std::shared_ptr<cugl::scene2::NinePatch> _cardHolder;
+    std::shared_ptr<cugl::scene2::Button> _mainMenu;
+    std::shared_ptr<cugl::scene2::Label> _mainMenuLabel;
     int _cardBack;
     
     int _responseId1;
