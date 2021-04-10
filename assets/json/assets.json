@@ -591,6 +591,49 @@
             "x_offset": -0.05
           }
         },
+        "mainMenu": {
+          "type": "Button",
+          "data": {
+            "upnode": "up",
+            "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
+            "visible": false,
+            "pushsize": true,
+            "anchor": [ -1.6, -2 ],
+            "scale": 0.6
+          },
+          "format": {
+            "x_anchor": "center",
+            "y_anchor": "middle"
+          },
+          "children": {
+            "up": {
+              "type": "Image",
+              "data": {
+                "texture": "response1"
+              },
+              "children": {
+                "label": {
+                  "type": "Label",
+                  "format": {
+                    "type": "Anchored"
+                  },
+                  "data": {
+                    "font": "sans",
+                    "text": "Main Menu",
+                    "foreground": [ 0, 0, 0, 255 ],
+                    "anchor": [-0.0625, -0.5 ],
+                    "halign": "center",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle"
+                  }
+                }
+              }
+            }
+          }
+        },
         "response1": {
           "type": "Widget",
           "data": {

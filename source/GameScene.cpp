@@ -167,7 +167,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_currEvent"));
     _response1 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response1"));
     _responseText1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_label"));
-    _responseCost1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_costs"));//
+    _responseCost1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_costs"));
     _response2 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response2"));
     _responseText2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_label"));
     _response3 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response3"));
@@ -195,6 +195,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _goon = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_goon"));
      _goonNumber = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_number"));
      _cardHolder = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_cardHolder"));
+     _mainMenu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_mainMenu"));
+     _mainMenuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_mainMenu_label"));
      _goon->setPosition(_dimen.width * 0.52f, _dimen.height * (0.774f + 0.0125f * _currentDeck.size()));
      _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
      _response1->setVisible(false);
@@ -202,6 +204,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _response3->setVisible(false);
      _currentFlip->setVisible(true);
      _burn->setVisible(false);
+     _mainMenu->setVisible(false);
      _currentFlip->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
      _deckNode->setDrawFront(2);
      _deckNode->setFrontTexture(_currentCard.getTexture());
@@ -246,6 +249,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
          if ( (_movement == 0) & down & _display3) {
               buttonPress(2);
          }
+         });
+     _mainMenu->addListener([=](const std::string& name, bool down) {
+         this->_active = down;
          });
      if (_active) {
           _currCardButton->activate();
@@ -366,13 +372,11 @@ void GameScene::responseUpdate(const int responseId, const int response) {
  * Disposes of all (non-static) resources allocated to this mode.
  */
 void GameScene::dispose() {
-    if (_active) {
-        removeAllChildren();
-        _active = false;
-        _assets = nullptr;
-         _deckNode = nullptr;
-        Scene2::dispose();
-    }
+    removeAllChildren();
+    _active = false;
+    _assets = nullptr;
+    _deckNode = nullptr;
+    Scene2::dispose();
 }
 
 
@@ -547,6 +551,7 @@ void GameScene::update(float timestep) {
                     _deckNode->setVisible(false);
                     _currEvent->setText("YOU DIED!");
                     _currEvent->setVisible(true);
+                    _movement = 11;
                     return;
                }
           } else {
@@ -659,6 +664,10 @@ void GameScene::update(float timestep) {
                _currentFlip->setVisible(true);
                _movement = 5;
           }
+     }
+     if (_movement == 11) {
+         _mainMenu->setVisible(true);
+         _mainMenu->activate();
      }
 #ifndef CU_TOUCH_SCREEN
      if ((_movement == 0) & !_deckNode->getDrag()) {

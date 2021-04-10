@@ -137,8 +137,13 @@ void LabApp::update(float timestep) {
         _loading.dispose(); // Disables the input listeners in this mode
         _gameplay.init(_assets);
         _loaded = true;
-    } else {
+    } else if (_gameplay.isActive()) {
         _gameplay.update(timestep);
+    }
+    else {
+        _gameplay.dispose(); 
+        _loaded = false;
+        _loading.init(_assets);
     }
 }
 

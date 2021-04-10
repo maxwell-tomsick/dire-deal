@@ -78,9 +78,11 @@ void LoadingScene::dispose() {
     if (isPending()) {
         _button->deactivate();
     }
+    removeAllChildren();
     _button = nullptr;
     _brand = nullptr;
     _bar = nullptr;
+    _label = nullptr;
     _assets = nullptr;
     _progress = 0.0f;
 }
