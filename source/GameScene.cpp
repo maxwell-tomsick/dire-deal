@@ -255,7 +255,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
          _response1->activate();
          _response2->activate();
          _response3->activate();
-          _burn->activate();
+         _burn->activate();
      }
 #else
      Touchscreen* touch = Input::get<Touchscreen>();
@@ -272,12 +272,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     if (_active) {
          _burn->activate();
     }
-     _currEvent->setVisible(false);
+    _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
      setBurnText();
     _mainMenu->addListener([=](const std::string& name, bool down) {
          this->_active = down;
          });
+    _mainMenu->deactivate();
      //_burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
     //_resourceCount->setText(resourceString(_resources));
     std::vector<int> displayedResponses = _currentCard.getRandomResponses();
@@ -372,6 +373,12 @@ void GameScene::responseUpdate(const int responseId, const int response) {
  * Disposes of all (non-static) resources allocated to this mode.
  */
 void GameScene::dispose() {
+#ifdef CU_TOUCH_SCREEN
+    Touchscreen* touch = Input::get<Touchscreen>();
+    touch->removeBeginListener(LISTENER_KEY);
+    touch->removeEndListener(LISTENER_KEY);
+    touch->removeMotionListener(LISTENER_KEY);
+#endif
     removeAllChildren();
     _active = false;
     _assets = nullptr;
