@@ -250,9 +250,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
               buttonPress(2);
          }
          });
-     _mainMenu->addListener([=](const std::string& name, bool down) {
-         this->_active = down;
-         });
      if (_active) {
           _currCardButton->activate();
          _response1->activate();
@@ -278,6 +275,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
      setBurnText();
+    _mainMenu->addListener([=](const std::string& name, bool down) {
+         this->_active = down;
+         });
      //_burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
     //_resourceCount->setText(resourceString(_resources));
     std::vector<int> displayedResponses = _currentCard.getRandomResponses();

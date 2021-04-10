@@ -142,8 +142,8 @@ void LabApp::update(float timestep) {
     }
     else {
         _gameplay.dispose(); 
-        _loaded = false;
         _loading.init(_assets);
+        _loaded = false;
     }
 }
 
