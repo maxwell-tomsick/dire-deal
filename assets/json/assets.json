@@ -146,7 +146,7 @@
       "magfilter": "linear"
     },
     "enemyIdle": {
-      "file": "textures/enemy-thug-idle-v2.png"
+      "file": "textures/enemy-thug-idle.png"
     },
     "enemyLabel": {
       "file": "textures/enemy-label.png",
