@@ -137,7 +137,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("enemyIdle"), 3, 4, 12);
      _enemyIdle->setScale(0.9f);
      _idleBuffer = 0;
-     _enemyIdle->setPosition(dimen.width * 0.2f, dimen.height*0.46f);
+     _enemyIdle->setPosition(dimen.width * 0.2f, dimen.height*0.44f);
      addChild(_enemyIdle);
      addChild(scene);
      addChild(_deckNode);
@@ -514,9 +514,9 @@ void GameScene::update(float timestep) {
                _movement = 4;
           }
      }
-     _idleBuffer += 1;
+     _idleBuffer += timestep;
      //printf("%f",_idleBuffer);
-     if (_idleBuffer >= 10){
+     if (_idleBuffer >= 0.1){
           int enemyFrame = _enemyIdle->getFrame();
           enemyFrame += 1;
           if (enemyFrame == _enemyIdle->getSize()){
