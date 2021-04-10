@@ -54,7 +54,6 @@ public:
     //     return _player;
     // }
     /**
-    /**
      * Creates a new input controller with the default settings
      *
      * To use this controller, you will need to initialize it first

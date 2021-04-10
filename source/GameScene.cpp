@@ -55,6 +55,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Start up the input handler
     _assets = assets;
     
+     _audioQueue = AudioEngine::get()->getMusicQueue();
+     _audioQueue->play(_assets->get<Sound>("intro"));
+     _audioQueue->enqueue(_assets->get<Sound>("repeat"), true);
+
+     
     // Acquire the scene built by the asset loader and resize it the scene
      std::shared_ptr<scene2::SceneNode> background = _assets->get<scene2::SceneNode>("background");
      background->setContentSize(dimen);
@@ -63,7 +68,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("lab");
     scene->setContentSize(dimen);
     scene->doLayout(); // Repositions the HUD;
-
+     
      _fight = 0;
      _cards = {};
      _responses = {};
@@ -129,8 +134,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _resources = { 30, 30, 30, 30 };
      
      _enemyIdle =std::make_shared<scene2::AnimationNode>();
-     _enemyIdle->initWithFilmstrip(assets->get<Texture>("enemyIdle"), 8, 10, 77);
+     _enemyIdle->initWithFilmstrip(assets->get<Texture>("enemyIdle"), 3, 4, 12);
      _enemyIdle->setScale(0.9f);
+     _idleBuffer = 0;
      _enemyIdle->setPosition(dimen.width * 0.2f, dimen.height*0.46f);
      addChild(_enemyIdle);
      addChild(scene);
@@ -455,7 +461,7 @@ void GameScene::reset() {
      _deckNode->setDrawFront(2);
      _deckNode->setDrag(false);
      _deckNode->reset();
-     
+     _idleBuffer = 0;
      _burn->setVisible(false);
 }
 
@@ -504,12 +510,17 @@ void GameScene::update(float timestep) {
                _movement = 4;
           }
      }
-     int enemyFrame = _enemyIdle->getFrame();
-     enemyFrame += 1;
-     if (enemyFrame == _enemyIdle->getSize()){
-          enemyFrame = 0;
+     _idleBuffer += 1;
+     //printf("%f",_idleBuffer);
+     if (_idleBuffer >= 10){
+          int enemyFrame = _enemyIdle->getFrame();
+          enemyFrame += 1;
+          if (enemyFrame == _enemyIdle->getSize()){
+               enemyFrame = 0;
+          }
+          _enemyIdle->setFrame(enemyFrame);
+          _idleBuffer = 0;
      }
-     _enemyIdle->setFrame(enemyFrame);
      if(_movement == 4){
           _shuffleFlip->setVisible(false);
           _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);

@@ -146,7 +146,7 @@
       "magfilter": "linear"
     },
     "enemyIdle": {
-      "file": "textures/sprite_thug_idle.png"
+      "file": "textures/enemy-thug-idle-v2.png"
     },
     "enemyLabel": {
       "file": "textures/enemy-label.png",
@@ -315,6 +315,16 @@
     "response2": "widgets/response2.json",
     "response3": "widgets/response3.json",
     "burn": "widgets/burn.json"
+  },
+  "sounds": {
+      "intro": {
+        "type": "sample",
+        "file": "sounds/harpsichord_intro.ogg"
+      },
+      "repeat": {
+        "type": "sample",
+        "file": "sounds/harpsichord_repeat.ogg"
+      }
   },
   "fonts": {
     "felt": {

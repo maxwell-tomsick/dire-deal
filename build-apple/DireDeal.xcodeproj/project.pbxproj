@@ -25,6 +25,16 @@
 		5014BB9A25F5CF34004EFF48 /* DeckNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB9925F5CF34004EFF48 /* DeckNode.cpp */; };
 		5014BB9B25F5CF34004EFF48 /* DeckNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB9925F5CF34004EFF48 /* DeckNode.cpp */; };
 		5014BB9C25F5CF34004EFF48 /* DeckNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014BB9925F5CF34004EFF48 /* DeckNode.cpp */; };
+		501876B1261F5FAB001BADA4 /* ResourceController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AB261F5FAB001BADA4 /* ResourceController.cpp */; };
+		501876B2261F5FAB001BADA4 /* ResourceController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AB261F5FAB001BADA4 /* ResourceController.cpp */; };
+		501876B3261F5FAB001BADA4 /* EnemyFight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AC261F5FAB001BADA4 /* EnemyFight.cpp */; };
+		501876B4261F5FAB001BADA4 /* EnemyFight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AC261F5FAB001BADA4 /* EnemyFight.cpp */; };
+		501876B5261F5FAB001BADA4 /* JsonLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AE261F5FAB001BADA4 /* JsonLoader.cpp */; };
+		501876B6261F5FAB001BADA4 /* JsonLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AE261F5FAB001BADA4 /* JsonLoader.cpp */; };
+		501876B7261F5FAB001BADA4 /* TurnController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AF261F5FAB001BADA4 /* TurnController.cpp */; };
+		501876B8261F5FAB001BADA4 /* TurnController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AF261F5FAB001BADA4 /* TurnController.cpp */; };
+		501876B9261F5FAB001BADA4 /* maybeUsefulReference in Resources */ = {isa = PBXBuildFile; fileRef = 501876B0261F5FAB001BADA4 /* maybeUsefulReference */; };
+		501876BA261F5FAB001BADA4 /* maybeUsefulReference in Resources */ = {isa = PBXBuildFile; fileRef = 501876B0261F5FAB001BADA4 /* maybeUsefulReference */; };
 		EB0FF6172016EFB200517030 /* iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A71D74D846002FBAE6 /* iOS.xcassets */; };
 		EB0FF6182016EFB200517030 /* Landscape.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A81D74D846002FBAE6 /* Landscape.storyboard */; };
 		EB0FF6192016EFB200517030 /* Portrait.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A91D74D846002FBAE6 /* Portrait.storyboard */; };
@@ -141,6 +151,15 @@
 		5014BB8325F55E12004EFF48 /* Card.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
 		5014BB9825F5CE4B004EFF48 /* DeckNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckNode.h; sourceTree = "<group>"; };
 		5014BB9925F5CF34004EFF48 /* DeckNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DeckNode.cpp; sourceTree = "<group>"; };
+		501876A5261F5FAB001BADA4 /* EnemyFight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyFight.h; sourceTree = "<group>"; };
+		501876A9261F5FAB001BADA4 /* JsonLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLoader.h; sourceTree = "<group>"; };
+		501876AA261F5FAB001BADA4 /* TurnController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnController.h; sourceTree = "<group>"; };
+		501876AB261F5FAB001BADA4 /* ResourceController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResourceController.cpp; sourceTree = "<group>"; };
+		501876AC261F5FAB001BADA4 /* EnemyFight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyFight.cpp; sourceTree = "<group>"; };
+		501876AD261F5FAB001BADA4 /* ResourceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceController.h; sourceTree = "<group>"; };
+		501876AE261F5FAB001BADA4 /* JsonLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLoader.cpp; sourceTree = "<group>"; };
+		501876AF261F5FAB001BADA4 /* TurnController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TurnController.cpp; sourceTree = "<group>"; };
+		501876B0261F5FAB001BADA4 /* maybeUsefulReference */ = {isa = PBXFileReference; lastKnownFileType = folder; path = maybeUsefulReference; sourceTree = "<group>"; };
 		EB0FF5FC2016EF4F00517030 /* DireDeal (Sim).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DireDeal (Sim).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2BE9B41D74952A002FE78B /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		EB2BE9BA1D7498D2002FE78B /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
@@ -378,6 +397,15 @@
 		EBBF18B11D749176008E2001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				501876AC261F5FAB001BADA4 /* EnemyFight.cpp */,
+				501876A5261F5FAB001BADA4 /* EnemyFight.h */,
+				501876AE261F5FAB001BADA4 /* JsonLoader.cpp */,
+				501876A9261F5FAB001BADA4 /* JsonLoader.h */,
+				501876B0261F5FAB001BADA4 /* maybeUsefulReference */,
+				501876AB261F5FAB001BADA4 /* ResourceController.cpp */,
+				501876AD261F5FAB001BADA4 /* ResourceController.h */,
+				501876AF261F5FAB001BADA4 /* TurnController.cpp */,
+				501876AA261F5FAB001BADA4 /* TurnController.h */,
 				EB2BE9B41D74952A002FE78B /* main.cpp */,
 				EBB8376225E5921E00401672 /* App.h */,
 				EBB8375F25E5921E00401672 /* App.cpp */,
@@ -558,6 +586,7 @@
 				EB7454AC1D74D846002FBAE6 /* Landscape.storyboard in Resources */,
 				EBFE7C051E19B496001007C2 /* json in Resources */,
 				EB7454AD1D74D846002FBAE6 /* Portrait.storyboard in Resources */,
+				501876BA261F5FAB001BADA4 /* maybeUsefulReference in Resources */,
 				EB42669621F68F6900A9DE61 /* DeviceMargins.plist in Resources */,
 				5014BB6425F54C91004EFF48 /* fonts in Resources */,
 			);
@@ -570,6 +599,7 @@
 				5014BB7225F54CCF004EFF48 /* widgets in Resources */,
 				EBFE7C091E19B4AC001007C2 /* json in Resources */,
 				5014BB6325F54C91004EFF48 /* fonts in Resources */,
+				501876B9261F5FAB001BADA4 /* maybeUsefulReference in Resources */,
 				EB2BE9BB1D7498D2002FE78B /* textures in Resources */,
 				EBB8378425E59A8300401672 /* sounds in Resources */,
 				EBBF189B1D74904A008E2001 /* Mac.xcassets in Resources */,
@@ -602,12 +632,16 @@
 				5014BB5D25F54BA6004EFF48 /* Deck.cpp in Sources */,
 				EBB8376F25E5921E00401672 /* InputController.cpp in Sources */,
 				EBB8377525E5921E00401672 /* GameScene.cpp in Sources */,
+				501876B8261F5FAB001BADA4 /* TurnController.cpp in Sources */,
 				EBB8377825E5921E00401672 /* LoadingScene.cpp in Sources */,
+				501876B6261F5FAB001BADA4 /* JsonLoader.cpp in Sources */,
 				5014BB9B25F5CF34004EFF48 /* DeckNode.cpp in Sources */,
+				501876B4261F5FAB001BADA4 /* EnemyFight.cpp in Sources */,
 				EBB8376C25E5921E00401672 /* App.cpp in Sources */,
 				5014BB7E25F556BE004EFF48 /* Response.cpp in Sources */,
 				EB7454AE1D74D891002FBAE6 /* main.cpp in Sources */,
 				5014BB8525F55E12004EFF48 /* Card.cpp in Sources */,
+				501876B2261F5FAB001BADA4 /* ResourceController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,12 +652,16 @@
 				5014BB5C25F54BA6004EFF48 /* Deck.cpp in Sources */,
 				EBB8376E25E5921E00401672 /* InputController.cpp in Sources */,
 				EBB8377425E5921E00401672 /* GameScene.cpp in Sources */,
+				501876B7261F5FAB001BADA4 /* TurnController.cpp in Sources */,
 				5014BB9A25F5CF34004EFF48 /* DeckNode.cpp in Sources */,
+				501876B5261F5FAB001BADA4 /* JsonLoader.cpp in Sources */,
 				EBB8377725E5921E00401672 /* LoadingScene.cpp in Sources */,
+				501876B3261F5FAB001BADA4 /* EnemyFight.cpp in Sources */,
 				EBB8376B25E5921E00401672 /* App.cpp in Sources */,
 				5014BB7D25F556BE004EFF48 /* Response.cpp in Sources */,
 				EB2BE9B61D74952A002FE78B /* main.cpp in Sources */,
 				5014BB8425F55E12004EFF48 /* Card.cpp in Sources */,
+				501876B1261F5FAB001BADA4 /* ResourceController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
 #include <cugl/cugl.h>
 #include <vector>
 #include <map>
+#include <cugl/audio/CUAudioEngine.h>
 #include "InputController.h"
 #include "Deck.h"
 #include "Card.h"
@@ -120,6 +121,9 @@ protected:
     bool _win;
     bool _doBurn;
     int _fight;
+    float _idleBuffer;
+    
+    std::shared_ptr<cugl::AudioQueue> _audioQueue;
 
 public:
 #pragma mark -
