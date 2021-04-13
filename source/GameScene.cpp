@@ -10,13 +10,10 @@
 //  Based on original GameX Ship Demo by Rama C. Hoetzlein, 2002
 //  Version: 2/21/21
 //
-#include <cugl/cugl.h>
-#include <iostream>
-#include <sstream>
-
 #include "GameScene.h"
 
 using namespace cugl;
+using namespace JsonLoader;
 //using namespace std;
 
 #pragma mark -
@@ -72,36 +69,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _fight = 0;
      _cards = {};
      _responses = {};
-     std::shared_ptr<JsonReader> jsonReaderCard = JsonReader::alloc("json/level1.json");
-     std::shared_ptr<JsonValue> cardsJson = jsonReaderCard->readJson()->get("Cards");
-     for (int i = 0; i < cardsJson->size(); i++){
-          std::shared_ptr<JsonValue> jsonCard = cardsJson->get(i);
-          int id = jsonCard->get("id")->asInt();
-          string name = jsonCard->get("name")->asString();
-          string tex = jsonCard->get("texture")->asString();
-          auto texture = _assets->get<Texture>(tex);
-          std::vector<int> responses = jsonCard->get("reactions")->asIntArray();
-          std::vector<int> resources = jsonCard->get("resources")->asIntArray();
-          int level = jsonCard->get("level")->asInt();
-          Card card;
-          card.allocate(name, id, texture, responses, resources, level);
-          _cards[id] = card;
-     }
-     std::shared_ptr<JsonReader> jsonReaderResponse = JsonReader::alloc("json/oldresponses.json");
-     std::shared_ptr<JsonValue> responsesJson = jsonReaderResponse->readJson()->get("Responses");
-     for (int i = 0; i < responsesJson->size(); i++){
-          std::shared_ptr<JsonValue> jsonResponse = responsesJson->get(i);
-          int id = jsonResponse->get("id")->asInt();
-          string name = jsonResponse->get("name")->asString();
-          string description = jsonResponse->get("description")->asString();
-          std::vector<int> cost = jsonResponse->get("cost")->asIntArray();
-          std::vector<int> addToDeck = jsonResponse->get("addToDeck")->asIntArray();
-          bool win = jsonResponse->get("win")->asBool();
-          bool lose = jsonResponse->get("lose")->asBool();
-          Response response;
-          response.allocate(name, description, cost, addToDeck, win, lose);
-          _responses[id] = response;
-     }
+     //RESEARCH WHETHER TO DELETE POINTER LATER
+     std::shared_ptr<JsonReader> jsonReaderLevel1 = JsonReader::alloc("json/level1.json");
+     _cards = getJsonCards(jsonReaderLevel1, _cards, _assets);
+     std::shared_ptr<JsonReader> jsonReaderOldResponses = JsonReader::alloc("json/oldresponses.json");
+     _responses = getJsonResponses(jsonReaderOldResponses, _responses);
      //cout << cardsArray->asString();
      
      _currentDeck = {};
@@ -156,7 +128,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currentBurn = std::make_shared<scene2::AnimationNode>();
      _currentBurn->initWithFilmstrip(assets->get<Texture>("SlashBurn"), 8, 11, 88);
      _currentBurn->setScale(1.3f);
-     _currentBurn->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
+     _currentBurn->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _currentBurn->setFrame(0);
      _currentBurn->setVisible(false);
      addChild(_currentBurn);
@@ -197,15 +169,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _cardHolder = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_cardHolder"));
      _mainMenu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_mainMenu"));
      _mainMenuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_mainMenu_label"));
-     _goon->setPosition(_dimen.width * 0.52f, _dimen.height * (0.774f + 0.0125f * _currentDeck.size()));
-     _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
+     _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+     _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _response1->setVisible(false);
      _response2->setVisible(false);
      _response3->setVisible(false);
      _currentFlip->setVisible(true);
      _burn->setVisible(false);
      _mainMenu->setVisible(false);
-     _currentFlip->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
+     _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _deckNode->setDrawFront(2);
      _deckNode->setFrontTexture(_currentCard.getTexture());
      string flipTexture = _currentCard.getText() + "Flip";
@@ -219,7 +191,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currCardButton->addListener([=](const std::string& name, bool down) {
           if ( (_movement == 0) & down & _act == 60) {
                Vec2 pos = _deckNode->screenToNodeCoords(_mouse->pointerPosition());
-               _deckNode->setOffset(Vec2(_dimen.width * 0.52f - pos.x, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()) - pos.y));
+               _deckNode->setOffset(Vec2(_dimen.width * WIDTH_SCALE - pos.x, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()) - pos.y));
                _deckNode->setDrag(true);
                _burn->setVisible(true);
           }
@@ -274,7 +246,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     }
     _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
-     setBurnText();
+     _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
     _mainMenu->addListener([=](const std::string& name, bool down) {
          this->_active = down;
          });
@@ -282,67 +254,43 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      //_burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
     //_resourceCount->setText(resourceString(_resources));
     std::vector<int> displayedResponses = _currentCard.getRandomResponses();
-    if(displayedResponses.size() >= 3){
-          _responseId1=displayedResponses[0];
+    _responseId1=displayedResponses[0];
+     _responseId2=displayedResponses[0];
+     _responseId3=displayedResponses[0];
+     _responseText1->setText(_responses[_responseId1].getText());
+     _responseText2->setText(_responses[_responseId1].getText());
+     _responseText3->setText(_responses[_responseId1].getText());
+     _responseId1=displayedResponses[0];
+     _responseId2=displayedResponses[0];
+     _responseId3=displayedResponses[0];
+     responseUpdate(_responseId1, 1);
+     responseUpdate(_responseId2, 1);
+     responseUpdate(_responseId3, 1);
+     _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+     _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+     _responseCard3->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+     _response2->setVisible(false);
+     _response3->setVisible(false);
+     _display2 = false;
+     _display3 = false;  
+     // set if 2 or 3 responses exist
+    if (displayedResponses.size() >= 2){
           _responseId2=displayedResponses[1];
-          _responseId3=displayedResponses[2];
-          _responseText1->setText(_responses[_responseId1].getText());
           _responseText2->setText(_responses[_responseId2].getText());
+          _responseId2=displayedResponses[1];
+          responseUpdate(_responseId2, 2);
+          _response3->setVisible(false);
+          _display2 = true;
+          _display3 = false;
+    } 
+    if (displayedResponses.size() == 3) {
+          _responseId3=displayedResponses[2];
           _responseText3->setText(_responses[_responseId3].getText());
-          _responseId1=displayedResponses[0];
-          _responseId2=displayedResponses[1];
           _responseId3=displayedResponses[2];
-          responseUpdate(_responseId1, 1);
-          responseUpdate(_responseId2, 2);
           responseUpdate(_responseId3, 3);
-          _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
-          _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
-          _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
-          _display2 = true;
           _display3 = true;
-          setResources();     
-    } else if (displayedResponses.size() == 2){
-          _responseId1=displayedResponses[0];
-          _responseId2=displayedResponses[1];
-          _responseId3=displayedResponses[0];
-          _responseText1->setText(_responses[_responseId1].getText());
-          _responseText2->setText(_responses[_responseId2].getText());
-          _responseText3->setText(_responses[_responseId1].getText());
-          _responseId1=displayedResponses[0];
-          _responseId2=displayedResponses[1];
-          _responseId3=displayedResponses[0];
-          responseUpdate(_responseId1, 1);
-          responseUpdate(_responseId2, 2);
-          responseUpdate(_responseId3, 1);
-          _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
-          _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
-          _responseCard3->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
-          _response3->setVisible(false);
-          _display2 = true;
-          _display3 = false;
-          setResources(); 
-    } else {
-         _responseId1=displayedResponses[0];
-          _responseId2=displayedResponses[0];
-          _responseId3=displayedResponses[0];
-          _responseText1->setText(_responses[_responseId1].getText());
-          _responseText2->setText(_responses[_responseId1].getText());
-          _responseText3->setText(_responses[_responseId1].getText());
-          _responseId1=displayedResponses[0];
-          _responseId2=displayedResponses[0];
-          _responseId3=displayedResponses[0];
-          responseUpdate(_responseId1, 1);
-          responseUpdate(_responseId2, 1);
-          responseUpdate(_responseId3, 1);
-          _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
-          _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
-          _responseCard3->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
-          _response2->setVisible(false);
-          _response3->setVisible(false);
-          _display2 = false;
-          _display3 = false;
-          setResources(); 
     }
+    _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources); 
     return success;
 }
 
@@ -364,9 +312,9 @@ void GameScene::responseUpdate(const int responseId, const int response) {
                _responseTexture3->setTexture(responseTexture);
                _responseGlow3->setTexture(responseGlow);
      }
-     setResponseResources(1);
-     setResponseResources(2);
-     setResponseResources(3);
+     _resourceController.setResponseResources(_responses, _responseId1, 1, _assets);
+     _resourceController.setResponseResources(_responses, _responseId2, 2, _assets);
+     _resourceController.setResponseResources(_responses, _responseId3, 3, _assets);
 }
 
 /**
@@ -404,36 +352,10 @@ void GameScene::reset() {
      }
      _cards = {};
      _responses = {};
-     std::shared_ptr<JsonReader> jsonReaderCard = JsonReader::alloc(cardstring);
-     std::shared_ptr<JsonValue> cardsJson = jsonReaderCard->readJson()->get("Cards");
-     for (int i = 0; i < cardsJson->size(); i++){
-          std::shared_ptr<JsonValue> jsonCard = cardsJson->get(i);
-          int id = jsonCard->get("id")->asInt();
-          string name = jsonCard->get("name")->asString();
-          string tex = jsonCard->get("texture")->asString();
-          auto texture = _assets->get<Texture>(tex);
-          std::vector<int> responses = jsonCard->get("reactions")->asIntArray();
-          std::vector<int> resources = jsonCard->get("resources")->asIntArray();
-          int level = jsonCard->get("level")->asInt();
-          Card card;
-          card.allocate(name, id, texture, responses, resources, level);
-          _cards[id] = card;
-     }
-     std::shared_ptr<JsonReader> jsonReaderResponse = JsonReader::alloc("json/oldresponses.json");
-     std::shared_ptr<JsonValue> responsesJson = jsonReaderResponse->readJson()->get("Responses");
-     for (int i = 0; i < responsesJson->size(); i++){
-          std::shared_ptr<JsonValue> jsonResponse = responsesJson->get(i);
-          int id = jsonResponse->get("id")->asInt();
-          string name = jsonResponse->get("name")->asString();
-          string description = jsonResponse->get("description")->asString();
-          std::vector<int> cost = jsonResponse->get("cost")->asIntArray();
-          std::vector<int> addToDeck = jsonResponse->get("addToDeck")->asIntArray();
-          bool win = jsonResponse->get("win")->asBool();
-          bool lose = jsonResponse->get("lose")->asBool();
-          Response response;
-          response.allocate(name, description, cost, addToDeck, win, lose);
-          _responses[id] = response;
-     }
+     std::shared_ptr<JsonReader> jsonReaderCardString = JsonReader::alloc(cardstring);
+     _cards = getJsonCards(jsonReaderCardString, _cards, _assets);
+     std::shared_ptr<JsonReader> jsonReaderOldResponses = JsonReader::alloc("json/oldresponses.json");
+     _responses = getJsonResponses(jsonReaderOldResponses, _responses);
      //cout << cardsArray->asString();
      _currentDeck = {};
      _nextDeck = {};
@@ -496,10 +418,10 @@ void GameScene::update(float timestep) {
           _displayCard->setVisible(false);
           _shuffleFlip->setPosition(_shuffleFlip->getPosition() + _vel);
           _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.21)/40.0f);
-          bool stop = _shuffleFlip->getPosition().x <= _dimen.width * 0.52f ||
-          _shuffleFlip->getPosition().x + _vel.x < _dimen.width * 0.52f;
+          bool stop = _shuffleFlip->getPosition().x <= _dimen.width * WIDTH_SCALE ||
+          _shuffleFlip->getPosition().x + _vel.x < _dimen.width * WIDTH_SCALE;
 #ifndef CU_TOUCH_SCREEN
-          stop = _shuffleFlip->getPosition().x <= _dimen.width * 0.52f;
+          stop = _shuffleFlip->getPosition().x <= _dimen.width * WIDTH_SCALE;
 #endif
           if (stop){
                _movement = 2;
@@ -509,7 +431,7 @@ void GameScene::update(float timestep) {
           frame -= 1;
           if (frame <= 0){
                _movement = 3;
-               _vel =Vec2(_dimen.width * (0.48f + 0.0125f * (_nextDeck.size()-1)), _dimen.height) - _shuffleFlip->getPosition();
+               _vel =Vec2(_dimen.width * (0.48f + DECK_SCALE * (_nextDeck.size()-1)), _dimen.height) - _shuffleFlip->getPosition();
                _vel.scale(0.025f);
                _scl = 0.3546f;
           }
@@ -566,12 +488,12 @@ void GameScene::update(float timestep) {
           }
           _currentCard = _cards[_currentDeck.back()];
           _currentDeck.pop_back();
-          _goon->setPosition(_dimen.width * 0.52f, _dimen.height * (0.774f + 0.0125f * (_currentDeck.size())));
+          _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * (_currentDeck.size())));
           _currEvent->setText(_currentCard.getText());
           _deckNode->setFrontTexture(_currentCard.getTexture());
           string flipTexture = _currentCard.getText() + "Flip";
           _currentFlip->setTexture(_assets->get<Texture>(flipTexture));
-          setBurnText();
+          _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
           if (!_keepCards) {
                std::vector<int> displayedResponses = _currentCard.getRandomResponses();
                if (displayedResponses.size() > 2) {
@@ -592,28 +514,20 @@ void GameScene::update(float timestep) {
                }
           }
           _responseText1->setText(_responses[_responseId1].getText());
-          if (_display2){
-               _responseText2->setText(_responses[_responseId2].getText());
-          }
-          if (_display3){
-               _responseText3->setText(_responses[_responseId3].getText());
-          }
           responseUpdate(_responseId1, 1);
-          if (_display2){
-               responseUpdate(_responseId2, 2);
-          }
-          if (_display3){
-               responseUpdate(_responseId3, 3);
-          }
           _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
-          if (_display2){
+          if (_display2) {
+               _responseText2->setText(_responses[_responseId2].getText());
+               responseUpdate(_responseId2, 2);
                _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
           }
           if (_display3){
+               _responseText3->setText(_responses[_responseId3].getText());
+               responseUpdate(_responseId3, 3);
                _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
           }
-          _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
-          _currentFlip->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
+          _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+          _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
           if (_movement == 4){
                _deckNode->setSize(int(_currentDeck.size()));
                _deckNode->setNextSize(int(_nextDeck.size()));
@@ -658,10 +572,10 @@ void GameScene::update(float timestep) {
      }
      if (_movement == 10){
           float offset = _deckNode->getVOffset();
-          if (offset < 0.0125f){
+          if (offset < DECK_SCALE){
                _deckNode->setVOffset(offset + 0.0003125f);
                _deckNode->setScaler(_deckNode->getScaler() + 0.0045f);
-               Vec2 dir = Vec2(_dimen.width * 0.52f, _dimen.height * 0.5f) - Vec2(_dimen.width * 0.48f, _dimen.height);
+               Vec2 dir = Vec2(_dimen.width * WIDTH_SCALE, _dimen.height * HEIGHT_SCALE) - Vec2(_dimen.width * 0.48f, _dimen.height);
                _deckNode->setOffsetVector(_deckNode->getOffsetVector() + dir.scale(0.025f));
           } else {
                _deckNode->reset();
@@ -751,19 +665,19 @@ void GameScene::buttonPress(const int r){
      if (r == -1){
           for (int i = 0; i < _resources.size(); i++) {
                _resources[i] += _currentCard.getResource(i);
-               setResources();
+               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources); 
           }
      } else {
           Response response;
           if (r == 0){
                response=_responses[_responseId1];
-               _shuffleFlip->setPosition(_dimen.width * 0.9085f, _dimen.height*0.6245f);
+               _shuffleFlip->setPosition(_dimen.width * SHUFFLE_WIDTH_SCALE, _dimen.height*R1_HEIGHT_SCALE);
           } else if (r == 1){
                response=_responses[_responseId2];
-               _shuffleFlip->setPosition(_dimen.width * 0.9085f, _dimen.height*0.4f);
+               _shuffleFlip->setPosition(_dimen.width * SHUFFLE_WIDTH_SCALE, _dimen.height*R2_HEIGHT_SCALE);
           } else {
                response=_responses[_responseId3];
-               _shuffleFlip->setPosition(_dimen.width * 0.9085f, _dimen.height*0.175f);
+               _shuffleFlip->setPosition(_dimen.width * SHUFFLE_WIDTH_SCALE, _dimen.height*R3_HEIGHT_SCALE);
           }
 
           std::vector<int> cost = response.getResources();
@@ -789,7 +703,7 @@ void GameScene::buttonPress(const int r){
           }
           for (int i = 0; i < cost.size(); i++) {
               _resources[i] -= cost[i];
-               setResources();
+               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources); 
           }
 
           std::vector<int> cards =response.getCards();
@@ -809,9 +723,9 @@ void GameScene::buttonPress(const int r){
      _response2->setVisible(false);
      _response3->setVisible(false);
      if (_currentDeck.size() == 0){
-          _goon->setPosition(_dimen.width * 0.52f, _dimen.height * (0.774f));
+          _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE));
      } else {
-          _goon->setPosition(_dimen.width * 0.52f, _dimen.height * (0.774f + 0.0125f * (_currentDeck.size() -1)));
+          _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * (_currentDeck.size() -1)));
      }
      _deckNode->setDrawFront(2);
      _scl = 0.61f;
@@ -830,7 +744,7 @@ void GameScene::buttonPress(const int r){
      } else {
           _movement = 1;
      }
-     _vel = Vec2(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size())) - _shuffleFlip->getPosition();
+     _vel = Vec2(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size())) - _shuffleFlip->getPosition();
      _vel.scale(0.025f);
      _keepCards = false;
      if (win){
@@ -859,11 +773,11 @@ void GameScene::buttonPress(const int r){
           _responseText3->setForeground(Color4::BLACK);
           _response2->setColor(Color4::WHITE);
           _response3->setColor(Color4::WHITE);
-          _goon->setPosition(_dimen.width * 0.52f, _dimen.height * (0.774f + 0.0125f * (_currentDeck.size())));
+          _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * (_currentDeck.size())));
           _currEvent->setText(_currentCard.getText());
           string flipTexture = _currentCard.getText() + "Flip";
           _currentFlip->setTexture(_assets->get<Texture>(flipTexture));
-          setBurnText();
+          _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
           if (!_keepCards) {
                std::vector<int> displayedResponses = _currentCard.getRandomResponses();
                if (displayedResponses.size() > 2) {
@@ -884,98 +798,24 @@ void GameScene::buttonPress(const int r){
                }
           }
           _responseText1->setText(_responses[_responseId1].getText());
-          if (_display2){
-               _responseText2->setText(_responses[_responseId2].getText());
-          }
-          if (_display3){
-               _responseText3->setText(_responses[_responseId3].getText());
-          }
           responseUpdate(_responseId1, 1);
-          if (_display2){
-               responseUpdate(_responseId2, 2);
-          }
-          if (_display3){
-               responseUpdate(_responseId3, 3);
-          }
           _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
           if (_display2){
+               _responseText2->setText(_responses[_responseId2].getText());
+               responseUpdate(_responseId2, 2);
                _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
           }
           if (_display3){
+               _responseText3->setText(_responses[_responseId3].getText());
+               responseUpdate(_responseId3, 3);
                _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
           }
-          _currCardButton->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
-          _currentFlip->setPosition(_dimen.width * 0.52f, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()));
+          _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+          _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
           _currentFlip->setVisible(true);
      }
 }
 
-void GameScene::setResources(){
-     _bladeText->setText(to_string(_resources[0]));
-     _flourishText->setText(to_string(_resources[1]));
-     _lungeText->setText(to_string(_resources[2]));
-     _brawnText->setText(to_string(_resources[3]));
-}
-
-void GameScene::setResponseResources(const int response){
-     std::vector<int> cost = _responses[_responseId3].getResources();
-     if (response == 1){
-          cost = _responses[_responseId1].getResources();
-     } else if (response ==2){
-          cost = _responses[_responseId2].getResources();
-     }
-     int acc = 1;
-     std::shared_ptr<cugl::scene2::NinePatch> responseResourcePointer;
-     std::shared_ptr<cugl::scene2::Label> responseResourceAmountPointer;
-     for (int i = 0; i < cost.size(); i++){
-          if (cost[i] > 0){
-               string path = "lab_response" + to_string(response) + "_up_resource" + to_string(acc);
-               string amountPath = "lab_response" + to_string(response) + "_up_resource" + to_string(acc) + "_amount";
-               responseResourcePointer = std::dynamic_pointer_cast<scene2::NinePatch>(_assets->get<scene2::SceneNode>(path));
-               responseResourceAmountPointer = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>(amountPath));
-               responseResourcePointer->setVisible(true);
-               responseResourceAmountPointer->setVisible(true);
-               acc += 1;
-               string resource = "brawn";
-               if (i == 0){
-                    resource = "blade";
-               } else if (i == 1){
-                    resource = "flourish";
-               } else if (i == 2){
-                    resource = "lunge";
-               }
-               responseResourcePointer->setTexture(_assets->get<Texture>(resource));
-               responseResourceAmountPointer->setText(to_string(cost[i]));
-          }
-     }
-     for (int j = acc; j <= 4; j++){
-          string path = "lab_response" + to_string(response) + "_up_resource" + to_string(j);
-          string amountPath = "lab_response" + to_string(response) + "_up_resource" + to_string(j) + "_amount";
-          responseResourcePointer = std::dynamic_pointer_cast<scene2::NinePatch>(_assets->get<scene2::SceneNode>(path));
-          responseResourceAmountPointer = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>(amountPath));
-          responseResourcePointer->setVisible(false);
-          responseResourceAmountPointer->setVisible(false);
-     }
-     responseResourcePointer = nullptr;
-     responseResourceAmountPointer = nullptr;
-}
-
-void GameScene::setBurnText(){
-     for (int i = 0; i < 4; i ++){
-          if (_currentCard.getResource(i) > 0){
-               _burnText->setText(to_string(_currentCard.getResource(i)));
-               string resource = "brawn";
-               if (i == 0){
-                    resource = "blade";
-               } else if (i == 1){
-                    resource = "flourish";
-               } else if (i == 2){
-                    resource = "lunge";
-               }
-               _burnTexture->setTexture(_assets->get<Texture>(resource));
-          }
-     }
-}
 
 void GameScene::setDisplayCardBurnText(Card displayCard){
      for (int i = 0; i < 4; i ++){
@@ -1011,28 +851,28 @@ void GameScene::touchEndedCB(const cugl::TouchEvent& event, bool focus) {
 void GameScene::touchBegan(const cugl::Vec2& pos) {
      Card displayCard;
      if (_currCardButton->containsScreen(pos)) {
-          //_deckNode->setOffset(Vec2(_dimen.width * 0.52f - pos.x, _dimen.height * (0.33f + 0.0125f * _currentDeck.size()) + pos.y));
+          //_deckNode->setOffset(Vec2(_dimen.width * WIDTH_SCALE - pos.x, _dimen.height * (0.33f + DECK_SCALE * _currentDeck.size()) + pos.y));
           Vec2 posi = _deckNode->screenToNodeCoords(pos);
-          _deckNode->setOffset(Vec2(_dimen.width * 0.52f - posi.x, _dimen.height * (0.5f + 0.0125f * _currentDeck.size()) - posi.y));
+          _deckNode->setOffset(Vec2(_dimen.width * WIDTH_SCALE - posi.x, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()) - posi.y));
           _deckNode->setDrag(true);
           _burn->setVisible(true);
           _deckNode->setCurrCardPos(posi);
      }
      else if (_response1->containsScreen(pos)) {
          displayCard = _cards[_responses[_responseId1].getCards()[0]];
-          setDisplayCardBurnText(displayCard);
+          _resourceController.setDisplayCardBurnText(displayCard, _displayCardBurnText, _assets, _displayCardBurnTexture);
           _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      }
      else if (_response2->containsScreen(pos) & _display2) {
          displayCard = _cards[_responses[_responseId2].getCards()[0]];
-          setDisplayCardBurnText(displayCard);
+          _resourceController.setDisplayCardBurnText(displayCard, _displayCardBurnText, _assets, _displayCardBurnTexture);
           _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      }
      else if (_response3->containsScreen(pos) & _display3) {
          displayCard = _cards[_responses[_responseId3].getCards()[0]];
-          setDisplayCardBurnText(displayCard);
+          _resourceController.setDisplayCardBurnText(displayCard, _displayCardBurnText, _assets, _displayCardBurnTexture);
           _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      } else {

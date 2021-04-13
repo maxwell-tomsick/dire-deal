@@ -191,8 +191,10 @@
     <ClInclude Include="..\..\source\App.h" />
     <ClInclude Include="..\..\source\GameScene.h" />
     <ClInclude Include="..\..\source\InputController.h" />
+    <ClInclude Include="..\..\source\ResourceController.h" />
     <ClInclude Include="..\..\source\LoadingScene.h" />
     <ClInclude Include="..\..\source\Response.h" />
+    <ClInclude Include="..\..\source\JsonLoader.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -202,9 +204,11 @@
     <ClCompile Include="..\..\source\App.cpp" />
     <ClCompile Include="..\..\source\GameScene.cpp" />
     <ClCompile Include="..\..\source\InputController.cpp" />
+    <ClCompile Include="..\..\source\ResourceController.cpp" />
     <ClCompile Include="..\..\source\LoadingScene.cpp" />
     <ClCompile Include="..\..\source\main.cpp" />
     <ClCompile Include="..\..\source\Response.cpp" />
+    <ClCompile Include="..\..\source\JsonLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameLab.rc" />

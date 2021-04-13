@@ -13,10 +13,14 @@
 #ifndef __GAME_SCENE_H__
 #define __GAME_SCENE_H__
 #include <cugl/cugl.h>
+#include <iostream>
+#include <sstream>
 #include <vector>
 #include <map>
 #include <cugl/audio/CUAudioEngine.h>
 #include "InputController.h"
+#include "ResourceController.h"
+#include "JsonLoader.h"
 #include "Deck.h"
 #include "Card.h"
 #include "Response.h"
@@ -44,10 +48,9 @@ protected:
     
     // Attach input controllers directly to the scene (no pointers)
     /** Controller for the blue player */
-    InputController _blueController;
-    /** Controller for the blue player */
-    InputController _redController;
+    // InputController _inputController;
 
+    ResourceController _resourceController;
     //saved this line from lab in case of reference to add sound
     std::shared_ptr<cugl::Sound> _redSound;
     std::shared_ptr<cugl::scene2::TextField> _field;
@@ -126,6 +129,14 @@ protected:
     float _idleBuffer;
     
     std::shared_ptr<cugl::AudioQueue> _audioQueue;
+    const float WIDTH_SCALE = 0.52f;
+    const float DECK_SCALE = 0.0125f;
+    const float HEIGHT_SCALE = 0.5f;
+    const float GOON_HEIGHT_SCALE = 0.774f;
+    const float SHUFFLE_WIDTH_SCALE = 0.9085f;
+    const float R1_HEIGHT_SCALE = 0.6245f;
+    const float R2_HEIGHT_SCALE = 0.4f;
+    const float R3_HEIGHT_SCALE = 0.175f;
 
 public:
 #pragma mark -

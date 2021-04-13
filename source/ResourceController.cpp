@@ -1,0 +1,107 @@
+// _bladeText->setText(to_string(_resources[0]));
+//      _flourishText->setText(to_string(_resources[1]));
+//      _lungeText->setText(to_string(_resources[2]));
+//      _brawnText->setText(to_string(_resources[3]));
+#include "ResourceController.h"
+using namespace cugl;
+
+
+void ResourceController::setResources(
+    std::shared_ptr<cugl::scene2::Label> &bladeText, 
+    std::shared_ptr<cugl::scene2::Label> &flourishText, 
+    std::shared_ptr<cugl::scene2::Label> &lungeText,
+    std::shared_ptr<cugl::scene2::Label> &brawnText,
+    std::vector<int> &resources
+    ){
+    bladeText->setText(to_string(resources[0]));
+    flourishText->setText(to_string(resources[1]));
+    lungeText->setText(to_string(resources[2]));
+    brawnText->setText(to_string(resources[3]));
+
+}  
+
+void ResourceController::setResponseResources(
+    std::map<int, Response> &responses, 
+    int responseId, 
+    int response, 
+    std::shared_ptr<cugl::AssetManager> &assets){
+     std::vector<int> cost = responses[responseId].getResources();
+
+     int acc = 1;
+     std::shared_ptr<cugl::scene2::NinePatch> responseResourcePointer;
+     std::shared_ptr<cugl::scene2::Label> responseResourceAmountPointer;
+     for (int i = 0; i < cost.size(); i++){
+          if (cost[i] > 0){
+               string path = "lab_response" + to_string(response) + "_up_resource" + to_string(acc);
+               string amountPath = "lab_response" + to_string(response) + "_up_resource" + to_string(acc) + "_amount";
+               responseResourcePointer = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>(path));
+               responseResourceAmountPointer = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>(amountPath));
+               responseResourcePointer->setVisible(true);
+               responseResourceAmountPointer->setVisible(true);
+               acc += 1;
+               string resource = "brawn";
+               if (i == 0){
+                    resource = "blade";
+               } else if (i == 1){
+                    resource = "flourish";
+               } else if (i == 2){
+                    resource = "lunge";
+               }
+               responseResourcePointer->setTexture(assets->get<Texture>(resource));
+               responseResourceAmountPointer->setText(to_string(cost[i]));
+          }
+     }
+     for (int j = acc; j <= 4; j++){
+          string path = "lab_response" + to_string(response) + "_up_resource" + to_string(j);
+          string amountPath = "lab_response" + to_string(response) + "_up_resource" + to_string(j) + "_amount";
+          responseResourcePointer = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>(path));
+          responseResourceAmountPointer = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>(amountPath));
+          responseResourcePointer->setVisible(false);
+          responseResourceAmountPointer->setVisible(false);
+     }
+     responseResourcePointer = nullptr;
+     responseResourceAmountPointer = nullptr;
+}
+
+void ResourceController::setBurnText(
+    Card &currentCard, 
+    std::shared_ptr<cugl::scene2::Label> &burnText, 
+    std::shared_ptr<cugl::AssetManager> &assets,
+    std::shared_ptr<cugl::scene2::NinePatch> &burnTexture){
+    for (int i = 0; i < 4; i ++){
+        if (currentCard.getResource(i) > 0){
+            burnText->setText(to_string(currentCard.getResource(i)));
+            string resource = "brawn";
+            if (i == 0){
+                    resource = "blade";
+            } else if (i == 1){
+                    resource = "flourish";
+            } else if (i == 2){
+                    resource = "lunge";
+            }
+            burnTexture->setTexture(assets->get<Texture>(resource));
+        }
+    }
+}
+
+void ResourceController::setDisplayCardBurnText(
+    Card &displayCard, 
+    std::shared_ptr<cugl::scene2::Label> &displayCardBurnText, 
+    std::shared_ptr<cugl::AssetManager> &assets,
+    std::shared_ptr<cugl::scene2::NinePatch> &displayCardBurnTexture){
+    for (int i = 0; i < 4; i ++){
+          if (displayCard.getResource(i) > 0){
+               displayCardBurnText->setText(to_string(displayCard.getResource(i)));
+               string resource = "brawn";
+               if (i == 0){
+                    resource = "blade";
+               } else if (i == 1){
+                    resource = "flourish";
+               } else if (i == 2){
+                    resource = "lunge";
+               }
+               displayCardBurnTexture->setTexture(assets->get<Texture>(resource));
+          }
+     }
+    
+}
