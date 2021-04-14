@@ -60,7 +60,12 @@
         "minfilter": "linear",
         "magfilter": "linear"
       },
-      "ImncapacitatedBurn": {
+      "IncapacitatedBurn": {
+        "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "ItemBurn": {
         "file": "textures/cardburns/incapacitated_burn.png",
         "minfilter": "linear",
         "magfilter": "linear"
@@ -130,6 +135,11 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
+    "ItemFlip": {
+      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
     "background": {
       "file": "textures/background-with-box-and-border.jpg",
       "minfilter": "linear",
@@ -145,8 +155,11 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
-    "enemyIdle": {
+    "thugIdle": {
       "file": "textures/enemy-thug-idle.png"
+    },
+    "slimeIdle": {
+      "file": "textures/enemy-slime-idle.png"
     },
     "enemyLabel": {
       "file": "textures/enemy-label.png",
@@ -264,6 +277,11 @@
       "magfilter": "linear"
     },
     "incapacitated": {
+      "file": "textures/cards/incapacitated.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "item": {
       "file": "textures/cards/incapacitated.png",
       "minfilter": "linear",
       "magfilter": "linear"
@@ -700,7 +718,7 @@
                       "font": "sans6",
                       "text": "WOLVEN THUG",
                       "foreground": [ 207,166,93,255 ],
-                      "halign": "left",
+                      "halign": "center",
                       "valign": "true middle",
                       "anchor": [ 0.5, 0.5 ]
                     },

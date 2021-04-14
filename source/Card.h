@@ -37,6 +37,10 @@ public:
         return _responses[i];
     }
     
+    int getResponses(){
+        return _responses.size();
+    }
+    
     int getResource(int i){
         return _resources[i];
     }
@@ -47,6 +51,9 @@ public:
     
     std::vector<int> getRandomResponses();
     
+    void setResources(int i, int r){
+        _resources[i] = r;
+    }
 
 };
 #endif

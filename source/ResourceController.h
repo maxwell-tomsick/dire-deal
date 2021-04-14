@@ -29,6 +29,11 @@ using namespace cugl;
  * so that we can have a separate mode for the loading screen.
  */
 class ResourceController {
+    private:
+        int _free = -1;
+        int _curr = 0;
+        int _freeResponse = -1;
+    
     public:
     #pragma mark -
     #pragma mark Constructors
@@ -69,6 +74,19 @@ class ResourceController {
         std::shared_ptr<cugl::scene2::Label> &displayCardBurnText, 
         std::shared_ptr<cugl::AssetManager> &assets,
         std::shared_ptr<cugl::scene2::NinePatch> &displayCardBurnTexture);
+    
+    void setFree(int f){
+        _curr = 0;
+        _free = f;
+    }
+    
+    int getFreeResponse(){
+        return _freeResponse;
+    }
+    
+    void setFreeResponse(const int i){
+        _freeResponse = i;
+    }
 };
 
 #endif /* __GAME_SCENE_H__ */

@@ -26,7 +26,14 @@ void ResourceController::setResponseResources(
     int response, 
     std::shared_ptr<cugl::AssetManager> &assets){
      std::vector<int> cost = responses[responseId].getResources();
-
+    //std::printf("curr: %d\n", _curr);
+    if (responseId != 47){
+        if (_curr == _free){
+            _freeResponse = response;
+            cost = {0,0,0,0};
+        }
+        _curr += 1;
+    }
      int acc = 1;
      std::shared_ptr<cugl::scene2::NinePatch> responseResourcePointer;
      std::shared_ptr<cugl::scene2::Label> responseResourceAmountPointer;
@@ -80,8 +87,11 @@ void ResourceController::setBurnText(
                     resource = "lunge";
             }
             burnTexture->setTexture(assets->get<Texture>(resource));
+            return;
         }
     }
+    burnText->setText(to_string(0));
+    burnTexture->setTexture(assets->get<Texture>("flourish"));
 }
 
 void ResourceController::setDisplayCardBurnText(
@@ -103,5 +113,6 @@ void ResourceController::setDisplayCardBurnText(
                displayCardBurnTexture->setTexture(assets->get<Texture>(resource));
           }
      }
-    
+    displayCardBurnText->setText(to_string(0));
+    displayCardBurnTexture->setTexture(assets->get<Texture>("flourish"));
 }

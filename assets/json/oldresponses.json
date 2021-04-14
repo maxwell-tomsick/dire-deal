@@ -719,6 +719,86 @@
       "delete": [],
       "win": true,
       "lose":false
+    },
+    "SaveSecondWind":{
+      "id": 45,
+      "name":"Back Pocket",
+      "description":"Shuffle SECOND WIND into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 0,
+        "lunge": 0,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [-1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+    "SaveDeckBoost":{
+      "id": 46,
+      "name":"Back Pocket",
+      "description":"Shuffle DECK BOOST into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 0,
+        "lunge": 0,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [-1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+    "SaveParasite":{
+      "id": 47,
+      "name":"Symbiosis",
+      "description":"Shuffle PARASITE into the Deck",
+      "cost": {
+        "heavy": 1,
+        "flourish": 1,
+        "lunge": 1,
+        "block": 1
+      },
+      "reward": 0,
+      "addToDeck": [-1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+    "BideTime5":{
+      "id": 48,
+      "name":"Stand By",
+      "description":"Shuffle BIDE TIME into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 0,
+        "lunge": 0,
+        "block": 1
+      },
+      "reward": 0,
+      "addToDeck": [1],
+      "delete": [],
+      "win": false,
+      "lose":false
+    },
+    "Grab4":{
+      "id": 49,
+      "name":"Redirect",
+      "description":"Shuffle EXPOSED into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 0,
+        "lunge": 0,
+        "block": 2
+      },
+      "reward": 0,
+      "addToDeck": [5],
+      "delete": [],
+      "win": false,
+      "lose":false
     }
   }
 }

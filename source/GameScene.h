@@ -83,6 +83,7 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _flourishText;
     std::shared_ptr<cugl::scene2::Label> _lungeText;
     std::shared_ptr<cugl::scene2::Label> _goon;
+    std::shared_ptr<cugl::scene2::Label> _goonName;
     std::shared_ptr<cugl::scene2::Label> _goonNumber;
     
     std::shared_ptr<cugl::scene2::Button> _burn;
@@ -116,6 +117,7 @@ protected:
     cugl::Vec2 _prev;
     float _scl;
     int _movement;
+    bool _display1;
     bool _display2;
     bool _display3;
     Card _currentCard;
@@ -127,6 +129,8 @@ protected:
     bool _doBurn;
     int _fight;
     float _idleBuffer;
+    bool _usedSecondWind;
+    int _item;
     
     std::shared_ptr<cugl::AudioQueue> _audioQueue;
     const float WIDTH_SCALE = 0.52f;
@@ -281,6 +285,8 @@ public:
      * @param pos         the position of the touch
      */
     void touchMoved(const cugl::Vec2& pos);
+    
+    Card getItem(const int i);
 };
 
 #endif /* __GAME_SCENE_H__ */

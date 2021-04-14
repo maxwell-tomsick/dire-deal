@@ -48,6 +48,10 @@ public:
     bool getLose(){
         return _lose;
     }
+    
+    void setFree(){
+        _resources = {0,0,0,0};
+    }
 };
 
 #endif /* Response_h */
