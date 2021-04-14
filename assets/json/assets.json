@@ -70,6 +70,11 @@
         "minfilter": "linear",
         "magfilter": "linear"
       },
+      "PoisonBurn": {
+        "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
     "Bide TimeFlip": {
       "file": "textures/cardflips/card-bidetime-spritesheet.png",
       "minfilter": "linear",
@@ -136,6 +141,11 @@
       "magfilter": "linear"
     },
     "ItemFlip": {
+      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "PoisonFlip": {
       "file": "textures/cardflips/card-incapacitated-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
@@ -285,6 +295,11 @@
       "file": "textures/cards/incapacitated.png",
       "minfilter": "linear",
       "magfilter": "linear"
+    },
+    "poison": {
+      "file": "textures/cards/incapacitated.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "slash": {
       "file": "textures/cards/slash.png",
@@ -323,6 +338,11 @@
     },
     "flourish": {
       "file": "textures/resources/resource-flourish.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "redx": {
+      "file": "textures/redx.png",
       "minfilter": "linear",
       "magfilter": "linear"
     }
@@ -783,6 +803,57 @@
                 "y_offset": 0.695,
                 "x_offset": 0.635
             }
+        },
+        "removePreview1": {
+          "type": "NinePatch",
+          "data": {
+            "texture": "slash",
+            "scale": 0.37,
+            "visible": false
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.32,
+            "x_offset": 0.215
+          },
+          "format": {
+            "type": "Anchored"
+          },
+          "children": {
+            "redX": {
+              "type": "NinePatch",
+              "data": {
+                "texture": "redx",
+                "anchor": [ 0.5, 0.5 ],
+                "scale": 2
+              },
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle"
+              },
+              "format": {
+                "type": "Anchored"
+              }
+            }
+          }
+        },
+        "removePreview2": {
+          "type": "NinePatch",
+          "data": {
+            "texture": "slash",
+            "scale": 0.37,
+            "visible": false
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.32,
+            "x_offset": 0.04
+          },
+          "format": {
+            "type": "Anchored"
+          }
         },
         "displayCard": {
           "type": "NinePatch",

@@ -90,6 +90,8 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _burnText;
     std::shared_ptr<cugl::scene2::NinePatch> _burnTexture;
     std::shared_ptr<cugl::scene2::NinePatch> _displayCard;
+    std::shared_ptr<cugl::scene2::NinePatch> _removeCard1;
+    std::shared_ptr<cugl::scene2::NinePatch> _removeCard2;
     std::shared_ptr<cugl::scene2::NinePatch> _displayCardBurnTexture;
     std::shared_ptr<cugl::scene2::Label> _displayCardBurnText;
     std::shared_ptr<cugl::scene2::Button> _currCardButton;
@@ -112,6 +114,7 @@ protected:
     std::vector<int> _resources;
     std::vector<int> _currentDeck;
     std::vector<int> _nextDeck;
+    std::vector<int> _removeOptions;
     cugl::Size _dimen;
     cugl::Vec2 _vel;
     cugl::Vec2 _prev;
@@ -287,6 +290,8 @@ public:
     void touchMoved(const cugl::Vec2& pos);
     
     Card getItem(const int i);
+    
+    void removeCard(const int id);
 };
 
 #endif /* __GAME_SCENE_H__ */

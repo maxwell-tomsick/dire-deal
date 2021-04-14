@@ -38,7 +38,8 @@ public:
     }
     
     int getResponses(){
-        return _responses.size();
+        int size = (int)_responses.size();
+        return size;
     }
     
     int getResource(int i){

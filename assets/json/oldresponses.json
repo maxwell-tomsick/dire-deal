@@ -799,6 +799,22 @@
       "delete": [],
       "win": false,
       "lose":false
+    },
+    "Poison1":{
+      "id": 50,
+      "name":"Hold Breath",
+      "description":"Shuffle POISON GAS into the Deck",
+      "cost": {
+        "heavy": 0,
+        "flourish": 0,
+        "lunge": 0,
+        "block": 0
+      },
+      "reward": 0,
+      "addToDeck": [13],
+      "delete": [],
+      "win": false,
+      "lose":false
     }
   }
 }

@@ -43,7 +43,7 @@
       "id": 6,
       "name": "Staggered",
       "texture": "staggered",
-      "reactions": [23,24,25,26],
+      "reactions": [23,25,26],
       "resources": {
           "blade": 0,
           "flourish": 3,
@@ -129,6 +129,19 @@
           "brawn": 0
         },
       "level": 5
+    },
+    "Poison":{
+      "id": 13,
+      "name": "Poison",
+      "texture": "poison",
+      "reactions": [50],
+      "resources": {
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 0
+        },
+      "level": 1
     }
   }
 }

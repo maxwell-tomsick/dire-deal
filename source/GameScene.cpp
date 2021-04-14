@@ -187,6 +187,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _flourishText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_flourish_amount"));
      _lungeText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_lunge_amount"));
      _displayCard =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard"));
+     _removeCard1 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_removePreview1"));
+     _removeCard2 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_removePreview2"));
      _currCardButton =std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_currCard"));
      _displayCardBurnTexture =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount"));
      _displayCardBurnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount_amount"));
@@ -285,50 +287,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
           int i = rand() % r;
           _resourceController.setFree(i);
      }
-     if (displayedResponses.size() == 0){
-          _response1->setVisible(false);
-          _response2->setVisible(false);
-          _response3->setVisible(false);
-          _display1 = false;
-          _display2 = false;
-          _display3 = false;
-     } else {
-         _responseId1=displayedResponses[0];
-          _responseId2=displayedResponses[0];
-          _responseId3=displayedResponses[0];
-          _responseText1->setText(_responses[_responseId1].getText());
-          _responseText2->setText(_responses[_responseId1].getText());
-          _responseText3->setText(_responses[_responseId1].getText());
-          _responseId1=displayedResponses[0];
-          _responseId2=displayedResponses[0];
-          _responseId3=displayedResponses[0];
-          responseUpdate(_responseId1, 1);
-          _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
-          _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
-          _responseCard3->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
-          _response2->setVisible(false);
-          _response3->setVisible(false);
-          _display1 = true;
-          _display2 = false;
-          _display3 = false;
-          // set if 2 or 3 responses exist
-         if (displayedResponses.size() >= 2){
-               _responseId2=displayedResponses[1];
-               _responseText2->setText(_responses[_responseId2].getText());
-               _responseId2=displayedResponses[1];
-               responseUpdate(_responseId2, 2);
-               _response3->setVisible(false);
-               _display2 = true;
-               _display3 = false;
-         }
-         if (displayedResponses.size() == 3) {
-               _responseId3=displayedResponses[2];
-               _responseText3->setText(_responses[_responseId3].getText());
-               _responseId3=displayedResponses[2];
-               responseUpdate(_responseId3, 3);
-               _display3 = true;
-         }
-     }
     _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources); 
     return success;
 }
@@ -385,7 +343,7 @@ void GameScene::dispose() {
 void GameScene::reset() {
      _goonNumber->setText("Goon " + std::to_string(_fight + 1) + ":");
      string cardstring = "json/cards.json";
-     //_fight = 4;
+     _fight = 4;
      if (_fight == 1){
           cardstring = "json/level2.json";
      } else if (_fight == 2){
@@ -395,11 +353,11 @@ void GameScene::reset() {
      } else if (_fight == 4){
           _goonName->setText("CAVE SLIME");
           _enemyIdle->dispose();
-          _enemyIdle->initWithFilmstrip(_assets->get<Texture>("slimeIdle"), 4, 5, 19);
-          _enemyIdle->setScale(0.69f);
+          _enemyIdle->initWithFilmstrip(_assets->get<Texture>("slimeIdle"), 3, 5, 12);
+          //_enemyIdle->setScale(0.69f);
           _enemyIdle->setFrame(0);
           _idleBuffer = 0;
-          _enemyIdle->setPosition(_dimen.width * 0.2f, _dimen.height*0.44f);
+          _enemyIdle->setPosition(_dimen.width * 0.2f, _dimen.height*0.375f);
           cardstring = "json/level5.json";
      }
      _cards = {};
@@ -439,6 +397,7 @@ void GameScene::reset() {
           _currentDeck.push_back(1);
           _currentDeck.push_back(3);
           _currentDeck.push_back(3);
+          _nextDeck.push_back(13);
      }
      std::random_device rd;
      std::mt19937 g(rd());
@@ -472,7 +431,7 @@ void GameScene::reset() {
           _currentCard.setResources(i, 2 * r);
      }
      _deckNode->setSize(int(_currentDeck.size()));
-     _deckNode->setNextSize(0);
+     _deckNode->setNextSize((int)(_nextDeck.size()));
      auto cardBackTexture1 = _assets->get<Texture>("cardBack1");
      auto cardBackTexture2 = _assets->get<Texture>("cardBack2");
      _deckNode->setBackTexture(cardBackTexture1);
@@ -504,6 +463,8 @@ void GameScene::update(float timestep) {
      }
      if (_movement == 1){
           _displayCard->setVisible(false);
+          _removeCard1->setVisible(false);
+          _removeCard2->setVisible(false);
           _shuffleFlip->setPosition(_shuffleFlip->getPosition() + _vel);
           _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.21)/40.0f);
           bool stop = _shuffleFlip->getPosition().x <= _dimen.width * WIDTH_SCALE ||
@@ -555,7 +516,7 @@ void GameScene::update(float timestep) {
           if (_currentDeck.size() == 0){
                _currEvent->setText("Shuffling Next Event Deck...");
                _currEvent->setColor(Color4::BLACK);
-               if (_nextDeck.size() > 0){
+               if (_nextDeck.size() > 0 && !(_nextDeck.size() == 1 & _fight == 4 & _cards[_nextDeck[0]].getId() == 13)){
                     _deckNode->setNextSize(int(_nextDeck.size()));
                     _currentDeck = _nextDeck;
                     std::random_device rd;
@@ -613,8 +574,57 @@ void GameScene::update(float timestep) {
           string flipTexture = _currentCard.getText() + "Flip";
           _currentFlip->setTexture(_assets->get<Texture>(flipTexture));
           _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
+          _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+          _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+          if (_movement == 4){
+               _deckNode->setSize(int(_currentDeck.size()));
+               _deckNode->setNextSize(int(_nextDeck.size()));
+               _currentFlip->setVisible(true);
+               _movement = 5;
+          }
+     }
+     if (_movement == 6){
+          int flipFrame = _currentFlip->getFrame();
+          flipFrame += 1;
+          if (flipFrame == _currentFlip->getSize()){
+               _movement = 7;
+               _currentFlip->setVisible(false);
+               flipFrame = 0;
+          }
+          _currentFlip->setFrame(flipFrame);
+     }
+     if (_movement == 7){
+          _removeOptions = {-1,-1,-1};
           if (!_keepCards) {
                std::vector<int> displayedResponses = _currentCard.getRandomResponses();
+               if (_currentCard.getId() == 13 & _fight == 4){
+                    std::vector<int> cardsInDeck = _currentDeck;
+                    cardsInDeck.insert(cardsInDeck.end(), _nextDeck.begin(), _nextDeck.end());
+                    sort( cardsInDeck.begin(), cardsInDeck.end() );
+                    cardsInDeck.erase( unique( cardsInDeck.begin(), cardsInDeck.end() ), cardsInDeck.end() );
+                    int r = (int)cardsInDeck.size();
+                    if (r > 0){
+                         int i = rand() % r;
+                         _removeOptions[0] = cardsInDeck[i];
+                         if (r > 1){
+                              int j = i;
+                              while (j == i){
+                                   j = rand() % r;
+                              }
+                              _removeOptions[1] = cardsInDeck[j];
+                              if (r > 2){
+                                   int k = i;
+                                   while (k == i || k == j){
+                                        k = rand() % r;
+                                   }
+                                   _removeOptions[2] = cardsInDeck[k];
+                                   displayedResponses = {50, 50, 50};
+                              } else {
+                                   displayedResponses = {50, 50};
+                              }
+                         }
+                    }
+               }
                if (displayedResponses.size() > 2) {
                     _responseId1 = displayedResponses[0];
                     _responseId2 = displayedResponses[1];
@@ -642,38 +652,31 @@ void GameScene::update(float timestep) {
           if (_display1) {
                _responseText1->setText(_responses[_responseId1].getText());
                responseUpdate(_responseId1, 1);
-               _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+               if (_removeOptions[0] == -1){
+                    _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+               } else {
+                    _responseCard1->setTexture(_cards[_removeOptions[0]].getTexture());
+               }
           }
           if (_display2) {
                _responseText2->setText(_responses[_responseId2].getText());
                responseUpdate(_responseId2, 2);
-               _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+               if (_removeOptions[1] == -1){
+                    _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+               } else {
+                    _responseCard2->setTexture(_cards[_removeOptions[1]].getTexture());
+               }
           }
           if (_display3){
                _responseText3->setText(_responses[_responseId3].getText());
                responseUpdate(_responseId3, 3);
-               _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+               if (_removeOptions[2] == -1){
+                    _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+               } else {
+                    _responseCard3->setTexture(_cards[_removeOptions[2]].getTexture());
+               }
           }
-          _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
-          _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
-          if (_movement == 4){
-               _deckNode->setSize(int(_currentDeck.size()));
-               _deckNode->setNextSize(int(_nextDeck.size()));
-               _currentFlip->setVisible(true);
-               _movement = 5;
-          }
-     }
-     if (_movement == 6){
-          int flipFrame = _currentFlip->getFrame();
-          flipFrame += 1;
-          if (flipFrame == _currentFlip->getSize()){
-               _movement = 7;
-               _currentFlip->setVisible(false);
-               flipFrame = 0;
-          }
-          _currentFlip->setFrame(flipFrame);
-     }
-     if (_movement == 7){
+
           _response1->setVisible(_display1);
           _response2->setVisible(_display2);
           _response3->setVisible(_display3);
@@ -719,7 +722,30 @@ void GameScene::update(float timestep) {
          _mainMenu->activate();
      }
 #ifndef CU_TOUCH_SCREEN
-     if ((_movement == 0) & !_deckNode->getDrag()) {
+     if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13) & (_fight == 4)){
+          if (_response1->containsScreen(_mouse->pointerPosition()) & _display1) {
+               _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+               _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
+               _removeCard1->setVisible(true);
+               _removeCard2->setVisible(true);
+          }
+          else if (_response2->containsScreen(_mouse->pointerPosition()) & _display2) {
+               _removeCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+               _removeCard1->setTexture(_cards[_removeOptions[1]].getTexture());
+               _removeCard1->setVisible(true);
+               _removeCard2->setVisible(true);
+          }
+          else if (_response3->containsScreen(_mouse->pointerPosition()) & _display3) {
+               _removeCard2->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+               _removeCard1->setTexture(_cards[_removeOptions[2]].getTexture());
+               _removeCard1->setVisible(true);
+               _removeCard2->setVisible(true);
+          } else {
+               _displayCard->setVisible(false);
+               _removeCard1->setVisible(false);
+               _removeCard2->setVisible(false);
+          }
+     } else if ((_movement == 0) & !_deckNode->getDrag()) {
           Card displayCard;
           if (_response1->containsScreen(_mouse->pointerPosition()) & _display1) {
                displayCard = _cards[_responses[_responseId1].getCards()[0]];
@@ -837,6 +863,9 @@ void GameScene::buttonPress(const int r){
           }
 
           std::vector<int> cards =response.getCards();
+          if (_removeOptions[r] != -1){
+               removeCard(_removeOptions[r]);
+          }
           for (int i = 0; i < cards.size(); i++){
                int newCard = cards[i];
                string flipTexture = _cards[newCard].getText() + "Flip";
@@ -883,6 +912,8 @@ void GameScene::buttonPress(const int r){
           if (_fight > 3){
                _deckNode->setVisible(false);
               _displayCard->setVisible(false);
+               _removeCard1->setVisible(false);
+               _removeCard2->setVisible(false);
               _goon->setVisible(false);
               _currEvent->setText("YOU WIN!");
               _currEvent->setVisible(true);
@@ -909,48 +940,6 @@ void GameScene::buttonPress(const int r){
           string flipTexture = _currentCard.getText() + "Flip";
           _currentFlip->setTexture(_assets->get<Texture>(flipTexture));
           _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
-          if (!_keepCards) {
-               std::vector<int> displayedResponses = _currentCard.getRandomResponses();
-               if (displayedResponses.size() > 2) {
-                    _responseId1 = displayedResponses[0];
-                    _responseId2 = displayedResponses[1];
-                    _responseId3 = displayedResponses[2];
-                    _display1 = true;
-                    _display2 = true;
-                    _display3 = true;
-               } else if (displayedResponses.size() > 1) {
-                    _responseId1 = displayedResponses[0];
-                    _responseId2 = displayedResponses[1];
-                    _display1 = true;
-                    _display2 = true;
-                    _display3 = false;
-               }
-               else if (displayedResponses.size() > 0) {
-                    _responseId1 = displayedResponses[0];
-                    _display1 = true;
-                    _display2 = false;
-                    _display3 = false;
-               } else {
-                    _display1 = false;
-                    _display2 = false;
-                    _display3 = false;
-               }
-          }
-          if (_display1){
-               _responseText1->setText(_responses[_responseId1].getText());
-               responseUpdate(_responseId1, 1);
-               _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
-          }
-          if (_display2){
-               _responseText2->setText(_responses[_responseId2].getText());
-               responseUpdate(_responseId2, 2);
-               _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
-          }
-          if (_display3){
-               _responseText3->setText(_responses[_responseId3].getText());
-               responseUpdate(_responseId3, 3);
-               _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
-          }
           _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
           _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
           _currentFlip->setVisible(true);
@@ -1026,6 +1015,8 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
 
 void GameScene::touchEnded(const cugl::Vec2& pos) {
      _displayCard->setVisible(false);
+     _removeCard1->setVisible(false);
+     _removeCard2->setVisible(false);
      if (!_deckNode->getDrag()){
           if (_response1->containsScreen(pos) & _display1) {
                buttonPress(0);
@@ -1060,8 +1051,30 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
           if (_prev.x - pos.x > SWIPE_LENGTH){
                _movement = 6;
           }
-     }
-     else if (!_deckNode->getDrag()){
+     } else if (!_deckNode->getDrag() & (_currentCard.getId() == 13) & (_fight == 4)){
+          if (_response1->containsScreen(pos)) {
+               _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+               _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
+               _removeCard1->setVisible(true);
+               _removeCard2->setVisible(true);
+          }
+          else if (_response2->containsScreen(pos) & _display2) {
+               _removeCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+               _removeCard1->setTexture(_cards[_removeOptions[1]].getTexture());
+               _removeCard1->setVisible(true);
+               _removeCard2->setVisible(true);
+          }
+          else if (_response3->containsScreen(pos) & _display3) {
+               _removeCard2->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+               _removeCard1->setTexture(_cards[_removeOptions[2]].getTexture());
+               _removeCard1->setVisible(true);
+               _removeCard2->setVisible(true);
+          } else {
+               _displayCard->setVisible(false);
+               _removeCard1->setVisible(false);
+               _removeCard2->setVisible(false);
+          }
+     } else if (!_deckNode->getDrag()){
           if (_response1->containsScreen(pos)) {
               displayCard = _cards[_responses[_responseId1].getCards()[0]];
                setDisplayCardBurnText(displayCard);
@@ -1112,4 +1125,22 @@ Card GameScene::getItem(const int i){
                return specialCard;
      }
      return specialCard;
+}
+
+void GameScene::removeCard(const int id){
+     for (int i = 0; i < _currentDeck.size(); i++){
+          if (_cards[_currentDeck[i]].getId() == id){
+               _currentDeck.erase(_currentDeck.begin() + i);
+               _deckNode->setSize(int(_currentDeck.size()));
+               return;
+          }
+     }
+     for (int i = 0; i < _nextDeck.size(); i++){
+          if (_cards[_nextDeck[i]].getId() == id){
+               _nextDeck.erase(_nextDeck.begin() + i);
+               _deckNode->setNextSize(int(_nextDeck.size()));
+               return;
+          }
+     }
+     return;
 }
