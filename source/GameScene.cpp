@@ -343,7 +343,7 @@ void GameScene::dispose() {
 void GameScene::reset() {
      _goonNumber->setText("Goon " + std::to_string(_fight + 1) + ":");
      string cardstring = "json/cards.json";
-     _fight = 4;
+     //_fight = 4;
      if (_fight == 1){
           cardstring = "json/level2.json";
      } else if (_fight == 2){
