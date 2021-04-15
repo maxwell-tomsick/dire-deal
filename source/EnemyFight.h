@@ -2,7 +2,6 @@
 #define __ENEMYFIGHT_H__
 
 #include <cugl/cugl.h>
-#include "Response.h"
 
 /** 
  * Model class representing a level/fight
@@ -18,6 +17,7 @@ private:
     int _frames;
     float _wscale;
     float _hscale;
+    int _id;
 
 public:
     EnemyFight();
@@ -30,7 +30,8 @@ public:
         int cols, 
         int frames,
         float wscale,
-        float hscale);
+        float hscale,
+        int id);
 
     string getEnemyName(){
         return _enemyName;
@@ -56,5 +57,8 @@ public:
     float getHscale() {
         return _hscale;
     }
+    int getId() {
+        return _id;
+    }
 };
-#endif
+#endif /* EnemyFight_h */

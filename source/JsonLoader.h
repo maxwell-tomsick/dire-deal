@@ -109,8 +109,9 @@ namespace JsonLoader{
             int frames = jsonItem->get("frames")->asInt();
             float wscale = jsonItem->get("wscale")->asFloat();
             float hscale = jsonItem->get("hscale")->asFloat();
+            int id = jsonItem->get("id")->asInt();
             EnemyFight enemyFight;
-            enemyFight.allocate(enemyName, deck, enemyTexture, rows, cols, frames, wscale, hscale);
+            enemyFight.allocate(enemyName, deck, enemyTexture, rows, cols, frames, wscale, hscale, id);
             // index at 1
             enemyFights[i + 1] = enemyFight;
         }
