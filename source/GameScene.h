@@ -21,6 +21,7 @@
 #include "InputController.h"
 #include "ResourceController.h"
 #include "JsonLoader.h"
+#include "EnemyFight.h"
 #include "Deck.h"
 #include "Card.h"
 #include "Response.h"
@@ -111,6 +112,7 @@ protected:
     int _responseId3;
     std::map<int, Card> _cards;
     std::map<int, Response> _responses;
+    std::map<int, EnemyFight> _enemyFights;
     std::vector<int> _resources;
     std::vector<int> _currentDeck;
     std::vector<int> _nextDeck;
@@ -209,7 +211,7 @@ public:
      * Resets the status of the game so that we can play again.
      */
     void reset() override;
-
+    void deckLoad(std::vector<int> deck);
     
     void buttonPress(const int r);
     
