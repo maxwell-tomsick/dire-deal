@@ -28,6 +28,11 @@ using namespace JsonLoader;
 
 #pragma mark -
 #pragma mark Constructors
+void GameScene::deckLoad(std::vector<int> deck) {
+     for (int i = 0; i < deck.size(); i++){
+          _currentDeck.push_back(deck[i]);
+     }
+}
 /**
  * Initializes the controller contents, and starts the game
  *
@@ -95,10 +100,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      if (_item >= 0){
           _currentDeck.push_back(-1);
      }
-     _currentDeck = _enemyFights[1].getDeck();
+     std::vector<int> currDeck = _enemyFights[_fight].getDeck();
+     for (int i = 0; i < currDeck.size(); i++){
+          _currentDeck.push_back(currDeck[i]);
+     }
+     // _currentDeck = (_enemyFights[1].getDeck());
+     // _currentDeck.push_back(0);
      std::random_device rd;
      std::mt19937 g(rd());
-      std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
+     std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
      bool itemFound = false;
      int r = 0;
      for (int i = 0; i < _currentDeck.size(); i++){
@@ -113,7 +123,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
           }
      }
      _currentCard = _cards[_currentDeck.back()];
+     CULog("Wee Woo1");
      _currentDeck.pop_back();
+     CULog("Wee Woo2");
      if (_currentCard.getId() == -1 & _item == 3){
           int i = rand() % 4;
           int r = (int) _currentDeck.size() + (int)_nextDeck.size() + 1;
@@ -350,11 +362,13 @@ void GameScene::reset() {
           EnemyFight currFight = _enemyFights[_fight];
           _goonName->setText(currFight.getEnemyName());
           _enemyIdle->dispose();
+          CULog("beforefilmstrip");
           _enemyIdle->initWithFilmstrip(_assets->get<Texture>(
                currFight.getEnemyTexture()), 
                currFight.getRows(), 
                currFight.getCols(), 
                currFight.getFrames());
+          CULog("afterfilmstrip");
           //_enemyIdle->setScale(0.69f);
           _enemyIdle->setFrame(0);
           _idleBuffer = 0;
@@ -399,7 +413,10 @@ void GameScene::reset() {
           _currentDeck.push_back(-1);
      }
      if (_fight < _enemyFights.size() + 1){
-          _currentDeck = _enemyFights[_fight].getDeck();
+          std::vector<int> currDeck = _enemyFights[_fight].getDeck();
+          for (int i = 0; i < currDeck.size(); i++){
+               _currentDeck.push_back(currDeck[i]);
+          }
      }
      // if (_fight == 1){
      //      _currentDeck.push_back(0);
@@ -465,7 +482,6 @@ void GameScene::reset() {
      _idleBuffer = 0;
      _burn->setVisible(false);
 }
-
 /**
  * The method called to update the game mode.
  *

@@ -1,131 +1,147 @@
 {
-  "Cards": {
-      "Slash": {
-        "id": 0,
-        "name": "Slash",
-        "texture": "slash",
-        "reactions": [
-          3,
-          7
-        ],
-        "resources": {
+  "Cards":{
+    "Bide Time":{
+      "id": 1,
+      "name": "Bide Time",
+      "texture": "bidetime",
+      "reactions": [4,7,48],
+      "resources": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 0,
-          "brawn": 1
+          "lunge": 1,
+          "brawn": 0
         },
-        "level": 1
-      },
-    "Exposed": {
+      "level": 1
+    },
+    "Grab":{
+      "id": 3,
+      "name": "Grab",
+      "texture": "grab",
+      "reactions": [12,14, 49],
+      "resources": {
+          "blade": 0,
+          "flourish": 1,
+          "lunge": 0,
+          "brawn": 0
+        },
+      "level": 1
+    },
+    "Exposed":{
       "id": 5,
       "name": "Exposed",
       "texture": "exposed",
-      "reactions": [
-        20,
-        22
-      ],
+      "reactions": [19,20,21,22],
       "resources": {
-        "blade": 0,
-        "flourish": 0,
-        "lunge": 0,
-        "brawn": 3
-      },
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 3
+        },
       "level": 2
     },
-    "Staggered": {
+    "Staggered":{
       "id": 6,
       "name": "Staggered",
       "texture": "staggered",
-      "reactions": [
-        25,
-        26
-      ],
+      "reactions": [23,25,26],
       "resources": {
-        "blade": 0,
-        "flourish": 3,
-        "lunge": 0,
-        "brawn": 0
-      },
+          "blade": 0,
+          "flourish": 3,
+          "lunge": 0,
+          "brawn": 0
+        },
       "level": 2
     },
-    "Stunned": {
+    "Stunned":{
       "id": 7,
       "name": "Stunned",
       "texture": "stunned",
-      "reactions": [
-        29,
-        30
-      ],
+      "reactions": [27,28,29,30],
       "resources": {
-        "blade": 9,
-        "flourish": 0,
-        "lunge": 0,
-        "brawn": 0
-      },
+          "blade": 9,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 0
+        },
       "level": 3
     },
-    "Wounded": {
+    "Wounded":{
       "id": 8,
       "name": "Wounded",
       "texture": "wounded",
-      "reactions": [
-        32,
-        33
-      ],
+      "reactions": [31,32,33],
       "resources": {
-        "blade": 0,
-        "flourish": 9,
-        "lunge": 0,
-        "brawn": 0
-      },
+          "blade": 0,
+          "flourish": 9,
+          "lunge": 0,
+          "brawn": 0
+        },
       "level": 3
     },
-    "Crushed": {
+    "Blinded":{
+      "id": 9,
+      "name": "Blinded",
+      "texture": "blinded",
+      "reactions": [34,35,36,37],
+      "resources": {
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 9,
+          "brawn": 0
+        },
+      "level": 3
+    },
+    "Crushed":{
       "id": 10,
       "name": "Crushed",
       "texture": "crushed",
-      "reactions": [
-        40
-      ],
+      "reactions": [38,39,40],
       "resources": {
-        "blade": 15,
-        "flourish": 0,
-        "lunge": 0,
-        "brawn": 0
-      },
+          "blade": 15,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 0
+        },
       "level": 4
     },
-    "Impaled": {
+    "Impaled":{
       "id": 11,
       "name": "Impaled",
       "texture": "impaled",
-      "reactions": [
-        43
-      ],
+      "reactions": [41,42,43],
       "resources": {
-        "blade": 0,
-        "flourish": 0,
-        "lunge": 0,
-        "brawn": 15
-      },
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 15
+        },
       "level": 4
     },
-    "Incapacitated": {
+    "Incapacitated":{
       "id": 12,
       "name": "Incapacitated",
       "texture": "incapacitated",
-      "reactions": [
-        44,
-        44,
-        44
-      ],
+      "reactions": [44,44,44],
       "resources": {
-        "blade": 0,
-        "flourish": 0,
-        "lunge": 0,
-        "brawn": 0
-      },
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 0
+        },
       "level": 5
+    },
+    "Poison":{
+      "id": 13,
+      "name": "Poison",
+      "texture": "poison",
+      "reactions": [50],
+      "resources": {
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 0
+        },
+      "level": 1
     }
   }
 }

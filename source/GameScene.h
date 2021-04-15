@@ -211,7 +211,7 @@ public:
      * Resets the status of the game so that we can play again.
      */
     void reset() override;
-
+    void deckLoad(std::vector<int> deck);
     
     void buttonPress(const int r);
     

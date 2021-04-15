@@ -15,11 +15,13 @@ using namespace cugl;
 EnemyFight::EnemyFight(){
     _enemyName = ""; 
 	_deck = {0};
-    _enemyTexture = nullptr;
+    _enemyTexture = "";
     // std::shared_ptr<cugl::scene2::SceneNode> background;
     _rows = 3;
     _cols = 4;
     _frames = 12;
+    _wscale = 1.0f;
+    _hscale = 1.0f;
 }
 
 void EnemyFight::allocate(
