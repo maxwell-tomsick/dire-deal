@@ -22,7 +22,7 @@ private:
 public:
     EnemyFight();
     
-    void EnemyFight::allocate(
+    void allocate(
         string enemyName,
         std::vector<int> deck, 
         string enemyTexture, 
