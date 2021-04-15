@@ -15,6 +15,7 @@ using namespace cugl;
 EnemyFight::EnemyFight(){
     _enemyName = ""; 
 	_deck = {0};
+    _nextDeck ={};
     _enemyTexture = "";
     // std::shared_ptr<cugl::scene2::SceneNode> background;
     _rows = 3;
@@ -28,6 +29,7 @@ EnemyFight::EnemyFight(){
 void EnemyFight::allocate(
     string enemyName,
     std::vector<int> deck, 
+    std::vector<int> nextDeck,
     string enemyTexture, 
     int rows, 
     int cols, 
@@ -38,11 +40,12 @@ void EnemyFight::allocate(
         
     _enemyName = enemyName;
 	_deck = deck;
+    _nextDeck = nextDeck;
     _enemyTexture = enemyTexture;
     _rows = rows;
     _cols = cols;
     _frames = frames;
     _wscale = wscale;
     _hscale = hscale;
-    _id = id
+    _id = id;
 }

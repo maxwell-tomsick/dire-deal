@@ -104,6 +104,7 @@ namespace JsonLoader{
             string enemyName = jsonItem->get("enemyName")->asString();
             string enemyTexture = jsonItem->get("enemyTexture")->asString();
             std::vector<int> deck = jsonItem->get("deck")->asIntArray();
+            std::vector<int> nextDeck = jsonItem->get("nextDeck")->asIntArray();
             int rows = jsonItem->get("rows")->asInt();
             int cols = jsonItem->get("cols")->asInt();
             int frames = jsonItem->get("frames")->asInt();
@@ -111,7 +112,7 @@ namespace JsonLoader{
             float hscale = jsonItem->get("hscale")->asFloat();
             int id = jsonItem->get("id")->asInt();
             EnemyFight enemyFight;
-            enemyFight.allocate(enemyName, deck, enemyTexture, rows, cols, frames, wscale, hscale, id);
+            enemyFight.allocate(enemyName, deck, nextDeck, enemyTexture, rows, cols, frames, wscale, hscale, id);
             // index at 1
             enemyFights[i + 1] = enemyFight;
         }

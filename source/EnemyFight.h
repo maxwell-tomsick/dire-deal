@@ -10,6 +10,7 @@ class EnemyFight {
 private:
 	string _enemyName; 
 	std::vector<int> _deck;
+    std::vector<int> _nextDeck;
     string _enemyTexture;
     // std::shared_ptr<cugl::scene2::SceneNode> background;
     int _rows;
@@ -25,6 +26,7 @@ public:
     void allocate(
         string enemyName,
         std::vector<int> deck, 
+        std::vector<int> nextDeck,
         string enemyTexture, 
         int rows, 
         int cols, 
