@@ -144,7 +144,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _deckNode->setDrawFront(0);
      _deckNode->setDrag(false);
      _deckNode->reset();
-     _resources = { 30, 30, 30, 30 };
+     //_resources = { 30, 30, 30, 30 };
+     _resources = { 50, 50, 50, 50 };
      
      _enemyIdle =std::make_shared<scene2::AnimationNode>();
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
@@ -356,7 +357,7 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
-     _goonNumber->setText("Goon " + std::to_string(_fight + 1) + ":");
+     _goonNumber->setText("Goon " + std::to_string(_fight) + ":");
      string cardstring = "json/cards.json";
      if (_fight < _enemyFights.size() + 1){
           EnemyFight currFight = _enemyFights[_fight];
@@ -946,7 +947,7 @@ void GameScene::buttonPress(const int r){
      _keepCards = false;
      if (win){
           _fight += 1;
-          if (_fight > 3){
+          if (_fight > _enemyFights.size()){
                _deckNode->setVisible(false);
               _displayCard->setVisible(false);
                _removeCard1->setVisible(false);
