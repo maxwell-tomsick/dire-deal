@@ -123,22 +123,7 @@
       "texture": "blinded",
       "reactions": [34,35,36,37],
       "resources": {
-          "blade": 0,"SaveParasite":{
-              "id": 47,
-              "name":"Symbiosis",
-              "description":"Shuffle PARASITE into the Deck",
-              "cost": {
-                "heavy": 1,
-                "flourish": 1,
-                "lunge": 1,
-                "block": 1
-              },
-              "reward": 0,
-              "addToDeck": [-1],
-              "delete": [],
-              "win": false,
-              "lose":false
-            }
+          "blade": 0,
           "flourish": 0,
           "lunge": 9,
           "brawn": 0

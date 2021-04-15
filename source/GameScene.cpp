@@ -129,7 +129,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _deckNode->setDrawFront(0);
      _deckNode->setDrag(false);
      _deckNode->reset();
-     _resources = { 30, 30, 30, 30 };
+     //_resources = { 30, 30, 30, 30 };
+     _resources = { 50, 50, 50, 50 };
      
      _enemyIdle =std::make_shared<scene2::AnimationNode>();
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
@@ -909,7 +910,7 @@ void GameScene::buttonPress(const int r){
      _keepCards = false;
      if (win){
           _fight += 1;
-          if (_fight > 3){
+          if (_fight > 4){
                _deckNode->setVisible(false);
               _displayCard->setVisible(false);
                _removeCard1->setVisible(false);
