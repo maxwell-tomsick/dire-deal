@@ -67,11 +67,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     scene->doLayout(); // Repositions the HUD;
      
      _usedSecondWind = false;
-     _fight = 0;
+     _fight = 1;
      _item = -1;
      _cards = {};
      _responses = {};
+     _enemyFights = {};
      //RESEARCH WHETHER TO DELETE POINTER LATER
+     std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc("json/enemyFights.json");
+     _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
      std::shared_ptr<JsonReader> jsonReaderLevel1 = JsonReader::alloc("json/level1.json");
      _cards = getJsonCards(jsonReaderLevel1, _cards, _assets);
      Card item = getItem(_item);
@@ -92,7 +95,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      if (_item >= 0){
           _currentDeck.push_back(-1);
      }
-     _currentDeck.push_back(0);
+     _currentDeck = _enemyFights[1].getDeck();
      std::random_device rd;
      std::mt19937 g(rd());
       std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
@@ -343,23 +346,38 @@ void GameScene::dispose() {
 void GameScene::reset() {
      _goonNumber->setText("Goon " + std::to_string(_fight + 1) + ":");
      string cardstring = "json/cards.json";
-     //_fight = 4;
-     if (_fight == 1){
-          cardstring = "json/level2.json";
-     } else if (_fight == 2){
-          cardstring = "json/level3.json";
-     } else if (_fight == 3){
-          cardstring = "json/level4.json";
-     } else if (_fight == 4){
-          _goonName->setText("CAVE SLIME");
+     if (_fight < _enemyFights.size() + 1){
+          EnemyFight currFight = _enemyFights[_fight];
+          _goonName->setText(currFight.getEnemyName());
           _enemyIdle->dispose();
-          _enemyIdle->initWithFilmstrip(_assets->get<Texture>("slimeIdle"), 3, 5, 12);
+          _enemyIdle->initWithFilmstrip(_assets->get<Texture>(
+               currFight.getEnemyTexture()), 
+               currFight.getRows(), 
+               currFight.getCols(), 
+               currFight.getFrames());
           //_enemyIdle->setScale(0.69f);
           _enemyIdle->setFrame(0);
           _idleBuffer = 0;
-          _enemyIdle->setPosition(_dimen.width * 0.2f, _dimen.height*0.375f);
-          cardstring = "json/level5.json";
+          _enemyIdle->setPosition(_dimen.width * currFight.getWscale(), _dimen.height * currFight.getHscale());
+          cardstring = "json/level" + to_string(_fight) + ".json";
      }
+     //_fight = 4;
+     // if (_fight == 1){
+     //      cardstring = "json/level2.json";
+     // } else if (_fight == 2){
+     //      cardstring = "json/level3.json";
+     // } else if (_fight == 3){
+     //      cardstring = "json/level4.json";
+     // } else if (_fight == 4){
+     //      _goonName->setText("CAVE SLIME");
+     //      _enemyIdle->dispose();
+     //      _enemyIdle->initWithFilmstrip(_assets->get<Texture>("slimeIdle"), 3, 5, 12);
+     //      //_enemyIdle->setScale(0.69f);
+     //      _enemyIdle->setFrame(0);
+     //      _idleBuffer = 0;
+     //      _enemyIdle->setPosition(_dimen.width * 0.2f, _dimen.height*0.375f);
+     //      cardstring = "json/level5.json";
+     // }
      _cards = {};
      _responses = {};
      std::shared_ptr<JsonReader> jsonReaderCardString = JsonReader::alloc(cardstring);
@@ -380,25 +398,28 @@ void GameScene::reset() {
      if ((_item >= 0) & !_usedSecondWind){
           _currentDeck.push_back(-1);
      }
-     if (_fight == 1){
-          _currentDeck.push_back(0);
-     } else if (_fight == 2){
-          _currentDeck.push_back(0);
-          _currentDeck.push_back(3);
-          _currentDeck.push_back(3);
-     } else if (_fight == 3){
-          _currentDeck.push_back(0);
-          _currentDeck.push_back(0);
-          _currentDeck.push_back(1);
-          _currentDeck.push_back(2);
-          _currentDeck.push_back(3);
-     } else if (_fight == 4){
-          _currentDeck.push_back(1);
-          _currentDeck.push_back(1);
-          _currentDeck.push_back(3);
-          _currentDeck.push_back(3);
-          _nextDeck.push_back(13);
+     if (_fight < _enemyFights.size() + 1){
+          _currentDeck = _enemyFights[_fight].getDeck();
      }
+     // if (_fight == 1){
+     //      _currentDeck.push_back(0);
+     // } else if (_fight == 2){
+     //      _currentDeck.push_back(0);
+     //      _currentDeck.push_back(3);
+     //      _currentDeck.push_back(3);
+     // } else if (_fight == 3){
+     //      _currentDeck.push_back(0);
+     //      _currentDeck.push_back(0);
+     //      _currentDeck.push_back(1);
+     //      _currentDeck.push_back(2);
+     //      _currentDeck.push_back(3);
+     // } else if (_fight == 4){
+     //      _currentDeck.push_back(1);
+     //      _currentDeck.push_back(1);
+     //      _currentDeck.push_back(3);
+     //      _currentDeck.push_back(3);
+     //      _nextDeck.push_back(13);
+     // }
      std::random_device rd;
      std::mt19937 g(rd());
       std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);

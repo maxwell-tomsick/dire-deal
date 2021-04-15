@@ -195,6 +195,7 @@
     <ClInclude Include="..\..\source\LoadingScene.h" />
     <ClInclude Include="..\..\source\Response.h" />
     <ClInclude Include="..\..\source\JsonLoader.h" />
+    <ClInclude Include="..\..\source\EnemyFight.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +210,7 @@
     <ClCompile Include="..\..\source\main.cpp" />
     <ClCompile Include="..\..\source\Response.cpp" />
     <ClCompile Include="..\..\source\JsonLoader.cpp" />
+    <ClCompile Include="..\..\source\EnemyFight.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameLab.rc" />

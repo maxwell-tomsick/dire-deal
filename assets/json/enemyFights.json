@@ -1,18 +1,27 @@
 {
-  "Fights":[
-
-    {
+  "Fights":{
+    "1":{
       "enemyName": "Wolven Thug",
-      "enemyTexture": "wolvenThug",
-      "deck": [ 1, 2 ],
-      "background": "background"
+      "enemyTexture": "thugIdle",
+      "deck": [ 0, 0, 1, 2, 3 ],
+      "background": "background",
+      "rows": 3,
+      "cols": 4,
+      "frames": 12,
+      "wscale": 1.0,
+      "hscale": 1.0
     },
-    {
+    "2":{
       "enemyName": "Cave Slime",
-      "enemyTexture": "caveSlime",
-      "deck": [ 1, 2 ],
-      "background": "cave"
+      "enemyTexture": "slimeIdle",
+      "deck": [ 1, 1, 3, 3],
+      "background": "background",
+      "rows": 3,
+      "cols": 5,
+      "frames": 12,
+      "wscale": 0.2,
+      "hscale": 0.375
     }
-  ]
+  }
 }
 

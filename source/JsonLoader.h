@@ -19,6 +19,7 @@
 #include <vector>
 #include <map>
 #include "Response.h"
+#include "EnemyFight.h"
 using namespace cugl;
 /**
  * This class is the primary gameplay constroller for the demo.
@@ -93,6 +94,27 @@ namespace JsonLoader{
             responses[id] = response;
         }
         return responses;
+    }
+
+    static std::map<int, EnemyFight> getJsonEnemyFights(std::shared_ptr<JsonReader> jsonReader, std::map<int, EnemyFight>& enemyFights) {
+        std::shared_ptr<JsonValue> fightsJson = getJsonItem(jsonReader, "Fights");
+        for (int i = 0; i < fightsJson->size(); i++) {
+            std::shared_ptr<JsonValue> jsonItem = fightsJson->get(i);
+            int id = jsonItem->get("id")->asInt();
+            string enemyName = jsonItem->get("enemyName")->asString();
+            string enemyTexture = jsonItem->get("enemyTexture")->asString();
+            std::vector<int> deck = jsonItem->get("deck")->asIntArray();
+            int rows = jsonItem->get("rows")->asInt();
+            int cols = jsonItem->get("cols")->asInt();
+            int frames = jsonItem->get("frames")->asInt();
+            float wscale = jsonItem->get("wscale")->asFloat();
+            float hscale = jsonItem->get("hscale")->asFloat();
+            EnemyFight enemyFight;
+            enemyFight.allocate(enemyName, deck, enemyTexture, rows, cols, frames, wscale, hscale);
+            // index at 1
+            enemyFights[i + 1] = enemyFight;
+        }
+        return enemyFights;
     }
 };
 
