@@ -111,6 +111,7 @@ void ResourceController::setDisplayCardBurnText(
                     resource = "lunge";
                }
                displayCardBurnTexture->setTexture(assets->get<Texture>(resource));
+              return;
           }
      }
     displayCardBurnText->setText(to_string(0));

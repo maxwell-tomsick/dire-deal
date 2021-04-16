@@ -148,8 +148,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _deckNode->setDrawFront(0);
      _deckNode->setDrag(false);
      _deckNode->reset();
-     //_resources = { 30, 30, 30, 30 };
-     _resources = { 50, 50, 50, 50 };
+     _resources = { 20, 20, 20, 20 };
+     //_resources = { 50, 50, 50, 50 };
      
      _enemyIdle =std::make_shared<scene2::AnimationNode>();
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
@@ -512,8 +512,7 @@ void GameScene::update(float timestep) {
           _removeCard2->setVisible(false);
           _shuffleFlip->setPosition(_shuffleFlip->getPosition() + _vel);
           _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.21)/40.0f);
-          bool stop = _shuffleFlip->getPosition().x <= _dimen.width * WIDTH_SCALE ||
-          _shuffleFlip->getPosition().x + _vel.x < _dimen.width * WIDTH_SCALE;
+          bool stop = _shuffleFlip->getScaleX() >= 0.585f || (_shuffleFlip->getScaleX() +(_scl - 0.21)/40.0f > 0.585f);
           if (stop){
                _movement = 2;
           }
