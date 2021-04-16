@@ -485,6 +485,7 @@ void GameScene::reset() {
      _deckNode->setFrontTexture(_currentCard.getTexture());
      _deckNode->setDrawFront(2);
      _deckNode->setDrag(false);
+     _burnTexture->setVisible(false);
      _deckNode->reset();
      _idleBuffer = 0;
 }
