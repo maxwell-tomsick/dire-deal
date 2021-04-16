@@ -14,7 +14,8 @@
       "addToDeck": [3],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Slash2":{
       "id": 1,
@@ -30,7 +31,8 @@
       "addToDeck": [1],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Slash3":{
       "id": 2,
@@ -46,7 +48,8 @@
       "addToDeck": [2],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Slash4":{
       "id": 3,
@@ -62,7 +65,8 @@
       "addToDeck": [5],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.75
     },
     "BideTime1":{
       "id": 4,
@@ -78,7 +82,8 @@
       "addToDeck": [3],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "BideTime2":{
       "id": 5,
@@ -94,7 +99,8 @@
       "addToDeck": [0],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "BideTime3":{
       "id": 6,
@@ -110,7 +116,8 @@
       "addToDeck": [2],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "BideTime4":{
       "id": 7,
@@ -126,7 +133,8 @@
       "addToDeck": [6],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Guard1":{
       "id": 8,
@@ -142,7 +150,8 @@
       "addToDeck": [3],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Guard2":{
       "id": 9,
@@ -158,7 +167,8 @@
       "addToDeck": [0],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Guard3":{
       "id": 10,
@@ -174,7 +184,8 @@
       "addToDeck": [1],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.85
     },
     "Guard4":{
       "id": 11,
@@ -190,7 +201,8 @@
       "addToDeck": [4],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Grab1":{
       "id": 12,
@@ -206,7 +218,8 @@
       "addToDeck": [1],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.8
     },
     "Grab2":{
       "id": 13,
@@ -222,7 +235,8 @@
       "addToDeck": [4],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Grab3":{
       "id": 14,
@@ -238,7 +252,8 @@
       "addToDeck": [6],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Grappled1":{
       "id": 15,
@@ -254,7 +269,8 @@
       "addToDeck": [4],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.9
     },
     "Grappled2":{
       "id": 16,
@@ -270,7 +286,8 @@
       "addToDeck": [6],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Grappled3":{
       "id": 17,
@@ -286,7 +303,8 @@
       "addToDeck": [9],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.85
     },
     "Grappled4":{
       "id": 18,
@@ -302,7 +320,8 @@
       "addToDeck": [7],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.9
     },
     "Exposed1":{
       "id": 19,
@@ -318,7 +337,8 @@
       "addToDeck": [5],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Exposed2":{
       "id": 20,
@@ -334,7 +354,8 @@
       "addToDeck": [7],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Exposed3":{
       "id": 21,
@@ -350,7 +371,8 @@
       "addToDeck": [9],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.45
     },
     "Exposed4":{
       "id": 22,
@@ -366,7 +388,8 @@
       "addToDeck": [8],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Staggered1":{
       "id": 23,
@@ -382,7 +405,8 @@
       "addToDeck": [5],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Staggered2":{
       "id": 24,
@@ -398,7 +422,8 @@
       "addToDeck": [4],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Staggered3":{
       "id": 25,
@@ -414,7 +439,8 @@
       "addToDeck": [7],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.7
     },
     "Staggered4":{
       "id": 26,
@@ -430,7 +456,8 @@
       "addToDeck": [8],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.8
     },
     "Stunned1":{
       "id": 27,
@@ -446,7 +473,8 @@
       "addToDeck": [9],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.9
     },
     "Stunned2":{
       "id": 28,
@@ -462,7 +490,8 @@
       "addToDeck": [8],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.78
     },
     "Stunned3":{
       "id": 29,
@@ -478,7 +507,8 @@
       "addToDeck": [11],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.67
     },
     "Stunned4":{
       "id": 30,
@@ -494,7 +524,8 @@
       "addToDeck": [10],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Wounded1":{
       "id": 31,
@@ -510,7 +541,8 @@
       "addToDeck": [8],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Wounded2":{
       "id": 32,
@@ -526,7 +558,7 @@
       "addToDeck": [10],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,"fontSize":0.65
     },
     "Wounded3":{
       "id": 33,
@@ -542,7 +574,8 @@
       "addToDeck": [11],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Blinded1":{
       "id": 34,
@@ -558,7 +591,8 @@
       "addToDeck": [9],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.56
     },
     "Blinded2":{
       "id": 35,
@@ -574,7 +608,8 @@
       "addToDeck": [8],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Blinded3":{
       "id": 36,
@@ -590,7 +625,8 @@
       "addToDeck": [11],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Blinded4":{
       "id": 37,
@@ -606,7 +642,8 @@
       "addToDeck": [10],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.73
     },
     "Crushed1":{
       "id": 38,
@@ -622,7 +659,8 @@
       "addToDeck": [11],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "Crushed2":{
       "id": 39,
@@ -638,7 +676,8 @@
       "addToDeck": [10],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.75
     },
     "Crushed3":{
       "id": 40,
@@ -654,7 +693,8 @@
       "addToDeck": [12],
       "delete": [],
       "win": true,
-      "lose":false
+      "lose":false,
+      "fontSize":0.9
     },
     "Impaled1":{
       "id": 41,
@@ -670,7 +710,8 @@
       "addToDeck": [11],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.9
     },
     "Impaled2":{
       "id": 42,
@@ -686,7 +727,8 @@
       "addToDeck": [10],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.69
     },
     "Impaled3":{
       "id": 43,
@@ -702,7 +744,8 @@
       "addToDeck": [12],
       "delete": [],
       "win": true,
-      "lose":false
+      "lose":false,
+      "fontSize":0.85
     },
     "Win":{
       "id": 44,
@@ -718,7 +761,8 @@
       "addToDeck": [12],
       "delete": [],
       "win": true,
-      "lose":false
+      "lose":false,
+      "fontSize":1
     },
     "SaveSecondWind":{
       "id": 45,
@@ -734,7 +778,8 @@
       "addToDeck": [-1],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.72
     },
     "SaveDeckBoost":{
       "id": 46,
@@ -750,7 +795,8 @@
       "addToDeck": [-1],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.72
     },
     "SaveParasite":{
       "id": 47,
@@ -766,7 +812,8 @@
       "addToDeck": [-1],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.9
     },
     "BideTime5":{
       "id": 48,
@@ -782,7 +829,8 @@
       "addToDeck": [1],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.9
     },
     "Grab4":{
       "id": 49,
@@ -798,7 +846,8 @@
       "addToDeck": [5],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.9
     },
     "Poison1":{
       "id": 50,
@@ -814,7 +863,8 @@
       "addToDeck": [13],
       "delete": [],
       "win": false,
-      "lose":false
+      "lose":false,
+      "fontSize":0.7
     }
   }
 }

@@ -138,10 +138,10 @@ protected:
     int _item;
     
     std::shared_ptr<cugl::AudioQueue> _audioQueue;
-    const float WIDTH_SCALE = 0.52f;
-    const float DECK_SCALE = 0.0125f;
-    const float HEIGHT_SCALE = 0.5f;
-    const float GOON_HEIGHT_SCALE = 0.774f;
+    const float WIDTH_SCALE = 0.517f;
+    const float DECK_SCALE = 0.01f;
+    const float HEIGHT_SCALE = 0.45f;
+    const float GOON_HEIGHT_SCALE = 0.72f;
     const float SHUFFLE_WIDTH_SCALE = 0.9085f;
     const float R1_HEIGHT_SCALE = 0.6245f;
     const float R2_HEIGHT_SCALE = 0.4f;

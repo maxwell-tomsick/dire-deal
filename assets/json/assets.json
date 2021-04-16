@@ -151,7 +151,7 @@
       "magfilter": "linear"
     },
     "background": {
-      "file": "textures/background-with-box-and-border.jpg",
+      "file": "textures/background-updated.jpg",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -188,6 +188,16 @@
     },
     "cardBack2": {
       "file": "textures/card_back_3_v3.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "fire": {
+      "file": "textures/fire.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "fireHolder": {
+      "file": "textures/fire-holder.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -345,6 +355,11 @@
       "file": "textures/redx.png",
       "minfilter": "linear",
       "magfilter": "linear"
+    },
+    "underline": {
+      "file": "textures/current-event-line.jpg",
+      "minfilter": "linear",
+      "magfilter": "linear"
     }
   },
   "widgets": {
@@ -391,7 +406,7 @@
     },
     "sans6": {
       "file": "fonts/rise-of-kingdom.regular.ttf",
-      "size": 84
+      "size": 74
     },
     "sans7": {
       "file": "fonts/rise-of-kingdom.regular.ttf",
@@ -417,14 +432,37 @@
                 "type": "NinePatch",
                 "data": {
                     "texture": "cardHolder",
-                    "scale": 0.675,
+                    "scale": 0.65,
                     "anchor": [ 0.5, 0.5 ]
                 },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
                 "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "bottom",
-                    "y_offset": 0.5,
-                    "x_offset": 0.52
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "x_offset": 0.017,
+                    "y_offset": -0.05
+                },
+                "children": {
+                    "amount": {
+                        "type": "TextField",
+                        "data": {
+                          "font": "sans4",
+                          "text": "Burn card to receive",
+                          "foreground": [ 207,166,93,255 ],
+                          "halign": "center",
+                          "valign": "true middle",
+                          "anchor": [ 0.5, 0.5 ],
+                          "scale": 0.35
+                        },
+                        "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle",
+                          "x_offset": -0.085,
+                          "y_offset": -0.557
+                        }
+                    }
                 }
             },
             "blade": {
@@ -437,7 +475,7 @@
                     "x_anchor": "left",
                     "y_anchor": "bottom",
                     "y_offset": 0.78,
-                    "x_offset": 0.65
+                    "x_offset": 0.81
                 },
                 "format"    : {
                     "type"  : "Anchored"
@@ -470,7 +508,7 @@
                     "x_anchor": "left",
                     "y_anchor": "bottom",
                     "y_offset": 0.78,
-                    "x_offset": 0.73
+                    "x_offset": 0.65
                 },
                 "format"    : {
                     "type"  : "Anchored"
@@ -503,7 +541,7 @@
                     "x_anchor": "left",
                     "y_anchor": "bottom",
                     "y_offset": 0.78,
-                    "x_offset": 0.81
+                    "x_offset": 0.89
                 },
                 "format"    : {
                     "type"  : "Anchored"
@@ -536,7 +574,7 @@
                     "x_anchor": "left",
                     "y_anchor": "bottom",
                     "y_offset": 0.78,
-                    "x_offset": 0.89
+                    "x_offset": 0.73
                 },
                 "format"    : {
                     "type"  : "Anchored"
@@ -719,7 +757,7 @@
                     "type": "Label",
                     "data": {
                       "font": "sans7",
-                      "text": "Goon 1:",
+                      "text": "Target 1:",
                       "foreground": [ 207,166,93,255 ],
                       "halign": "left",
                       "valign": "true middle",
@@ -729,7 +767,7 @@
                       "x_anchor": "center",
                       "y_anchor": "middle",
                       "y_offset": 0.15,
-                      "x_offset": -0.31
+                      "x_offset": -0.28
                     }
                 },
                 "name": {
@@ -764,6 +802,32 @@
                 "x_offset": 0.015
             }
         },
+        "fire": {
+            "type": "NinePatch",
+            "data": {
+                "texture": "fire",
+                "scale": 0.675
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.025,
+                "x_offset": 0.489
+            }
+        },
+        "fireHolder": {
+            "type": "NinePatch",
+            "data": {
+                "texture": "fireHolder",
+                "scale": 0.675
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": -0.004,
+                "x_offset": 0.447
+            }
+        },
         "burn": {
           "type": "Widget",
           "data": {
@@ -778,17 +842,36 @@
             "type": "Label",
             "data": {
               "font": "sans5",
-              "text": "Goon:",
-              "foreground": [ 207,166,93,255 ],
-              "halign": "left",
+              "text": "Current Event",
+              "foreground": [ 124,229,227,255 ],
+              "halign": "center",
               "valign": "true middle",
-              "anchor": [ 0.5, 0.5 ]
+              "anchor": [ 0.5, 0.5 ],
+              "scale": 0.7
             },
             "layout": {
                 "x_anchor": "left",
                 "y_anchor": "bottom",
                 "y_offset": 0.695,
                 "x_offset": 0.635
+            },
+            "format": {
+              "type": "Anchored"
+            },
+            "children": {
+                "underline": {
+                    "type": "Image",
+                    "data": {
+                        "texture": "underline",
+                        "anchor": [ 0.5, 0.5 ]
+                    },
+                    "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": -0.5,
+                        "x_offset": 0
+                    }
+                }
             }
         },
         "topsword": {
@@ -837,6 +920,39 @@
               }
             }
           }
+        },
+        "burnPreview" : {
+            "type": "NinePatch",
+            "data": {
+                "texture": "brawn",
+                "scale": 0.3
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.155,
+                "x_offset": 0.593
+            },
+            "format"    : {
+                "type"  : "Anchored"
+            },
+            "children": {
+                "amount": {
+                    "type": "Label",
+                    "data": {
+                      "font": "sans4",
+                      "text": "1",
+                      "foreground": [ 241,231,95, 255 ],
+                      "halign": "center",
+                      "valign": "true middle",
+                      "anchor": [ 0.5, 0.5 ]
+                    },
+                    "layout": {
+                      "x_anchor": "center",
+                      "y_anchor": "middle"
+                    }
+                }
+            }
         },
         "removePreview2": {
           "type": "NinePatch",

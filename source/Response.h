@@ -19,11 +19,12 @@ private:
     std::vector<int> _cards;
     bool _win;
     bool _lose;
+    float _fontSize;
     
 public:
     Response();
     
-    void allocate(const string text, const string outcome, const std::vector<int> resources, const std::vector<int> cards, const bool win, const bool lose);
+    void allocate(const string text, const string outcome, const std::vector<int> resources, const std::vector<int> cards, const bool win, const bool lose, const float fontSize);
     
     string getText(){
         return _text;
@@ -51,6 +52,10 @@ public:
     
     void setFree(){
         _resources = {0,0,0,0};
+    }
+    
+    float getFontSize(){
+        return _fontSize;
     }
 };
 

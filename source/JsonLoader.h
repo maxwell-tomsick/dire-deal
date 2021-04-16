@@ -89,8 +89,9 @@ namespace JsonLoader{
             std::vector<int> addToDeck = jsonResponse->get("addToDeck")->asIntArray();
             bool win = jsonResponse->get("win")->asBool();
             bool lose = jsonResponse->get("lose")->asBool();
+            float fontSize = jsonResponse->get("fontSize")->asFloat();
             Response response;
-            response.allocate(name, description, cost, addToDeck, win, lose);
+            response.allocate(name, description, cost, addToDeck, win, lose, fontSize);
             responses[id] = response;
         }
         return responses;

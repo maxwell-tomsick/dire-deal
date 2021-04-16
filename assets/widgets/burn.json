@@ -17,8 +17,9 @@
             "up" : {
                 "type": "NinePatch",
                 "data": {
-                    "texture": "brawn",
-                    "scale": 0.675
+                    "texture": "response1",
+                    "scale": [0.5,0.41],
+                    "visible": false
                 },
                 "layout": {
                     "x_anchor": "left",
@@ -28,23 +29,6 @@
                 },
                 "format"    : {
                     "type"  : "Anchored"
-                },
-                "children": {
-                    "amount": {
-                        "type": "Label",
-                        "data": {
-                          "font": "sans4",
-                          "text": "1",
-                          "foreground": [ 241,231,95, 255 ],
-                          "halign": "center",
-                          "valign": "true middle",
-                          "anchor": [ 0.5, 0.5 ]
-                        },
-                        "layout": {
-                          "x_anchor": "center",
-                          "y_anchor": "middle"
-                        }
-                    }
                 }
             }
         },
@@ -52,7 +36,7 @@
         "x_anchor": "left",
         "y_anchor": "bottom",
         "x_offset": 0.517,
-        "y_offset": 0.15
+        "y_offset": 0.09
       }
     }
 }

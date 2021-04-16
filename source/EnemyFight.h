@@ -41,6 +41,9 @@ public:
     std::vector<int> getDeck() {
         return _deck;
     }
+    std::vector<int> getNextDeck() {
+        return _nextDeck;
+    }
     string getEnemyTexture(){
         return _enemyTexture;
     }
