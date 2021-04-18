@@ -14,6 +14,7 @@
 #define __APP_H__
 #include <cugl/cugl.h>
 #include "GameScene.h"
+#include "ItemScene.h"
 #include "LoadingScene.h"
 
 /**
@@ -29,11 +30,15 @@ protected:
     // Player modes
     /** The primary controller for the game world */
     GameScene _gameplay;
+    /** The controller for the item screen */
+    ItemScene _item;
     /** The controller for the loading screen */
     LoadingScene _loading;
 
     /** Whether or not we have finished loading all assets */
     bool _loaded;
+    /** Whether or not the user has finished selecting their item */
+    bool _itemChosen;
     
 public:
     /**

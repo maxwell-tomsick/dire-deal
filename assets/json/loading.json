@@ -33,6 +33,13 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
+    "items": {
+      "file": "textures/responses/response-1.png",
+      "wrapS": "clamp",
+      "wrapT": "clamp",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
     "progress": {
       "file": "textures/progress.png",
       "wrapS": "clamp",
@@ -102,44 +109,27 @@
                         "absolute": true
                     }
                 },
-                "name"  : {
-                    "type"   : "Image",
-                    "format"    : {
-                        "type" : "Anchored"
-                    },
-                    "data"   : {
-                        "texture"  : "name",
-                        "anchor"   : [0.5,0.5],
-                        "scale"    : 0.5
-                    },
-                    "layout" : {
-                        "x_anchor" : "center",
-                        "y_anchor" : "middle",
-                        "y_offset" : -100,
-                        "absolute" : true
-                    }
-                },
-                "play"  : {
-                    "type"   : "Button",
-                    "data"   : {
-                        "upnode"   : "up",
+                "play": {
+                    "type": "Button",
+                    "data": {
+                        "upnode": "up",
                         "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
-                        "visible"  : false,
-                        "pushsize" : true,
-                        "anchor"   : [0.5,0.5],
-                        "scale": 0.6
+                        "visible": false,
+                        "pushsize": true,
+                        "anchor": [ 0.5, 0.5 ],
+                        "scale": 0.5
                     },
-                    "children" : {
-                        "up"       : {
-                            "type"   : "Image",
-                            "data": {
-                              "texture": "play"
-                            },
+                    "children": {
+                        "up": {
+                          "type": "Image",
+                          "data": {
+                             "texture": "play"
+                          },
                             "children": {
                                 "label": {
                                     "type": "Label",
                                     "format": {
-                                        "type": "Anchored"
+                                       "type": "Anchored"
                                     },
                                     "data": {
                                         "font": "sans",
@@ -154,14 +144,14 @@
                                         "y_anchor": "fill"
                                     }
                                 }
-                          }
+                            }
                         }
                     },
-                    "layout" : {
-                        "x_anchor" : "center",
-                        "y_anchor" : "middle",
-                        "y_offset" : -115,
-                        "absolute" : true
+                    "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": -100,
+                        "absolute": true
                     }
                 },
                 "bar"  : {
