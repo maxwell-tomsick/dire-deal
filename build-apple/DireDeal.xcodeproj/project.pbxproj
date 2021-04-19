@@ -35,6 +35,9 @@
 		501876B8261F5FAB001BADA4 /* TurnController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AF261F5FAB001BADA4 /* TurnController.cpp */; };
 		501876B9261F5FAB001BADA4 /* maybeUsefulReference in Resources */ = {isa = PBXBuildFile; fileRef = 501876B0261F5FAB001BADA4 /* maybeUsefulReference */; };
 		501876BA261F5FAB001BADA4 /* maybeUsefulReference in Resources */ = {isa = PBXBuildFile; fileRef = 501876B0261F5FAB001BADA4 /* maybeUsefulReference */; };
+		50CE8103262D3A1D007B65D8 /* ItemScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */; };
+		50CE8104262D3A1D007B65D8 /* ItemScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */; };
+		50CE8105262D3A1D007B65D8 /* ItemScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */; };
 		EB0FF6172016EFB200517030 /* iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A71D74D846002FBAE6 /* iOS.xcassets */; };
 		EB0FF6182016EFB200517030 /* Landscape.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A81D74D846002FBAE6 /* Landscape.storyboard */; };
 		EB0FF6192016EFB200517030 /* Portrait.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7454A91D74D846002FBAE6 /* Portrait.storyboard */; };
@@ -160,6 +163,8 @@
 		501876AE261F5FAB001BADA4 /* JsonLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLoader.cpp; sourceTree = "<group>"; };
 		501876AF261F5FAB001BADA4 /* TurnController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TurnController.cpp; sourceTree = "<group>"; };
 		501876B0261F5FAB001BADA4 /* maybeUsefulReference */ = {isa = PBXFileReference; lastKnownFileType = folder; path = maybeUsefulReference; sourceTree = "<group>"; };
+		50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemScene.cpp; sourceTree = "<group>"; };
+		50CE8102262D3A1D007B65D8 /* ItemScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemScene.h; sourceTree = "<group>"; };
 		EB0FF5FC2016EF4F00517030 /* DireDeal (Sim).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DireDeal (Sim).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2BE9B41D74952A002FE78B /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		EB2BE9BA1D7498D2002FE78B /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
@@ -410,6 +415,8 @@
 				EBB8376225E5921E00401672 /* App.h */,
 				EBB8375F25E5921E00401672 /* App.cpp */,
 				EBB8376725E5921E00401672 /* LoadingScene.h */,
+				50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */,
+				50CE8102262D3A1D007B65D8 /* ItemScene.h */,
 				EBB8376625E5921E00401672 /* LoadingScene.cpp */,
 				5014BB5B25F54BA6004EFF48 /* Card.h */,
 				5014BB8325F55E12004EFF48 /* Card.cpp */,
@@ -622,6 +629,7 @@
 				5014BB7F25F556BE004EFF48 /* Response.cpp in Sources */,
 				EB0FF61D2016F06000517030 /* main.cpp in Sources */,
 				5014BB8625F55E12004EFF48 /* Card.cpp in Sources */,
+				50CE8105262D3A1D007B65D8 /* ItemScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +650,7 @@
 				EB7454AE1D74D891002FBAE6 /* main.cpp in Sources */,
 				5014BB8525F55E12004EFF48 /* Card.cpp in Sources */,
 				501876B2261F5FAB001BADA4 /* ResourceController.cpp in Sources */,
+				50CE8104262D3A1D007B65D8 /* ItemScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +671,7 @@
 				EB2BE9B61D74952A002FE78B /* main.cpp in Sources */,
 				5014BB8425F55E12004EFF48 /* Card.cpp in Sources */,
 				501876B1261F5FAB001BADA4 /* ResourceController.cpp in Sources */,
+				50CE8103262D3A1D007B65D8 /* ItemScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

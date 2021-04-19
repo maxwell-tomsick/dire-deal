@@ -25,6 +25,19 @@
       "frames": 12,
       "wscale": 0.2,
       "hscale": 0.375
+    },
+    "3":{
+        "id": 3,
+        "enemyName": "Brawler",
+        "enemyTexture": "thugIdle",
+        "deck": [ 0, 0, 1, 2, 3],
+        "nextDeck": [],
+        "background": "background",
+        "rows": 3,
+        "cols": 4,
+        "frames": 12,
+        "wscale": 1.0,
+        "hscale": 1.0
     }
   }
 }

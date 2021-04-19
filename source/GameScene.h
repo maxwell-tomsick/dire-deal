@@ -86,6 +86,8 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _goon;
     std::shared_ptr<cugl::scene2::Label> _goonName;
     std::shared_ptr<cugl::scene2::Label> _goonNumber;
+    std::shared_ptr<cugl::scene2::NinePatch> _underline;
+    std::shared_ptr<cugl::scene2::Label> _burnLabel;
     
     std::shared_ptr<cugl::scene2::Button> _burn;
     std::shared_ptr<cugl::scene2::Label> _burnText;
@@ -136,6 +138,8 @@ protected:
     float _idleBuffer;
     bool _usedSecondWind;
     int _item;
+    int _goonInt;
+    int _burnInt;
     
     std::shared_ptr<cugl::AudioQueue> _audioQueue;
     const float WIDTH_SCALE = 0.517f;

@@ -87,7 +87,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      std::shared_ptr<JsonReader> jsonReaderOldResponses = JsonReader::alloc("json/oldresponses.json");
      _responses = getJsonResponses(jsonReaderOldResponses, _responses);
      //cout << cardsArray->asString();
-     
      _currentDeck = {};
      _nextDeck = {};
      _keepCards = false;
@@ -213,6 +212,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _displayCardBurnTexture =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount"));
      _displayCardBurnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount_amount"));
      _goon = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_goon"));
+     _burnLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_cardHolder_amount"));
+     _underline = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_goon_underline"));
      _goonNumber = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_number"));
      _goonName = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_name"));
      _cardHolder = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_cardHolder"));
@@ -220,6 +221,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _mainMenuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_mainMenu_label"));
      _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+     _burnLabel->setVisible(false);
      _burnTexture->setVisible(false);
      _response1->setVisible(false);
      _response2->setVisible(false);
@@ -227,10 +229,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currentFlip->setVisible(true);
      _mainMenu->setVisible(false);
      _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+     _goon->setVisible(false);
      _deckNode->setDrawFront(2);
      _deckNode->setFrontTexture(_currentCard.getTexture());
      string flipTexture = _currentCard.getText() + "Flip";
      _currentFlip->setTexture(_assets->get<Texture>(flipTexture));
+     _goonName->setText(_enemyFights[_fight].getEnemyName());
+     _goonNumber->setText("Target " + std::to_string(_fight) + ":");
      bool success = true;
 #ifndef CU_TOUCH_SCREEN
      success = Input::activate<Keyboard>();
@@ -244,6 +249,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
                _deckNode->setDrag(true);
           }
           if ( (_movement == 5) & down) {
+               _goonInt = 0;
+               _burnInt = 0;
                _movement = 6;
           }
           if (!down){
@@ -486,6 +493,9 @@ void GameScene::reset() {
      _deckNode->setDrawFront(2);
      _deckNode->setDrag(false);
      _burnTexture->setVisible(false);
+     _burnLabel->setVisible(false);
+     _underline->setVisible(false);
+     _goon->setVisible(false);
      _deckNode->reset();
      _idleBuffer = 0;
 }
@@ -506,7 +516,6 @@ void GameScene::update(float timestep) {
 #endif
      }
      if (_movement == 1){
-          _burnTexture->setVisible(false);
           _displayCard->setVisible(false);
           _removeCard1->setVisible(false);
           _removeCard2->setVisible(false);
@@ -514,11 +523,42 @@ void GameScene::update(float timestep) {
           _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.21)/40.0f);
           bool stop = _shuffleFlip->getScaleX() >= 0.585f || (_shuffleFlip->getScaleX() +(_scl - 0.21)/40.0f > 0.585f);
           if (stop){
+               _goonInt = 0;
+               _burnInt = 0;
                _movement = 2;
           }
      } else if (_movement == 2){
+          _underline->setVisible(false);
           int frame = _shuffleFlip->getFrame();
           frame -= 1;
+          if (frame < 20){
+               _underline->setVisible(false);
+               string goonText = "";
+               string currentEvent = "Current Event";
+               if (_goonInt <= 13){
+                    for (int i = 0; i < _goonInt; i ++){
+                         goonText = goonText + " ";
+                    }
+                    goonText = goonText + currentEvent.substr(_goonInt,13);
+                    _goon->setText(goonText);
+                    _goonInt += 1;
+               }
+          }
+          if (frame < 27){
+               _burnLabel ->setVisible(true);
+               string burnText = "";
+               string burnCard = "Burn card to receive";
+               if (_burnInt <= 20){
+                    for (int i = 0; i < _burnInt; i ++){
+                         burnText = burnText + " ";
+                    }
+                    burnText = burnText + burnCard.substr(_burnInt,20);
+                    _burnLabel->setText(burnText);
+                    _burnInt += 1;
+               } else {
+                    _burnTexture->setVisible(false);
+               }
+          }
           if (frame <= 0){
                _movement = 3;
                _vel =Vec2(_dimen.width * (0.45f + 0.0125 * (_nextDeck.size()-1)), _dimen.height * 0.875f) - _shuffleFlip->getPosition();
@@ -527,6 +567,8 @@ void GameScene::update(float timestep) {
           }
            _shuffleFlip->setFrame(frame);
      } else if (_movement == 3){
+          _goon->setVisible(false);
+          _burnLabel ->setVisible(false);
           _shuffleFlip->setPosition(_shuffleFlip->getPosition() + _vel);
           _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.585f)/40.0f);
           if (_shuffleFlip->getPosition().y >= _dimen.height * 0.875f || _shuffleFlip->getPosition().y + _vel.y > _dimen.height * 0.875f){
@@ -590,6 +632,7 @@ void GameScene::update(float timestep) {
                     _goon->setVisible(false);
                     _deckNode->setVisible(false);
                     _burnTexture->setVisible(false);
+                    _burnLabel->setVisible(false);
                     _currEvent->setText("YOU DIED!");
                     _currEvent->setVisible(true);
                     _movement = 11;
@@ -637,6 +680,39 @@ void GameScene::update(float timestep) {
      if (_movement == 6){
           int flipFrame = _currentFlip->getFrame();
           flipFrame += 1;
+          if (flipFrame > 10){
+               //_goon->setHorizontalAlignment(scene2::Label::HAlign(2));
+               _goon->setVisible(true);
+               _underline->setVisible(false);
+               string goonText = "";
+               string currentEvent = "Current Event";
+               if (_goonInt < 13){
+                    for (int i = 12; i >= _goonInt; i --){
+                         goonText = goonText + " ";
+                    }
+                    goonText = goonText + currentEvent.substr(12 - _goonInt,13);
+                    _goon->setText(goonText);
+                    _goonInt += 1;
+               } else {
+                    _underline->setVisible(true);
+               }
+          }
+          if (flipFrame > 7){
+               _burnTexture->setVisible(true);
+          }
+          if (flipFrame > 8){
+               _burnLabel ->setVisible(true);
+               string burnText = "";
+               string burnCard = "Burn card to receive";
+               if (_burnInt < 20){
+                    for (int i = 19; i >= _burnInt; i --){
+                         burnText = burnText + " ";
+                    }
+                    burnText = burnText + burnCard.substr(19 - _burnInt,20);
+                    _burnLabel->setText(burnText);
+                    _burnInt += 1;
+               }
+          }
           if (flipFrame == _currentFlip->getSize()){
                _movement = 7;
                _currentFlip->setVisible(false);
@@ -645,6 +721,7 @@ void GameScene::update(float timestep) {
           _currentFlip->setFrame(flipFrame);
      }
      if (_movement == 7){
+          //_underline->setVisible(true);
           _removeOptions = {-1,-1,-1};
           if (!_keepCards) {
                std::vector<int> displayedResponses = _currentCard.getRandomResponses();
@@ -735,11 +812,11 @@ void GameScene::update(float timestep) {
           _response2->setVisible(_display2);
           _response3->setVisible(_display3);
           _deckNode->setDrawFront(0);
-          _burnTexture->setVisible(true);
           _movement = 0;
      }
      if (_movement == 8){
           _burnTexture->setVisible(false);
+          _burnLabel->setVisible(false);
           int burnFrame = _currentBurn->getFrame();
           burnFrame += 1;
           if (burnFrame == _currentBurn->getSize()){
@@ -1107,6 +1184,8 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
     Card displayCard;
      if (_movement == 5){
           if (_prev.x - pos.x > SWIPE_LENGTH){
+               _goonInt = 0;
+               _burnInt = 0;
                _movement = 6;
           }
      } else if (!_deckNode->getDrag() & (_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 2)){

@@ -60,7 +60,7 @@
                             "x_anchor" : "left",
                             "y_anchor" : "bottom",
                             "x_offset": 0.05,
-                            "y_offset": 0.2
+                            "y_offset": 0.15
                         },
                         "format"    : {
                             "type"  : "Anchored"
@@ -93,7 +93,7 @@
                             "x_anchor" : "left",
                             "y_anchor" : "bottom",
                             "x_offset": 0.164,
-                            "y_offset": 0.2
+                            "y_offset": 0.15
                         },
                         "format"    : {
                             "type"  : "Anchored"
@@ -126,7 +126,7 @@
                             "x_anchor" : "left",
                             "y_anchor" : "bottom",
                             "x_offset": 0.278,
-                            "y_offset": 0.2
+                            "y_offset": 0.15
                         },
                         "format"    : {
                             "type"  : "Anchored"
@@ -159,7 +159,7 @@
                             "x_anchor" : "left",
                             "y_anchor" : "bottom",
                             "x_offset": 0.392,
-                            "y_offset": 0.2
+                            "y_offset": 0.15
                         },
                         "format"    : {
                             "type"  : "Anchored"
