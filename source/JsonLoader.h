@@ -90,8 +90,9 @@ namespace JsonLoader{
             bool win = jsonResponse->get("win")->asBool();
             bool lose = jsonResponse->get("lose")->asBool();
             float fontSize = jsonResponse->get("fontSize")->asFloat();
+            int animation = jsonResponse->get("animation")->asInt();
             Response response;
-            response.allocate(name, description, cost, addToDeck, win, lose, fontSize);
+            response.allocate(name, description, cost, addToDeck, win, lose, fontSize, animation);
             responses[id] = response;
         }
         return responses;

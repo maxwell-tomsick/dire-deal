@@ -20,9 +20,18 @@ Response::Response() {
     _win = false;
     _lose = false;
     _fontSize = 48.0f;
+    _animation = 0;
 }
 
-void Response::allocate(const string text, const string outcome, const std::vector<int> resources, const std::vector<int> cards, const bool win, const bool lose, const float fontSize){
+void Response::allocate(
+    const string text, 
+    const string outcome, 
+    const std::vector<int> resources, 
+    const std::vector<int> cards, 
+    const bool win, const bool lose, 
+    const float fontSize, 
+    int animation){
+        
     _text = text;
     _outcome = outcome;
     _resources = resources;
@@ -30,4 +39,5 @@ void Response::allocate(const string text, const string outcome, const std::vect
     _win = win;
     _lose = lose;
     _fontSize = fontSize;
+    _animation = animation;
 }

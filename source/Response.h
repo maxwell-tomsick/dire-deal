@@ -20,11 +20,20 @@ private:
     bool _win;
     bool _lose;
     float _fontSize;
+    int _animation;
     
 public:
     Response();
     
-    void allocate(const string text, const string outcome, const std::vector<int> resources, const std::vector<int> cards, const bool win, const bool lose, const float fontSize);
+    void allocate(
+        const string text, 
+        const string outcome, 
+        const std::vector<int> resources, 
+        const std::vector<int> cards, 
+        const bool win, 
+        const bool lose, 
+        const float fontSize, 
+        const int animation);
     
     string getText(){
         return _text;
@@ -56,6 +65,10 @@ public:
     
     float getFontSize(){
         return _fontSize;
+    }
+
+    int getAnimation(){
+        return _animation;
     }
 };
 

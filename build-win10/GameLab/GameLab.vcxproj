@@ -193,6 +193,7 @@
     <ClInclude Include="..\..\source\InputController.h" />
     <ClInclude Include="..\..\source\ResourceController.h" />
     <ClInclude Include="..\..\source\LoadingScene.h" />
+    <ClInclude Include="..\..\source\ItemScene.h" />
     <ClInclude Include="..\..\source\Response.h" />
     <ClInclude Include="..\..\source\JsonLoader.h" />
     <ClInclude Include="..\..\source\EnemyFight.h" />
@@ -207,6 +208,7 @@
     <ClCompile Include="..\..\source\InputController.cpp" />
     <ClCompile Include="..\..\source\ResourceController.cpp" />
     <ClCompile Include="..\..\source\LoadingScene.cpp" />
+    <ClCompile Include="..\..\source\ItemScene.cpp" />
     <ClCompile Include="..\..\source\main.cpp" />
     <ClCompile Include="..\..\source\Response.cpp" />
     <ClCompile Include="..\..\source\JsonLoader.cpp" />
