@@ -587,6 +587,8 @@ void GameScene::update(float timestep) {
           _idleBuffer = 0;
      }
      if(_movement == 4){
+          _goon->setVisible(false);
+          _burnLabel ->setVisible(false);
           _shuffleFlip->setVisible(false);
           _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
           _currEvent->setColor(Color4::WHITE);
