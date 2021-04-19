@@ -528,7 +528,6 @@ void GameScene::update(float timestep) {
                _movement = 2;
           }
      } else if (_movement == 2){
-          _underline->setVisible(false);
           int frame = _shuffleFlip->getFrame();
           frame -= 1;
           if (frame < 20){
@@ -817,8 +816,29 @@ void GameScene::update(float timestep) {
           _movement = 0;
      }
      if (_movement == 8){
+          _underline->setVisible(false);
           _burnTexture->setVisible(false);
-          _burnLabel->setVisible(false);
+          string goonText = "";
+          string currentEvent = "Current Event";
+          if (_goonInt <= 13){
+               for (int i = 0; i < _goonInt; i ++){
+                    goonText = goonText + " ";
+               }
+               goonText = goonText + currentEvent.substr(_goonInt,13);
+               _goon->setText(goonText);
+               _goonInt += 1;
+          }
+          _burnLabel ->setVisible(true);
+          string burnText = "";
+          string burnCard = "Burn card to receive";
+          if (_burnInt <= 20){
+               for (int i = 0; i < _burnInt; i ++){
+                    burnText = burnText + " ";
+               }
+               burnText = burnText + burnCard.substr(_burnInt,20);
+               _burnLabel->setText(burnText);
+               _burnInt += 1;
+          } 
           int burnFrame = _currentBurn->getFrame();
           burnFrame += 1;
           if (burnFrame == _currentBurn->getSize()){
@@ -1033,6 +1053,8 @@ void GameScene::buttonPress(const int r){
          _shuffleFlip->setVisible(true);
      }
      if (r== -1){
+          _burnInt = 0;
+          _goonInt = 0;
           _movement = 8;
 #ifndef CU_TOUCH_SCREEN
           _currentBurn->setPosition(_deckNode->screenToNodeCoords(_mouse->pointerPosition()) + _deckNode->getOffset());
