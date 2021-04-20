@@ -85,23 +85,28 @@
         "minfilter": "linear",
         "magfilter": "linear"
       },
+      "BackFlip": {
+        "file": "textures/cardflips/card-back-spritesheet.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
     "Bide TimeFlip": {
-      "file": "textures/cardflips/card-bidetime-spritesheet.png",
+      "file": "textures/cardflips/card-bides-time-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
     "SlashFlip": {
-      "file": "textures/cardflips/card-slash-spritesheet.png",
+      "file": "textures/cardflips/card-attacks-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
     "GuardFlip": {
-      "file": "textures/cardflips/card-guard-spritesheet.png",
+      "file": "textures/cardflips/card-guards-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
     "GrabFlip": {
-      "file": "textures/cardflips/card-grab-spritesheet.png",
+      "file": "textures/cardflips/card-grabs-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -111,7 +116,7 @@
       "magfilter": "linear"
     },
     "ExposedFlip": {
-      "file": "textures/cardflips/card-exposed-spritesheet.png",
+      "file": "textures/cardflips/card-grappled-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -161,7 +166,7 @@
       "magfilter": "linear"
     },
     "PunchFlip": {
-      "file": "textures/cardflips/card-grab-spritesheet.png",
+      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
