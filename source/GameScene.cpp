@@ -58,8 +58,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _assets = assets;
     
      _audioQueue = AudioEngine::get()->getMusicQueue();
-     _audioQueue->play(_assets->get<Sound>("intro"));
-     _audioQueue->enqueue(_assets->get<Sound>("repeat"), true);
+     _audioQueue->play(_assets->get<Sound>("introThug"));
+     _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true);
 
      
     // Acquire the scene built by the asset loader and resize it the scene
@@ -160,23 +160,23 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      addChild(_deckNode);
      _shuffleFlip = std::make_shared<scene2::AnimationNode>();
      _shuffleFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 3, 6, 15);
-     _shuffleFlip->setScale(0.21f);
+     _shuffleFlip->setScale(0.36914f);
      _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
      _shuffleFlip->setVisible(false);
      _shuffleBackFlip = std::make_shared<scene2::AnimationNode>();
      _shuffleBackFlip->initWithFilmstrip(assets->get<Texture>("BackFlip"), 3, 6, 15);
-     _shuffleBackFlip->setScale(0.21f);
+     _shuffleBackFlip->setScale(0.36914f);
      _shuffleBackFlip->setFrame(_shuffleBackFlip->getSize() - 1);
      _shuffleBackFlip->setVisible(false);
      _currentFlip = std::make_shared<scene2::AnimationNode>();
      _currentFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 3, 6, 15);
-     _currentFlip->setScale(0.585f);
+     _currentFlip->setScale(1.0283f);
      _currentFlip->setFrame(0);
      _currentFlip->setVisible(false);
      addChild(_currentFlip);
      _currentBackFlip = std::make_shared<scene2::AnimationNode>();
      _currentBackFlip->initWithFilmstrip(assets->get<Texture>("BackFlip"), 3, 6, 15);
-     _currentBackFlip->setScale(0.585f);
+     _currentBackFlip->setScale(1.0283f);
      _currentBackFlip->setFrame(0);
      _currentBackFlip->setVisible(false);
      addChild(_currentBackFlip);
@@ -192,14 +192,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _prevFlip = std::make_shared<scene2::AnimationNode>();
      _prevFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 3, 6, 15);
      _prevFlip->setPosition(dimen.width * 0.2f, dimen.height * HEIGHT_SCALE);
-     _prevFlip->setScale(0.585f);
+     _prevFlip->setScale(1.0283f);
      _prevFlip->setFrame(0);
      _prevFlip->setVisible(false);
      addChild(_prevFlip);
      _prevBackFlip = std::make_shared<scene2::AnimationNode>();
      _prevBackFlip->initWithFilmstrip(assets->get<Texture>("BackFlip"), 3, 6, 15);
      _prevBackFlip->setPosition(dimen.width * 0.2f, dimen.height * HEIGHT_SCALE);
-     _prevBackFlip->setScale(0.585f);
+     _prevBackFlip->setScale(1.0283f);
      _prevBackFlip->setFrame(0);
      _prevBackFlip->setVisible(false);
      addChild(_prevBackFlip);
@@ -320,6 +320,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
           _mainMenu->activate();
      }
 #else
+     _burnLabel->setPosition(_dimen.width * 0.11f, _dimen.height * (-0.05f));
+     _burnTexture->setPosition(_dimen.width * 0.585f, _dimen.height * 0.15f);
+     
      Touchscreen* touch = Input::get<Touchscreen>();
      touch->addBeginListener(LISTENER_KEY,[=](const cugl::TouchEvent& event, bool focus) {
          this->touchBeganCB(event,focus);
@@ -333,6 +336,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 #endif
     if (_active) {
          _burn->activate();
+         _mainMenu->activate();
     }
     _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
@@ -405,6 +409,10 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
+     _audioQueue->clear();
+     _audioQueue->play(_assets->get<Sound>("introSlime"));
+     _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true);
+     
      _goonNumber->setText("Target " + std::to_string(_fight) + ":");
      string cardstring = "json/cards.json";
      if (_fight < _enemyFights.size() + 1){
@@ -560,8 +568,8 @@ void GameScene::update(float timestep) {
           _removeCard2->setVisible(false);
           _shuffleFlip->setPosition(_shuffleFlip->getPosition() + _vel);
           _prevFlip->setPosition(_prevFlip->getPosition() + _vel2);
-          _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.21)/40.0f);
-          bool stop = _shuffleFlip->getScaleX() >= 0.585f || (_shuffleFlip->getScaleX() +(_scl - 0.21)/40.0f > 0.585f);
+          _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.36914f)/40.0f);
+          bool stop = _shuffleFlip->getScaleX() >= 1.0283f || (_shuffleFlip->getScaleX() +(_scl - 0.36914f)/40.0f > 1.0283f);
           
           if (stop){
                _goonInt = 0;
@@ -589,7 +597,7 @@ void GameScene::update(float timestep) {
                     _cardCut->setFrame(0);
                     _vel =Vec2(_dimen.width * (0.45f + 0.0125 * (_nextDeck.size()-1)), _dimen.height * 0.875f) - _shuffleFlip->getPosition();
                     _vel.scale(0.025f);
-                    _scl = 0.1928;
+                    _scl = 0.3389;
                }
                _shuffleBackFlip->setFrame(frame);
                _prevBackFlip->setFrame(frame);
@@ -638,7 +646,7 @@ void GameScene::update(float timestep) {
           _goon->setVisible(false);
           _burnLabel ->setVisible(false);
           _shuffleBackFlip->setPosition(_shuffleBackFlip->getPosition() + _vel);
-          _shuffleBackFlip->setScale(_shuffleBackFlip->getScaleX() + (_scl - 0.585f)/40.0f);
+          _shuffleBackFlip->setScale(_shuffleBackFlip->getScaleX() + (_scl - 1.0283f)/40.0f);
           if (_shuffleBackFlip->getPosition().y >= _dimen.height * 0.875f || _shuffleBackFlip->getPosition().y + _vel.y > _dimen.height * 0.875f){
                _movement = 4;
           }
@@ -1164,9 +1172,9 @@ void GameScene::buttonPress(const int r){
           _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * (_currentDeck.size() -1)));
      }
      _deckNode->setDrawFront(2);
-     _scl = 0.585f;
+     _scl = 1.0283f;
      if (!_win & (r != -1)) {
-         _shuffleFlip->setScale(0.21f);
+         _shuffleFlip->setScale(0.36914f);
          _shuffleFlip->setVisible(true);
      }
      if (r== -1){
@@ -1282,6 +1290,12 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           _resourceController.setDisplayCardBurnText(displayCard, _displayCardBurnText, _assets, _displayCardBurnTexture);
           _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
+     } else if (_mainMenu->containsScreen(pos)){
+          if (_movement == 11) {
+               this->_active = true;
+          } else if (_movement == 12){
+               _movement = 13;
+          }
      } else {
           _displayCard->setVisible(false);
      }

@@ -410,13 +410,21 @@
     "burn": "widgets/burn.json"
   },
   "sounds": {
-      "intro": {
+      "introThug": {
         "type": "sample",
-        "file": "sounds/harpsichord_intro.ogg"
+        "file": "sounds/introloopharpsichord.ogg"
       },
-      "repeat": {
+      "repeatThug": {
         "type": "sample",
-        "file": "sounds/harpsichord_repeat.ogg"
+        "file": "sounds/loopharpsichord.ogg"
+      },
+      "introSlime": {
+        "type": "sample",
+        "file": "sounds/introbigslimyboi.ogg"
+      },
+      "repeatSlime": {
+        "type": "sample",
+        "file": "sounds/loopbigslimyboi.ogg"
       }
   },
   "fonts": {
