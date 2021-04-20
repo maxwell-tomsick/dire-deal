@@ -152,7 +152,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      
      _enemyIdle =std::make_shared<scene2::AnimationNode>();
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
-     _enemyIdle->setScale(0.9f);
+     _enemyIdle->setScale(_enemyFights[_fight].getScale());
      _idleBuffer = 0;
      _enemyIdle->setPosition(dimen.width * 0.2f, dimen.height*0.44f);
      addChild(_enemyIdle);
@@ -428,6 +428,7 @@ void GameScene::reset() {
           //CULog("afterfilmstrip");
           //_enemyIdle->setScale(0.69f);
           _enemyIdle->setFrame(0);
+          _enemyIdle->setScale(currFight.getScale());
           _idleBuffer = 0;
           _enemyIdle->setPosition(_dimen.width * currFight.getWscale(), _dimen.height * currFight.getHscale());
           cardstring = "json/level" + to_string(_fight) + ".json";

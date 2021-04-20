@@ -11,7 +11,8 @@
       "cols": 4,
       "frames": 12,
       "wscale": 1.0,
-      "hscale": 1.0
+      "hscale": 1.0,
+      "scale": 0.9
     },
     "2":{
       "id":2,
@@ -24,7 +25,8 @@
       "cols": 5,
       "frames": 12,
       "wscale": 0.2,
-      "hscale": 0.375
+      "hscale": 0.375,
+      "scale": 1.2
     },
     "3":{
         "id": 3,
@@ -37,7 +39,8 @@
         "cols": 4,
         "frames": 12,
         "wscale": 1.0,
-        "hscale": 1.0
+        "hscale": 1.0,
+        "scale": 0.9
     }
   }
 }

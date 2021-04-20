@@ -19,6 +19,7 @@ private:
     float _wscale;
     float _hscale;
     int _id;
+    float _scale;
 
 public:
     EnemyFight();
@@ -33,7 +34,8 @@ public:
         int frames,
         float wscale,
         float hscale,
-        int id);
+        int id,
+        float scale);
 
     string getEnemyName(){
         return _enemyName;
@@ -64,6 +66,9 @@ public:
     }
     int getId() {
         return _id;
+    }
+    float getScale() {
+        return _scale;
     }
 };
 #endif /* EnemyFight_h */
