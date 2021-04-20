@@ -759,7 +759,7 @@ void GameScene::update(float timestep) {
                _currentBackFlip->setVisible(false);
                flipFrame = _currentFlip->getFrame();
                flipFrame += 1;
-               if (flipFrame == _currentFlip->getSize()){
+               if (flipFrame >= _currentFlip->getSize()-1){
                     _movement = 7;
                     flipFrame = 0;
                     _currentBackFlip->setFrame(0);
