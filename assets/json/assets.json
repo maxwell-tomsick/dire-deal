@@ -76,7 +76,7 @@
         "magfilter": "linear"
       },
       "PunchBurn": {
-        "file": "textures/cardburns/incapacitated_burn.png",
+        "file": "textures/cardburns/grab_burn.png",
         "minfilter": "linear",
         "magfilter": "linear"
       },
@@ -161,7 +161,7 @@
       "magfilter": "linear"
     },
     "PunchFlip": {
-      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+      "file": "textures/cardflips/card-grab-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -388,6 +388,11 @@
     },
     "underline": {
       "file": "textures/current-event-line.jpg",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "cardCut": {
+      "file": "textures/card_cut.png",
       "minfilter": "linear",
       "magfilter": "linear"
     }
@@ -688,13 +693,15 @@
             "text": "Result:",
             "foreground": [ 212, 175, 55, 255 ],
             "size": [ 200, 80 ],
-            "anchor": [ 0.5, 0.5 ]
+            "anchor": [ 0.5, 0.5 ],
+            "halign": "center",
+            "valign": "middle"
           },
           "layout": {
             "x_anchor": "center",
             "y_anchor": "bottom",
             "y_offset": 0.5,
-            "x_offset": -0.05
+            "x_offset": 0.015
           }
         },
         "mainMenu": {
@@ -704,7 +711,7 @@
             "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
             "visible": false,
             "pushsize": true,
-            "anchor": [ -1.6, -2 ],
+            "anchor": [ 0.5, 0.5],
             "scale": 0.6
           },
           "format": {
@@ -738,6 +745,12 @@
                 }
               }
             }
+          },
+          "layout": {
+              "x_anchor": "left",
+              "y_anchor": "bottom",
+              "y_offset": 0.3,
+              "x_offset": 0.515
           }
         },
         "response1": {
