@@ -39,6 +39,10 @@ protected:
     bool _loaded;
     /** Whether or not the user has finished selecting their item */
     bool _itemChosen;
+    /** 
+     * The item the player equips, initially -1.
+     */
+    int _equippedItem;
     
 public:
     /**
@@ -111,7 +115,7 @@ public:
      * paused before app suspension.
      */
     virtual void onResume()  override;
-    
+
 #pragma mark Application Loop
     /**
      * The method called to update the application data.

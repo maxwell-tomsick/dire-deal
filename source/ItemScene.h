@@ -27,19 +27,20 @@ protected:
 	std::shared_ptr<cugl::scene2::Button> _play;
 	/** The button to return to the main menu */
 	std::shared_ptr<cugl::scene2::Button> _menu;
-	/** The button to equip/unequip the shown item */
+	/** The (general) equip symbol */
 	std::shared_ptr<cugl::scene2::Button> _equip;
-	std::shared_ptr<cugl::scene2::Label> _equipLabel;
-	/** The button to undisplay the shown item */
-	std::shared_ptr<cugl::scene2::Button> _back;
-	/** The buttons for each item */
+	/** The buttons for each item icon */
 	std::shared_ptr<cugl::scene2::Button> _items[6];
 
-	/** The selected item (or lock image, if card not acquired */
-	std::shared_ptr<cugl::scene2::NinePatch> _displayedItem;
+	/** Text indicating the currently equipped item */
+	std::shared_ptr<cugl::scene2::Label> _currText;
+	/** Text indicating the currently displayed item */
+	std::shared_ptr<cugl::scene2::Label> _displayText;
 
-	/** The selection image for an unacquired item */
-	std::shared_ptr<cugl::scene2::NinePatch> _lockedItemDisplay;
+	/** The selection button for an unacquired item */
+	std::shared_ptr<cugl::scene2::Button> _lockedItemButton;
+	/** Selection buttons for acquired items */
+	std::shared_ptr<cugl::scene2::Button> _itemButtons[5];
 
 	// MODEL
 	/** The item the player currently has selected */
@@ -47,15 +48,18 @@ protected:
 	/** The item the player currently has displayed */
 	int _displayedItemId;
 	/** Array indicating which items have been found */
-	bool _itemAcquired[6];
+	bool _itemAcquired[5];
+	/** Text for each item */
+	string _equippedText[5];
+	string _itemNames[5];
 
 	/** 
 	 * Value indicating whether to continue to the game or
 	 * return to the menu
 	 */
 	bool _continue;
-	/** Value checked in update to undisplay card. */
-	bool _undisplay;
+	/** Value indicating state of the scene (if display is on or off) */
+	bool _display;
 
 public:
 #pragma mark -
@@ -109,20 +113,24 @@ public:
 	bool getContinue() { return _continue; }
 
 	/**
+	 * Returns the current value of the _equippedItem field. 
+	 */
+	int getItem() { return _equippedItem; }
+
+	/**
 	 * Display the information associated with the selected item.
 	 * @param id        The index of the item
 	 */
 	void displayItem(int id);
 
-	/** 
-	 * Remove the information associated with the selected item.
-	 */
-	void undisplayItem();
-
 	/**
-	 * Equip the item corresponding to the currently selected item, 
-	 * or unequip it if it is already equipped
+	 * Equip the item corresponding to the currently selected item
 	 */
 	void equipItem();
+
+	/**
+	 * Remove the item the currently equipped item
+	 */
+	void unequipItem();
 };
 #endif /* __ITEM_SCENE_H__ */

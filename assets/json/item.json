@@ -15,6 +15,11 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
+    "unequip-button": {
+      "file": "textures/card_back_3_v3.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
     "button": {
       "file": "textures/responses/response-1.png",
       "wrapS": "clamp",
@@ -140,103 +145,7 @@
             }
           }
         },
-        "equip": {
-          "type": "Button",
-          "format": {
-            "type": "Anchored"
-          },
-          "data": {
-            "upnode": "up",
-            "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
-            "visible": false,
-            "pushsize": true,
-            "anchor": [ 1, 0 ],
-            "scale": 0.4
-          },
-          "layout": {
-            "x_anchor": "right",
-            "y_anchor": "bottom",
-            "absolute": true
-          },
-          "children": {
-            "up": {
-              "type": "NinePatch",
-              "data": {
-                "texture": "button"
-              },
-              "children": {
-                "label": {
-                  "type": "Label",
-                  "format": {
-                    "type": "Anchored"
-                  },
-                  "data": {
-                    "font": "sans",
-                    "text": "Equip",
-                    "foreground": [ 0, 0, 0, 255 ],
-                    "halign": "center",
-                    "valign": "middle",
-                    "anchor": [ -0.95, -0.5 ]
-                  },
-                  "layout": {
-                    "x_anchor": "right",
-                    "y_anchor": "bottom",
-                    "absolute": true
-                  }
-                }
-              }
-            }
-          }
-        },
-        "back": {
-          "type": "Button",
-          "format": {
-            "type": "Anchored"
-          },
-          "data": {
-            "upnode": "up",
-            "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
-            "visible": false,
-            "pushsize": true,
-            "anchor": [ 0, 0 ],
-            "scale": 0.4
-          },
-          "layout": {
-            "x_anchor": "left",
-            "y_anchor": "bottom",
-            "absolute": true
-          },
-          "children": {
-            "up": {
-              "type": "NinePatch",
-              "data": {
-                "texture": "button"
-              },
-              "children": {
-                "label": {
-                  "type": "Label",
-                  "format": {
-                    "type": "Anchored"
-                  },
-                  "data": {
-                    "font": "sans",
-                    "text": "Back",
-                    "foreground": [ 0, 0, 0, 255 ],
-                    "halign": "center",
-                    "valign": "middle",
-                    "anchor": [ -0.625, -0.5 ]
-                  },
-                  "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "bottom",
-                    "absolute": true
-                  }
-                }
-              }
-            }
-          }
-        },
-        "text": {
+        "prompt": {
           "type": "Label",
           "format": {
             "type": "Anchored"
@@ -272,7 +181,7 @@
             "x_anchor": "left",
             "y_anchor": "middle",
             "x_offset": 50,
-            "y_offset": 150,
+            "y_offset": 100,
             "absolute": true
           },
           "children": {
@@ -301,7 +210,7 @@
             "x_anchor": "left",
             "y_anchor": "middle",
             "x_offset": 150,
-            "y_offset": 150,
+            "y_offset": 100,
             "absolute": true
           },
           "children": {
@@ -386,7 +295,7 @@
             "x_anchor": "left",
             "y_anchor": "middle",
             "x_offset": 50,
-            "y_offset": -150,
+            "y_offset": -100,
             "absolute": true
           },
           "children": {
@@ -415,7 +324,34 @@
             "x_anchor": "left",
             "y_anchor": "middle",
             "x_offset": 150,
-            "y_offset": -150,
+            "y_offset": -100,
+            "absolute": true
+          },
+          "children": {
+            "up": {
+              "type": "Image",
+              "data": {
+                "texture": "unequip-button"
+              }
+            }
+          }
+        },
+        "selected-card-locked": {
+          "type": "Button",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "upnode": "up",
+            "pushable": [ 0, 0, 0, 800, 600, 800, 800, 0 ],
+            "visible": false,
+            "pushsize": true,
+            "anchor": [ 0.5, 0.5 ],
+            "scale": 0.4
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "middle",
             "absolute": true
           },
           "children": {
@@ -427,31 +363,14 @@
             }
           }
         },
-        "selected-card-locked": {
-          "type": "NinePatch",
-          "format": {
-            "type": "Anchored"
-          },
-          "data": {
-            "texture": "locked-item",
-            "anchor": [ 0.5, 0.5 ],
-            "visible": false,
-            "scale": 0.4
-          },
-          "layout": {
-            "x_anchor": "center",
-            "y_anchor": "middle",
-            "absolute": true
-          }
-        },
-        "current-item-text": {
+        "equipped-item-text": {
           "type": "Label",
           "format": {
             "type": "Anchored"
           },
           "data": {
             "font": "sans",
-            "text": "Current Item: None",
+            "text": "Equipped: None",
             "anchor": [ 0.5, 0 ],
             "visible": true,
             "foreground": [ 207, 166, 93, 255 ],
@@ -460,6 +379,27 @@
           "layout": {
             "x_anchor": "center",
             "y_anchor": "bottom",
+            "x_offset": -100,
+            "absolute": true
+          }
+        },
+        "displayed-item-text": {
+          "type": "Label",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "font": "sans",
+            "text": "",
+            "anchor": [ 1, 0.5 ],
+            "visible": false,
+            "foreground": [ 207, 166, 93, 255 ],
+            "scale": 0.3
+          },
+          "layout": {
+            "x_anchor": "right",
+            "y_anchor": "middle",
+            "x_offset": -250,
             "absolute": true
           }
         }
