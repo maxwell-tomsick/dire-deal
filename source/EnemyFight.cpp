@@ -49,6 +49,6 @@ void EnemyFight::allocate(
     _frames = frames;
     _wscale = wscale;
     _hscale = hscale;
-    _id = id;
     _scale = scale;
+    _id = id;
 }

@@ -84,8 +84,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _cards = getJsonCards(jsonReaderLevel1, _cards, _assets);
      Card item = getItem(_item);
      _cards[-1] = item;
-     std::shared_ptr<JsonReader> jsonReaderOldResponses = JsonReader::alloc("json/oldresponses.json");
-     _responses = getJsonResponses(jsonReaderOldResponses, _responses);
+     std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responses1.json");
+     _responses = getJsonResponses(jsonReaderResponses, _responses);
      //cout << cardsArray->asString();
      _currentDeck = {};
      _nextDeck = {};
@@ -431,6 +431,7 @@ void GameScene::reset() {
           _enemyIdle->setScale(currFight.getScale());
           _idleBuffer = 0;
           _enemyIdle->setPosition(_dimen.width * currFight.getWscale(), _dimen.height * currFight.getHscale());
+          _enemyIdle->setScale(currFight.getScale());
           cardstring = "json/level" + to_string(_fight) + ".json";
      }
      //_fight = 4;
@@ -456,8 +457,9 @@ void GameScene::reset() {
      _cards = getJsonCards(jsonReaderCardString, _cards, _assets);
      Card item = getItem(_item);
      _cards[-1] = item;
-     std::shared_ptr<JsonReader> jsonReaderOldResponses = JsonReader::alloc("json/oldresponses.json");
-     _responses = getJsonResponses(jsonReaderOldResponses, _responses);
+     std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responses" + to_string(_fight) + ".json");
+     // std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responses1.json");
+     _responses = getJsonResponses(jsonReaderResponses, _responses);
      //cout << cardsArray->asString();
      _currentDeck = {};
      _nextDeck = {};
@@ -480,25 +482,7 @@ void GameScene::reset() {
                _nextDeck.push_back(nextDeck[i]);
           }
      }
-     // if (_fight == 1){
-     //      _currentDeck.push_back(0);
-     // } else if (_fight == 2){
-     //      _currentDeck.push_back(0);
-     //      _currentDeck.push_back(3);
-     //      _currentDeck.push_back(3);
-     // } else if (_fight == 3){
-     //      _currentDeck.push_back(0);
-     //      _currentDeck.push_back(0);
-     //      _currentDeck.push_back(1);
-     //      _currentDeck.push_back(2);
-     //      _currentDeck.push_back(3);
-     // } else if (_fight == 4){
-     //      _currentDeck.push_back(1);
-     //      _currentDeck.push_back(1);
-     //      _currentDeck.push_back(3);
-     //      _currentDeck.push_back(3);
-     //      _nextDeck.push_back(13);
-     // }
+
      std::random_device rd;
      std::mt19937 g(rd());
       std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
