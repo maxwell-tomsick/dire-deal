@@ -147,8 +147,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _deckNode->setDrawFront(0);
      _deckNode->setDrag(false);
      _deckNode->reset();
-     _resources = { 99, 99, 99, 99 };
-     //_resources = { 50, 50, 50, 50 };
+     //_resources = { 99, 99, 99, 99 };
+     _resources = { 50, 50, 50, 50 };
      
      _enemyIdle =std::make_shared<scene2::AnimationNode>();
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);

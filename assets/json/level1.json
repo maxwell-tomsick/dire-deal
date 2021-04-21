@@ -9,7 +9,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 1
+          "brawn": 0
         },
       "level": 1
     },
@@ -21,7 +21,7 @@
       "resources": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 1,
+          "lunge": 0,
           "brawn": 0
         },
       "level": 1
@@ -32,7 +32,7 @@
       "texture": "guard",
       "reactions": [8,9,10,11],
       "resources": {
-          "blade": 1,
+          "blade": 0,
           "flourish": 0,
           "lunge": 0,
           "brawn": 0
@@ -46,7 +46,7 @@
       "reactions": [12,13,14],
       "resources": {
           "blade": 0,
-          "flourish": 1,
+          "flourish": 0,
           "lunge": 0,
           "brawn": 0
         },
@@ -60,7 +60,7 @@
       "resources": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 3,
+          "lunge": 5,
           "brawn": 0
         },
       "level": 2
@@ -74,7 +74,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 3
+          "brawn": 5
         },
       "level": 2
     },
@@ -85,7 +85,7 @@
       "reactions": [23,24,25,26],
       "resources": {
           "blade": 0,
-          "flourish": 3,
+          "flourish": 5,
           "lunge": 0,
           "brawn": 0
         },
@@ -97,7 +97,7 @@
       "texture": "stunned",
       "reactions": [27,28,29,30],
       "resources": {
-          "blade": 9,
+          "blade": 10,
           "flourish": 0,
           "lunge": 0,
           "brawn": 0
@@ -111,7 +111,7 @@
       "reactions": [31,32,33],
       "resources": {
           "blade": 0,
-          "flourish": 9,
+          "flourish": 10,
           "lunge": 0,
           "brawn": 0
         },
@@ -123,24 +123,9 @@
       "texture": "blinded",
       "reactions": [34,35,36,37],
       "resources": {
-          "blade": 0,"SaveParasite":{
-              "id": 47,
-              "name":"Symbiosis",
-              "description":"Shuffle PARASITE into the Deck",
-              "cost": {
-                "heavy": 1,
-                "flourish": 1,
-                "lunge": 1,
-                "block": 1
-              },
-              "reward": 0,
-              "addToDeck": [-1],
-              "delete": [],
-              "win": false,
-              "lose":false
-            },
+          "blade": 0,
           "flourish": 0,
-          "lunge": 9,
+          "lunge": 10,
           "brawn": 0
         },
       "level": 3

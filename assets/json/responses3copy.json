@@ -128,7 +128,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 0,
-        "brawn": 2
+        "brawn": 1
       },
       "reward": 0,
       "addToDeck": [
@@ -148,7 +148,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 1,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -168,7 +168,7 @@
         "blade": 0,
         "flourish": 1,
         "lunge": 0,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -188,7 +188,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 2,
-        "brawn": 1
+        "brawn": 2
       },
       "reward": 0,
       "addToDeck": [
@@ -208,7 +208,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 0,
-        "brawn": 2
+        "brawn": 1
       },
       "reward": 0,
       "addToDeck": [
@@ -228,7 +228,7 @@
         "blade": 1,
         "flourish": 0,
         "lunge": 0,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -248,7 +248,7 @@
         "blade": 0,
         "flourish": 1,
         "lunge": 1,
-        "brawn": 1
+        "brawn": 2
       },
       "reward": 0,
       "addToDeck": [
@@ -268,7 +268,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 1,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -288,7 +288,7 @@
         "blade": 1,
         "flourish": 0,
         "lunge": 0,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -308,7 +308,7 @@
         "blade": 0,
         "flourish": 1,
         "lunge": 0,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -328,7 +328,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 1,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -348,7 +348,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 0,
-        "brawn": 2
+        "brawn": 1
       },
       "reward": 0,
       "addToDeck": [
@@ -368,7 +368,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 2,
-        "brawn": 1
+        "brawn": 2
       },
       "reward": 0,
       "addToDeck": [
@@ -388,7 +388,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 2,
-        "brawn": 1
+        "brawn": 2
       },
       "reward": 0,
       "addToDeck": [
@@ -408,7 +408,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 3,
-        "brawn": 2
+        "brawn": 1
       },
       "reward": 0,
       "addToDeck": [
@@ -428,7 +428,7 @@
         "blade": 1,
         "flourish": 0,
         "lunge": 3,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -448,7 +448,7 @@
         "blade": 0,
         "flourish": 1,
         "lunge": 1,
-        "brawn": 1
+        "brawn": 2
       },
       "reward": 0,
       "addToDeck": [
@@ -468,7 +468,7 @@
         "blade": 0,
         "flourish": 3,
         "lunge": 0,
-        "brawn": 2
+        "brawn": 1
       },
       "reward": 0,
       "addToDeck": [
@@ -488,7 +488,7 @@
         "blade": 1,
         "flourish": 3,
         "lunge": 0,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -508,7 +508,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 0,
-        "brawn": 5
+        "brawn": 4
       },
       "reward": 0,
       "addToDeck": [
@@ -528,7 +528,7 @@
         "blade": 2,
         "flourish": 0,
         "lunge": 4,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -548,7 +548,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 4,
-        "brawn": 3
+        "brawn": 2
       },
       "reward": 0,
       "addToDeck": [
@@ -568,7 +568,7 @@
         "blade": 0,
         "flourish": 3,
         "lunge": 1,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -588,7 +588,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 6,
-        "brawn": 1
+        "brawn": 8
       },
       "reward": 0,
       "addToDeck": [
@@ -608,7 +608,7 @@
         "blade": 2,
         "flourish": 4,
         "lunge": 0,
-        "brawn": 1
+        "brawn": 2
       },
       "reward": 0,
       "addToDeck": [
@@ -628,7 +628,7 @@
         "blade": 2,
         "flourish": 2,
         "lunge": 2,
-        "brawn": 1
+        "brawn": 0
       },
       "reward": 0,
       "addToDeck": [
@@ -648,7 +648,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 6,
-        "brawn": 1
+        "brawn": 2
       },
       "reward": 0,
       "addToDeck": [
@@ -668,7 +668,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 0,
-        "brawn": 9
+        "brawn": 10
       },
       "reward": 0,
       "addToDeck": [
@@ -688,7 +688,7 @@
         "blade": 0,
         "flourish": 6,
         "lunge": 0,
-        "brawn": 1
+        "brawn": 2
       },
       "reward": 0,
       "addToDeck": [
@@ -708,7 +708,7 @@
         "blade": 0,
         "flourish": 0,
         "lunge": 0,
-        "brawn": 7
+        "brawn": 6
       },
       "reward": 0,
       "addToDeck": [
@@ -728,7 +728,7 @@
         "blade": 8,
         "flourish": 0,
         "lunge": 0,
-        "brawn": 1
+        "brawn": 2
       },
       "reward": 0,
       "addToDeck": [

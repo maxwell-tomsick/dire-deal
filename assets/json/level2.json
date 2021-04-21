@@ -8,7 +8,7 @@
       "resources": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 1,
+          "lunge": 0,
           "brawn": 0
         },
       "level": 1
@@ -20,7 +20,7 @@
       "reactions": [12,14, 49],
       "resources": {
           "blade": 0,
-          "flourish": 1,
+          "flourish": 0,
           "lunge": 0,
           "brawn": 0
         },
@@ -35,7 +35,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 3
+          "brawn": 5
         },
       "level": 2
     },
@@ -46,7 +46,7 @@
       "reactions": [23,25,26],
       "resources": {
           "blade": 0,
-          "flourish": 3,
+          "flourish": 5,
           "lunge": 0,
           "brawn": 0
         },
@@ -58,7 +58,7 @@
       "texture": "stunned",
       "reactions": [27,28,29,30],
       "resources": {
-          "blade": 9,
+          "blade": 10,
           "flourish": 0,
           "lunge": 0,
           "brawn": 0
@@ -72,7 +72,7 @@
       "reactions": [31,32,33],
       "resources": {
           "blade": 0,
-          "flourish": 9,
+          "flourish": 10,
           "lunge": 0,
           "brawn": 0
         },
@@ -86,7 +86,7 @@
       "resources": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 9,
+          "lunge": 10,
           "brawn": 0
         },
       "level": 3
