@@ -32,7 +32,7 @@
       "id": 3,
       "enemyName": "Brawler",
       "enemyTexture": "thugIdle",
-      "deck": [ 2, 2, 3, 13],
+      "deck": [ 0, 0, 0, 3, 3],
       "nextDeck": [],
       "background": "background",
       "rows": 3,
