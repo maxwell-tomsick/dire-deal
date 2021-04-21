@@ -36,7 +36,8 @@ void EnemyFight::allocate(
     int frames,
     float wscale,
     float hscale,
-    int id){
+    int id,
+    float scale){
         
     _enemyName = enemyName;
 	_deck = deck;
@@ -47,5 +48,6 @@ void EnemyFight::allocate(
     _frames = frames;
     _wscale = wscale;
     _hscale = hscale;
+    _scale = scale;
     _id = id;
 }

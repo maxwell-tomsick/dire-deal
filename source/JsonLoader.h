@@ -73,7 +73,7 @@ namespace JsonLoader{
           Card card;
           card.allocate(name, id, texture, responses, resources, level);
           cards[id] = card;
-          
+          CULog("card");
         }
         return cards;
     }
@@ -94,6 +94,7 @@ namespace JsonLoader{
             Response response;
             response.allocate(name, description, cost, addToDeck, win, lose, fontSize, animation);
             responses[id] = response;
+            CULog("resp");
         }
         return responses;
     }
@@ -112,9 +113,10 @@ namespace JsonLoader{
             int frames = jsonItem->get("frames")->asInt();
             float wscale = jsonItem->get("wscale")->asFloat();
             float hscale = jsonItem->get("hscale")->asFloat();
+            float scale = jsonItem->get("scale")->asFloat();
             int id = jsonItem->get("id")->asInt();
             EnemyFight enemyFight;
-            enemyFight.allocate(enemyName, deck, nextDeck, enemyTexture, rows, cols, frames, wscale, hscale, id);
+            enemyFight.allocate(enemyName, deck, nextDeck, enemyTexture, rows, cols, frames, wscale, hscale, id, scale);
             // index at 1
             enemyFights[i + 1] = enemyFight;
         }

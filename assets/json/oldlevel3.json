@@ -1,5 +1,22 @@
 {
   "Cards": {
+    "Staggered": {
+      "id": 6,
+      "name": "Staggered",
+      "texture": "staggered",
+      "reactions": [
+        23,
+        25,
+        26
+      ],
+      "resources": {
+        "blade": 0,
+        "flourish": 3,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "level": 2
+    },
     "Stunned": {
       "id": 7,
       "name": "Stunned",
@@ -17,30 +34,12 @@
       },
       "level": 3
     },
-    "Wounded": {
-      "id": 8,
-      "name": "Wounded",
-      "texture": "wounded",
-      "reactions": [
-        31,
-        32,
-        33
-      ],
-      "resources": {
-        "blade": 0,
-        "flourish": 9,
-        "lunge": 0,
-        "brawn": 0
-      },
-      "level": 3
-    },
     "Crushed": {
       "id": 10,
       "name": "Crushed",
       "texture": "crushed",
       "reactions": [
         38,
-        39,
         40
       ],
       "resources": {
@@ -56,7 +55,6 @@
       "name": "Impaled",
       "texture": "impaled",
       "reactions": [
-        41,
         42,
         43
       ],
@@ -85,67 +83,14 @@
       },
       "level": 5
     },
-    "Guard": {
-      "id": 2,
-      "name": "Guard",
-      "texture": "guard",
+    "Slash": {
+      "id": 0,
+      "name": "Slash",
+      "texture": "slash",
       "reactions": [
-        8,
-        45,
-        46
-      ],
-      "resources": {
-        "blade": 1,
-        "flourish": 0,
-        "lunge": 0,
-        "brawn": 0
-      },
-      "level": 1
-    },
-    "Staggered": {
-      "id": 6,
-      "name": "Staggered",
-      "texture": "staggered",
-      "reactions": [
-        23,
-        25,
-        26,
-        2,
-        46
-      ],
-      "resources": {
-        "blade": 0,
-        "flourish": 3,
-        "lunge": 0,
-        "brawn": 0
-      },
-      "level": 2
-    },
-    "Grab": {
-      "id": 3,
-      "name": "Grab",
-      "texture": "grab",
-      "reactions": [
-        8,
-        2,
-        46
-      ],
-      "resources": {
-        "blade": 0,
-        "flourish": 1,
-        "lunge": 0,
-        "brawn": 0
-      },
-      "level": 1
-    },
-    "Punch": {
-      "id": 13,
-      "name": "Punch",
-      "texture": "punch",
-      "reactions": [
-        2,
-        14,
-        3
+        0,
+        3,
+        7
       ],
       "resources": {
         "blade": 0,
@@ -155,39 +100,54 @@
       },
       "level": 1
     },
+    "Wounded": {
+      "id": 8,
+      "name": "Wounded",
+      "texture": "wounded",
+      "reactions": [
+        32,
+        33,
+        18
+      ],
+      "resources": {
+        "blade": 0,
+        "flourish": 9,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "level": 3
+    },
+    "Grab": {
+      "id": 3,
+      "name": "Grab",
+      "texture": "grab",
+      "reactions": [
+        14,
+        5,
+        3
+      ],
+      "resources": {
+        "blade": 0,
+        "flourish": 1,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "level": 1
+    },
     "Exposed": {
       "id": 5,
       "name": "Exposed",
       "texture": "exposed",
       "reactions": [
-        19,
         20,
-        22
+        22,
+        7
       ],
       "resources": {
         "blade": 0,
         "flourish": 0,
         "lunge": 0,
         "brawn": 3
-      },
-      "level": 2
-    },
-    "Suplex": {
-      "id": 14,
-      "name": "Suplex",
-      "texture": "suplex",
-      "reactions": [
-        46,
-        2,
-        8,
-        20,
-        14
-      ],
-      "resources": {
-        "blade": 0,
-        "flourish": 0,
-        "lunge": 3,
-        "brawn": 0
       },
       "level": 2
     }

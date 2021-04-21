@@ -1,17 +1,18 @@
 {
   "Fights":{
     "1":{
-      "id": 1,
-      "enemyName": "Wolven Thug",
+      "id": 3,
+      "enemyName": "Brawler",
       "enemyTexture": "thugIdle",
-      "deck": [ 0, 0, 1, 2, 3],
+      "deck": [ 2, 2, 3, 13],
       "nextDeck": [],
       "background": "background",
       "rows": 3,
       "cols": 4,
       "frames": 12,
-      "wscale": 1.0,
-      "hscale": 1.0
+      "wscale": 0.2,
+      "hscale": 0.44,
+      "scale": 1.0
     },
     "2":{
       "id":2,
@@ -24,20 +25,22 @@
       "cols": 5,
       "frames": 12,
       "wscale": 0.2,
-      "hscale": 0.375
+      "hscale": 0.375,
+      "scale": 1.0
     },
     "3":{
-        "id": 3,
-        "enemyName": "Brawler",
-        "enemyTexture": "thugIdle",
-        "deck": [ 0, 0, 1, 2, 3],
-        "nextDeck": [],
-        "background": "background",
-        "rows": 3,
-        "cols": 4,
-        "frames": 12,
-        "wscale": 1.0,
-        "hscale": 1.0
+      "id": 1,
+      "enemyName": "Wolven Thug",
+      "enemyTexture": "thugIdle",
+      "deck": [ 0, 0, 1, 2, 3],
+      "nextDeck": [],
+      "background": "background",
+      "rows": 3,
+      "cols": 4,
+      "frames": 12,
+      "wscale": 0.2,
+      "hscale": 0.44,
+      "scale": 0.9
     }
   }
 }
