@@ -144,8 +144,9 @@ void LabApp::update(float timestep) {
     }
     else if (!_itemChosen) {
         if (_item.getContinue()) {
+            _equippedItem = _item.getItem();
             _item.dispose();
-            _gameplay.init(_assets);
+            _gameplay.init(_assets, _equippedItem);
             _itemChosen = true;
         }
         else {

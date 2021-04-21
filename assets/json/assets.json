@@ -330,7 +330,7 @@
       "file": "textures/cards/incapacitated.png",
       "minfilter": "linear",
       "magfilter": "linear"
-    },
+    },
     "poison": {
       "file": "textures/cards/poison.png",
       "minfilter": "linear",

@@ -44,7 +44,7 @@ void GameScene::deckLoad(std::vector<int> deck) {
  *
  * @return true if the controller is initialized properly, false otherwise.
  */
-bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
+bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equippedItem) {
     // Initialize the scene to a locked width
     Size dimen = Application::get()->getDisplaySize();
     dimen *= SCENE_HEIGHT/dimen.height;
@@ -73,7 +73,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      
      _usedSecondWind = false;
      _fight = 1;
-     _item = -1;
+     _item = equippedItem;
      _cards = {};
      _responses = {};
      _enemyFights = {};
