@@ -94,7 +94,7 @@ namespace JsonLoader{
             Response response;
             response.allocate(name, description, cost, addToDeck, win, lose, fontSize, animation);
             responses[id] = response;
-            CULog("resp");
+            //CULog("resp");
         }
         return responses;
     }

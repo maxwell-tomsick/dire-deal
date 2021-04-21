@@ -1,0 +1,1087 @@
+{
+  "textures": {
+      "Bide TimeBurn": {
+        "file": "textures/cardburns/bidetime_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "SlashBurn": {
+        "file": "textures/cardburns/slash_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "GuardBurn": {
+        "file": "textures/cardburns/guard_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "GrabBurn": {
+        "file": "textures/cardburns/grab_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "GrappledBurn": {
+        "file": "textures/cardburns/grappled_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "ExposedBurn": {
+        "file": "textures/cardburns/exposed_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "StaggeredBurn": {
+        "file": "textures/cardburns/staggered_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "StunnedBurn": {
+        "file": "textures/cardburns/stunned_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "WoundedBurn": {
+        "file": "textures/cardburns/wounded_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "BlindedBurn": {
+        "file": "textures/cardburns/blinded_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "CrushedBurn": {
+        "file": "textures/cardburns/crushed_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "ImpaledBurn": {
+        "file": "textures/cardburns/impaled_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "IncapacitatedBurn": {
+        "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "ItemBurn": {
+        "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "PoisonBurn": {
+        "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "PunchBurn": {
+        "file": "textures/cardburns/grab_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "SuplexBurn": {
+        "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "BackFlip": {
+        "file": "textures/cardflips/card-back-spritesheet.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+    "Bide TimeFlip": {
+      "file": "textures/cardflips/card-bides-time-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "SlashFlip": {
+      "file": "textures/cardflips/card-attacks-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "GuardFlip": {
+      "file": "textures/cardflips/card-guards-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "GrabFlip": {
+      "file": "textures/cardflips/card-grabs-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "GrappledFlip": {
+      "file": "textures/cardflips/card-grappled-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "ExposedFlip": {
+      "file": "textures/cardflips/card-grappled-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "StaggeredFlip": {
+      "file": "textures/cardflips/card-staggered-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "StunnedFlip": {
+      "file": "textures/cardflips/card-stunned-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "WoundedFlip": {
+      "file": "textures/cardflips/card-wounded-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "BlindedFlip": {
+      "file": "textures/cardflips/card-blinded-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "CrushedFlip": {
+      "file": "textures/cardflips/card-crushed-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "ImpaledFlip": {
+      "file": "textures/cardflips/card-impaled-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "IncapacitatedFlip": {
+      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "ItemFlip": {
+      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "PoisonFlip": {
+      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "PunchFlip": {
+      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "SuplexFlip": {
+      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "background": {
+      "file": "textures/background-updated.jpg",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "cardHolder": {
+      "file": "textures/card-holder.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "enemy": {
+      "file": "textures/enemy-thug.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "thugIdle": {
+      "file": "textures/enemy-thug-idle.png"
+    },
+    "slimeIdle": {
+      "file": "textures/enemy-slime-idle.png"
+    },
+    "enemyLabel": {
+      "file": "textures/enemy-label.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "cardFront": {
+      "file": "textures/card_template.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "cardBack1": {
+      "file": "textures/card_back_3_v2.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "cardBack2": {
+      "file": "textures/card_back_3_v3.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "fire": {
+      "file": "textures/fire.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "fireHolder": {
+      "file": "textures/fire-holder.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "response1": {
+      "file": "textures/responses/response-1.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "response2": {
+      "file": "textures/responses/response-2.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "response3": {
+      "file": "textures/responses/response-3.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "response4": {
+      "file": "textures/responses/response-4.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "response5": {
+      "file": "textures/responses/response-5.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "glow1": {
+      "file": "textures/responses/response-1-glow-overlay.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "glow2": {
+      "file": "textures/responses/response-2-glow-overlay.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "glow3": {
+      "file": "textures/responses/response-3-glow-overlay.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "glow4": {
+      "file": "textures/responses/response-4-glow-overlay.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "glow5": {
+      "file": "textures/responses/response-5-glow-overlay.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "sword": {
+      "file": "textures/sword.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "bidetime": {
+      "file": "textures/cards/bidetime.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "blinded": {
+      "file": "textures/cards/blinded.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "crushed": {
+      "file": "textures/cards/crushed.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "exposed": {
+      "file": "textures/cards/exposed.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "grab": {
+      "file": "textures/cards/grab.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "grappled": {
+      "file": "textures/cards/grappled.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "guard": {
+      "file": "textures/cards/guard.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "impaled": {
+      "file": "textures/cards/impaled.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "incapacitated": {
+      "file": "textures/cards/incapacitated.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "item": {
+      "file": "textures/cards/incapacitated.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "poison": {
+      "file": "textures/cards/poison.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "punch": {
+      "file": "textures/cards/punch.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "suplex": {
+      "file": "textures/cards/suplex.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "slash": {
+      "file": "textures/cards/slash.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "staggered": {
+      "file": "textures/cards/staggered.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "stunned": {
+      "file": "textures/cards/stunned.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "wounded": {
+      "file": "textures/cards/wounded.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "blade": {
+      "file": "textures/resources/resource-blade.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "brawn": {
+      "file": "textures/resources/resource-brawn.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "lunge": {
+      "file": "textures/resources/resource-lunge.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "flourish": {
+      "file": "textures/resources/resource-flourish.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "redx": {
+      "file": "textures/redx.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "underline": {
+      "file": "textures/current-event-line.jpg",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "cardCut": {
+      "file": "textures/card_cut.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    }
+  },
+  "widgets": {
+    "largebutton": "widgets/largebutton.json",
+    "response1": "widgets/response1.json",
+    "response2": "widgets/response2.json",
+    "response3": "widgets/response3.json",
+    "burn": "widgets/burn.json"
+  },
+  "sounds": {
+      "introThug": {
+        "type": "sample",
+        "file": "sounds/introloopharpsichord.ogg"
+      },
+      "repeatThug": {
+        "type": "sample",
+        "file": "sounds/loopharpsichord.ogg"
+      },
+      "introSlime": {
+        "type": "sample",
+        "file": "sounds/introbigslimyboi.ogg"
+      },
+      "repeatSlime": {
+        "type": "sample",
+        "file": "sounds/loopbigslimyboi.ogg"
+      }
+  },
+  "fonts": {
+    "felt": {
+      "file": "fonts/MarkerFelt.ttf",
+      "size": 32
+    },
+    "sans": {
+      "file": "fonts/rise-of-kingdom.regular.ttf",
+      "size": 32
+    },
+    "sans4": {
+      "file": "fonts/rise-of-kingdom.regular.ttf",
+      "size": 110
+    },
+    "sans2": {
+      "file": "fonts/rise-of-kingdom.regular.ttf",
+      "size": 18
+    },
+    "sans5": {
+      "file": "fonts/rise-of-kingdom.regular.ttf",
+      "size": 48
+    },
+    "sans3": {
+      "file": "fonts/rise-of-kingdom.regular.ttf",
+      "size": 28
+    },
+    "sans6": {
+      "file": "fonts/rise-of-kingdom.regular.ttf",
+      "size": 74
+    },
+    "sans7": {
+      "file": "fonts/rise-of-kingdom.regular.ttf",
+      "size": 38
+    }
+  },
+  "scene2s": {
+      "background": {
+        "type": "Image",
+        "data": {
+          "texture": "background",
+          "anchor": [ 0, 0 ]
+        },
+        "layout": {
+          "x_anchor": "fill",
+          "y_anchor": "fill"
+        },
+        "format"    : {
+            "type"  : "Anchored"
+        },
+        "children":{
+            "cardHolder": {
+                "type": "NinePatch",
+                "data": {
+                    "texture": "cardHolder",
+                    "scale": 0.65,
+                    "anchor": [ 0.5, 0.5 ]
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "x_offset": 0.017,
+                    "y_offset": -0.05
+                },
+                "children": {
+                    "amount": {
+                        "type": "Label",
+                        "data": {
+                          "font": "sans4",
+                          "text": "Burn card to receive",
+                          "foreground": [ 207,166,93,255 ],
+                          "halign": "right",
+                          "valign": "true middle",
+                          "anchor": [ 0.5, 0.5 ],
+                          "scale": 0.35
+                        },
+                        "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle",
+                          "x_offset": -0.085,
+                          "y_offset": -0.557
+                        }
+                    }
+                }
+            },
+            "blade": {
+                "type": "Image",
+                "data": {
+                    "texture": "blade",
+                    "scale": 0.675
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "y_offset": 0.78,
+                    "x_offset": 0.81
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "children": {
+                    "amount": {
+                        "type": "TextField",
+                        "data": {
+                          "font": "sans4",
+                          "text": "1",
+                          "foreground": [ 241,231,95, 255 ],
+                          "halign": "center",
+                          "valign": "true middle",
+                          "anchor": [ 0.5, 0.5 ]
+                        },
+                        "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle"
+                        }
+                    }
+                }
+            },
+            "flourish": {
+                "type": "Image",
+                "data": {
+                    "texture": "flourish",
+                    "scale": 0.675
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "y_offset": 0.78,
+                    "x_offset": 0.65
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "children": {
+                    "amount": {
+                        "type": "TextField",
+                        "data": {
+                          "font": "sans4",
+                          "text": "1",
+                          "foreground": [ 241,231,95, 255 ],
+                          "halign": "center",
+                          "valign": "true middle",
+                          "anchor": [ 0.5, 0.5 ]
+                        },
+                        "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle"
+                        }
+                    }
+                }
+            },
+            "lunge": {
+                "type": "Image",
+                "data": {
+                    "texture": "lunge",
+                    "scale": 0.675
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "y_offset": 0.78,
+                    "x_offset": 0.89
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "children": {
+                    "amount": {
+                        "type": "TextField",
+                        "data": {
+                          "font": "sans4",
+                          "text": "1",
+                          "foreground": [ 241,231,95, 255 ],
+                          "halign": "center",
+                          "valign": "true middle",
+                          "anchor": [ 0.5, 0.5 ]
+                        },
+                        "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle"
+                        }
+                    }
+                }
+            },
+            "brawn": {
+                "type": "Image",
+                "data": {
+                    "texture": "brawn",
+                    "scale": 0.675
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "y_offset": 0.78,
+                    "x_offset": 0.73
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "children": {
+                    "amount": {
+                        "type": "TextField",
+                        "data": {
+                          "font": "sans4",
+                          "text": "1",
+                          "foreground": [ 241,231,95, 255 ],
+                          "halign": "center",
+                          "valign": "true middle",
+                          "anchor": [ 0.5, 0.5 ]
+                        },
+                        "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle"
+                        }
+                    }
+                }
+            }
+        }
+      },
+    "lab": {
+      "comment": "We do not have an asset loader for filmstrips yet, so we do not add the ships",
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+          "currCard": {
+              "type"   : "Button",
+              "data"   : {
+                  "anchor"   : [0.5,0.5],
+                  "upnode"  : "up",
+                  "visible":false
+              },
+              "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "bottom"
+              },
+              "format"    : {
+                  "type"  : "Anchored"
+              },
+              "children": {
+                  "up" : {
+                      "type"   : "NinePatch",
+                      "data"   : {
+                          "texture": "slash",
+                          "scale": 0.43,
+                          "anchor": [ 0.5, 0.5 ]
+                      },
+                      "layout" : {
+                          "x_anchor": "center",
+                          "y_anchor": "middle"
+                      }
+                  }
+              }
+          },
+        "action": {
+          "type": "TextField",
+          "data": {
+            "font": "sans3",
+            "text": "Edit me",
+            "foreground": [ 255, 255, 255, 255 ],
+            "background": [ 0, 0, 0, 255 ],
+            "size": [ 600, 80 ],
+            "anchor": [ 0.5, 0.5 ]
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "bottom",
+            "y_offset": -0.3
+          }
+        },
+        "currEvent": {
+          "type": "Label",
+          "data": {
+            "font": "sans",
+            "text": "Result:",
+            "foreground": [ 212, 175, 55, 255 ],
+            "size": [ 200, 80 ],
+            "anchor": [ 0.5, 0.5 ],
+            "halign": "center",
+            "valign": "middle"
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "bottom",
+            "y_offset": 0.5,
+            "x_offset": 0.015
+          }
+        },
+        "mainMenu": {
+          "type": "Button",
+          "data": {
+            "upnode": "up",
+            "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
+            "visible": false,
+            "pushsize": true,
+            "anchor": [ 0.5, 0.5],
+            "scale": 0.6
+          },
+          "format": {
+            "x_anchor": "center",
+            "y_anchor": "middle"
+          },
+          "children": {
+            "up": {
+              "type": "Image",
+              "data": {
+                "texture": "response1"
+              },
+              "children": {
+                "label": {
+                  "type": "Label",
+                  "format": {
+                    "type": "Anchored"
+                  },
+                  "data": {
+                    "font": "sans",
+                    "text": "Main Menu",
+                    "foreground": [ 0, 0, 0, 255 ],
+                    "anchor": [-0.0625, -0.5 ],
+                    "halign": "center",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle"
+                  }
+                }
+              }
+            }
+          },
+          "layout": {
+              "x_anchor": "left",
+              "y_anchor": "bottom",
+              "y_offset": 0.3,
+              "x_offset": 0.515
+          }
+        },
+        "response1": {
+          "type": "Widget",
+          "data": {
+            "key": "response1",
+            "variables": {
+              "text": "response 1"
+            }
+          }
+        },
+        "response2": {
+          "type": "Widget",
+          "data": {
+            "key": "response2",
+            "variables": {
+              "text": "response 2"
+            }
+          }
+        },
+        "response3": {
+          "type": "Widget",
+          "data": {
+            "key": "response3",
+            "variables": {
+              "text": "response 3"
+            }
+          }
+        },
+        "enemyLabel": {
+            "type": "NinePatch",
+            "data": {
+                "texture": "enemyLabel",
+                "scale": 0.67
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.833,
+                "x_offset": 0.045
+            },
+            "format"    : {
+                "type"  : "Anchored"
+            },
+            "children":{
+                "number": {
+                    "type": "Label",
+                    "data": {
+                      "font": "sans7",
+                      "text": "Target 1:",
+                      "foreground": [ 207,166,93,255 ],
+                      "halign": "left",
+                      "valign": "true middle",
+                      "anchor": [ 0.5, 0.5 ]
+                    },
+                    "layout": {
+                      "x_anchor": "center",
+                      "y_anchor": "middle",
+                      "y_offset": 0.15,
+                      "x_offset": -0.28
+                    }
+                },
+                "name": {
+                    "type": "Label",
+                    "data": {
+                      "font": "sans6",
+                      "text": "WOLVEN THUG",
+                      "foreground": [ 207,166,93,255 ],
+                      "halign": "center",
+                      "valign": "true middle",
+                      "anchor": [ 0.5, 0.5 ]
+                    },
+                    "layout": {
+                      "x_anchor": "center",
+                      "y_anchor": "middle",
+                      "y_offset": -0.2
+                    }
+                }
+            }
+        },
+        "enemy": {
+            "type": "NinePatch",
+            "data": {
+                "texture": "enemy",
+                "scale": 0.67,
+                "visible": false
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.03,
+                "x_offset": 0.015
+            }
+        },
+        "fire": {
+            "type": "NinePatch",
+            "data": {
+                "texture": "fire",
+                "scale": 0.675
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.025,
+                "x_offset": 0.489
+            }
+        },
+        "fireHolder": {
+            "type": "NinePatch",
+            "data": {
+                "texture": "fireHolder",
+                "scale": 0.675
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": -0.004,
+                "x_offset": 0.447
+            }
+        },
+        "burn": {
+          "type": "Widget",
+          "data": {
+            "key": "burn",
+            "variables": {
+              "size": [ 350, 50 ],
+              "text": "BURN"
+            }
+          }
+        },
+        "goon": {
+            "type": "Label",
+            "data": {
+              "font": "sans5",
+              "text": "Current Event",
+              "foreground": [ 124,229,227,255 ],
+              "halign": "right",
+              "valign": "true middle",
+              "anchor": [ 0.5, 0.5 ],
+              "scale": 0.7
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.695,
+                "x_offset": 0.635
+            },
+            "format": {
+              "type": "Anchored"
+            },
+            "children": {
+                "underline": {
+                    "type": "NinePatch",
+                    "data": {
+                        "texture": "underline",
+                        "anchor": [ 0.5, 0.5 ]
+                    },
+                    "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": -0.5,
+                        "x_offset": 0
+                    }
+                }
+            }
+        },
+        "topsword": {
+            "type": "Image",
+            "data": {
+                "texture": "sword",
+                "scale": 0.675
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.695,
+                "x_offset": 0.635
+            }
+        },
+        "removePreview1": {
+          "type": "NinePatch",
+          "data": {
+            "texture": "slash",
+            "scale": 0.37,
+            "visible": false
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.32,
+            "x_offset": 0.215
+          },
+          "format": {
+            "type": "Anchored"
+          },
+          "children": {
+            "redX": {
+              "type": "NinePatch",
+              "data": {
+                "texture": "redx",
+                "anchor": [ 0.5, 0.5 ],
+                "scale": 2
+              },
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle"
+              },
+              "format": {
+                "type": "Anchored"
+              }
+            }
+          }
+        },
+        "burnPreview" : {
+            "type": "NinePatch",
+            "data": {
+                "texture": "brawn",
+                "scale": 0.3
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.155,
+                "x_offset": 0.593
+            },
+            "format"    : {
+                "type"  : "Anchored"
+            },
+            "children": {
+                "amount": {
+                    "type": "Label",
+                    "data": {
+                      "font": "sans4",
+                      "text": "1",
+                      "foreground": [ 241,231,95, 255 ],
+                      "halign": "center",
+                      "valign": "true middle",
+                      "anchor": [ 0.5, 0.5 ]
+                    },
+                    "layout": {
+                      "x_anchor": "center",
+                      "y_anchor": "middle"
+                    }
+                }
+            }
+        },
+        "removePreview2": {
+          "type": "NinePatch",
+          "data": {
+            "texture": "slash",
+            "scale": 0.37,
+            "visible": false
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.32,
+            "x_offset": 0.04
+          },
+          "format": {
+            "type": "Anchored"
+          }
+        },
+        "displayCard": {
+          "type": "NinePatch",
+          "data": {
+            "texture": "slash",
+            "scale": 0.43,
+            "visible": false
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.3,
+            "x_offset": 0.125
+          },
+          "format": {
+            "type": "Anchored"
+          },
+          "children": {
+            "burnAmount": {
+              "type": "NinePatch",
+              "data": {
+                "texture": "brawn",
+                "anchor": [ 0.5, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.95,
+                "x_offset": 0.95
+              },
+              "format": {
+                "type": "Anchored"
+              },
+              "children": {
+                "amount": {
+                  "type": "TextField",
+                  "data": {
+                    "font": "sans4",
+                    "text": "1",
+                    "foreground": [ 241, 231, 95, 255 ],
+                    "halign": "center",
+                    "valign": "true middle",
+                    "anchor": [ 0.5, 0.5 ]
+                  },
+                  "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "x_offset": 0.5,
+                    "y_offset": 0.5
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
