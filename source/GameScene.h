@@ -101,7 +101,12 @@ protected:
     std::shared_ptr<cugl::scene2::PolygonNode> _cardFront;
     std::shared_ptr<DeckNode> _deckNode;
     std::shared_ptr<cugl::scene2::AnimationNode> _shuffleFlip;
+    std::shared_ptr<cugl::scene2::AnimationNode> _shuffleBackFlip;
+    std::shared_ptr<cugl::scene2::AnimationNode> _currentBackFlip;
     std::shared_ptr<cugl::scene2::AnimationNode> _currentFlip;
+    std::shared_ptr<cugl::scene2::AnimationNode> _prevFlip;
+    std::shared_ptr<cugl::scene2::AnimationNode> _prevBackFlip;
+    std::shared_ptr<cugl::scene2::AnimationNode> _cardCut;
     std::shared_ptr<cugl::scene2::AnimationNode> _enemyIdle;
     std::shared_ptr<cugl::scene2::AnimationNode> _currentBurn;
     std::shared_ptr<cugl::scene2::NinePatch> _cardHolder;
@@ -121,6 +126,7 @@ protected:
     std::vector<int> _removeOptions;
     cugl::Size _dimen;
     cugl::Vec2 _vel;
+    cugl::Vec2 _vel2;
     cugl::Vec2 _prev;
     float _scl;
     int _movement;

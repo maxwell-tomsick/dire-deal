@@ -24,6 +24,7 @@ EnemyFight::EnemyFight(){
     _wscale = 1.0f;
     _hscale = 1.0f;
     _id = 0;
+    _scale = 1.0f;
 }
 
 void EnemyFight::allocate(

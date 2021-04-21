@@ -58,8 +58,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _assets = assets;
     
      _audioQueue = AudioEngine::get()->getMusicQueue();
-     _audioQueue->play(_assets->get<Sound>("intro"));
-     _audioQueue->enqueue(_assets->get<Sound>("repeat"), true);
+     _audioQueue->play(_assets->get<Sound>("introThug"));
+     _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true);
 
      
     // Acquire the scene built by the asset loader and resize it the scene
@@ -152,23 +152,35 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      
      _enemyIdle =std::make_shared<scene2::AnimationNode>();
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
-     _enemyIdle->setScale(0.9f);
+     _enemyIdle->setScale(_enemyFights[_fight].getScale());
      _idleBuffer = 0;
      _enemyIdle->setPosition(dimen.width * 0.2f, dimen.height*0.44f);
      addChild(_enemyIdle);
      addChild(scene);
      addChild(_deckNode);
      _shuffleFlip = std::make_shared<scene2::AnimationNode>();
-     _shuffleFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 5, 6, 30);
-     _shuffleFlip->setScale(0.21f);
+     _shuffleFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 3, 6, 15);
+     _shuffleFlip->setScale(0.36914f);
      _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
      _shuffleFlip->setVisible(false);
+     _shuffleBackFlip = std::make_shared<scene2::AnimationNode>();
+     _shuffleBackFlip->initWithFilmstrip(assets->get<Texture>("BackFlip"), 3, 6, 15);
+     _shuffleBackFlip->setScale(0.36914f);
+     _shuffleBackFlip->setFrame(_shuffleBackFlip->getSize() - 1);
+     _shuffleBackFlip->setVisible(false);
      _currentFlip = std::make_shared<scene2::AnimationNode>();
-     _currentFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 5, 6, 30);
-     _currentFlip->setScale(0.585f);
+     _currentFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 3, 6, 15);
+     _currentFlip->setScale(1.0283f);
      _currentFlip->setFrame(0);
      _currentFlip->setVisible(false);
      addChild(_currentFlip);
+     _currentBackFlip = std::make_shared<scene2::AnimationNode>();
+     _currentBackFlip->initWithFilmstrip(assets->get<Texture>("BackFlip"), 3, 6, 15);
+     _currentBackFlip->setScale(1.0283f);
+     _currentBackFlip->setFrame(0);
+     _currentBackFlip->setVisible(false);
+     addChild(_currentBackFlip);
+     addChild(_shuffleBackFlip);
      addChild(_shuffleFlip);
      _currentBurn = std::make_shared<scene2::AnimationNode>();
      _currentBurn->initWithFilmstrip(assets->get<Texture>("SlashBurn"), 8, 11, 88);
@@ -177,6 +189,27 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _currentBurn->setFrame(0);
      _currentBurn->setVisible(false);
      addChild(_currentBurn);
+     _prevFlip = std::make_shared<scene2::AnimationNode>();
+     _prevFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 3, 6, 15);
+     _prevFlip->setPosition(dimen.width * 0.2f, dimen.height * HEIGHT_SCALE);
+     _prevFlip->setScale(1.0283f);
+     _prevFlip->setFrame(0);
+     _prevFlip->setVisible(false);
+     addChild(_prevFlip);
+     _prevBackFlip = std::make_shared<scene2::AnimationNode>();
+     _prevBackFlip->initWithFilmstrip(assets->get<Texture>("BackFlip"), 3, 6, 15);
+     _prevBackFlip->setPosition(dimen.width * 0.2f, dimen.height * HEIGHT_SCALE);
+     _prevBackFlip->setScale(1.0283f);
+     _prevBackFlip->setFrame(0);
+     _prevBackFlip->setVisible(false);
+     addChild(_prevBackFlip);
+     _cardCut = std::make_shared<scene2::AnimationNode>();
+     _cardCut->initWithFilmstrip(assets->get<Texture>("cardCut"), 4, 6, 24);
+     _cardCut->setPosition(dimen.width * 0.2f, dimen.height * HEIGHT_SCALE);
+     _cardCut->setScale(1.02f);
+     _cardCut->setFrame(0);
+     _cardCut->setVisible(false);
+     addChild(_cardCut);
      
      
 
@@ -218,7 +251,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _goonName = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_name"));
      _cardHolder = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_cardHolder"));
      _mainMenu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_mainMenu"));
-     _mainMenuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_mainMenu_label"));
+     _mainMenuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_mainMenu_up_label"));
      _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _burnLabel->setVisible(false);
@@ -226,9 +259,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
      _response1->setVisible(false);
      _response2->setVisible(false);
      _response3->setVisible(false);
-     _currentFlip->setVisible(true);
+     _currentBackFlip->setVisible(true);
      _mainMenu->setVisible(false);
+     _mainMenu->setToggle(false);
      _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+     _currentBackFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _goon->setVisible(false);
      _deckNode->setDrawFront(2);
      _deckNode->setFrontTexture(_currentCard.getTexture());
@@ -282,8 +317,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
          _response2->activate();
          _response3->activate();
          _burn->activate();
+          _mainMenu->activate();
      }
 #else
+     _burnLabel->setPosition(_dimen.width * 0.11f, _dimen.height * (-0.05f));
+     _burnTexture->setPosition(_dimen.width * 0.585f, _dimen.height * 0.15f);
+     
      Touchscreen* touch = Input::get<Touchscreen>();
      touch->addBeginListener(LISTENER_KEY,[=](const cugl::TouchEvent& event, bool focus) {
          this->touchBeganCB(event,focus);
@@ -297,14 +336,18 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 #endif
     if (_active) {
          _burn->activate();
+         _mainMenu->activate();
     }
     _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
      _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
     _mainMenu->addListener([=](const std::string& name, bool down) {
-         this->_active = down;
+         if (_movement == 11) {
+              this->_active = down;
+         } else if (_movement == 12){
+              _movement = 13;
+         }
          });
-    _mainMenu->deactivate();
      //_burnText->setText(resourceString({_currentCard.getResource(0),_currentCard.getResource(1),_currentCard.getResource(2),_currentCard.getResource(3)}));
     //_resourceCount->setText(resourceString(_resources));
     std::vector<int> displayedResponses = _currentCard.getRandomResponses();
@@ -366,6 +409,10 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
+     _audioQueue->clear();
+     _audioQueue->play(_assets->get<Sound>("introSlime"));
+     _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true);
+     
      _goonNumber->setText("Target " + std::to_string(_fight) + ":");
      string cardstring = "json/cards.json";
      if (_fight < _enemyFights.size() + 1){
@@ -381,6 +428,7 @@ void GameScene::reset() {
           //CULog("afterfilmstrip");
           //_enemyIdle->setScale(0.69f);
           _enemyIdle->setFrame(0);
+          _enemyIdle->setScale(currFight.getScale());
           _idleBuffer = 0;
           _enemyIdle->setPosition(_dimen.width * currFight.getWscale(), _dimen.height * currFight.getHscale());
           _enemyIdle->setScale(currFight.getScale());
@@ -504,16 +552,46 @@ void GameScene::update(float timestep) {
           _removeCard1->setVisible(false);
           _removeCard2->setVisible(false);
           _shuffleFlip->setPosition(_shuffleFlip->getPosition() + _vel);
-          _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.21)/40.0f);
-          bool stop = _shuffleFlip->getScaleX() >= 0.585f || (_shuffleFlip->getScaleX() +(_scl - 0.21)/40.0f > 0.585f);
+          _prevFlip->setPosition(_prevFlip->getPosition() + _vel2);
+          _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.36914f)/40.0f);
+          bool stop = _shuffleFlip->getScaleX() >= 1.0283f || (_shuffleFlip->getScaleX() +(_scl - 0.36914f)/40.0f > 1.0283f);
+          
           if (stop){
                _goonInt = 0;
                _burnInt = 0;
+               _shuffleBackFlip->setPosition(_dimen.width * 0.825f, _dimen.height*HEIGHT_SCALE);
+               _shuffleBackFlip->setScale(_shuffleFlip->getScale());
+               _prevBackFlip->setPosition(_prevFlip->getPosition());
                _movement = 2;
           }
      } else if (_movement == 2){
           int frame = _shuffleFlip->getFrame();
           frame -= 1;
+          
+          if (frame < 0){
+               _shuffleBackFlip->setVisible(true);
+               _shuffleFlip->setVisible(false);
+               _prevFlip->setVisible(false);
+               _prevBackFlip->setVisible(true);
+               frame = _shuffleBackFlip->getFrame();
+               frame -= 1;
+               if (frame <= 0){
+                    _movement = 3;
+                    _prevBackFlip->setVisible(false);
+                    _cardCut->setVisible(true);
+                    _cardCut->setFrame(0);
+                    _vel =Vec2(_dimen.width * (0.45f + 0.0125 * (_nextDeck.size()-1)), _dimen.height * 0.875f) - _shuffleFlip->getPosition();
+                    _vel.scale(0.025f);
+                    _scl = 0.3389;
+               }
+               _shuffleBackFlip->setFrame(frame);
+               _prevBackFlip->setFrame(frame);
+               frame += _shuffleFlip->getSize();
+          } else {
+               _shuffleFlip->setFrame(frame);
+               _prevFlip->setFrame(frame);
+          }
+          
           if (frame < 20){
                _underline->setVisible(false);
                string goonText = "";
@@ -527,7 +605,7 @@ void GameScene::update(float timestep) {
                     _goonInt += 1;
                }
           }
-          if (frame < 27){
+          if (frame < 30){
                _burnLabel ->setVisible(true);
                string burnText = "";
                string burnCard = "Burn card to receive";
@@ -542,19 +620,19 @@ void GameScene::update(float timestep) {
                     _burnTexture->setVisible(false);
                }
           }
-          if (frame <= 0){
-               _movement = 3;
-               _vel =Vec2(_dimen.width * (0.45f + 0.0125 * (_nextDeck.size()-1)), _dimen.height * 0.875f) - _shuffleFlip->getPosition();
-               _vel.scale(0.025f);
-               _scl = 0.1928;
-          }
-           _shuffleFlip->setFrame(frame);
      } else if (_movement == 3){
+          int frame = _cardCut->getFrame();
+          frame += 1;
+          if (frame < _enemyIdle->getSize()){
+               _cardCut->setFrame(frame);
+          } else {
+               _cardCut->setVisible(false);
+          }
           _goon->setVisible(false);
           _burnLabel ->setVisible(false);
-          _shuffleFlip->setPosition(_shuffleFlip->getPosition() + _vel);
-          _shuffleFlip->setScale(_shuffleFlip->getScaleX() + (_scl - 0.585f)/40.0f);
-          if (_shuffleFlip->getPosition().y >= _dimen.height * 0.875f || _shuffleFlip->getPosition().y + _vel.y > _dimen.height * 0.875f){
+          _shuffleBackFlip->setPosition(_shuffleBackFlip->getPosition() + _vel);
+          _shuffleBackFlip->setScale(_shuffleBackFlip->getScaleX() + (_scl - 1.0283f)/40.0f);
+          if (_shuffleBackFlip->getPosition().y >= _dimen.height * 0.875f || _shuffleBackFlip->getPosition().y + _vel.y > _dimen.height * 0.875f){
                _movement = 4;
           }
      }
@@ -574,6 +652,8 @@ void GameScene::update(float timestep) {
           _burnLabel ->setVisible(false);
           _shuffleFlip->setVisible(false);
           _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
+          _shuffleBackFlip->setVisible(false);
+          _shuffleBackFlip->setFrame(_shuffleBackFlip->getSize() - 1);
           _currEvent->setColor(Color4::WHITE);
           _response1->setColor(Color4::WHITE);
           _responseText1->setForeground(Color4::BLACK);
@@ -653,18 +733,36 @@ void GameScene::update(float timestep) {
           _currentFlip->setTexture(_assets->get<Texture>(flipTexture));
           _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
           _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+          _currentBackFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
           _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
           if (_movement == 4){
                _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * (_currentDeck.size())));
                _deckNode->setSize(int(_currentDeck.size()));
                _deckNode->setNextSize(int(_nextDeck.size()));
-               _currentFlip->setVisible(true);
+               _currentFlip->setVisible(false);
+               _currentBackFlip->setVisible(true);
                _movement = 5;
           }
      }
      if (_movement == 6){
-          int flipFrame = _currentFlip->getFrame();
+          int flipFrame = _currentBackFlip->getFrame();
           flipFrame += 1;
+          if (flipFrame >= _currentBackFlip->getSize()){
+               _currentFlip->setVisible(true);
+               _currentBackFlip->setVisible(false);
+               flipFrame = _currentFlip->getFrame();
+               flipFrame += 1;
+               if (flipFrame >= _currentFlip->getSize()-1){
+                    _movement = 7;
+                    flipFrame = 0;
+                    _currentBackFlip->setFrame(0);
+                    _currentFlip->setVisible(false);
+               }
+               _currentFlip->setFrame(flipFrame);
+               flipFrame += _currentBackFlip->getSize();
+          } else {
+               _currentBackFlip->setFrame(flipFrame);
+          }
           if (flipFrame > 10){
                //_goon->setHorizontalAlignment(scene2::Label::HAlign(2));
                _goon->setVisible(true);
@@ -682,28 +780,24 @@ void GameScene::update(float timestep) {
                     _underline->setVisible(true);
                }
           }
-          if (flipFrame > 7){
-               _burnTexture->setVisible(true);
-          }
-          if (flipFrame > 8){
-               _burnLabel ->setVisible(true);
-               string burnText = "";
-               string burnCard = "Burn card to receive";
-               if (_burnInt < 20){
-                    for (int i = 19; i >= _burnInt; i --){
-                         burnText = burnText + " ";
+          if (!(_currentCard.getId() == 13 & _enemyFights[_fight].getId() == 2)){
+               if (flipFrame > 7){
+                    _burnTexture->setVisible(true);
+               }
+               if (flipFrame > 8){
+                    _burnLabel ->setVisible(true);
+                    string burnText = "";
+                    string burnCard = "Burn card to receive";
+                    if (_burnInt < 20){
+                         for (int i = 19; i >= _burnInt; i --){
+                              burnText = burnText + " ";
+                         }
+                         burnText = burnText + burnCard.substr(19 - _burnInt,20);
+                         _burnLabel->setText(burnText);
+                         _burnInt += 1;
                     }
-                    burnText = burnText + burnCard.substr(19 - _burnInt,20);
-                    _burnLabel->setText(burnText);
-                    _burnInt += 1;
                }
           }
-          if (flipFrame == _currentFlip->getSize()){
-               _movement = 7;
-               _currentFlip->setVisible(false);
-               flipFrame = 0;
-          }
-          _currentFlip->setFrame(flipFrame);
      }
      if (_movement == 7){
           //_underline->setVisible(true);
@@ -853,13 +947,45 @@ void GameScene::update(float timestep) {
                _deckNode->setNextSize(0);
                _deckNode->setSize(int(_currentDeck.size()));
                _deckNode->setNextSize(int(_nextDeck.size()));
-               _currentFlip->setVisible(true);
+               _currentBackFlip->setVisible(true);
                _movement = 5;
           }
      }
      if (_movement == 11) {
+          _mainMenuLabel->setText("Main Menu");
          _mainMenu->setVisible(true);
-         _mainMenu->activate();
+     }
+     if (_movement == 12){
+          _mainMenuLabel->setText("Next Fight");
+          _mainMenu->setVisible(true);
+     }
+     if (_movement == 13){
+          _mainMenu->setVisible(false);
+          reset();
+         _shuffleFlip->setVisible(false);
+         _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
+          _shuffleBackFlip->setVisible(false);
+          _shuffleBackFlip->setFrame(_shuffleBackFlip->getSize() - 1);
+         _currEvent->setColor(Color4::WHITE);
+         _response1->setColor(Color4::WHITE);
+         _responseText1->setForeground(Color4::BLACK);
+         _responseText2->setForeground(Color4::BLACK);
+         _responseText3->setForeground(Color4::BLACK);
+         _response2->setColor(Color4::WHITE);
+         _response3->setColor(Color4::WHITE);
+         _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * (_currentDeck.size())));
+         _currEvent->setText(_currentCard.getText());
+         string flipTexture = _currentCard.getText() + "Flip";
+         _currentFlip->setTexture(_assets->get<Texture>(flipTexture));
+         _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
+         _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+          _currentBackFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+         _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+          _currEvent->setVisible(false);
+         _deckNode->setVisible(true);
+         _currentBackFlip->setVisible(true);
+         _cardHolder->setVisible(true);
+         _enemyIdle->setVisible(true);
      }
 #ifndef CU_TOUCH_SCREEN
      if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 2)){
@@ -908,7 +1034,7 @@ void GameScene::update(float timestep) {
                _displayCard->setVisible(false);
           }
      } else if ((_movement == 0) & _deckNode->getDrag()) {
-          if (_burn->containsScreen(_mouse->pointerPosition())){
+          if (_burn->containsScreen(_mouse->pointerPosition()) & !(_currentCard.getId() == 13 & _enemyFights[_fight].getId() == 2)){
                _doBurn = true;
           } else {
                _doBurn = false;
@@ -1031,9 +1157,9 @@ void GameScene::buttonPress(const int r){
           _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * (_currentDeck.size() -1)));
      }
      _deckNode->setDrawFront(2);
-     _scl = 0.585f;
+     _scl = 1.0283f;
      if (!_win & (r != -1)) {
-         _shuffleFlip->setScale(0.21f);
+         _shuffleFlip->setScale(0.36914f);
          _shuffleFlip->setVisible(true);
      }
      if (r== -1){
@@ -1047,47 +1173,44 @@ void GameScene::buttonPress(const int r){
 #endif
           _currentBurn->setVisible(true);
      } else {
+          _prevFlip->setVisible(true);
           _movement = 1;
      }
-     _vel = Vec2(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size())) - _shuffleFlip->getPosition();
+     //_vel = Vec2(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size())) - _shuffleFlip->getPosition();
+     _vel = Vec2(_dimen.width * 0.825f, _dimen.height*HEIGHT_SCALE) - _shuffleFlip->getPosition();
+     _vel2 = Vec2(_dimen.width * 0.2f, _dimen.height * HEIGHT_SCALE) - Vec2(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+     _vel2.scale(0.025f);
      _vel.scale(0.025f);
+     _prevFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+     string flipTexture = _currentCard.getText() + "Flip";
+     _prevFlip->setTexture(_assets->get<Texture>(flipTexture));
+     _prevFlip->setFrame(_prevFlip->getSize()-1);
      _keepCards = false;
      if (win){
           _fight += 1;
-          if (_fight > _enemyFights.size()){
-               _deckNode->setVisible(false);
-              _displayCard->setVisible(false);
-               _removeCard1->setVisible(false);
-               _removeCard2->setVisible(false);
-              _goon->setVisible(false);
-              _currEvent->setText("YOU WIN!");
-              _currEvent->setVisible(true);
-               _currentFlip->setVisible(false);
-               _cardHolder->setVisible(false);
-               _enemyIdle->setVisible(false);
-               _shuffleFlip->setVisible(false);
-               _currEvent->setColor(Color4::WHITE);
-               _movement = 11;
-              return;
-          }
-           reset();
+          _burnTexture->setVisible(false);
+          _prevFlip->setVisible(false);
+          _prevBackFlip->setVisible(false);
+          _deckNode->setVisible(false);
+         _displayCard->setVisible(false);
+          _removeCard1->setVisible(false);
+          _removeCard2->setVisible(false);
+         _goon->setVisible(false);
+         _currEvent->setText(_enemyFights[_fight-1].getEnemyName() +" Defeated!");
+         _currEvent->setVisible(true);
+          _currentFlip->setVisible(false);
+          _currentBackFlip->setVisible(false);
+          _cardHolder->setVisible(false);
+          _enemyIdle->setVisible(false);
           _shuffleFlip->setVisible(false);
-          _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
+          _shuffleBackFlip->setVisible(false);
           _currEvent->setColor(Color4::WHITE);
-          _response1->setColor(Color4::WHITE);
-          _responseText1->setForeground(Color4::BLACK);
-          _responseText2->setForeground(Color4::BLACK);
-          _responseText3->setForeground(Color4::BLACK);
-          _response2->setColor(Color4::WHITE);
-          _response3->setColor(Color4::WHITE);
-          _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * (_currentDeck.size())));
-          _currEvent->setText(_currentCard.getText());
-          string flipTexture = _currentCard.getText() + "Flip";
-          _currentFlip->setTexture(_assets->get<Texture>(flipTexture));
-          _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
-          _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
-          _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
-          _currentFlip->setVisible(true);
+          if (_fight > _enemyFights.size()){
+               _currEvent->setText("Hunt Complete!");
+               _movement = 11;
+          } else {
+               _movement = 12;
+          }
      }
 }
 
@@ -1152,6 +1275,12 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           _resourceController.setDisplayCardBurnText(displayCard, _displayCardBurnText, _assets, _displayCardBurnTexture);
           _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
+     } else if (_mainMenu->containsScreen(pos)){
+          if (_movement == 11) {
+               this->_active = true;
+          } else if (_movement == 12){
+               _movement = 13;
+          }
      } else {
           _displayCard->setVisible(false);
      }
@@ -1172,7 +1301,7 @@ void GameScene::touchEnded(const cugl::Vec2& pos) {
                buttonPress(2);
           }
      } else {
-          if (_burn->containsScreen(pos)) {
+          if (_burn->containsScreen(pos) & !(_currentCard.getId() == 13 & _enemyFights[_fight].getId() == 2)) {
                _currentBurn->setPosition(_deckNode->screenToNodeCoords(pos) + _deckNode->getOffset());
                string burnTexture = _currentCard.getText() + "Burn";
                _currentBurn->setTexture(_assets->get<Texture>(burnTexture));

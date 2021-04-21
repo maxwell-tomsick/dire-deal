@@ -76,7 +76,7 @@
         "magfilter": "linear"
       },
       "PunchBurn": {
-        "file": "textures/cardburns/incapacitated_burn.png",
+        "file": "textures/cardburns/grab_burn.png",
         "minfilter": "linear",
         "magfilter": "linear"
       },
@@ -85,23 +85,28 @@
         "minfilter": "linear",
         "magfilter": "linear"
       },
+      "BackFlip": {
+        "file": "textures/cardflips/card-back-spritesheet.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
     "Bide TimeFlip": {
-      "file": "textures/cardflips/card-bidetime-spritesheet.png",
+      "file": "textures/cardflips/card-bides-time-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
     "SlashFlip": {
-      "file": "textures/cardflips/card-slash-spritesheet.png",
+      "file": "textures/cardflips/card-attacks-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
     "GuardFlip": {
-      "file": "textures/cardflips/card-guard-spritesheet.png",
+      "file": "textures/cardflips/card-guards-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
     "GrabFlip": {
-      "file": "textures/cardflips/card-grab-spritesheet.png",
+      "file": "textures/cardflips/card-grabs-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -111,7 +116,7 @@
       "magfilter": "linear"
     },
     "ExposedFlip": {
-      "file": "textures/cardflips/card-exposed-spritesheet.png",
+      "file": "textures/cardflips/card-grappled-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -390,6 +395,11 @@
       "file": "textures/current-event-line.jpg",
       "minfilter": "linear",
       "magfilter": "linear"
+    },
+    "cardCut": {
+      "file": "textures/card_cut.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     }
   },
   "widgets": {
@@ -400,13 +410,21 @@
     "burn": "widgets/burn.json"
   },
   "sounds": {
-      "intro": {
+      "introThug": {
         "type": "sample",
-        "file": "sounds/harpsichord_intro.ogg"
+        "file": "sounds/introloopharpsichord.ogg"
       },
-      "repeat": {
+      "repeatThug": {
         "type": "sample",
-        "file": "sounds/harpsichord_repeat.ogg"
+        "file": "sounds/loopharpsichord.ogg"
+      },
+      "introSlime": {
+        "type": "sample",
+        "file": "sounds/introbigslimyboi.ogg"
+      },
+      "repeatSlime": {
+        "type": "sample",
+        "file": "sounds/loopbigslimyboi.ogg"
       }
   },
   "fonts": {
@@ -688,13 +706,15 @@
             "text": "Result:",
             "foreground": [ 212, 175, 55, 255 ],
             "size": [ 200, 80 ],
-            "anchor": [ 0.5, 0.5 ]
+            "anchor": [ 0.5, 0.5 ],
+            "halign": "center",
+            "valign": "middle"
           },
           "layout": {
             "x_anchor": "center",
             "y_anchor": "bottom",
             "y_offset": 0.5,
-            "x_offset": -0.05
+            "x_offset": 0.015
           }
         },
         "mainMenu": {
@@ -704,7 +724,7 @@
             "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
             "visible": false,
             "pushsize": true,
-            "anchor": [ -1.6, -2 ],
+            "anchor": [ 0.5, 0.5],
             "scale": 0.6
           },
           "format": {
@@ -738,6 +758,12 @@
                 }
               }
             }
+          },
+          "layout": {
+              "x_anchor": "left",
+              "y_anchor": "bottom",
+              "y_offset": 0.3,
+              "x_offset": 0.515
           }
         },
         "response1": {
