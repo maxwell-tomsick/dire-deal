@@ -183,8 +183,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      addChild(_shuffleBackFlip);
      addChild(_shuffleFlip);
      _currentBurn = std::make_shared<scene2::AnimationNode>();
-     _currentBurn->initWithFilmstrip(assets->get<Texture>("SlashBurn"), 8, 11, 88);
-     _currentBurn->setScale(1.3f);
+     _currentBurn->initWithFilmstrip(assets->get<Texture>("SlashBurn"), 10, 10, 100);
+     _currentBurn->setScale(1.752f);
      _currentBurn->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _currentBurn->setFrame(0);
      _currentBurn->setVisible(false);
