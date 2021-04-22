@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EB74548B1D74D75C002FBAE6"
-               BuildableName = "DireDeal (iOS).app"
+               BuildableName = "DireDealiOS.app"
                BlueprintName = "DireDeal (iOS)"
                ReferencedContainer = "container:DireDeal.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EB74548B1D74D75C002FBAE6"
-            BuildableName = "DireDeal (iOS).app"
+            BuildableName = "DireDealiOS.app"
             BlueprintName = "DireDeal (iOS)"
             ReferencedContainer = "container:DireDeal.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EB74548B1D74D75C002FBAE6"
-            BuildableName = "DireDeal (iOS).app"
+            BuildableName = "DireDealiOS.app"
             BlueprintName = "DireDeal (iOS)"
             ReferencedContainer = "container:DireDeal.xcodeproj">
          </BuildableReference>

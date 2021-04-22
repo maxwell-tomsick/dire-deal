@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,10 @@
 		501876B8261F5FAB001BADA4 /* TurnController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AF261F5FAB001BADA4 /* TurnController.cpp */; };
 		501876B9261F5FAB001BADA4 /* maybeUsefulReference in Resources */ = {isa = PBXBuildFile; fileRef = 501876B0261F5FAB001BADA4 /* maybeUsefulReference */; };
 		501876BA261F5FAB001BADA4 /* maybeUsefulReference in Resources */ = {isa = PBXBuildFile; fileRef = 501876B0261F5FAB001BADA4 /* maybeUsefulReference */; };
+		5060B35C2630940200710816 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5060B3582630940200710816 /* GoogleService-Info.plist */; };
+		5060B35D2630940200710816 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5060B3582630940200710816 /* GoogleService-Info.plist */; };
+		5060B35E2630940200710816 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5060B3582630940200710816 /* GoogleService-Info.plist */; };
+		5060B3642630996000710816 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5060B3632630996000710816 /* FirebaseAnalytics */; };
 		50CE8103262D3A1D007B65D8 /* ItemScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */; };
 		50CE8104262D3A1D007B65D8 /* ItemScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */; };
 		50CE8105262D3A1D007B65D8 /* ItemScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */; };
@@ -163,6 +167,7 @@
 		501876AE261F5FAB001BADA4 /* JsonLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLoader.cpp; sourceTree = "<group>"; };
 		501876AF261F5FAB001BADA4 /* TurnController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TurnController.cpp; sourceTree = "<group>"; };
 		501876B0261F5FAB001BADA4 /* maybeUsefulReference */ = {isa = PBXFileReference; lastKnownFileType = folder; path = maybeUsefulReference; sourceTree = "<group>"; };
+		5060B3582630940200710816 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemScene.cpp; sourceTree = "<group>"; };
 		50CE8102262D3A1D007B65D8 /* ItemScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemScene.h; sourceTree = "<group>"; };
 		EB0FF5FC2016EF4F00517030 /* DireDeal (Sim).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DireDeal (Sim).app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +257,7 @@
 				EB97E8B625D1839000753535 /* CoreGraphics.framework in Frameworks */,
 				EB97E8C125D1839000753535 /* CoreVideo.framework in Frameworks */,
 				EB97E8BF25D1839000753535 /* CoreMotion.framework in Frameworks */,
+				5060B3642630996000710816 /* FirebaseAnalytics in Frameworks */,
 				EB97E8BB25D1839000753535 /* CoreHaptics.framework in Frameworks */,
 				EB97E8BD25D1839000753535 /* CoreBluetooth.framework in Frameworks */,
 				EB97E8BA25D1839000753535 /* CoreServices.framework in Frameworks */,
@@ -389,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				EB42669221F68F6900A9DE61 /* DeviceMargins.plist */,
+				5060B3582630940200710816 /* GoogleService-Info.plist */,
 				EB7454A61D74D846002FBAE6 /* iOS-Info.plist */,
 				EB7454A71D74D846002FBAE6 /* iOS.xcassets */,
 				EB7454A81D74D846002FBAE6 /* Landscape.storyboard */,
@@ -468,6 +475,9 @@
 			dependencies = (
 			);
 			name = "DireDeal (iOS)";
+			packageProductDependencies = (
+				5060B3632630996000710816 /* FirebaseAnalytics */,
+			);
 			productName = "HelloWorld (iOS)";
 			productReference = EB74548C1D74D75C002FBAE6 /* DireDealiOS.app */;
 			productType = "com.apple.product-type.application";
@@ -524,6 +534,9 @@
 				Base,
 			);
 			mainGroup = EBBF18881D74904A008E2001;
+			packageReferences = (
+				5060B3622630996000710816 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = EBBF18921D74904A008E2001 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -577,6 +590,7 @@
 				EB0FF6172016EFB200517030 /* iOS.xcassets in Resources */,
 				EB0FF6182016EFB200517030 /* Landscape.storyboard in Resources */,
 				EB0FF6192016EFB200517030 /* Portrait.storyboard in Resources */,
+				5060B35E2630940200710816 /* GoogleService-Info.plist in Resources */,
 				EB42669721F68F6900A9DE61 /* DeviceMargins.plist in Resources */,
 				5014BB6525F54C91004EFF48 /* fonts in Resources */,
 			);
@@ -594,6 +608,7 @@
 				EBFE7C051E19B496001007C2 /* json in Resources */,
 				EB7454AD1D74D846002FBAE6 /* Portrait.storyboard in Resources */,
 				501876BA261F5FAB001BADA4 /* maybeUsefulReference in Resources */,
+				5060B35D2630940200710816 /* GoogleService-Info.plist in Resources */,
 				EB42669621F68F6900A9DE61 /* DeviceMargins.plist in Resources */,
 				5014BB6425F54C91004EFF48 /* fonts in Resources */,
 			);
@@ -604,6 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5014BB7225F54CCF004EFF48 /* widgets in Resources */,
+				5060B35C2630940200710816 /* GoogleService-Info.plist in Resources */,
 				EBFE7C091E19B4AC001007C2 /* json in Resources */,
 				5014BB6325F54C91004EFF48 /* fonts in Resources */,
 				501876B9261F5FAB001BADA4 /* maybeUsefulReference in Resources */,
@@ -701,7 +717,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/iOS-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(STATIC_LIB)";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.sim.GameLab;
 				PRODUCT_NAME = "DireDeal (Sim)";
@@ -733,7 +752,10 @@
 				DEVELOPMENT_TEAM = G6P7H83FK6;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/iOS-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(STATIC_LIB)";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.sim.GameLab;
 				PRODUCT_NAME = "DireDeal (Sim)";
@@ -759,8 +781,13 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.3;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.iOS.DireDeal;
 				PRODUCT_NAME = DireDealiOS;
 				PROVISIONING_PROFILE_SPECIFIER = DireDealDevelopmentProfile;
@@ -784,8 +811,13 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.3;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.iOS.DireDeal;
 				PRODUCT_NAME = DireDealiOS;
 				PROVISIONING_PROFILE_SPECIFIER = DireDealDevelopmentProfile;
@@ -923,7 +955,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DXRW83XY8P;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Mac-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.DireDeal;
 				PRODUCT_NAME = "DireDeal (Mac)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -941,7 +976,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DXRW83XY8P;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Mac-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.DireDeal;
 				PRODUCT_NAME = "DireDeal (Mac)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -989,6 +1027,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5060B3622630996000710816 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5060B3632630996000710816 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5060B3622630996000710816 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EBBF18891D74904A008E2001 /* Project object */;
 }
