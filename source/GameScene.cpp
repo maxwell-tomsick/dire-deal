@@ -343,6 +343,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
     _mainMenu->addListener([=](const std::string& name, bool down) {
          if (_movement == 11) {
+              _audioQueue->clear();
               this->_active = down;
          } else if (_movement == 12){
               _movement = 13;
