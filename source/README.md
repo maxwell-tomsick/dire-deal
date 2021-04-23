@@ -48,6 +48,8 @@ Deck Boost: 1 Response to shuffle itself into the next deck for free. Sells for 
 
 Parasite: 1 Response to shuffle itself into the next deck, for 1 of each resource. Sells for nothing. When the next deck is shuffled, if this item is in it, a random response to a random card in the next deck will be free.
 
+Items will show up in the game as the "Incapacitated" card, which is a placeholder asset.
+
 SLIME FIGHT:
 
 The second fight of the game features our brand-new Slime enemy. This enemy feautres 1 special card: Poison Gas. This card cannot be sold, and each of it's responses shuffle itself into the next deck, as well as remove a card from either the current or next deck. Happy hunting!

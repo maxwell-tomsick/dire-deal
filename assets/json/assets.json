@@ -116,7 +116,7 @@
       "magfilter": "linear"
     },
     "ExposedFlip": {
-      "file": "textures/cardflips/card-grappled-spritesheet.png",
+      "file": "textures/cardflips/card-exposed-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
