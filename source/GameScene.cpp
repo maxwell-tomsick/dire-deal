@@ -599,8 +599,8 @@ void GameScene::update(float timestep) {
                     _vel =Vec2(_dimen.width * (0.45f + 0.0125 * (_nextDeck.size()-1)), _dimen.height * 0.875f) - _shuffleFlip->getPosition();
                     _vel.scale(0.025f);
                     _scl = 0.3389;
+                    
                     AudioEngine::get()->play("slashSound", _assets->get<Sound>("slashSound"), false, 0.3f, false);
-                    AudioEngine::get()->play("cardSound3", _assets->get<Sound>("cardSound"));
                }
                _shuffleBackFlip->setFrame(frame);
                _prevBackFlip->setFrame(frame);
