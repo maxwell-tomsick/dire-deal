@@ -282,17 +282,31 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
                Vec2 pos = _deckNode->screenToNodeCoords(_mouse->pointerPosition());
                _deckNode->setOffset(Vec2(_dimen.width * WIDTH_SCALE - pos.x, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()) - pos.y));
                _deckNode->setDrag(true);
+               if (AudioEngine::get()->getState("cardSound") != AudioEngine::State::PLAYING){
+                    AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"));
+               }
           }
           if ( (_movement == 5) & down) {
                _goonInt = 0;
                _burnInt = 0;
                _movement = 6;
+               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"));
           }
           if (!down){
                _deckNode->setDrag(false);
                if (_doBurn){
+                    if (AudioEngine::get()->getState("crumpleSound") != AudioEngine::State::PLAYING){
+                         AudioEngine::get()->play("crumpleSound", _assets->get<Sound>("crumpleSound"));
+                    } else {
+                         AudioEngine::get()->play("crumpleSound2", _assets->get<Sound>("crumpleSound"));
+                    }
                     buttonPress(-1);
                     _doBurn = false;
+               } else if (_movement == 0){
+                    if (AudioEngine::get()->getState("cardSound2") != AudioEngine::State::PLAYING){
+                         AudioEngine::get()->play("cardSound2", _assets->get<Sound>("cardSound"));
+                         
+                    }
                }
           }
          });
@@ -563,6 +577,7 @@ void GameScene::update(float timestep) {
                _shuffleBackFlip->setPosition(_dimen.width * 0.825f, _dimen.height*HEIGHT_SCALE);
                _shuffleBackFlip->setScale(_shuffleFlip->getScale());
                _prevBackFlip->setPosition(_prevFlip->getPosition());
+               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"));
                _movement = 2;
           }
      } else if (_movement == 2){
@@ -584,6 +599,8 @@ void GameScene::update(float timestep) {
                     _vel =Vec2(_dimen.width * (0.45f + 0.0125 * (_nextDeck.size()-1)), _dimen.height * 0.875f) - _shuffleFlip->getPosition();
                     _vel.scale(0.025f);
                     _scl = 0.3389;
+                    AudioEngine::get()->play("slashSound", _assets->get<Sound>("slashSound"), false, 0.3f, false);
+                    AudioEngine::get()->play("cardSound3", _assets->get<Sound>("cardSound"));
                }
                _shuffleBackFlip->setFrame(frame);
                _prevBackFlip->setFrame(frame);
@@ -692,6 +709,9 @@ void GameScene::update(float timestep) {
                          _resourceController.setFree(i);
                     } else {
                          _resourceController.setFree(-1);
+                    }
+                    if (_currentDeck.size() > 1){
+                    AudioEngine::get()->play("cardSound4", _assets->get<Sound>("cardSound"));
                     }
                     _movement = 9;
                } else {
@@ -920,6 +940,9 @@ void GameScene::update(float timestep) {
           } 
           int burnFrame = _currentBurn->getFrame();
           burnFrame += 1;
+          if (burnFrame == 40){
+               AudioEngine::get()->play("burnSound", _assets->get<Sound>("burnSound"));
+          }
           if (burnFrame == _currentBurn->getSize()){
                _movement = 4;
                _currentBurn->setVisible(false);
@@ -934,6 +957,11 @@ void GameScene::update(float timestep) {
           } else {
                _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * (_currentDeck.size())));
                _movement = 10;
+               if (_currentDeck.size() > 0){
+                    AudioEngine::get()->play("shuffleSound", _assets->get<Sound>("shuffleSound"), false, 2.0f, false);
+               } else {
+                    AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"));
+               }
           }
      }
      if (_movement == 10){
@@ -1175,6 +1203,7 @@ void GameScene::buttonPress(const int r){
           _currentBurn->setVisible(true);
      } else {
           _prevFlip->setVisible(true);
+          AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"));
           _movement = 1;
      }
      //_vel = Vec2(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size())) - _shuffleFlip->getPosition();
@@ -1257,6 +1286,9 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           Vec2 posi = _deckNode->screenToNodeCoords(pos);
           _deckNode->setOffset(Vec2(_dimen.width * WIDTH_SCALE - posi.x, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()) - posi.y));
           _deckNode->setDrag(true);
+          if (AudioEngine::get()->getState("cardSound") != AudioEngine::State::PLAYING){
+               AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"));
+          }
           _deckNode->setCurrCardPos(posi);
      }
      else if (_response1->containsScreen(pos) & _display1) {
@@ -1306,7 +1338,16 @@ void GameScene::touchEnded(const cugl::Vec2& pos) {
                _currentBurn->setPosition(_deckNode->screenToNodeCoords(pos) + _deckNode->getOffset());
                string burnTexture = _currentCard.getText() + "Burn";
                _currentBurn->setTexture(_assets->get<Texture>(burnTexture));
+               if (AudioEngine::get()->getState("crumpleSound") != AudioEngine::State::PLAYING){
+                    AudioEngine::get()->play("crumpleSound", _assets->get<Sound>("crumpleSound"));
+               } else {
+                    AudioEngine::get()->play("crumpleSound2", _assets->get<Sound>("crumpleSound"));
+               }
                buttonPress(-1);
+          } else {
+               if (AudioEngine::get()->getState("cardSound2") != AudioEngine::State::PLAYING){
+                    AudioEngine::get()->play("cardSound2", _assets->get<Sound>("cardSound"));
+               }
           }
           _deckNode->setDrag(false);
      }
@@ -1325,6 +1366,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                _goonInt = 0;
                _burnInt = 0;
                _movement = 6;
+               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"));
           }
      } else if (!_deckNode->getDrag() & (_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 2)){
           if (_response1->containsScreen(pos)) {

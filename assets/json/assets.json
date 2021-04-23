@@ -425,6 +425,30 @@
       "repeatSlime": {
         "type": "sample",
         "file": "sounds/loopbigslimyboi.ogg"
+      },
+      "shuffleSound": {
+        "type": "sample",
+        "file": "sounds/card_shuffle.wav"
+      },
+      "crumpleSound": {
+        "type": "sample",
+        "file": "sounds/card_crumple.wav"
+      },
+      "burnSound":{
+          "type": "sample",
+          "file": "sounds/77691__joelaudio__sfx-magic-fireball-001.wav"
+      },
+      "slashSound":{
+          "type": "sample",
+          "file": "sounds/35213__abyssmal__slashkut.wav"
+      },
+      "cardSound":{
+          "type": "sample",
+          "file": "sounds/538669__andersmmg__cards-1.wav"
+      },
+      "flipSound":{
+          "type": "sample",
+          "file": "sounds/84322__splashdust__flipcard.wav"
       }
   },
   "fonts": {

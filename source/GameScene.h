@@ -53,7 +53,7 @@ protected:
 
     ResourceController _resourceController;
     //saved this line from lab in case of reference to add sound
-    std::shared_ptr<cugl::Sound> _redSound;
+    //std::shared_ptr<cugl::Sound> _redSound;
     std::shared_ptr<cugl::scene2::TextField> _field;
     std::shared_ptr<cugl::scene2::Label> _resourceCount;
     std::shared_ptr<cugl::scene2::Label> _currEvent;
@@ -146,7 +146,7 @@ protected:
     int _item;
     int _goonInt;
     int _burnInt;
-    
+    //std::shared_ptr<cugl::AudioEngine> _audioEngine;
     std::shared_ptr<cugl::AudioQueue> _audioQueue;
     const float WIDTH_SCALE = 0.517f;
     const float DECK_SCALE = 0.01f;
