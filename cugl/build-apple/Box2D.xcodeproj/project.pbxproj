@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -527,6 +527,8 @@
 			dependencies = (
 			);
 			name = "Box2D-Mac";
+			packageProductDependencies = (
+			);
 			productName = Box2D;
 			productReference = EBBBBE311DCD0014001930F2 /* libBox2D-Mac.a */;
 			productType = "com.apple.product-type.library.static";
@@ -559,6 +561,9 @@
 				Base,
 			);
 			mainGroup = EBBBBE281DCD0014001930F2;
+			packageReferences = (
+				50C8B4E6263796AB00564178 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = EBBBBE321DCD0014001930F2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -879,6 +884,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		50C8B4E6263796AB00564178 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = EBBBBE291DCD0014001930F2 /* Project object */;
 }
