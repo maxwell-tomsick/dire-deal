@@ -99,8 +99,8 @@
       "resources": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 10,
-          "brawn": 0
+          "lunge": 0,
+          "brawn": 10
         },
       "level": 3
     },

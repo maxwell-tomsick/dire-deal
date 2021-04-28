@@ -700,12 +700,13 @@
                 "type"   : "NinePatch",
                 "data"   : {
                     "texture": "Gear",
-                    "scale": 0.5
+                    "scale": 0.5,
+                    "anchor": [ 0, 0 ]
                 },
                 "layout" : {
                     "x_anchor": "left",
                     "y_anchor": "bottom",
-                    "x_offset": 0.9,
+                    "x_offset": 1.0,
                     "y_offset": 0.9
                 }
           }
