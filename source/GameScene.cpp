@@ -167,8 +167,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _black->setBlendEquation( GL_FUNC_ADD );
      _black->setVisible(false);
      addChild(_black);
-     std::shared_ptr<scene2::Button> pauseButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("Pause"));
-     addChild(pauseButton);
      addChild(_pause);
      _shuffleFlip = std::make_shared<scene2::AnimationNode>();
      _shuffleFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 3, 6, 15);
@@ -223,19 +221,20 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _cardCut->setVisible(false);
      addChild(_cardCut);
      
-     
-
-     _pauseButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("Pause"));
-     _pauseButton->doLayout();
+     _pauseButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("PauseNode_Pause"));
+     std::shared_ptr<scene2::SceneNode> pause = _assets->get<scene2::SceneNode>("PauseNode");
+     pause->setContentSize(dimen);
+     pause->doLayout();
+     addChild(pause);
      _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_currEvent"));
      _musicSliderNode = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("pause_musicSlider"));
      _soundSliderNode = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("pause_soundSlider"));
      _paused = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_paused"));
      _musicSlider = std::dynamic_pointer_cast<scene2::Slider>(assets->get<scene2::SceneNode>("pause_musicSlider_action"));
      _musicVolume  = _musicSlider->getValue();
+     _audioQueue->setVolume(_musicVolume);
      _musicSlider->addListener([=](const std::string& name, float value) {
          if (_musicVolume != value & _movement == 14) {
-              _audioQueue->setVolume(value);
              _musicVolume = value;
          }
      });
@@ -493,7 +492,7 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
-     if (_fight == 3){
+     if (_fight == 2){
      _audioQueue->clear();
      _audioQueue->play(_assets->get<Sound>("introSlime"));
      _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true);
@@ -641,6 +640,9 @@ void GameScene::update(float timestep) {
           _pauseButton->setVisible(false);
      } else if ((_movement == 0) or (_movement == 14) & !_pauseButton->isVisible()) {
           _pauseButton->setVisible(true);
+     }
+     if (_audioQueue->getVolume() != _musicVolume){
+          _audioQueue->setVolume(_musicVolume);
      }
      if (_movement == 1){
           _displayCard->setVisible(false);

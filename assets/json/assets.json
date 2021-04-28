@@ -681,16 +681,26 @@
             }
         }
       },
+      "PauseNode": {
+        "type": "Node",
+        "data": {
+          "visible":true
+        },
+        "format": {
+          "type": "Anchored"
+        },
+        "children": {
       "Pause": {
         "type"   : "Button",
         "data"   : {
             "upnode"  : "up",
-            "visible": false,
-            "anchor": [ 0, 0 ]
+            "visible": false
         },
         "layout": {
             "x_anchor": "left",
-            "y_anchor": "bottom"
+            "y_anchor": "bottom",
+            "x_offset": 0.03,
+            "y_offset": 0.06
         },
         "format"    : {
             "type"  : "Anchored"
@@ -700,17 +710,16 @@
                 "type"   : "NinePatch",
                 "data"   : {
                     "texture": "Gear",
-                    "scale": 0.5,
-                    "anchor": [ 0, 0 ]
+                    "scale": 0.5
                 },
                 "layout" : {
-                    "x_anchor": "left",
-                    "y_anchor": "bottom",
-                    "x_offset": 1.0,
-                    "y_offset": 0.9
+                    "x_anchor": "center",
+                    "y_anchor": "middle"
                 }
           }
         }
+        }
+      }
       },
       "darken": {
         "type": "NinePatch",
