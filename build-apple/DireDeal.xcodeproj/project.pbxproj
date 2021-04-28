@@ -35,9 +35,7 @@
 		501876B8261F5FAB001BADA4 /* TurnController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AF261F5FAB001BADA4 /* TurnController.cpp */; };
 		501876B9261F5FAB001BADA4 /* maybeUsefulReference in Resources */ = {isa = PBXBuildFile; fileRef = 501876B0261F5FAB001BADA4 /* maybeUsefulReference */; };
 		501876BA261F5FAB001BADA4 /* maybeUsefulReference in Resources */ = {isa = PBXBuildFile; fileRef = 501876B0261F5FAB001BADA4 /* maybeUsefulReference */; };
-		5060B35C2630940200710816 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5060B3582630940200710816 /* GoogleService-Info.plist */; };
 		5060B35D2630940200710816 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5060B3582630940200710816 /* GoogleService-Info.plist */; };
-		5060B35E2630940200710816 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5060B3582630940200710816 /* GoogleService-Info.plist */; };
 		5060B3642630996000710816 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5060B3632630996000710816 /* FirebaseAnalytics */; };
 		50CE8103262D3A1D007B65D8 /* ItemScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */; };
 		50CE8104262D3A1D007B65D8 /* ItemScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */; };
@@ -422,9 +420,9 @@
 				EBB8376225E5921E00401672 /* App.h */,
 				EBB8375F25E5921E00401672 /* App.cpp */,
 				EBB8376725E5921E00401672 /* LoadingScene.h */,
+				EBB8376625E5921E00401672 /* LoadingScene.cpp */,
 				50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */,
 				50CE8102262D3A1D007B65D8 /* ItemScene.h */,
-				EBB8376625E5921E00401672 /* LoadingScene.cpp */,
 				5014BB5B25F54BA6004EFF48 /* Card.h */,
 				5014BB8325F55E12004EFF48 /* Card.cpp */,
 				5014BB7B25F5539D004EFF48 /* Response.h */,
@@ -590,7 +588,6 @@
 				EB0FF6172016EFB200517030 /* iOS.xcassets in Resources */,
 				EB0FF6182016EFB200517030 /* Landscape.storyboard in Resources */,
 				EB0FF6192016EFB200517030 /* Portrait.storyboard in Resources */,
-				5060B35E2630940200710816 /* GoogleService-Info.plist in Resources */,
 				EB42669721F68F6900A9DE61 /* DeviceMargins.plist in Resources */,
 				5014BB6525F54C91004EFF48 /* fonts in Resources */,
 			);
@@ -619,7 +616,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5014BB7225F54CCF004EFF48 /* widgets in Resources */,
-				5060B35C2630940200710816 /* GoogleService-Info.plist in Resources */,
 				EBFE7C091E19B4AC001007C2 /* json in Resources */,
 				5014BB6325F54C91004EFF48 /* fonts in Resources */,
 				501876B9261F5FAB001BADA4 /* maybeUsefulReference in Resources */,
@@ -959,7 +955,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/../Frameworks",
+					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.DireDeal;
 				PRODUCT_NAME = "DireDeal (Mac)";
@@ -980,7 +976,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/../Frameworks",
+					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.mac.DireDeal;
 				PRODUCT_NAME = "DireDeal (Mac)";

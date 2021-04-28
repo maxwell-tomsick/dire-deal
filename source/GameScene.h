@@ -89,6 +89,14 @@ protected:
     std::shared_ptr<cugl::scene2::NinePatch> _underline;
     std::shared_ptr<cugl::scene2::Label> _burnLabel;
     
+    std::shared_ptr<cugl::scene2::NinePatch> _black;
+    std::shared_ptr<cugl::scene2::Button> _pauseButton;
+    std::shared_ptr<cugl::scene2::SceneNode> _pause;
+    std::shared_ptr<cugl::scene2::Slider> _musicSlider;
+    float _musicVolume;
+    std::shared_ptr<cugl::scene2::Slider> _soundSlider;
+    float _soundVolume;
+    
     std::shared_ptr<cugl::scene2::Button> _burn;
     std::shared_ptr<cugl::scene2::Label> _burnText;
     std::shared_ptr<cugl::scene2::NinePatch> _burnTexture;

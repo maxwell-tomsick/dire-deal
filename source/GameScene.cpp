@@ -70,6 +70,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("lab");
     scene->setContentSize(dimen);
     scene->doLayout(); // Repositions the HUD;
+     _pause = _assets->get<scene2::SceneNode>("pause");
+     _pause->setContentSize(dimen);
+     _pause->doLayout();
      
      _usedSecondWind = false;
      _fight = 1;
@@ -158,6 +161,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      addChild(_enemyIdle);
      addChild(scene);
      addChild(_deckNode);
+     _black = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("darken"));
+     _black->setContentSize(dimen);
+     _black->doLayout();
+     _black->setBlendEquation( GL_FUNC_ADD );
+     addChild(_black);
+     std::shared_ptr<scene2::Button> pauseButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("Pause"));
+     addChild(pauseButton);
+     addChild(_pause);
      _shuffleFlip = std::make_shared<scene2::AnimationNode>();
      _shuffleFlip->initWithFilmstrip(assets->get<Texture>("SlashFlip"), 3, 6, 15);
      _shuffleFlip->setScale(0.36914f);
@@ -213,8 +224,34 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      
      
 
-
-    _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_currEvent"));
+     _pauseButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("Pause"));
+     _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_currEvent"));
+     _musicSlider = std::dynamic_pointer_cast<scene2::Slider>(assets->get<scene2::SceneNode>("pause_musicSlider_action"));
+     _musicVolume  = _musicSlider->getValue();
+     _musicSlider->addListener([=](const std::string& name, float value) {
+         if (_musicVolume != value & _movement == 14) {
+              _audioQueue->setVolume(value);
+             _musicVolume = value;
+         }
+     });
+     _soundSlider = std::dynamic_pointer_cast<scene2::Slider>(assets->get<scene2::SceneNode>("pause_soundSlider_action"));
+     _soundVolume  = _soundSlider->getValue();
+     std::shared_ptr<cugl::scene2::Button> knob = std::dynamic_pointer_cast<scene2::Button>(_soundSlider->getKnob());
+     knob->addListener([=](const std::string& name, bool down) {
+          if (_movement == 14) {
+               if (!down){
+                    if (AudioEngine::get()->getState("slashSound") != AudioEngine::State::PLAYING){
+                         AudioEngine::get()->play("slashSound", _assets->get<Sound>("slashSound"), false, _soundVolume, false);
+                    }
+               }
+          }
+          });
+     _soundSlider->addListener([=](const std::string& name, float value) {
+         if ( _soundVolume != value & _movement == 14) {
+             _soundVolume = value;
+         }
+     });
+     
     _response1 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response1"));
     _responseText1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_label"));
     _responseCost1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_costs"));
@@ -250,8 +287,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _goonNumber = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_number"));
      _goonName = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_name"));
      _cardHolder = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_cardHolder"));
-     _mainMenu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_mainMenu"));
-     _mainMenuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_mainMenu_up_label"));
+     _mainMenu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("pause_mainMenu"));
+     _mainMenuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_mainMenu_up_label"));
      _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _burnLabel->setVisible(false);
@@ -272,6 +309,26 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _goonName->setText(_enemyFights[_fight].getEnemyName());
      _goonNumber->setText("Target " + std::to_string(_fight) + ":");
      bool success = true;
+     _pauseButton->addListener([=](const std::string& name, bool down) {
+          if ( (_movement == 0) & down) {
+               _response1->setVisible(false);
+               _response2->setVisible(false);
+               _response3->setVisible(false);
+               _black->setVisible(true);
+               _mainMenuLabel->setText("Main Menu");
+               _mainMenu->setVisible(true);
+              _pause->setVisible(true);
+               _movement = 14;
+          } else if ((_movement == 14) & down){
+               _response1->setVisible(true);
+               _response2->setVisible(true);
+               _response3->setVisible(true);
+               _pause->setVisible(false);
+               _mainMenu->setVisible(false);
+               _black->setVisible(false);
+               _movement = 0;
+          }
+          });
 #ifndef CU_TOUCH_SCREEN
      success = Input::activate<Keyboard>();
      success = success && Input::activate<Mouse>();
@@ -283,28 +340,28 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
                _deckNode->setOffset(Vec2(_dimen.width * WIDTH_SCALE - pos.x, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()) - pos.y));
                _deckNode->setDrag(true);
                if (AudioEngine::get()->getState("cardSound") != AudioEngine::State::PLAYING){
-                    AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"));
+                    AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"), false, _soundVolume, false);
                }
           }
           if ( (_movement == 5) & down) {
                _goonInt = 0;
                _burnInt = 0;
                _movement = 6;
-               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"));
+               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
           }
           if (!down){
                _deckNode->setDrag(false);
                if (_doBurn){
                     if (AudioEngine::get()->getState("crumpleSound") != AudioEngine::State::PLAYING){
-                         AudioEngine::get()->play("crumpleSound", _assets->get<Sound>("crumpleSound"));
+                         AudioEngine::get()->play("crumpleSound", _assets->get<Sound>("crumpleSound"), false, _soundVolume, false);
                     } else {
-                         AudioEngine::get()->play("crumpleSound2", _assets->get<Sound>("crumpleSound"));
+                         AudioEngine::get()->play("crumpleSound2", _assets->get<Sound>("crumpleSound"), false, _soundVolume, false);
                     }
                     buttonPress(-1);
                     _doBurn = false;
                } else if (_movement == 0){
                     if (AudioEngine::get()->getState("cardSound2") != AudioEngine::State::PLAYING){
-                         AudioEngine::get()->play("cardSound2", _assets->get<Sound>("cardSound"));
+                         AudioEngine::get()->play("cardSound2", _assets->get<Sound>("cardSound"), false, _soundVolume, false);
                          
                     }
                }
@@ -330,8 +387,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
          _response1->activate();
          _response2->activate();
          _response3->activate();
-         _burn->activate();
-          _mainMenu->activate();
      }
 #else
      _burnLabel->setPosition(_dimen.width * 0.11f, _dimen.height * (-0.05f));
@@ -351,12 +406,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
     if (_active) {
          _burn->activate();
          _mainMenu->activate();
+         _pauseButton->activate();
+         _musicSlider->activate();
+         _soundSlider->activate();
     }
     _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
      _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
     _mainMenu->addListener([=](const std::string& name, bool down) {
-         if (_movement == 11) {
+         if (_movement == 11 or _movement == 14) {
               _audioQueue->clear();
               this->_active = down;
          } else if (_movement == 12){
@@ -562,6 +620,11 @@ void GameScene::update(float timestep) {
           _deckNode->setCurrCardPos(_deckNode->screenToNodeCoords(_mouse->pointerPosition()));
 #endif
      }
+     if ((_movement != 0) & (_movement != 14) & _pauseButton->isVisible()){
+          _pauseButton->setVisible(false);
+     } else if ((_movement == 0) or (_movement == 14) & !_pauseButton->isVisible()) {
+          _pauseButton->setVisible(true);
+     }
      if (_movement == 1){
           _displayCard->setVisible(false);
           _removeCard1->setVisible(false);
@@ -577,7 +640,7 @@ void GameScene::update(float timestep) {
                _shuffleBackFlip->setPosition(_dimen.width * 0.825f, _dimen.height*HEIGHT_SCALE);
                _shuffleBackFlip->setScale(_shuffleFlip->getScale());
                _prevBackFlip->setPosition(_prevFlip->getPosition());
-               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"));
+               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
                _movement = 2;
           }
      } else if (_movement == 2){
@@ -600,7 +663,7 @@ void GameScene::update(float timestep) {
                     _vel.scale(0.025f);
                     _scl = 0.3389;
                     
-                    AudioEngine::get()->play("slashSound", _assets->get<Sound>("slashSound"), false, 0.3f, false);
+                    AudioEngine::get()->play("slashSound", _assets->get<Sound>("slashSound"), false, 0.3f * _soundVolume, false);
                }
                _shuffleBackFlip->setFrame(frame);
                _prevBackFlip->setFrame(frame);
@@ -672,7 +735,7 @@ void GameScene::update(float timestep) {
           _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
           _shuffleBackFlip->setVisible(false);
           _shuffleBackFlip->setFrame(_shuffleBackFlip->getSize() - 1);
-          _currEvent->setColor(Color4::WHITE);
+          //_currEvent->setColor(Color4::WHITE);
           _response1->setColor(Color4::WHITE);
           _responseText1->setForeground(Color4::BLACK);
           _responseText2->setForeground(Color4::BLACK);
@@ -681,7 +744,7 @@ void GameScene::update(float timestep) {
           _response3->setColor(Color4::WHITE);
           if (_currentDeck.size() == 0){
                _currEvent->setText("Shuffling Next Event Deck...");
-               _currEvent->setColor(Color4::BLACK);
+               //_currEvent->setColor(Color4::BLACK);
                if (_nextDeck.size() > 0 && !(_nextDeck.size() == 1 & _enemyFights[_fight].getId() == 2 & _nextDeck[0] == 13) && !(_nextDeck.size() == 1 & _nextDeck[0] == -1)){
                     _deckNode->setNextSize(int(_nextDeck.size()));
                     _currentDeck = _nextDeck;
@@ -711,7 +774,7 @@ void GameScene::update(float timestep) {
                          _resourceController.setFree(-1);
                     }
                     if (_currentDeck.size() > 1){
-                    AudioEngine::get()->play("cardSound4", _assets->get<Sound>("cardSound"));
+                    AudioEngine::get()->play("cardSound4", _assets->get<Sound>("cardSound"), false, _soundVolume, false);
                     }
                     _movement = 9;
                } else {
@@ -721,6 +784,9 @@ void GameScene::update(float timestep) {
                     _burnLabel->setVisible(false);
                     _currEvent->setText("YOU DIED!");
                     _currEvent->setVisible(true);
+                    _pause->setVisible(true);
+                    _black->setVisible(true);
+                    _cardHolder->setVisible(false);
                     _movement = 11;
                     return;
                }
@@ -730,6 +796,9 @@ void GameScene::update(float timestep) {
                     _deckNode->setVisible(false);
                     _currEvent->setText("YOU DIED!");
                     _currEvent->setVisible(true);
+                    _pause->setVisible(true);
+                    _black->setVisible(true);
+                    _cardHolder->setVisible(false);
                     _movement = 11;
                     return;
                }
@@ -941,7 +1010,7 @@ void GameScene::update(float timestep) {
           int burnFrame = _currentBurn->getFrame();
           burnFrame += 1;
           if (burnFrame == 40){
-               AudioEngine::get()->play("burnSound", _assets->get<Sound>("burnSound"));
+               AudioEngine::get()->play("burnSound", _assets->get<Sound>("burnSound"),false, _soundVolume, false);
           }
           if (burnFrame == _currentBurn->getSize()){
                _movement = 4;
@@ -958,9 +1027,9 @@ void GameScene::update(float timestep) {
                _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * (_currentDeck.size())));
                _movement = 10;
                if (_currentDeck.size() > 0){
-                    AudioEngine::get()->play("shuffleSound", _assets->get<Sound>("shuffleSound"), false, 2.0f, false);
+                    AudioEngine::get()->play("shuffleSound", _assets->get<Sound>("shuffleSound"), false, 2.0f * _soundVolume, false);
                } else {
-                    AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"));
+                    AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"), false, _soundVolume, false);
                }
           }
      }
@@ -995,7 +1064,7 @@ void GameScene::update(float timestep) {
          _shuffleFlip->setFrame(_shuffleFlip->getSize() - 1);
           _shuffleBackFlip->setVisible(false);
           _shuffleBackFlip->setFrame(_shuffleBackFlip->getSize() - 1);
-         _currEvent->setColor(Color4::WHITE);
+         //_currEvent->setColor(Color4::WHITE);
          _response1->setColor(Color4::WHITE);
          _responseText1->setForeground(Color4::BLACK);
          _responseText2->setForeground(Color4::BLACK);
@@ -1203,7 +1272,7 @@ void GameScene::buttonPress(const int r){
           _currentBurn->setVisible(true);
      } else {
           _prevFlip->setVisible(true);
-          AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"));
+          AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"), false, _soundVolume, false);
           _movement = 1;
      }
      //_vel = Vec2(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size())) - _shuffleFlip->getPosition();
@@ -1232,9 +1301,12 @@ void GameScene::buttonPress(const int r){
           _currentBackFlip->setVisible(false);
           _cardHolder->setVisible(false);
           _enemyIdle->setVisible(false);
+          _pause->setVisible(true);
+          _black->setVisible(true);
+          _cardHolder->setVisible(false);
           _shuffleFlip->setVisible(false);
           _shuffleBackFlip->setVisible(false);
-          _currEvent->setColor(Color4::WHITE);
+          //_currEvent->setColor(Color4::WHITE);
           if (_fight > _enemyFights.size()){
                _currEvent->setText("Hunt Complete!");
                _movement = 11;
@@ -1287,7 +1359,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           _deckNode->setOffset(Vec2(_dimen.width * WIDTH_SCALE - posi.x, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()) - posi.y));
           _deckNode->setDrag(true);
           if (AudioEngine::get()->getState("cardSound") != AudioEngine::State::PLAYING){
-               AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"));
+               AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"), false, _soundVolume, false);
           }
           _deckNode->setCurrCardPos(posi);
      }
@@ -1339,14 +1411,14 @@ void GameScene::touchEnded(const cugl::Vec2& pos) {
                string burnTexture = _currentCard.getText() + "Burn";
                _currentBurn->setTexture(_assets->get<Texture>(burnTexture));
                if (AudioEngine::get()->getState("crumpleSound") != AudioEngine::State::PLAYING){
-                    AudioEngine::get()->play("crumpleSound", _assets->get<Sound>("crumpleSound"));
+                    AudioEngine::get()->play("crumpleSound", _assets->get<Sound>("crumpleSound"), false, _soundVolume, false);
                } else {
-                    AudioEngine::get()->play("crumpleSound2", _assets->get<Sound>("crumpleSound"));
+                    AudioEngine::get()->play("crumpleSound2", _assets->get<Sound>("crumpleSound"), false, _soundVolume, false);
                }
                buttonPress(-1);
           } else {
                if (AudioEngine::get()->getState("cardSound2") != AudioEngine::State::PLAYING){
-                    AudioEngine::get()->play("cardSound2", _assets->get<Sound>("cardSound"));
+                    AudioEngine::get()->play("cardSound2", _assets->get<Sound>("cardSound"), false, _soundVolume, false);
                }
           }
           _deckNode->setDrag(false);
@@ -1366,7 +1438,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                _goonInt = 0;
                _burnInt = 0;
                _movement = 6;
-               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"));
+               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
           }
      } else if (!_deckNode->getDrag() & (_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 2)){
           if (_response1->containsScreen(pos)) {
