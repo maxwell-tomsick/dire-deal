@@ -4,7 +4,7 @@
         "id": 1,
         "name": "Bide Time",
         "texture": "bidetime",
-        "reactions": [4,29],
+        "reactions": [4,7,29],
         "resources": {
             "blade": 0,
             "flourish": 0,
@@ -17,7 +17,7 @@
         "id": 3,
         "name": "Grab",
         "texture": "grab",
-        "reactions": [12,25],
+        "reactions": [12,14,25],
         "resources": {
             "blade": 0,
             "flourish": 0,
@@ -35,6 +35,19 @@
             "blade": 0,
             "flourish": 5,
             "lunge": 0,
+            "brawn": 0
+          },
+        "level": 2
+      },
+      "Staggered":{
+        "id": 6,
+        "name": "Staggered",
+        "texture": "staggered",
+        "reactions": [23],
+        "resources": {
+            "blade": 0,
+            "flourish": 0,
+            "lunge": 5,
             "brawn": 0
           },
         "level": 2

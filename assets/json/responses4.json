@@ -1,77 +1,5 @@
 {
     "Responses":{
-      "Attack1":{
-        "id": 0,
-        "name":"Block",
-        "description":"Shuffle GRAB into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 0,
-          "lunge": 0,
-          "brawn": 1
-        },
-        "reward": 0,
-        "addToDeck": [3],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
-      "Attack2":{
-        "id": 1,
-        "name":"Side Step",
-        "description":"Shuffle BIDE TIME into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 0,
-          "lunge": 1,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [1],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
-      "Attack3":{
-        "id": 2,
-        "name":"Parry",
-        "description":"Shuffle GUARD into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 1,
-          "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [2],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
-      "Attack4":{
-        "id": 3,
-        "name":"Roll Behind",
-        "description":"Shuffle EXPOSED into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 0,
-          "lunge": 2,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [5],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":0.75,
-        "animation":1
-      },
       "BideTime1":{
         "id": 4,
         "name":"Lunge",
@@ -84,42 +12,6 @@
         },
         "reward": 0,
         "addToDeck": [3],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
-      "BideTime2":{
-        "id": 5,
-        "name":"Guard",
-        "description":"Shuffle SLASH into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 0,
-          "lunge": 0,
-          "brawn": 1
-        },
-        "reward": 0,
-        "addToDeck": [0],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
-      "BideTime3":{
-        "id": 6,
-        "name":"Stab",
-        "description":"Shuffle GUARD into the Deck",
-        "cost": {
-          "blade": 1,
-          "flourish": 0,
-          "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [2],
         "delete": [],
         "win": false,
         "lose":false,
@@ -162,78 +54,6 @@
         "fontSize":0.9,
         "animation":1
       },
-      "Guard1":{
-        "id": 8,
-        "name":"Strike",
-        "description":"Shuffle GRAB into the Deck",
-        "cost": {
-          "blade": 1,
-          "flourish": 0,
-          "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [3],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
-      "Guard2":{
-        "id": 9,
-        "name":"Probe",
-        "description":"Shuffle SLASH into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 1,
-          "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [0],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
-      "Guard3":{
-        "id": 10,
-        "name":"Jump Back",
-        "description":"Shuffle BIDE TIME into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 0,
-          "lunge": 1,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [1],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":0.85,
-        "animation":1
-      },
-      "Guard4":{
-        "id": 11,
-        "name":"Grab",
-        "description":"Shuffle GRAPPLED into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 2,
-          "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [4],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
       "Grab1":{
         "id": 12,
         "name":"Break Free",
@@ -250,24 +70,6 @@
         "win": false,
         "lose":false,
         "fontSize":0.8,
-        "animation":1
-      },
-      "Grab2":{
-        "id": 13,
-        "name":"Twist",
-        "description":"Shuffle GRAPPLED into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 2,
-          "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [4],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
         "animation":1
       },
       "Grab3":{
@@ -304,78 +106,6 @@
         "win": false,
         "lose":false,
         "fontSize":0.85,
-        "animation":1
-      },
-      "Grappled1":{
-        "id": 15,
-        "name":"Firm Grip",
-        "description":"Shuffle GRAPPLED into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 2,
-          "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [4],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":0.9,
-        "animation":1
-      },
-      "Grappled2":{
-        "id": 16,
-        "name":"Wrench",
-        "description":"Shuffle STAGGERED into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 0,
-          "lunge": 2,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [6],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
-      "Grappled3":{
-        "id": 17,
-        "name":"Face Grab",
-        "description":"Shuffle BLINDED into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 3,
-          "lunge": 0,
-          "brawn": 1
-        },
-        "reward": 0,
-        "addToDeck": [9],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":0.85,
-        "animation":1
-      },
-      "Grappled4":{
-        "id": 18,
-        "name":"Headbutt",
-        "description":"Shuffle STUNNED into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 0,
-          "lunge": 2,
-          "brawn": 2
-        },
-        "reward": 0,
-        "addToDeck": [7],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":0.9,
         "animation":1
       },
       "Exposed1":{
@@ -462,24 +192,6 @@
         },
         "reward": 0,
         "addToDeck": [5],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
-      "Staggered2":{
-        "id": 24,
-        "name":"Tackle",
-        "description":"Shuffle GRAPPLED into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 0,
-          "lunge": 2,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [4],
         "delete": [],
         "win": false,
         "lose":false,
@@ -808,6 +520,24 @@
         "win": false,
         "lose":false,
         "fontSize":0.9,
+        "animation":1
+      },
+      "Poison1":{
+        "id": 50,
+        "name":"Hold Breath",
+        "description":"Shuffle POISON GAS into the Deck",
+        "cost": {
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 0
+        },
+        "reward": 0,
+        "addToDeck": [13],
+        "delete": [],
+        "win": false,
+        "lose":false,
+        "fontSize":0.7,
         "animation":1
       }
     }

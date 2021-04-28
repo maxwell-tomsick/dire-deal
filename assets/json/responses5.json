@@ -8,7 +8,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 1
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [3],
@@ -26,7 +26,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 1,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [1],
@@ -44,7 +44,7 @@
           "blade": 0,
           "flourish": 1,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [2],
@@ -62,7 +62,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 2,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [5],
@@ -80,7 +80,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 1,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [3],
@@ -98,7 +98,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 1
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [0],
@@ -116,7 +116,7 @@
           "blade": 1,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [2],
@@ -134,7 +134,7 @@
           "blade": 0,
           "flourish": 1,
           "lunge": 1,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [6],
@@ -152,7 +152,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 1
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [1],
@@ -170,7 +170,7 @@
           "blade": 1,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [3],
@@ -188,7 +188,7 @@
           "blade": 0,
           "flourish": 1,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [0],
@@ -206,7 +206,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 1,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [1],
@@ -224,7 +224,7 @@
           "blade": 0,
           "flourish": 2,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [4],
@@ -242,7 +242,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 1
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [1],
@@ -260,7 +260,7 @@
           "blade": 0,
           "flourish": 2,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [4],
@@ -278,7 +278,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 1,
-          "brawn": 1
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [6],
@@ -296,7 +296,7 @@
           "blade": 0,
           "flourish": 1,
           "lunge": 1,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [5],
@@ -314,7 +314,7 @@
           "blade": 0,
           "flourish": 2,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [4],
@@ -332,7 +332,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 2,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [6],
@@ -340,24 +340,6 @@
         "win": false,
         "lose":false,
         "fontSize":1,
-        "animation":1
-      },
-      "Grappled3":{
-        "id": 17,
-        "name":"Face Grab",
-        "description":"Shuffle BLINDED into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 3,
-          "lunge": 0,
-          "brawn": 1
-        },
-        "reward": 0,
-        "addToDeck": [9],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":0.85,
         "animation":1
       },
       "Grappled4":{
@@ -368,7 +350,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 2,
-          "brawn": 2
+          "brawn": 3
         },
         "reward": 0,
         "addToDeck": [7],
@@ -386,7 +368,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 2,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [5],
@@ -404,7 +386,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 1,
-          "brawn": 3
+          "brawn": 4
         },
         "reward": 0,
         "addToDeck": [7],
@@ -412,24 +394,6 @@
         "win": false,
         "lose":false,
         "fontSize":1,
-        "animation":1
-      },
-      "Exposed3":{
-        "id": 21,
-        "name":"Cut Above the Eyes",
-        "description":"Shuffle BLINDED into the Deck",
-        "cost": {
-          "blade": 1,
-          "flourish": 3,
-          "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [9],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":0.45,
         "animation":1
       },
       "Exposed4":{
@@ -440,7 +404,7 @@
           "blade": 4,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [8],
@@ -458,7 +422,7 @@
           "blade": 0,
           "flourish": 1,
           "lunge": 1,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [5],
@@ -476,7 +440,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 2,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [4],
@@ -484,24 +448,6 @@
         "win": false,
         "lose":false,
         "fontSize":1,
-        "animation":1
-      },
-      "Stunned1":{
-        "id": 27,
-        "name":"Eye Stab",
-        "description":"Shuffle BLINDED into the Deck",
-        "cost": {
-          "blade": 1,
-          "flourish": 3,
-          "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [9],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":0.9,
         "animation":1
       },
       "Stunned2":{
@@ -512,7 +458,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 4
+          "brawn": 6
         },
         "reward": 0,
         "addToDeck": [8],
@@ -530,7 +476,7 @@
           "blade": 0,
           "flourish": 3,
           "lunge": 1,
-          "brawn": 0
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [8],
@@ -548,7 +494,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 6,
-          "brawn": 0
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [10],
@@ -566,86 +512,14 @@
           "blade": 2,
           "flourish": 4,
           "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [11],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
-      "Blinded1":{
-        "id": 34,
-        "name":"Discombobulate",
-        "description":"Shuffle BLINDED into the Deck",
-        "cost": {
-          "blade": 0,
-          "flourish": 0,
-          "lunge": 0,
-          "brawn": 4
-        },
-        "reward": 0,
-        "addToDeck": [9],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":0.56,
-        "animation":1
-      },
-      "Blinded2":{
-        "id": 35,
-        "name":"Mangle",
-        "description":"Shuffle WOUNDED into the Deck",
-        "cost": {
-          "blade": 2,
-          "flourish": 0,
-          "lunge": 0,
           "brawn": 2
         },
         "reward": 0,
-        "addToDeck": [8],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":1,
-        "animation":1
-      },
-      "Blinded3":{
-        "id": 36,
-        "name":"Impale",
-        "description":"Shuffle IMPALED into the Deck",
-        "cost": {
-          "blade": 6,
-          "flourish": 0,
-          "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
         "addToDeck": [11],
         "delete": [],
         "win": false,
         "lose":false,
         "fontSize":1,
-        "animation":1
-      },
-      "Blinded4":{
-        "id": 37,
-        "name":"Ankle Slash",
-        "description":"Shuffle CRUSHED into the Deck",
-        "cost": {
-          "blade": 6,
-          "flourish": 0,
-          "lunge": 0,
-          "brawn": 0
-        },
-        "reward": 0,
-        "addToDeck": [10],
-        "delete": [],
-        "win": false,
-        "lose":false,
-        "fontSize":0.73,
         "animation":1
       },
       "Crushed1":{
@@ -656,7 +530,7 @@
           "blade": 2,
           "flourish": 2,
           "lunge": 2,
-          "brawn": 0
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [11],
@@ -674,7 +548,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 6,
-          "brawn": 0
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [10],
@@ -692,7 +566,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 8
+          "brawn": 10
         },
         "reward": 0,
         "addToDeck": [12],
@@ -710,7 +584,7 @@
           "blade": 0,
           "flourish": 6,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [11],
@@ -728,7 +602,7 @@
           "blade": 0,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 6
+          "brawn": 8
         },
         "reward": 0,
         "addToDeck": [10],
@@ -746,7 +620,7 @@
           "blade": 8,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [12],

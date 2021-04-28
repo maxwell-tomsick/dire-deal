@@ -151,7 +151,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _deckNode->setDrag(false);
      _deckNode->reset();
      //_resources = { 99, 99, 99, 99 };
-     _resources = { 50, 50, 50, 50 };
+     _resources = { 40, 40, 40, 40 };
      
      _enemyIdle =std::make_shared<scene2::AnimationNode>();
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
@@ -491,9 +491,15 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
+     if (_fight == 3){
      _audioQueue->clear();
      _audioQueue->play(_assets->get<Sound>("introSlime"));
      _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true);
+     } else if (_fight == 5){
+          _audioQueue->clear();
+          _audioQueue->play(_assets->get<Sound>("introThug"));
+          _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true);
+     }
      
      _goonNumber->setText("Target " + std::to_string(_fight) + ":");
      string cardstring = "json/cards.json";
@@ -754,7 +760,7 @@ void GameScene::update(float timestep) {
           if (_currentDeck.size() == 0){
                _currEvent->setText("Shuffling Next Event Deck...");
                //_currEvent->setColor(Color4::BLACK);
-               if (_nextDeck.size() > 0 && !(_nextDeck.size() == 1 & _enemyFights[_fight].getId() == 2 & _nextDeck[0] == 13) && !(_nextDeck.size() == 1 & _nextDeck[0] == -1)){
+               if ((_nextDeck.size() > 0) & !((_nextDeck.size() == 1) & (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4) & _nextDeck[0] == 13) & !(_nextDeck.size() == 1 & _nextDeck[0] == -1)){
                     _deckNode->setNextSize(int(_nextDeck.size()));
                     _currentDeck = _nextDeck;
                     std::random_device rd;
@@ -807,7 +813,7 @@ void GameScene::update(float timestep) {
                     return;
                }
           } else if (_currentDeck.size() == 1 && _nextDeck.size() == 0) {
-               if (_enemyFights[_fight].getId() == 2 & _currentDeck[0] == 13 || (_currentDeck.size() == 1 & _currentDeck[0] == -1)) {
+               if ((_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4) & (_currentDeck[0] == 13) || (_currentDeck.size() == 1 & _currentDeck[0] == -1)) {
                     _goon->setVisible(false);
                     _deckNode->setVisible(false);
                     _currEvent->setText("YOU DIED!");
@@ -893,7 +899,7 @@ void GameScene::update(float timestep) {
                     _underline->setVisible(true);
                }
           }
-          if (!(_currentCard.getId() == 13 & _enemyFights[_fight].getId() == 2)){
+          if (!((_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))){
                if (flipFrame > 7){
                     _burnTexture->setVisible(true);
                }
@@ -917,7 +923,7 @@ void GameScene::update(float timestep) {
           _removeOptions = {-1,-1,-1};
           if (!_keepCards) {
                std::vector<int> displayedResponses = _currentCard.getRandomResponses();
-               if (_currentCard.getId() == 13 & _enemyFights[_fight].getId() == 2){
+               if ((_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4)){
                     std::vector<int> cardsInDeck = _currentDeck;
                     cardsInDeck.insert(cardsInDeck.end(), _nextDeck.begin(), _nextDeck.end());
                     sort( cardsInDeck.begin(), cardsInDeck.end() );
@@ -1116,7 +1122,7 @@ void GameScene::update(float timestep) {
           _pause->setVisible(false);
      }
 #ifndef CU_TOUCH_SCREEN
-     if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 2)){
+     if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13) & ((_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))){
           if (_response1->containsScreen(_mouse->pointerPosition()) & _display1) {
                _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
@@ -1162,7 +1168,7 @@ void GameScene::update(float timestep) {
                _displayCard->setVisible(false);
           }
      } else if ((_movement == 0) & _deckNode->getDrag()) {
-          if (_burn->containsScreen(_mouse->pointerPosition()) & !(_currentCard.getId() == 13 & _enemyFights[_fight].getId() == 2)){
+          if (_burn->containsScreen(_mouse->pointerPosition()) & !((_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))){
                _doBurn = true;
           } else {
                _doBurn = false;
@@ -1441,7 +1447,7 @@ void GameScene::touchEnded(const cugl::Vec2& pos) {
                buttonPress(2);
           }
      } else {
-          if (_burn->containsScreen(pos) & !(_currentCard.getId() == 13 & _enemyFights[_fight].getId() == 2)) {
+          if (_burn->containsScreen(pos) & !((_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))) {
                _currentBurn->setPosition(_deckNode->screenToNodeCoords(pos) + _deckNode->getOffset());
                string burnTexture = _currentCard.getText() + "Burn";
                _currentBurn->setTexture(_assets->get<Texture>(burnTexture));
@@ -1475,7 +1481,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                _movement = 6;
                AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
           }
-     } else if (!_deckNode->getDrag() & (_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 2)){
+     } else if (!_deckNode->getDrag() & (_currentCard.getId() == 13) & ((_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))){
           if (_response1->containsScreen(pos)) {
                _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
