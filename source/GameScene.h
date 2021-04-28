@@ -92,6 +92,9 @@ protected:
     std::shared_ptr<cugl::scene2::NinePatch> _black;
     std::shared_ptr<cugl::scene2::Button> _pauseButton;
     std::shared_ptr<cugl::scene2::SceneNode> _pause;
+    std::shared_ptr<cugl::scene2::SceneNode> _musicSliderNode;
+    std::shared_ptr<cugl::scene2::SceneNode> _soundSliderNode;
+    std::shared_ptr<cugl::scene2::Label> _paused;
     std::shared_ptr<cugl::scene2::Slider> _musicSlider;
     float _musicVolume;
     std::shared_ptr<cugl::scene2::Slider> _soundSlider;

@@ -226,6 +226,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
 
      _pauseButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("Pause"));
      _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_currEvent"));
+     _musicSliderNode = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("pause_musicSlider"));
+     _soundSliderNode = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("pause_soundSlider"));
+     _paused = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_paused"));
      _musicSlider = std::dynamic_pointer_cast<scene2::Slider>(assets->get<scene2::SceneNode>("pause_musicSlider_action"));
      _musicVolume  = _musicSlider->getValue();
      _musicSlider->addListener([=](const std::string& name, float value) {
@@ -416,6 +419,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
     _mainMenu->addListener([=](const std::string& name, bool down) {
          if (_movement == 11 or _movement == 14) {
               _audioQueue->clear();
+              if (_movement == 14){
+                   _pause->setVisible(false);
+                   _mainMenu->setVisible(false);
+                   _black->setVisible(false);
+                   _movement = 11;
+              }
               this->_active = down;
          } else if (_movement == 12){
               _movement = 13;
@@ -784,7 +793,14 @@ void GameScene::update(float timestep) {
                     _burnLabel->setVisible(false);
                     _currEvent->setText("YOU DIED!");
                     _currEvent->setVisible(true);
+                    
                     _pause->setVisible(true);
+                    _soundSlider->setVisible(false);
+                    _musicSlider->setVisible(false);
+                    _soundSliderNode->setVisible(false);
+                    _musicSliderNode->setVisible(false);
+                    _paused->setVisible(false);
+                    
                     _black->setVisible(true);
                     _cardHolder->setVisible(false);
                     _movement = 11;
@@ -796,8 +812,15 @@ void GameScene::update(float timestep) {
                     _deckNode->setVisible(false);
                     _currEvent->setText("YOU DIED!");
                     _currEvent->setVisible(true);
+                    
                     _pause->setVisible(true);
+                    _soundSlider->setVisible(false);
+                    _musicSlider->setVisible(false);
                     _black->setVisible(true);
+                    _soundSliderNode->setVisible(false);
+                    _musicSliderNode->setVisible(false);
+                    _paused->setVisible(false);
+                    
                     _cardHolder->setVisible(false);
                     _movement = 11;
                     return;
@@ -1084,6 +1107,13 @@ void GameScene::update(float timestep) {
          _currentBackFlip->setVisible(true);
          _cardHolder->setVisible(true);
          _enemyIdle->setVisible(true);
+          _black->setVisible(false);
+          _soundSlider->setVisible(true);
+          _musicSlider->setVisible(true);
+          _soundSliderNode->setVisible(true);
+          _musicSliderNode->setVisible(true);
+          _paused->setVisible(true);
+          _pause->setVisible(false);
      }
 #ifndef CU_TOUCH_SCREEN
      if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 2)){
@@ -1302,6 +1332,11 @@ void GameScene::buttonPress(const int r){
           _cardHolder->setVisible(false);
           _enemyIdle->setVisible(false);
           _pause->setVisible(true);
+          _soundSlider->setVisible(false);
+          _musicSlider->setVisible(false);
+          _soundSliderNode->setVisible(false);
+          _musicSliderNode->setVisible(false);
+          _paused->setVisible(false);
           _black->setVisible(true);
           _cardHolder->setVisible(false);
           _shuffleFlip->setVisible(false);
