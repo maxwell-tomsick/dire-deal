@@ -135,7 +135,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      if (_currentCard.getId() == -1 & _item == 3){
           int i = rand() % 4;
           int r = (int) _currentDeck.size() + (int)_nextDeck.size() + 1;
-          _currentCard.setResources(i, 2 * r);
+          _currentCard.setResources(i, r);
      }
      
      _deckNode = DeckNode::alloc();
@@ -601,7 +601,7 @@ void GameScene::reset() {
      if (_currentCard.getId() == -1 & _item == 3){
           int i = rand() % 4;
           int r = (int) _currentDeck.size() + (int)_nextDeck.size() + 1;
-          _currentCard.setResources(i, 2 * r);
+          _currentCard.setResources(i, r);
      }
      _deckNode->setSize(int(_currentDeck.size()));
      _deckNode->setNextSize((int)(_nextDeck.size()));
@@ -765,28 +765,16 @@ void GameScene::update(float timestep) {
                _currEvent->setText("Shuffling Next Event Deck...");
                //_currEvent->setColor(Color4::BLACK);
                if (_nextDeck.size() > 0) {
-                    if (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4){
-                         if (_nextDeck.size() == 1) {
-                              if (_nextDeck[0] == -1 || _nextDeck[0] == 13){
-                                   _goon->setVisible(false);
-                                   _deckNode->setVisible(false);
-                                   _burnTexture->setVisible(false);
-                                   _burnLabel->setVisible(false);
-                                   _currEvent->setText("YOU DIED!");
-                                   _currEvent->setVisible(true);
-                                   
-                                   _pause->setVisible(true);
-                                   _soundSlider->setVisible(false);
-                                   _musicSlider->setVisible(false);
-                                   _soundSliderNode->setVisible(false);
-                                   _musicSliderNode->setVisible(false);
-                                   _paused->setVisible(false);
-                                   
-                                   _black->setVisible(true);
-                                   _cardHolder->setVisible(false);
-                                   _movement = 11;
+                    if (_nextDeck.size() == 1) {
+                         if (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4){
+                              if (_nextDeck[0] == 13){
+                                   gameOver();
                                    return;
                               }
+                         }
+                         if (_nextDeck[0] == -1 & _item != 2) {
+                              gameOver();
+                              return;
                          }
                     }
                     _deckNode->setNextSize(int(_nextDeck.size()));
@@ -820,23 +808,25 @@ void GameScene::update(float timestep) {
                     AudioEngine::get()->play("cardSound4", _assets->get<Sound>("cardSound"), false, _soundVolume, false);
                     }
                     _movement = 9;
+               } else {
+                    gameOver();
+                    return;
                }
           } else if (_currentDeck.size() == 1 && _nextDeck.size() == 0) {
-               if ((_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4) & (_currentDeck[0] == 13) || (_currentDeck.size() == 1 & _currentDeck[0] == -1)) {
-                    _goon->setVisible(false);
-                    _deckNode->setVisible(false);
-                    _currEvent->setText("YOU DIED!");
-                    _currEvent->setVisible(true);
-                    _pause->setVisible(true);
-                    _soundSlider->setVisible(false);
-                    _musicSlider->setVisible(false);
-                    _black->setVisible(true);
-                    _soundSliderNode->setVisible(false);
-                    _musicSliderNode->setVisible(false);
-                    _paused->setVisible(false);
-                    _cardHolder->setVisible(false);
-                    _movement = 11;
-                    return;
+               if (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4){
+                    if (_currentDeck[0] == 13) {
+                         gameOver();
+                         return;
+                    }
+               }
+               if (_currentDeck[0] == -1){
+                    if (_item != 2)  {
+                         gameOver();
+                         return;
+                    } else if (_usedSecondWind){
+                         gameOver();
+                         return;
+                    }
                }
           } else {
                _currEvent->setVisible(false);
@@ -844,15 +834,17 @@ void GameScene::update(float timestep) {
           Card lastCard = _currentCard;
           _currentCard = _cards[_currentDeck.back()];
           _currentDeck.pop_back();
-          if (_currentCard.getId() == -1 & _item == 2 &  _currentDeck.size() == 0 & _nextDeck.size() == 0){
+          if (_currentCard.getId() == -1 & _item == 2){
+               if (_currentDeck.size() == 0 & _nextDeck.size() == 0){
                //CULog("HEY");
                _currentCard = lastCard;
                _usedSecondWind = true;
+               }
           }
           if (_currentCard.getId() == -1 & _item == 3){
                int i = rand() % 4;
                int r = (int) _currentDeck.size() + (int)_nextDeck.size() + 1;
-               _currentCard.setResources(i, 2 * r);
+               _currentCard.setResources(i, r);
           }
           _deckNode->setFrontTexture(_currentCard.getTexture());
           _currEvent->setText(_currentCard.getText());
@@ -871,7 +863,7 @@ void GameScene::update(float timestep) {
                _movement = 5;
           }
      }
-     if (_movement == 6){
+          if (_movement == 6){
           int flipFrame = _currentBackFlip->getFrame();
           flipFrame += 1;
           if (flipFrame >= _currentBackFlip->getSize()){
@@ -1197,7 +1189,7 @@ void GameScene::update(float timestep) {
  *
  * @param batch     The SpriteBatch to draw with.
  */
-void GameScene::render(const std::shared_ptr<cugl::SpriteBatch>& batch) {
+void GameScene::render(const std::shared_ptr<cugl::SpriteBatch>& batch){
     // Call SUPER to do standard rendering
     Scene2::render(batch);
     
@@ -1580,5 +1572,26 @@ void GameScene::removeCard(const int id){
                return;
           }
      }
+     return;
+}
+
+void GameScene::gameOver(){
+     _goon->setVisible(false);
+     _deckNode->setVisible(false);
+     _burnTexture->setVisible(false);
+     _burnLabel->setVisible(false);
+     _currEvent->setText("YOU DIED!");
+     _currEvent->setVisible(true);
+     
+     _pause->setVisible(true);
+     _soundSlider->setVisible(false);
+     _musicSlider->setVisible(false);
+     _soundSliderNode->setVisible(false);
+     _musicSliderNode->setVisible(false);
+     _paused->setVisible(false);
+     
+     _black->setVisible(true);
+     _cardHolder->setVisible(false);
+     _movement = 11;
      return;
 }

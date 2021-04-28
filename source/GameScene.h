@@ -315,6 +315,8 @@ public:
     Card getItem(const int i);
     
     void removeCard(const int id);
+    
+    void gameOver();
 };
 
 #endif /* __GAME_SCENE_H__ */

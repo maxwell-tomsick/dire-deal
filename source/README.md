@@ -42,9 +42,9 @@ Flourish Regen: No Responses. Sells for 3 Flourish
 
 Lunge Regen: No Responses. Sells for 4 Lunge
 
-Second Wind: When the player sells their last card that isn't this one, this card becomes a copy of the card they just sold. This item will no longer be shuffled into the deck at the beginning of subsequent fights. 
+Second Wind: When the player sells their last card that isn't this one, this card becomes a copy of the card they just sold. Once used, this item will no longer be shuffled into the deck at the beginning of subsequent fights. 
 
-Deck Boost: 1 Response to shuffle itself into the next deck for free. Sells for a randomly-typed resource for double the number of cards in the current + next deck.
+Deck Boost: 1 Response to shuffle itself into the next deck for free. Sells for a randomly-typed resource for the number of cards in the current + next deck.
 
 Parasite: 1 Response to shuffle itself into the next deck, for 1 of each resource. Sells for nothing. When the next deck is shuffled, if this item is in it, a random response to a random card in the next deck will be free.
 
