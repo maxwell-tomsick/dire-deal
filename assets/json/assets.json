@@ -700,13 +700,13 @@
                 "type"   : "NinePatch",
                 "data"   : {
                     "texture": "Gear",
-                    "scale": 0.4
+                    "scale": 0.5
                 },
                 "layout" : {
                     "x_anchor": "left",
                     "y_anchor": "bottom",
-                    "x_offset": 0.7,
-                    "y_offset": 0.7
+                    "x_offset": 0.9,
+                    "y_offset": 0.9
                 }
           }
         }
@@ -789,8 +789,11 @@
             },
             "musicSlider" : {
                 "type"      : "Node",
-                "format"    : {
-                    "type" : "Anchored"
+                "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "bottom",
+                  "y_offset": 0.6,
+                  "x_offset": 0.515
                 },
                 "children"  : {
                     "action"  : {
@@ -811,9 +814,6 @@
                                     "layout": {
                                         "x_anchor": "center",
                                         "y_anchor": "middle"
-                                    },
-                                    "format"    : {
-                                        "type"  : "Anchored"
                                     },
                                     "children": {
                                         "up" : {
@@ -841,53 +841,64 @@
                                 }
                             }
                         },
+                        "format": {
+                          "type": "Anchored"
+                        },
                         "layout" : {
                             "x_anchor" : "center",
                             "y_anchor" : "middle",
-                            "y_offset": 0.1,
-                            "x_offset": 0.015
-                        }
-                    },
-                    "label" : {
-                        "type": "Image",
-                        "data": {
-                          "texture": "response5",
-                          "scale": [0.5, 0.3]
+                            "y_offset": 0,
+                            "x_offset": 0
                         },
-                        "children": {
-                          "label": {
-                            "type": "Label",
-                            "format": {
-                              "type": "Anchored"
-                            },
-                            "data": {
-                              "font": "sans",
-                              "text": "Music Volume",
-                              "scale": [0.75,1.25],
-                              "foreground": [ 0, 0, 0, 255 ],
-                              "anchor": [-0.08, -0.2 ],
-                              "halign": "center",
-                              "valign": "middle"
-                            },
-                            "layout": {
-                              "x_anchor": "center",
-                              "y_anchor": "middle"
-                            }
-                          }
-                        },
-                        "layout": {
-                          "x_anchor": "center",
-                          "y_anchor": "middle",
-                          "y_offset": 0.16,
-                          "x_offset": -0.099
+                        "children" : {
+                            "label" : {
+                                "type": "Image",
+                                "data": {
+                                  "texture": "response5",
+                                  "anchor": [0.5, 0.5 ],
+                                  "scale": [0.5, 0.3]
+                                },
+                                "children": {
+                                  "label": {
+                                    "type": "Label",
+                                    "format": {
+                                      "type": "Anchored"
+                                    },
+                                    "data": {
+                                      "font": "sans",
+                                      "text": "Music Volume",
+                                      "scale": [0.75,1.25],
+                                      "foreground": [ 0, 0, 0, 255 ],
+                                      "anchor": [-0.08, -0.2 ],
+                                      "halign": "center",
+                                      "valign": "middle"
+                                    },
+                                    "layout": {
+                                      "x_anchor": "center",
+                                      "y_anchor": "middle",
+                                      "y_offset": 0.1,
+                                      "x_offset": 0
+                                    }
+                                  }
+                                },
+                                "layout": {
+                                  "x_anchor": "center",
+                                  "y_anchor": "middle",
+                                  "y_offset": 1.0,
+                                  "x_offset": 0
+                                }
+                              }
                         }
-                      }
+                    }
                 }
             },
             "soundSlider" : {
                 "type"      : "Node",
-                "format"    : {
-                    "type" : "Anchored"
+                "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "bottom",
+                  "y_offset": 0.35,
+                  "x_offset": 0.515
                 },
                 "children"  : {
                     "action"  : {
@@ -908,9 +919,6 @@
                                     "layout": {
                                         "x_anchor": "center",
                                         "y_anchor": "middle"
-                                    },
-                                    "format"    : {
-                                        "type"  : "Anchored"
                                     },
                                     "children": {
                                         "up" : {
@@ -938,47 +946,55 @@
                                 }
                             }
                         },
+                        "format": {
+                          "type": "Anchored"
+                        },
                         "layout" : {
                             "x_anchor" : "center",
                             "y_anchor" : "middle",
-                            "y_offset": -0.15,
-                            "x_offset": 0.015
-                        }
-                    },
-                    "label" : {
-                        "type": "Image",
-                        "data": {
-                          "texture": "response5",
-                          "scale": [0.5, 0.3]
+                            "y_offset": 0,
+                            "x_offset": 0
                         },
-                        "children": {
-                          "label": {
-                            "type": "Label",
-                            "format": {
-                              "type": "Anchored"
-                            },
-                            "data": {
-                              "font": "sans",
-                              "text": "Sound Volume",
-                              "scale": [0.75,1.25],
-                              "foreground": [ 0, 0, 0, 255 ],
-                              "anchor": [-0.07, -0.2 ],
-                              "halign": "center",
-                              "valign": "middle"
-                            },
-                            "layout": {
-                              "x_anchor": "center",
-                              "y_anchor": "middle"
-                            }
-                          }
-                        },
-                        "layout": {
-                          "x_anchor": "center",
-                          "y_anchor": "middle",
-                          "y_offset": -0.09,
-                          "x_offset": -0.099
+                        "children" : {
+                            "label" : {
+                                "type": "Image",
+                                "data": {
+                                  "texture": "response5",
+                                  "anchor": [0.5, 0.5 ],
+                                  "scale": [0.5, 0.3]
+                                },
+                                "children": {
+                                  "label": {
+                                    "type": "Label",
+                                    "format": {
+                                      "type": "Anchored"
+                                    },
+                                    "data": {
+                                      "font": "sans",
+                                      "text": "Sound Volume",
+                                      "scale": [0.75,1.25],
+                                      "foreground": [ 0, 0, 0, 255 ],
+                                      "anchor": [-0.07, -0.2 ],
+                                      "halign": "center",
+                                      "valign": "middle"
+                                    },
+                                    "layout": {
+                                      "x_anchor": "center",
+                                      "y_anchor": "middle",
+                                      "y_offset": 0.1,
+                                      "x_offset": 0
+                                    }
+                                  }
+                                },
+                                "layout": {
+                                  "x_anchor": "center",
+                                  "y_anchor": "middle",
+                                  "y_offset": 1.0,
+                                  "x_offset": 0
+                                }
+                              }
                         }
-                      }
+                    }
                 }
             },
             "mainMenu": {
