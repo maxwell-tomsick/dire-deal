@@ -845,6 +845,7 @@ void GameScene::update(float timestep) {
           _currentCard = _cards[_currentDeck.back()];
           _currentDeck.pop_back();
           if (_currentCard.getId() == -1 & _item == 2 &  _currentDeck.size() == 0 & _nextDeck.size() == 0){
+               //CULog("HEY");
                _currentCard = lastCard;
                _usedSecondWind = true;
           }
@@ -853,6 +854,7 @@ void GameScene::update(float timestep) {
                int r = (int) _currentDeck.size() + (int)_nextDeck.size() + 1;
                _currentCard.setResources(i, 2 * r);
           }
+          _deckNode->setFrontTexture(_currentCard.getTexture());
           _currEvent->setText(_currentCard.getText());
           string flipTexture = _currentCard.getText() + "Flip";
           _currentFlip->setTexture(_assets->get<Texture>(flipTexture));
