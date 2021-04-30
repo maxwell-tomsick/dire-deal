@@ -55,7 +55,13 @@ void LabApp::onStartup() {
     _loading.init(_assets);
     
     // Queue up the other assets
-    _assets->loadDirectoryAsync("json/assets.json",nullptr);
+    ratio = Application::getDisplayWidth()/(double)Application::getDisplayHeight();
+    CULog(to_string(ratio).c_str());
+    if(1.3 <= ratio && ratio <= 1.4) {
+        _assets->loadDirectoryAsync("json/assets-ipad.json",nullptr);
+    } else {
+        _assets->loadDirectoryAsync("json/assets.json",nullptr);
+    }
     
     AudioEngine::start();
     Application::onStartup(); // YOU MUST END with call to parent
@@ -146,7 +152,7 @@ void LabApp::update(float timestep) {
         if (_item.getContinue()) {
             _equippedItem = _item.getItem();
             _item.dispose();
-            _gameplay.init(_assets, _equippedItem);
+            _gameplay.init(_assets, _equippedItem, ratio);
             _itemChosen = true;
         }
         else {
