@@ -39,6 +39,8 @@ protected:
     bool _loaded;
     /** Whether or not the user has finished selecting their item */
     bool _itemChosen;
+    /** Ratio of the display, mostly checking if ipad or not */
+    double ratio;
     /** 
      * The item the player equips, initially -1.
      */

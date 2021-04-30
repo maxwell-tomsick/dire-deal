@@ -121,6 +121,7 @@ protected:
     std::shared_ptr<cugl::scene2::AnimationNode> _enemyIdle;
     std::shared_ptr<cugl::scene2::AnimationNode> _currentBurn;
     std::shared_ptr<cugl::scene2::NinePatch> _cardHolder;
+    std::shared_ptr<cugl::scene2::NinePatch> _middleColumn;
     std::shared_ptr<cugl::scene2::Button> _mainMenu;
     std::shared_ptr<cugl::scene2::Label> _mainMenuLabel;
     int _cardBack;
@@ -203,7 +204,7 @@ public:
      *
      * @return true if the controller is initialized properly, false otherwise.
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets, int item);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, int item, double ratio);
 
     
 #pragma mark -

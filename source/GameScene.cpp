@@ -44,7 +44,7 @@ void GameScene::deckLoad(std::vector<int> deck) {
  *
  * @return true if the controller is initialized properly, false otherwise.
  */
-bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equippedItem) {
+bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equippedItem, double ratio) {
     // Initialize the scene to a locked width
     Size dimen = Application::get()->getDisplaySize();
     dimen *= SCENE_HEIGHT/dimen.height;
@@ -81,7 +81,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _responses = {};
      _enemyFights = {};
      //RESEARCH WHETHER TO DELETE POINTER LATER
-     std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc("json/enemyFights.json");
+     string enemyFightsJsonName = "json/enemyFights.json";
+     if (1.3 <= ratio && ratio <= 1.4) {
+          enemyFightsJsonName = "json/enemyFights-ipad.json";
+     }
+     std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
      _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
      std::shared_ptr<JsonReader> jsonReaderLevel1 = JsonReader::alloc("json/level1.json");
      _cards = getJsonCards(jsonReaderLevel1, _cards, _assets);
@@ -129,9 +133,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           }
      }
      _currentCard = _cards[_currentDeck.back()];
-     //CULog("Wee Woo1");
      _currentDeck.pop_back();
-     //CULog("Wee Woo2");
      if (_currentCard.getId() == -1 & _item == 3){
           int i = rand() % 4;
           int r = (int) _currentDeck.size() + (int)_nextDeck.size() + 1;
@@ -291,10 +293,17 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _goonNumber = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_number"));
      _goonName = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_name"));
      _cardHolder = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_cardHolder"));
+     _middleColumn = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_middleColumn"));
      _mainMenu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("pause_mainMenu"));
      _mainMenuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_mainMenu_up_label"));
      _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
+     // make these more transparent
+     _middleColumn->setColor(Color4(255,255,255,180));
+     _responseGlow1->setColor(Color4(255,255,255,170));
+     _responseGlow2->setColor(Color4(255,255,255,170));
+     _responseGlow3->setColor(Color4(255,255,255,170));
+     // end make these transparent
      _burnLabel->setVisible(false);
      _burnTexture->setVisible(false);
      _response1->setVisible(false);
@@ -416,9 +425,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
     }
     _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
-     _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
+    _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
     _mainMenu->addListener([=](const std::string& name, bool down) {
-         if (_movement == 11 or _movement == 14) {
+         if (_movement == 11 || _movement == 14) {
               _audioQueue->clear();
               if (_movement == 14){
                    _pause->setVisible(false);
@@ -482,6 +491,22 @@ void GameScene::dispose() {
     _active = false;
     _assets = nullptr;
     _deckNode = nullptr;
+    _mainMenu->clearListeners();
+    _mainMenu = nullptr;
+    _currCardButton->clearListeners();
+    _currCardButton = nullptr;
+    _response1->clearListeners();
+    _response1 = nullptr;
+    _response2->clearListeners();
+    _response2 = nullptr;
+    _response3->clearListeners();
+    _response3 = nullptr;
+    _soundSlider->clearListeners();
+    _soundSlider = nullptr;
+    _musicSlider->clearListeners();
+    _musicSlider = nullptr;
+    _pauseButton->clearListeners();
+    _pauseButton = nullptr;
     Scene2::dispose();
 }
 
@@ -638,7 +663,7 @@ void GameScene::update(float timestep) {
      }
      if ((_movement != 0) & (_movement != 14) & _pauseButton->isVisible()){
           _pauseButton->setVisible(false);
-     } else if ((_movement == 0) or (_movement == 14) & !_pauseButton->isVisible()) {
+     } else if ((_movement == 0) || (_movement == 14) & !_pauseButton->isVisible()) {
           _pauseButton->setVisible(true);
      }
      if (_audioQueue->getVolume() != _musicVolume){

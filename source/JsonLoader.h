@@ -73,7 +73,6 @@ namespace JsonLoader{
           Card card;
           card.allocate(name, id, texture, responses, resources, level);
           cards[id] = card;
-          CULog("card");
         }
         return cards;
     }

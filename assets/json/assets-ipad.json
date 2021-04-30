@@ -419,9 +419,9 @@
   },
   "widgets": {
     "largebutton": "widgets/largebutton.json",
-    "response1": "widgets/response1.json",
-    "response2": "widgets/response2.json",
-    "response3": "widgets/response3.json",
+    "response1": "widgets/response1-ipad.json",
+    "response2": "widgets/response2-ipad.json",
+    "response3": "widgets/response3-ipad.json",
     "burn": "widgets/burn.json"
   },
   "sounds": {
@@ -573,13 +573,13 @@
                 "type": "Image",
                 "data": {
                     "texture": "blade",
-                    "scale": 0.675
+                    "scale": 0.525
                 },
                 "layout": {
                     "x_anchor": "left",
                     "y_anchor": "bottom",
                     "y_offset": 0.78,
-                    "x_offset": 0.81
+                    "x_offset": 0.83
                 },
                 "format"    : {
                     "type"  : "Anchored"
@@ -606,13 +606,13 @@
                 "type": "Image",
                 "data": {
                     "texture": "flourish",
-                    "scale": 0.675
+                    "scale": 0.525
                 },
                 "layout": {
                     "x_anchor": "left",
                     "y_anchor": "bottom",
                     "y_offset": 0.78,
-                    "x_offset": 0.65
+                    "x_offset": 0.67
                 },
                 "format"    : {
                     "type"  : "Anchored"
@@ -639,13 +639,13 @@
                 "type": "Image",
                 "data": {
                     "texture": "lunge",
-                    "scale": 0.675
+                    "scale": 0.525
                 },
                 "layout": {
                     "x_anchor": "left",
                     "y_anchor": "bottom",
                     "y_offset": 0.78,
-                    "x_offset": 0.89
+                    "x_offset": 0.91
                 },
                 "format"    : {
                     "type"  : "Anchored"
@@ -672,13 +672,13 @@
                 "type": "Image",
                 "data": {
                     "texture": "brawn",
-                    "scale": 0.675
+                    "scale": 0.525
                 },
                 "layout": {
                     "x_anchor": "left",
                     "y_anchor": "bottom",
                     "y_offset": 0.78,
-                    "x_offset": 0.73
+                    "x_offset": 0.75
                 },
                 "format"    : {
                     "type"  : "Anchored"
@@ -722,7 +722,7 @@
             "x_anchor": "left",
             "y_anchor": "bottom",
             "x_offset": 0.03,
-            "y_offset": 0.06
+            "y_offset": 0.04
         },
         "format"    : {
             "type"  : "Anchored"
@@ -1163,13 +1163,13 @@
             "type": "NinePatch",
             "data": {
                 "texture": "enemyLabel",
-                "scale": 0.67
+                "scale": 0.50
             },
             "layout": {
                 "x_anchor": "left",
                 "y_anchor": "bottom",
                 "y_offset": 0.833,
-                "x_offset": 0.045
+                "x_offset": 0.025
             },
             "format"    : {
                 "type"  : "Anchored"
@@ -1214,7 +1214,7 @@
             "type": "NinePatch",
             "data": {
                 "texture": "enemy",
-                "scale": 0.67,
+                "scale": 0.50,
                 "visible": false
             },
             "layout": {
@@ -1228,26 +1228,28 @@
             "type": "NinePatch",
             "data": {
                 "texture": "fire",
-                "scale": 0.675
+                "scale": 0.675,
+                "anchor": [ 0.5, 0.0 ]
             },
             "layout": {
-                "x_anchor": "left",
-                "y_anchor": "bottom",
-                "y_offset": 0.025,
-                "x_offset": 0.489
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": -0.45,
+                "x_offset": 0.017
             }
         },
         "fireHolder": {
             "type": "NinePatch",
             "data": {
                 "texture": "fireHolder",
-                "scale": 0.675
+                "scale": 0.675,
+                "anchor": [ 0.5, 0.5 ]
             },
             "layout": {
-                "x_anchor": "left",
-                "y_anchor": "bottom",
-                "y_offset": -0.004,
-                "x_offset": 0.447
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": -0.45,
+                "x_offset": 0.017
             }
         },
         "burn": {
@@ -1300,13 +1302,13 @@
             "type": "Image",
             "data": {
                 "texture": "sword",
-                "scale": 0.675
+                "scale": 0.500
             },
             "layout": {
                 "x_anchor": "left",
                 "y_anchor": "bottom",
-                "y_offset": 0.695,
-                "x_offset": 0.635
+                "y_offset": 0.72,
+                "x_offset": 0.66
             }
         },
         "removePreview1": {
@@ -1353,7 +1355,7 @@
                 "x_anchor": "left",
                 "y_anchor": "bottom",
                 "y_offset": 0.155,
-                "x_offset": 0.593
+                "x_offset": 0.62
             },
             "format"    : {
                 "type"  : "Anchored"

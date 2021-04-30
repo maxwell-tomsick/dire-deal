@@ -19,7 +19,7 @@
                 "type"   : "NinePatch",
                 "data"   : {
                     "texture"  : "response1",
-                    "scale" : 0.675
+                    "scale" : 0.50
                 },
                 "format"    : {
                     "type"  : "Anchored"
@@ -222,8 +222,9 @@
       "layout": {
         "x_anchor": "left",
         "y_anchor": "bottom",
-        "x_offset": 0.8,
+        "x_offset": 0.825,
         "y_offset": 0.4
       }
     }
 }
+
