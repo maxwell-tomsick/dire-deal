@@ -78,6 +78,7 @@ void LoadingScene::dispose() {
         _button->deactivate();
     }
     removeAllChildren();
+    _button->clearListeners();
     _button = nullptr;
     _bar = nullptr;
     _label = nullptr;
