@@ -416,9 +416,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
     }
     _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
-     _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
+    _resourceController.setBurnText(_currentCard, _burnText, _assets, _burnTexture);
     _mainMenu->addListener([=](const std::string& name, bool down) {
-         if (_movement == 11 or _movement == 14) {
+         if (_movement == 11 | _movement == 14) {
               _audioQueue->clear();
               if (_movement == 14){
                    _pause->setVisible(false);
@@ -482,6 +482,22 @@ void GameScene::dispose() {
     _active = false;
     _assets = nullptr;
     _deckNode = nullptr;
+    _mainMenu->clearListeners();
+    _mainMenu = nullptr;
+    _currCardButton->clearListeners();
+    _currCardButton = nullptr;
+    _response1->clearListeners();
+    _response1 = nullptr;
+    _response2->clearListeners();
+    _response2 = nullptr;
+    _response3->clearListeners();
+    _response3 = nullptr;
+    _soundSlider->clearListeners();
+    _soundSlider = nullptr;
+    _musicSlider->clearListeners();
+    _musicSlider = nullptr;
+    _pauseButton->clearListeners();
+    _pauseButton = nullptr;
     Scene2::dispose();
 }
 
@@ -638,7 +654,7 @@ void GameScene::update(float timestep) {
      }
      if ((_movement != 0) & (_movement != 14) & _pauseButton->isVisible()){
           _pauseButton->setVisible(false);
-     } else if ((_movement == 0) or (_movement == 14) & !_pauseButton->isVisible()) {
+     } else if ((_movement == 0) | (_movement == 14) & !_pauseButton->isVisible()) {
           _pauseButton->setVisible(true);
      }
      if (_audioQueue->getVolume() != _musicVolume){

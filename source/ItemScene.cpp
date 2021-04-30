@@ -78,6 +78,7 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _currText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_equipped-item-text"));
     _currText->setText("Equipped: None");
     _displayText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_displayed-item-text"));
+    _displayText->setVisible(false);
 
     // Initializing the buttons
     // TODO: Check save file to determine which should be locked/unlocked
@@ -129,12 +130,12 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 void ItemScene::dispose() {
     removeAllChildren();
     for (int i = 0; i < 5; i++) {
-        _items[i]->deactivate();
+        _items[i]->clearListeners();
         _items[i] = nullptr;
     }
-    _play->deactivate();
-    _menu->deactivate();
-    _equip->deactivate();
+    _play->clearListeners();
+    _menu->clearListeners();
+    _equip->clearListeners();
     _play = nullptr;
     _menu = nullptr;
     _equip = nullptr;
