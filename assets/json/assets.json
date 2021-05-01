@@ -1228,26 +1228,28 @@
             "type": "NinePatch",
             "data": {
                 "texture": "fire",
-                "scale": 0.675
+                "scale": 0.675,
+                "anchor": [ 0.5, 0.0 ]
             },
             "layout": {
-                "x_anchor": "left",
-                "y_anchor": "bottom",
-                "y_offset": 0.025,
-                "x_offset": 0.489
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": -0.45,
+                "x_offset": 0.017
             }
         },
         "fireHolder": {
             "type": "NinePatch",
             "data": {
                 "texture": "fireHolder",
-                "scale": 0.675
+                "scale": 0.675,
+                "anchor": [ 0.5, 0.5 ]
             },
             "layout": {
-                "x_anchor": "left",
-                "y_anchor": "bottom",
-                "y_offset": -0.004,
-                "x_offset": 0.447
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": -0.45,
+                "x_offset": 0.017
             }
         },
         "burn": {

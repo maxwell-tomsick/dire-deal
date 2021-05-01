@@ -35,7 +35,6 @@
 		501876B8261F5FAB001BADA4 /* TurnController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501876AF261F5FAB001BADA4 /* TurnController.cpp */; };
 		501876B9261F5FAB001BADA4 /* maybeUsefulReference in Resources */ = {isa = PBXBuildFile; fileRef = 501876B0261F5FAB001BADA4 /* maybeUsefulReference */; };
 		501876BA261F5FAB001BADA4 /* maybeUsefulReference in Resources */ = {isa = PBXBuildFile; fileRef = 501876B0261F5FAB001BADA4 /* maybeUsefulReference */; };
-		5060B35D2630940200710816 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5060B3582630940200710816 /* GoogleService-Info.plist */; };
 		5060B3642630996000710816 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5060B3632630996000710816 /* FirebaseAnalytics */; };
 		50CE8103262D3A1D007B65D8 /* ItemScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */; };
 		50CE8104262D3A1D007B65D8 /* ItemScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CE80FE262D3A1D007B65D8 /* ItemScene.cpp */; };
@@ -504,7 +503,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1240;
-				ORGANIZATIONNAME = "Game Design Initiative at Cornell";
+				ORGANIZATIONNAME = "Game Design Initiative at Cornell-1";
 				TargetAttributes = {
 					EB0FF5FB2016EF4F00517030 = {
 						CreatedOnToolsVersion = 9.2;
@@ -513,8 +512,6 @@
 					};
 					EB74548B1D74D75C002FBAE6 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = DXRW83XY8P;
-						ProvisioningStyle = Manual;
 					};
 					EBBF18901D74904A008E2001 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -605,7 +602,6 @@
 				EBFE7C051E19B496001007C2 /* json in Resources */,
 				EB7454AD1D74D846002FBAE6 /* Portrait.storyboard in Resources */,
 				501876BA261F5FAB001BADA4 /* maybeUsefulReference in Resources */,
-				5060B35D2630940200710816 /* GoogleService-Info.plist in Resources */,
 				EB42669621F68F6900A9DE61 /* DeviceMargins.plist in Resources */,
 				5014BB6425F54C91004EFF48 /* fonts in Resources */,
 			);
@@ -769,11 +765,11 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Maxwell Tomsick (U2KMZ53L57)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = DXRW83XY8P;
+				DEVELOPMENT_TEAM = PTU4D7Y3AT;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/iOS-Info.plist";
@@ -785,9 +781,9 @@
 				MARKETING_VERSION = 0.4;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.iOS.DireDeal;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.iOS.DireDealrose;
 				PRODUCT_NAME = DireDealiOS;
-				PROVISIONING_PROFILE_SPECIFIER = DireDealDevelopmentProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -800,11 +796,11 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Maxwell Tomsick (U2KMZ53L57)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = DXRW83XY8P;
+				DEVELOPMENT_TEAM = PTU4D7Y3AT;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/iOS-Info.plist";
@@ -816,9 +812,9 @@
 				MARKETING_VERSION = 0.4;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.iOS.DireDeal;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.iOS.DireDealrose;
 				PRODUCT_NAME = DireDealiOS;
-				PROVISIONING_PROFILE_SPECIFIER = DireDealDevelopmentProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

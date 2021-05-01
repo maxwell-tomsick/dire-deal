@@ -775,7 +775,8 @@
                 "foreground": [  124,229,227,255  ],
                 "anchor": [ 0.5, 0.5 ],
                 "halign": "center",
-                "valign": "middle"
+                "valign": "middle",
+                "scale": 0.9
               },
               "layout": {
                 "x_anchor": "center",
@@ -1355,7 +1356,7 @@
                 "x_anchor": "left",
                 "y_anchor": "bottom",
                 "y_offset": 0.155,
-                "x_offset": 0.62
+                "x_offset": 0.61
             },
             "format"    : {
                 "type"  : "Anchored"

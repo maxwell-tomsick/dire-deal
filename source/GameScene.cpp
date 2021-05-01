@@ -82,7 +82,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _enemyFights = {};
      //RESEARCH WHETHER TO DELETE POINTER LATER
      string enemyFightsJsonName = "json/enemyFights.json";
-     if (1.3 <= ratio && ratio <= 1.4) {
+     if (ratio <= 1.5) {
           enemyFightsJsonName = "json/enemyFights-ipad.json";
      }
      std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
@@ -402,8 +402,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
          _response3->activate();
      }
 #else
-     _burnLabel->setPosition(_dimen.width * 0.11f, _dimen.height * (-0.05f));
-     _burnTexture->setPosition(_dimen.width * 0.585f, _dimen.height * 0.15f);
+//     _burnLabel->setPosition(_dimen.width * 0.11f, _dimen.height * (-0.05f));
+     if (ratio > 1.5) {
+          _burnTexture->setPosition(_dimen.width * 0.580f, _dimen.height * 0.15f);
+     }
+//     _burnTexture->setPosition(_dimen.width * 0.580f, _dimen.height * 0.15f);
      
      Touchscreen* touch = Input::get<Touchscreen>();
      touch->addBeginListener(LISTENER_KEY,[=](const cugl::TouchEvent& event, bool focus) {
