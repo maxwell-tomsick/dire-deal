@@ -62,7 +62,6 @@ void LabApp::onStartup() {
     } else {
         _assets->loadDirectoryAsync("json/assets.json",nullptr);
     }
-    
     AudioEngine::start();
     Application::onStartup(); // YOU MUST END with call to parent
 }

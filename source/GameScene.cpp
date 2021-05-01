@@ -520,7 +520,7 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
-     if (_fight == 3){
+     if (_fight == 2){
      _audioQueue->clear();
      _audioQueue->play(_assets->get<Sound>("introSlime"));
      _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true);
