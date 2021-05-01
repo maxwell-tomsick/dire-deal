@@ -82,9 +82,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _enemyFights = {};
      //RESEARCH WHETHER TO DELETE POINTER LATER
      string enemyFightsJsonName = "json/enemyFights.json";
-     // if (1.3 <= ratio && ratio <= 1.4) {
-     //      enemyFightsJsonName = "json/enemyFights-ipad.json";
-     // }
+     if (1.3 <= ratio && ratio <= 1.4) {
+          enemyFightsJsonName = "json/enemyFights-ipad.json";
+     }
      std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
      _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
      std::shared_ptr<JsonReader> jsonReaderLevel1 = JsonReader::alloc("json/level1.json");
@@ -517,7 +517,7 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
-     if (_fight == 3){
+     if (_fight == 2){
      _audioQueue->clear();
      _audioQueue->play(_assets->get<Sound>("introSlime"));
      _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true);

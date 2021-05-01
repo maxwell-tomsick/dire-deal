@@ -58,9 +58,9 @@ void LabApp::onStartup() {
     ratio = Application::getDisplayWidth()/(double)Application::getDisplayHeight();
     CULog(to_string(ratio).c_str());
     string filepath = "json/assets.json";
-    // if (1.3 <= ratio && ratio <= 1.4) {
-    //     filepath = "json/assets-ipad.json";
-    // }
+    if (1.3 <= ratio && ratio <= 1.4) {
+        filepath = "json/assets-ipad.json";
+    }
     _assets->loadDirectoryAsync(filepath,nullptr);
     AudioEngine::start();
     Application::onStartup(); // YOU MUST END with call to parent
