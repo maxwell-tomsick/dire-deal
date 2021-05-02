@@ -27,18 +27,22 @@ protected:
 	std::shared_ptr<cugl::scene2::Button> _play;
 	/** The button to return to the main menu */
 	std::shared_ptr<cugl::scene2::Button> _menu;
-	/** The (general) equip symbol */
+	std::shared_ptr<cugl::scene2::Label> _menuLabel;
+	/** The equip button */
 	std::shared_ptr<cugl::scene2::Button> _equip;
+	std::shared_ptr<cugl::scene2::Label> _equipLabel;
 	/** The buttons for each item icon */
-	std::shared_ptr<cugl::scene2::Button> _items[6];
+	std::shared_ptr<cugl::scene2::Button> _items[5];
 
 	/** Text indicating the currently equipped item */
 	std::shared_ptr<cugl::scene2::Label> _currText;
 	/** Text indicating the currently displayed item */
 	std::shared_ptr<cugl::scene2::Label> _displayText;
+	/** The currently selected item card */
+	std::shared_ptr<cugl::scene2::NinePatch> _displayItem;
 
 	/** The selection button for an unacquired item */
-	std::shared_ptr<cugl::scene2::Button> _lockedItemButton;
+	std::shared_ptr<cugl::scene2::NinePatch> _lockedItemTexture;
 	/** Selection buttons for acquired items */
 	std::shared_ptr<cugl::scene2::Button> _itemButtons[5];
 
@@ -122,6 +126,11 @@ public:
 	 * @param id        The index of the item
 	 */
 	void displayItem(int id);
+
+	/**
+	 * Undisplay the currently displayed information.
+	 */
+	void undisplayItem();
 
 	/**
 	 * Equip the item corresponding to the currently selected item

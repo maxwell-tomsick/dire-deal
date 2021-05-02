@@ -60,23 +60,37 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _play->setVisible(true);
     _play->activate();
     _menu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_menu"));
+    _menuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_menu_up_label"));
+
     _menu->addListener([=](const std::string& name, bool down) {
-            this->_active = down;
-            _continue = false;
+        if (!down) {
+            if (!_display) {
+                this->_active = down;
+                _continue = false;
+            }
+            else {
+                undisplayItem();
+            }
+        }
         });
     _menu->setVisible(true);
     _menu->activate();
-    _equip = std::make_shared<scene2::Button>();
-    // _equip->setVisible(false);
-    _lockedItemButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_selected-card-locked"));
-    _lockedItemButton->addListener([=](const std::string& name, bool down) {
-        if (!down & (_displayedItemId != _equippedItem)) {
-            equipItem();
+    _displayItem = std::make_shared<scene2::NinePatch>();
+    _lockedItemTexture = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_selected-card-locked"));
+    _equip = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_equip"));
+    _equip->addListener([=](const std::string& name, bool down) {
+        if (!down) {
+            if (_displayedItemId != _equippedItem) {
+                equipItem();
+            }
+            else {
+                unequipItem();
+            }
         }
         });
-    _lockedItemButton->setVisible(false);
-    _currText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_equipped-item-text"));
-    _currText->setText("Equipped: None");
+    _equip->setVisible(false);
+    _equipLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_equip_up_label"));
+    _lockedItemTexture->setVisible(false);
     _displayText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_displayed-item-text"));
     _displayText->setVisible(false);
 
@@ -101,11 +115,8 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         _items[i]->setVisible(true);
         _items[i]->activate();
     }
-    _items[5]->addListener([=](const std::string& name, bool down) {
-        unequipItem();
-        });
-    _items[5]->setVisible(true);
-    _items[5]->activate();
+    _currText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_equipped-item-text"));
+    _currText->setText("Equipped: None");
 
     // Initialize Models
     _equippedItem = -1; // start with no item selected
@@ -162,19 +173,33 @@ void ItemScene::update(float timestep) {}
 void ItemScene::displayItem(int id) {
     //_menuLabel->setText("Back");
     if (!_itemAcquired[id]) {
-        _equip = _lockedItemButton;
-        //_playLabel->setText("Locked");
+        _displayItem = _lockedItemTexture;
+        _equipLabel->setText("Locked");
     }
+    else if (_equippedItem != id) {
+        _displayItem = _lockedItemTexture;        
+        _equipLabel->setText("Equip");
+        }
     else {
-        _equip = _lockedItemButton;        
-        //_playLabel->setText("Equip");
+        _displayItem = _lockedItemTexture;
+        _equipLabel->setText("Unequip");
     }
-    _equip->setVisible(true);
     _display = true;
+    _equip->setVisible(true);
     _equip->activate();
+    _menuLabel->setText("Back");
+    _displayItem->setVisible(true);
     _displayText->setText(_itemNames[id]);
     _displayText->setVisible(true);
-    // code to set item 
+}
+
+void ItemScene::undisplayItem() {
+    _display = false;
+    _equip->deactivate();
+    _equip->setVisible(false);
+    _displayItem->setVisible(false);
+    _displayText->setVisible(false);
+    _menuLabel->setText("Menu");
 }
 
 /**
@@ -184,7 +209,7 @@ void ItemScene::equipItem() {
     if (_itemAcquired[_displayedItemId]) {
         _equippedItem = _displayedItemId;
         _currText->setText(_equippedText[_displayedItemId]);
-        //_playLabel->setText("Unequip");
+        _equipLabel->setText("Unequip");
     }
 }
 
@@ -194,4 +219,5 @@ void ItemScene::equipItem() {
 void ItemScene::unequipItem() {
     _equippedItem = -1;
     _currText->setText("Equipped: None");
+    _equipLabel->setText("Equip");
 }
