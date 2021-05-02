@@ -482,13 +482,14 @@
             "data": {
                 "texture": "flourish",
                 "scale": 0.4,
-                "visible": false
+                "visible": false,
+                "anchor": [ 0.5, 0.5 ]
             },
             "layout": {
                 "x_anchor": "left",
                 "y_anchor": "bottom",
-                "y_offset": 0.455,
-                "x_offset": 0.69
+                "y_offset": 0.51,
+                "x_offset": 0.71
             },
             "format"    : {
                 "type"  : "Anchored"
@@ -516,13 +517,14 @@
             "data": {
                 "texture": "lunge",
                 "scale": 0.4,
-                "visible": false
+                "visible": false,
+                "anchor": [ 0.5, 0.5 ]
             },
             "layout": {
                 "x_anchor": "left",
                 "y_anchor": "bottom",
-                "y_offset": 0.455,
-                "x_offset": 0.69
+                "y_offset": 0.51,
+                "x_offset": 0.71
             },
             "format"    : {
                 "type"  : "Anchored"
