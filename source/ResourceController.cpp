@@ -27,7 +27,7 @@ void ResourceController::setResponseResources(
     std::shared_ptr<cugl::AssetManager> &assets){
      std::vector<int> cost = responses[responseId].getResources();
     //std::printf("curr: %d\n", _curr);
-    if (responseId != 47){
+    if (responseId != 47 && responseId != 50){
         if (_curr == _free){
             _freeResponse = response;
             cost = {0,0,0,0};
