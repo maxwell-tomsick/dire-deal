@@ -257,7 +257,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
              _soundVolume = value;
          }
      });
-     
+     _shuffle1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_shuffle"));
+     _shuffle2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_shuffle"));
+     _shuffle3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_shuffle"));
+     _shuffle1->setText("Shuffle:");
+     _shuffle2->setText("Shuffle:");
+     _shuffle3->setText("Shuffle:");
     _response1 = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_response1"));
     _responseText1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_label"));
     _responseCost1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_costs"));
@@ -1016,8 +1021,10 @@ void GameScene::update(float timestep) {
                responseUpdate(_responseId1, 1);
                if (_removeOptions[0] == -2){
                     _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+                    _shuffle1->setText("Shuffle:");
                } else {
                     _responseCard1->setTexture(_cards[_removeOptions[0]].getTexture());
+                    _shuffle1->setText("Remove:");
                }
           }
           if (_display2) {
@@ -1026,8 +1033,10 @@ void GameScene::update(float timestep) {
                responseUpdate(_responseId2, 2);
                if (_removeOptions[1] == -2){
                     _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+                    _shuffle2->setText("Shuffle:");
                } else {
                     _responseCard2->setTexture(_cards[_removeOptions[1]].getTexture());
+                    _shuffle2->setText("Remove:");
                }
           }
           if (_display3){
@@ -1036,8 +1045,10 @@ void GameScene::update(float timestep) {
                responseUpdate(_responseId3, 3);
                if (_removeOptions[2] == -2){
                     _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+                    _shuffle3->setText("Shuffle:");
                } else {
                     _responseCard3->setTexture(_cards[_removeOptions[2]].getTexture());
+                    _shuffle3->setText("Remove:");
                }
           }
 

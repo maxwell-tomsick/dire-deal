@@ -79,6 +79,10 @@ protected:
     std::shared_ptr<cugl::scene2::NinePatch> _responseCard3;
     std::shared_ptr<cugl::scene2::NinePatch> _responseGlow3;
     
+    std::shared_ptr<cugl::scene2::Label> _shuffle1;
+    std::shared_ptr<cugl::scene2::Label> _shuffle2;
+    std::shared_ptr<cugl::scene2::Label> _shuffle3;
+    
     std::shared_ptr<cugl::scene2::Label> _bladeText;
     std::shared_ptr<cugl::scene2::Label> _brawnText;
     std::shared_ptr<cugl::scene2::Label> _flourishText;
