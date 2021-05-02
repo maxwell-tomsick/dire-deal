@@ -124,7 +124,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      for (int i = 0; i < _currentDeck.size(); i++){
           if (_currentDeck[i] == -1){
                itemFound = true;
-          } else {
+          } else if (_currentDeck[i] != 13){
                if (_cards[_currentDeck[i]].getResponses() >= 3){
                     r += 3;
                } else {
@@ -333,9 +333,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
               _pause->setVisible(true);
                _movement = 14;
           } else if ((_movement == 14) & down){
-               _response1->setVisible(true);
-               _response2->setVisible(true);
-               _response3->setVisible(true);
+               if (_display1){
+                    _response1->setVisible(true);
+               }
+               if (_display2){
+                    _response2->setVisible(true);
+               }
+               if (_display3){
+                    _response3->setVisible(true);
+               }
                _pause->setVisible(false);
                _mainMenu->setVisible(false);
                _black->setVisible(false);
@@ -609,7 +615,7 @@ void GameScene::reset() {
      for (int i = 0; i < _currentDeck.size(); i++){
           if (_currentDeck[i] == -1){
                itemFound = true;
-          } else {
+          } else if (_currentDeck[i] != 13){
                if (_cards[_currentDeck[i]].getResponses() >= 3){
                     r += 3;
                } else {
@@ -816,7 +822,7 @@ void GameScene::update(float timestep) {
                     for (int i = 0; i < _currentDeck.size(); i++){
                          if (_currentDeck[i] == -1){
                               itemFound = true;
-                         } else {
+                         } else if (_currentDeck[i] != 13){
                               if (_cards[_currentDeck[i]].getResponses() >= 3){
                                    r += 3;
                               } else {
