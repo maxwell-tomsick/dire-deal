@@ -5,7 +5,7 @@
 // players at the start of a run. 
 //
 // Created by Iain Pile on 4/16/21
-// Copyright © 2021 Game Design Initiative at Cornell. All rights reserved.
+// Copyright ï¿½ 2021 Game Design Initiative at Cornell. All rights reserved.
 //
 #ifndef __ITEM_SCENE_H__
 #define __ITEM_SCENE_H__
@@ -37,7 +37,15 @@ protected:
 	/** Text indicating the currently equipped item */
 	std::shared_ptr<cugl::scene2::Label> _currText;
 	/** Text indicating the currently displayed item */
-	std::shared_ptr<cugl::scene2::Label> _displayText;
+    std::shared_ptr<cugl::scene2::Label> _displayText;
+	std::shared_ptr<cugl::scene2::Label> _displayText1;
+    std::shared_ptr<cugl::scene2::Label> _displayText2;
+    std::shared_ptr<cugl::scene2::Label> _displayText3;
+    std::shared_ptr<cugl::scene2::Label> _displayText4;
+    std::shared_ptr<cugl::scene2::Label> _displayText5;
+    std::shared_ptr<cugl::scene2::NinePatch> _flourishBurn;
+    std::shared_ptr<cugl::scene2::NinePatch> _lungeBurn;
+    std::shared_ptr<cugl::scene2::SceneNode> _parasiteBurn;
 	/** The currently selected item card */
 	std::shared_ptr<cugl::scene2::NinePatch> _displayItem;
 

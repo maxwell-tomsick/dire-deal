@@ -56,16 +56,15 @@
           },
           "data": {
             "upnode": "up",
-            "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
             "visible": false,
-            "pushsize": true,
-            "anchor": [ 1, 0 ],
+            "anchor": [ 0.5, 0.5 ],
             "scale": 0.4
           },
           "layout": {
             "x_anchor": "right",
             "y_anchor": "bottom",
-            "absolute": true
+            "x_offset": -0.15,
+            "y_offset":0.1
           },
           "children": {
             "up": {
@@ -104,16 +103,15 @@
           },
           "data": {
             "upnode": "up",
-            "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
             "visible": false,
-            "pushsize": true,
-            "anchor": [ 1, 1 ],
+            "anchor": [ 0.5, 0.5 ],
             "scale": 0.4
           },
           "layout": {
             "x_anchor": "right",
             "y_anchor": "top",
-            "absolute": true
+            "x_offset": -0.15,
+            "y_offset": -0.15
           },
           "children": {
             "up": {
@@ -152,16 +150,15 @@
           },
           "data": {
             "upnode": "up",
-            "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
             "visible": false,
-            "pushsize": true,
-            "anchor": [ 0, 0 ],
+            "anchor": [ 0.5, 0.5 ],
             "scale": 0.4
           },
           "layout": {
             "x_anchor": "left",
             "y_anchor": "bottom",
-            "absolute": true
+            "x_offset": 0.15,
+            "y_offset": 0.1
           },
           "children": {
             "up": {
@@ -204,12 +201,14 @@
             "foreground": [ 255, 255, 255, 255 ],
             "halign": "center",
             "valign": "middle",
-            "anchor": [ 0.5, -5.25 ],
+            "anchor": [ 0.5, 0.5 ],
             "scale": 0.4
           },
           "layout": {
             "x_anchor": "center",
-            "y_anchor": "middle"
+            "y_anchor": "middle",
+            "x_offset": 0,
+            "y_offset": 0.42
           }
         },
         "item0-locked": {
@@ -219,18 +218,15 @@
           },
           "data": {
             "upnode": "up",
-            "pushable": [ 0, 0, 0, 800, 600, 800, 800, 0 ],
             "visible": false,
-            "pushsize": true,
             "anchor": [ 0, 0.5 ],
             "scale": 0.1
           },
           "layout": {
             "x_anchor": "left",
             "y_anchor": "middle",
-            "x_offset": 50,
-            "y_offset": 125,
-            "absolute": true
+            "x_offset": 0.05,
+            "y_offset": 0.22
           },
           "children": {
             "up": {
@@ -248,18 +244,15 @@
           },
           "data": {
             "upnode": "up",
-            "pushable": [ 0, 0, 0, 800, 600, 800, 800, 0 ],
             "visible": false,
-            "pushsize": true,
             "anchor": [ 0, 0.5 ],
             "scale": 0.1
           },
           "layout": {
             "x_anchor": "left",
             "y_anchor": "middle",
-            "x_offset": 150,
-            "y_offset": 125,
-            "absolute": true
+            "x_offset": 0.15,
+            "y_offset": 0.22
           },
           "children": {
             "up": {
@@ -277,17 +270,14 @@
           },
           "data": {
             "upnode": "up",
-            "pushable": [ 0, 0, 0, 800, 600, 800, 800, 0 ],
             "visible": false,
-            "pushsize": true,
             "anchor": [ 0, 0.5 ],
             "scale": 0.1
           },
           "layout": {
             "x_anchor": "left",
             "y_anchor": "middle",
-            "x_offset": 100,
-            "absolute": true
+            "x_offset": 0.1
           },
           "children": {
             "up": {
@@ -305,18 +295,15 @@
           },
           "data": {
             "upnode": "up",
-            "pushable": [ 0, 0, 0, 800, 600, 800, 800, 0 ],
             "visible": false,
-            "pushsize": true,
             "anchor": [ 0, 0.5 ],
             "scale": 0.1
           },
           "layout": {
             "x_anchor": "left",
             "y_anchor": "middle",
-            "x_offset": 50,
-            "y_offset": -125,
-            "absolute": true
+            "x_offset": 0.05,
+            "y_offset": -0.22
           },
           "children": {
             "up": {
@@ -334,18 +321,15 @@
           },
           "data": {
             "upnode": "up",
-            "pushable": [ 0, 0, 0, 800, 600, 800, 800, 0 ],
             "visible": false,
-            "pushsize": true,
             "anchor": [ 0, 0.5 ],
             "scale": 0.1
           },
           "layout": {
             "x_anchor": "left",
             "y_anchor": "middle",
-            "x_offset": 150,
-            "y_offset": -125,
-            "absolute": true
+            "x_offset": 0.15,
+            "y_offset": -0.22
           },
           "children": {
             "up": {
@@ -369,7 +353,8 @@
           "layout": {
             "x_anchor": "center",
             "y_anchor": "middle",
-            "absolute": true
+            "x_offset": -0.14,
+            "y_offset": 0.02
           }
         },
         "displayed-item-text": {
@@ -379,19 +364,321 @@
           },
           "data": {
             "font": "sans",
-            "text": "",
+            "text": "aaaaaaaaaaaaaaaaaaaa",
             "anchor": [ 1, 0.5 ],
             "visible": false,
             "foreground": [ 207, 166, 93, 255 ],
-            "scale": 0.3
+            "scale": 0.4
           },
           "layout": {
             "x_anchor": "right",
             "y_anchor": "middle",
-            "x_offset": -250,
-            "absolute": true
+            "x_offset": -0.07,
+            "y_offset": 0.2
           }
         },
+        "displayed-item-text-line1": {
+          "type": "Label",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "font": "sans",
+            "text": "aaaaaaaaaaaaaaaaaaaa",
+            "anchor": [ 1, 0.5 ],
+            "visible": false,
+            "foreground": [ 255, 255, 255, 255 ],
+            "scale": 0.4
+          },
+          "layout": {
+            "x_anchor": "right",
+            "y_anchor": "middle",
+            "x_offset": -0.07,
+            "y_offset": 0.1
+          }
+        },
+        "displayed-item-text-line2": {
+          "type": "Label",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "font": "sans",
+            "text": "aaaaaaaaaaaaaaaaaaaa",
+            "anchor": [ 1, 0.5 ],
+            "visible": false,
+            "foreground": [ 255, 255, 255, 255 ],
+            "scale": 0.4
+          },
+          "layout": {
+            "x_anchor": "right",
+            "y_anchor": "middle",
+            "x_offset": -0.07,
+            "y_offset": 0
+          }
+        },
+        "displayed-item-text-line3": {
+          "type": "Label",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "font": "sans",
+            "text": "aaaaaaaaaaaaaaaaaaaa",
+            "anchor": [ 1, 0.5 ],
+            "visible": false,
+            "foreground": [ 255, 255, 255, 255 ],
+            "scale": 0.4
+          },
+          "layout": {
+            "x_anchor": "right",
+            "y_anchor": "middle",
+            "x_offset": -0.07,
+            "y_offset": -0.1
+          }
+        },
+        "displayed-item-text-line4": {
+          "type": "Label",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "font": "sans",
+            "text": "aaaaaaaaaaaaaaaaaaaa",
+            "anchor": [ 1, 0.5 ],
+            "visible": false,
+            "foreground": [ 255, 255, 255, 255 ],
+            "scale": 0.4
+          },
+          "layout": {
+            "x_anchor": "right",
+            "y_anchor": "middle",
+            "x_offset": -0.07,
+            "y_offset": -0.2
+          }
+        },
+        "displayed-item-text-line5": {
+          "type": "Label",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "font": "sans",
+            "text": "aaaaaaaaaaaaaaaaaaaa",
+            "anchor": [ 1, 0.5 ],
+            "visible": false,
+            "foreground": [ 255, 255, 255, 255 ],
+            "scale": 0.4
+          },
+          "layout": {
+            "x_anchor": "right",
+            "y_anchor": "middle",
+            "x_offset": -0.07,
+            "y_offset": -0.3
+          }
+        },
+        "flourish": {
+            "type": "NinePatch",
+            "data": {
+                "texture": "flourish",
+                "scale": 0.4,
+                "visible": false
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.455,
+                "x_offset": 0.69
+            },
+            "format"    : {
+                "type"  : "Anchored"
+            },
+            "children": {
+                "amount": {
+                    "type": "TextField",
+                    "data": {
+                      "font": "sans4",
+                      "text": "3",
+                      "foreground": [ 241,231,95, 255 ],
+                      "halign": "center",
+                      "valign": "true middle",
+                      "anchor": [ 0.5, 0.5 ]
+                    },
+                    "layout": {
+                      "x_anchor": "center",
+                      "y_anchor": "middle"
+                    }
+                }
+            }
+        },
+        "lunge": {
+            "type": "NinePatch",
+            "data": {
+                "texture": "lunge",
+                "scale": 0.4,
+                "visible": false
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.455,
+                "x_offset": 0.69
+            },
+            "format"    : {
+                "type"  : "Anchored"
+            },
+            "children": {
+                "amount": {
+                    "type": "TextField",
+                    "data": {
+                      "font": "sans4",
+                      "text": "4",
+                      "foreground": [ 241,231,95, 255 ],
+                      "halign": "center",
+                      "valign": "true middle",
+                      "anchor": [ 0.5, 0.5 ]
+                    },
+                    "layout": {
+                      "x_anchor": "center",
+                      "y_anchor": "middle"
+                    }
+                }
+            }
+        },
+        "ParasiteNode": {
+          "type": "NinePatch",
+          "data": {
+              "texture": "flourish",
+              "scale": 0.4,
+              "anchor": [ 0.5, 0.5],
+              "visible": false
+          },
+          "layout": {
+              "x_anchor": "center",
+              "y_anchor": "middle",
+              "y_offset": 0.105,
+              "x_offset": 0.13
+          },
+          "format"    : {
+              "type"  : "Anchored"
+          },
+          "children": {
+                    "amount": {
+                          "type": "TextField",
+                          "data": {
+                            "font": "sans4",
+                            "text": "1",
+                            "foreground": [ 241,231,95, 255 ],
+                            "halign": "center",
+                            "valign": "true middle",
+                            "anchor": [ 0.5, 0.5 ]
+                          },
+                          "layout": {
+                            "x_anchor": "center",
+                            "y_anchor": "middle"
+                          }
+                      },
+              "brawn": {
+                  "type": "NinePatch",
+                  "data": {
+                      "texture": "brawn",
+                      "anchor": [ 0, 0 ]
+                  },
+                  "layout": {
+                      "x_anchor": "left",
+                      "y_anchor": "bottom",
+                      "y_offset": 0.0,
+                      "x_offset": 1.1
+                  },
+                  "format"    : {
+                      "type"  : "Anchored"
+                  },
+                  "children": {
+                      "amount": {
+                          "type": "TextField",
+                          "data": {
+                            "font": "sans4",
+                            "text": "1",
+                            "foreground": [ 241,231,95, 255 ],
+                            "halign": "center",
+                            "valign": "true middle",
+                            "anchor": [ 0.5, 0.5 ]
+                          },
+                          "layout": {
+                            "x_anchor": "center",
+                            "y_anchor": "middle"
+                          }
+                      }
+                  }
+              },
+              "blade": {
+                  "type": "NinePatch",
+                  "data": {
+                      "texture": "blade",
+                      "anchor": [ 0, 0 ]
+                  },
+                  "layout": {
+                      "x_anchor": "left",
+                      "y_anchor": "bottom",
+                      "y_offset": 0,
+                      "x_offset": 2.2
+                  },
+                  "format"    : {
+                      "type"  : "Anchored"
+                  },
+                  "children": {
+                      "amount": {
+                          "type": "TextField",
+                          "data": {
+                            "font": "sans4",
+                            "text": "1",
+                            "foreground": [ 241,231,95, 255 ],
+                            "halign": "center",
+                            "valign": "true middle",
+                            "anchor": [ 0.5, 0.5 ]
+                          },
+                          "layout": {
+                            "x_anchor": "center",
+                            "y_anchor": "middle"
+                          }
+                      }
+                  }
+              },
+              "lunge": {
+                  "type": "NinePatch",
+                  "data": {
+                      "texture": "lunge",
+                      "anchor": [ 0, 0 ]
+                  },
+                  "layout": {
+                      "x_anchor": "left",
+                      "y_anchor": "bottom",
+                      "y_offset": 0,
+                      "x_offset": 3.3
+                  },
+                  "format"    : {
+                      "type"  : "Anchored"
+                  },
+                  "children": {
+                      "amount": {
+                          "type": "TextField",
+                          "data": {
+                            "font": "sans4",
+                            "text": "1",
+                            "foreground": [ 241,231,95, 255 ],
+                            "halign": "center",
+                            "valign": "true middle",
+                            "anchor": [ 0.5, 0.5 ]
+                          },
+                          "layout": {
+                            "x_anchor": "center",
+                            "y_anchor": "middle"
+                          }
+                      }
+                  }
+              }
+              }
+          },
         "equipped-item-text": {
           "type": "Label",
           "format": {
@@ -400,7 +687,7 @@
           "data": {
             "font": "sans",
             "text": "Equipped: None",
-            "anchor": [ 0.5, 0 ],
+            "anchor": [ 0.5, 0.5 ],
             "visible": true,
             "foreground": [ 207, 166, 93, 255 ],
             "scale": 0.4
@@ -408,8 +695,8 @@
           "layout": {
             "x_anchor": "center",
             "y_anchor": "bottom",
-            "x_offset": -100,
-            "absolute": true
+            "x_offset": -0.1,
+            "y_offset": 0.05
           }
         }
       }

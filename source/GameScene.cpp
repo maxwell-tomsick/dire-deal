@@ -305,6 +305,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _responseGlow3->setColor(Color4(255,255,255,170));
      // end make these transparent
      _burnLabel->setVisible(false);
+     _cardHolder->setVisible(true);
      _burnTexture->setVisible(false);
      _response1->setVisible(false);
      _response2->setVisible(false);
@@ -954,7 +955,7 @@ void GameScene::update(float timestep) {
      }
      if (_movement == 7){
           //_underline->setVisible(true);
-          _removeOptions = {-1,-1,-1};
+          _removeOptions = {-2,-2,-2};
           if (!_keepCards) {
                std::vector<int> displayedResponses = _currentCard.getRandomResponses();
                if ((_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4)){
@@ -1013,7 +1014,7 @@ void GameScene::update(float timestep) {
                _responseText1->setText(_responses[_responseId1].getText());
                _responseText1->setScale(_responses[_responseId1].getFontSize());
                responseUpdate(_responseId1, 1);
-               if (_removeOptions[0] == -1){
+               if (_removeOptions[0] == -2){
                     _responseCard1->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
                } else {
                     _responseCard1->setTexture(_cards[_removeOptions[0]].getTexture());
@@ -1023,7 +1024,7 @@ void GameScene::update(float timestep) {
                _responseText2->setText(_responses[_responseId2].getText());
                _responseText2->setScale(_responses[_responseId2].getFontSize());
                responseUpdate(_responseId2, 2);
-               if (_removeOptions[1] == -1){
+               if (_removeOptions[1] == -2){
                     _responseCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
                } else {
                     _responseCard2->setTexture(_cards[_removeOptions[1]].getTexture());
@@ -1033,7 +1034,7 @@ void GameScene::update(float timestep) {
                _responseText3->setText(_responses[_responseId3].getText());
                _responseText3->setScale(_responses[_responseId3].getFontSize());
                responseUpdate(_responseId3, 3);
-               if (_removeOptions[2] == -1){
+               if (_removeOptions[2] == -2){
                     _responseCard3->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
                } else {
                     _responseCard3->setTexture(_cards[_removeOptions[2]].getTexture());
@@ -1300,7 +1301,7 @@ void GameScene::buttonPress(const int r){
           }
 
           std::vector<int> cards =response.getCards();
-          if (_removeOptions[r] != -1){
+          if (_removeOptions[r] != -2){
                removeCard(_removeOptions[r]);
           }
           for (int i = 0; i < cards.size(); i++){
