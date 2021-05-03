@@ -44,7 +44,7 @@ void GameScene::deckLoad(std::vector<int> deck) {
  *
  * @return true if the controller is initialized properly, false otherwise.
  */
-bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equippedItem, double ratio) {
+bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equippedItem, double ratio, bool tutorial) {
     // Initialize the scene to a locked width
     Size dimen = Application::get()->getDisplaySize();
     dimen *= SCENE_HEIGHT/dimen.height;
@@ -75,7 +75,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _pause->doLayout();
      
      _usedSecondWind = false;
-     _fight = 1;
+     if (!tutorial) {
+         _fight = 1;
+     }
+     else {
+         _fight = 6;
+     }
      _item = equippedItem;
      _cards = {};
      _responses = {};
@@ -87,12 +92,24 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      }
      std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
      _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
-     std::shared_ptr<JsonReader> jsonReaderLevel1 = JsonReader::alloc("json/level1.json");
-     _cards = getJsonCards(jsonReaderLevel1, _cards, _assets);
+     if (!tutorial) {
+         std::shared_ptr<JsonReader> jsonReaderLevel1 = JsonReader::alloc("json/level1.json");
+         _cards = getJsonCards(jsonReaderLevel1, _cards, _assets);
+     }
+     else {
+         std::shared_ptr<JsonReader> jsonReaderTutorial = JsonReader::alloc("json/tutorial.json");
+         _cards = getJsonCards(jsonReaderTutorial, _cards, _assets);
+     }
      Card item = getItem(_item);
      _cards[-1] = item;
-     std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responses1.json");
-     _responses = getJsonResponses(jsonReaderResponses, _responses);
+     if (!tutorial) {
+         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responses1.json");
+         _responses = getJsonResponses(jsonReaderResponses, _responses);
+     }
+     else {
+         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responsestutorial.json");
+         _responses = getJsonResponses(jsonReaderResponses, _responses);
+     }
      //cout << cardsArray->asString();
      _currentDeck = {};
      _nextDeck = {};
@@ -103,6 +120,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _display1 = true;
      _display2 = true;
      _display3 = true;
+     _tutorial = tutorial;
      if (_item >= 0){
           _currentDeck.push_back(-1);
      }
@@ -153,8 +171,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _deckNode->setDrag(false);
      _deckNode->reset();
      //_resources = { 99, 99, 99, 99 };
-     _resources = { 40, 40, 40, 40 };
-     
+     if (!tutorial) {
+         _resources = { 40, 40, 40, 40 };
+     }
+     else {
+         _resources = { 15, 15, 0, 0 };
+     }
      _enemyIdle =std::make_shared<scene2::AnimationNode>();
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
      _enemyIdle->setScale(_enemyFights[_fight].getScale());

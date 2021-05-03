@@ -1,0 +1,292 @@
+{
+  "Responses": {
+    "Attack1": {
+      "id": 0,
+      "name": "Parry",
+      "description": "Shuffle SLASH into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 1,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 0 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Attack2": {
+      "id": 1,
+      "name": "Roll Behind",
+      "description": "Shuffle EXPOSED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 2,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 3 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Grab1": {
+      "id": 2,
+      "name": "Break Free",
+      "description": "Shuffle GRAB into the Deck",
+      "cost": {
+        "blade": 1,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 1 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Grab2": {
+      "id": 3,
+      "name": "Twist",
+      "description": "Shuffle GRAPPLED into the Deck",
+      "cost": {
+        "blade": 2,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 2 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Grappled1": {
+      "id": 4,
+      "name": "Firm Grip",
+      "description": "Shuffle GRAPPLED into the Deck",
+      "cost": {
+        "blade": 1,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 2 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Grappled2": {
+      "id": 5,
+      "name": "Headbutt",
+      "description": "Shuffle STUNNED into the Deck",
+      "cost": {
+        "blade": 3,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 4 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Exposed1": {
+      "id": 6,
+      "name": "Evade",
+      "description": "Shuffle EXPOSED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 1,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 3 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Exposed2": {
+      "id": 7,
+      "name": "Backstab",
+      "description": "Shuffle WOUNDED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 3,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 5 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Stunned1": {
+      "id": 8,
+      "name": "Re-Stun",
+      "description": "Shuffle STUNNED into the Deck",
+      "cost": {
+        "blade": 1,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 4 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Stunned2": {
+      "id": 9,
+      "name": "Hammer Kick",
+      "description": "Shuffle CRUSHED into the Deck",
+      "cost": {
+        "blade": 6,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 6 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Wounded1": {
+      "id": 10,
+      "name": "Re-Wound",
+      "description": "Shuffle WOUNDED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 1,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 5 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Wounded2": {
+      "id": 11,
+      "name": "Pierce",
+      "description": "Shuffle IMPALED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 6,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 7 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Crushed1": {
+      "id": 12,
+      "name": "Boot Stomp",
+      "description": "Shuffle CRUSHED into the Deck",
+      "cost": {
+        "blade": 1,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 6 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Crushed2": {
+      "id": 13,
+      "name": "Pulverize",
+      "description": "Shuffle INCAPACITATED into the Deck",
+      "cost": {
+        "blade": 8,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 8 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Impaled1": {
+      "id": 14,
+      "name": "Perforate",
+      "description": "Shuffle IMPALED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 1,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 7 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Impaled2": {
+      "id": 15,
+      "name": "Decapitate",
+      "description": "Shuffle INCAPACITATED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 8,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 8 ],
+      "delete": [],
+      "win": true,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    }
+  }
+}

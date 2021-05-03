@@ -140,8 +140,15 @@ void LabApp::update(float timestep) {
     if (!_loaded && _loading.isActive()) {
         _loading.update(0.01f);
     } else if (!_loaded) {
+        _mainGame = _loading.goToMainGame();
         _loading.dispose(); // Disables the input listeners in this mode
-        _item.init(_assets);
+        if (_mainGame) {
+            _item.init(_assets);
+        }
+        else {
+            _itemChosen = true;
+            _gameplay.init(_assets, -1, ratio, true);
+        }
         _loaded = true;
     }
     else if (!_itemChosen && _item.isActive()) {
@@ -151,7 +158,7 @@ void LabApp::update(float timestep) {
         if (_item.getContinue()) {
             _equippedItem = _item.getItem();
             _item.dispose();
-            _gameplay.init(_assets, _equippedItem, ratio);
+            _gameplay.init(_assets, _equippedItem, ratio, false);
             _itemChosen = true;
         }
         else {
@@ -183,7 +190,7 @@ void LabApp::draw() {
     if (!_loaded & !_itemChosen) {
         _loading.render(_batch);
     }
-    else if (_loaded & !_itemChosen) {
+    else if (_loaded & (!_itemChosen)) {
         _item.render(_batch);
     } else {
         _gameplay.render(_batch);

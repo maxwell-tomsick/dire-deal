@@ -159,6 +159,7 @@ protected:
     int _fight;
     float _idleBuffer;
     bool _usedSecondWind;
+    bool _tutorial;
     int _item;
     int _goonInt;
     int _burnInt;
@@ -208,7 +209,7 @@ public:
      *
      * @return true if the controller is initialized properly, false otherwise.
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets, int item, double ratio);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, int item, double ratio, bool tutorial);
 
     
 #pragma mark -

@@ -41,15 +41,25 @@ protected:
     /** The animated progress bar */
     std::shared_ptr<cugl::scene2::ProgressBar>  _bar;
     /** The "play" button */
-    std::shared_ptr<cugl::scene2::Button>    _button;
-    /** The text on the "play" button */
-    std::shared_ptr<cugl::scene2::Label>    _label;
+    std::shared_ptr<cugl::scene2::Button>    _play;
+    std::shared_ptr<cugl::scene2::Label>    _playLabel;
+    /** The "tutorial" button */
+    std::shared_ptr<cugl::scene2::Button> _tutorial;
+    std::shared_ptr<cugl::scene2::Label> _tutorialLabel;
+    /** Images displaying the game name */
+    std::shared_ptr<cugl::scene2::NinePatch> _logo1;
+    std::shared_ptr<cugl::scene2::NinePatch> _logo2;
+    /** The studio name */
+    std::shared_ptr<cugl::scene2::NinePatch> _studio1;
+    std::shared_ptr<cugl::scene2::NinePatch> _studio2;
 
     // MODEL
     /** The progress displayed on the screen */
     float _progress;
     /** Whether or not the player has pressed play to continue */
     bool  _completed;
+    /** Whether to proceed to the main game or the tutorial */
+    bool _mainGame;
 
     
 public:
@@ -107,6 +117,12 @@ public:
      * @return true if loading is complete, but the player has not pressed play
      */
     bool isPending( ) const;
+
+    /**
+     * Returns true if the player pressed play.
+     * Returns false if the player chose to go to the tutorial.
+     */
+    bool goToMainGame() { return _mainGame;  }
 };
 
 #endif /* __LOADING_SCENE_H__ */

@@ -58,11 +58,25 @@ bool LoadingScene::init(const std::shared_ptr<AssetManager>& assets) {
     layer->doLayout(); // This rearranges the children to fit the screen
     
     _bar = std::dynamic_pointer_cast<scene2::ProgressBar>(assets->get<scene2::SceneNode>("load_bar"));
-    _button = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("load_play"));
-    _label = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("load_play_up_label"));
-    _button->addListener([=](const std::string& name, bool down) {
+    _logo1 = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("load_logo1"));
+    _logo2 = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("load_logo2"));
+    _logo2->setVisible(false);
+    _studio1 = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("load_studio1"));
+    _studio2 = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("load_studio2"));
+    _studio2->setVisible(false);
+    _play = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("load_play"));
+    _playLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("load_play_up_label"));
+    _play->addListener([=](const std::string& name, bool down) {
+        _mainGame = true;
         this->_active = down;
     });
+    _tutorial = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("load_tutorial"));
+    _tutorialLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("load_tutorial_up_label"));
+    _tutorial->addListener([=](const std::string& name, bool down) {
+        _mainGame = false;
+        this->_active = down;
+        });
+    _mainGame = false;
     
     Application::get()->setClearColor(Color4(192,192,192,255));
     addChild(layer);
@@ -75,13 +89,15 @@ bool LoadingScene::init(const std::shared_ptr<AssetManager>& assets) {
 void LoadingScene::dispose() {
     // Deactivate the button (platform dependent)
     if (isPending()) {
-        _button->deactivate();
+        _play->deactivate();
+        _tutorial->deactivate();
     }
     removeAllChildren();
-    _button->clearListeners();
-    _button = nullptr;
+    _play->clearListeners();
+    _tutorial->clearListeners();
+    _play = nullptr;
+    _tutorial = nullptr;
     _bar = nullptr;
-    _label = nullptr;
     _assets = nullptr;
     _progress = 0.0f;
 }
@@ -102,8 +118,14 @@ void LoadingScene::update(float progress) {
         if (_progress >= 1) {
             _progress = 1.0f;
             _bar->setVisible(false);
-            _button->setVisible(true);
-            _button->activate();
+            _studio1->setVisible(false);
+            _studio2->setVisible(true);
+            _logo1->setVisible(false);
+            _logo2->setVisible(true);
+            _play->setVisible(true);
+            _play->activate();
+            _tutorial->setVisible(true);
+            _tutorial->activate();
         }
         _bar->setProgress(_progress);
     }
@@ -115,6 +137,6 @@ void LoadingScene::update(float progress) {
  * @return true if loading is complete, but the player has not pressed play
  */
 bool LoadingScene::isPending( ) const {
-    return _button != nullptr && _button->isVisible();
+    return _play != nullptr && _play->isVisible();
 }
 

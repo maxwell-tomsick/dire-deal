@@ -12,13 +12,6 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
-    "name": {
-      "file": "textures/cugl-name.png",
-      "wrapS": "clamp",
-      "wrapT": "clamp",
-      "minfilter": "linear",
-      "magfilter": "linear"
-    },
     "studio": {
       "file": "textures/catana-games.png",
       "wrapS": "clamp",
@@ -75,10 +68,10 @@
                 "y_anchor": "fill"
             },
             "children"  : {
-                "logo": {
-                    "type": "Image",
+                "logo1": {
+                    "type": "NinePatch",
                     "format": {
-                        "type": "Anchored" 
+                        "type": "Anchored"
                     },
                     "data": {
                         "texture": "logo",
@@ -92,8 +85,42 @@
                         "absolute": true
                     }
                 },
-                "studio": {
-                    "type": "Image",
+                "logo2": {
+                    "type": "NinePatch",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "texture": "logo",
+                        "anchor": [ 0.5, 0.5 ],
+                        "scale": 0.5
+                    },
+                    "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": 200,
+                        "absolute": true
+                    }
+                },
+                "studio1": {
+                  "type": "NinePatch",
+                  "format": {
+                    "type": "Anchored"
+                  },
+                  "data": {
+                    "texture": "studio",
+                    "anchor": [ 0.5, 0.5 ],
+                    "scale": 0.25
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": 0,
+                    "absolute": true
+                  }
+                },
+                "studio2": {
+                    "type": "NinePatch",
                     "format": {
                         "type": "Anchored"
                     },
@@ -105,7 +132,7 @@
                     "layout": {
                         "x_anchor": "center",
                         "y_anchor": "middle",
-                        "y_offset": 0,
+                        "y_offset": 100,
                         "absolute": true
                     }
                 },
@@ -150,24 +177,69 @@
                     "layout": {
                         "x_anchor": "center",
                         "y_anchor": "middle",
-                        "y_offset": -100,
+                        "y_offset": 0,
                         "absolute": true
                     }
                 },
-                "bar"  : {
-                    "type"   : "Progress",
-                    "data"   : {
-                        "anchor"     : [0.5,0.5],
-                        "background" : "progress_background",
-                        "foreground" : "progress_foreground",
-                        "left_cap"   : "progress_leftcap",
-                        "right_cap"  : "progress_rightcap"
+                "bar": {
+                    "type": "Progress",
+                    "data": {
+                        "anchor": [ 0.5, 0.5 ],
+                        "background": "progress_background",
+                        "foreground": "progress_foreground",
+                        "left_cap": "progress_leftcap",
+                        "right_cap": "progress_rightcap"
                     },
-                    "layout" : {
-                        "x_anchor" : "center",
-                        "y_anchor" : "middle",
-                        "y_offset" : -175,
-                        "absolute" : true
+                    "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": -175,
+                        "absolute": true
+                    }
+                },
+                "tutorial": {
+                    "type": "Button",
+                    "data": {
+                        "upnode": "up",
+                        "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
+                        "visible": false,
+                        "pushsize": true,
+                        "anchor": [ 0.5, 0.5 ],
+                        "scale": 0.5
+                    },
+                    "children": {
+                        "up": {
+                            "type": "Image",
+                            "data": {
+                                "texture": "play"
+                            },
+                            "children": {
+                                "label": {
+                                    "type": "Label",
+                                    "format": {
+                                        "type": "Anchored"
+                                    },
+                                    "data": {
+                                        "font": "sans",
+                                        "text": "Tutorial",
+                                        "foreground": [ 0, 0, 0, 255 ],
+                                        "anchor": [ -0.25, -0.5 ],
+                                        "halign": "center",
+                                        "valign": "middle"
+                                    },
+                                    "layout": {
+                                        "x_anchor": "fill",
+                                        "y_anchor": "fill"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": -150,
+                        "absolute": true
                     }
                 }
             }
