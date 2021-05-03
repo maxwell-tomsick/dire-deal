@@ -33,7 +33,7 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 1,
+      "fontSize": 0.75,
       "animation": 1
     },
     "Grab1": {
@@ -51,7 +51,7 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 1,
+      "fontSize": 0.8,
       "animation": 1
     },
     "Grab2": {
@@ -87,7 +87,7 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 1,
+      "fontSize": 0.9,
       "animation": 1
     },
     "Grappled2": {
@@ -105,7 +105,7 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 1,
+      "fontSize": 0.9,
       "animation": 1
     },
     "Exposed1": {
@@ -159,7 +159,7 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 1,
+      "fontSize": 0.9,
       "animation": 1
     },
     "Stunned2": {
@@ -177,7 +177,7 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 1,
+      "fontSize": 0.65,
       "animation": 1
     },
     "Wounded1": {
@@ -195,7 +195,7 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 1,
+      "fontSize": 0.85,
       "animation": 1
     },
     "Wounded2": {
@@ -231,7 +231,7 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 1,
+      "fontSize": 0.75,
       "animation": 1
     },
     "Crushed2": {
@@ -247,9 +247,9 @@
       "reward": 0,
       "addToDeck": [ 8 ],
       "delete": [],
-      "win": false,
+      "win": true,
       "lose": false,
-      "fontSize": 1,
+      "fontSize": 0.9,
       "animation": 1
     },
     "Impaled1": {
@@ -267,7 +267,7 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 1,
+      "fontSize": 0.9,
       "animation": 1
     },
     "Impaled2": {
@@ -285,7 +285,7 @@
       "delete": [],
       "win": true,
       "lose": false,
-      "fontSize": 1,
+      "fontSize": 0.85,
       "animation": 1
     }
   }

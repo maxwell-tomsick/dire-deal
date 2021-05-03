@@ -56,7 +56,7 @@ void LabApp::onStartup() {
     
     // Queue up the other assets
     ratio = Application::getDisplayWidth()/(double)Application::getDisplayHeight();
-    CULog(to_string(ratio).c_str());
+    // CULog(to_string(ratio).c_str());
     if(ratio <= 1.5) {
         _assets->loadDirectoryAsync("json/assets-ipad.json",nullptr);
     } else {
