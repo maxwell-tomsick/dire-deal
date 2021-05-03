@@ -78,6 +78,11 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _menu->activate();
     _displayItem = std::make_shared<scene2::NinePatch>();
     _lockedItemTexture = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_selected-card-locked"));
+    _itemTextures[0] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_item0"));
+    _itemTextures[1] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_item1"));
+    _itemTextures[2] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_item2"));
+    _itemTextures[3] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_item3"));
+    _itemTextures[4] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_item4"));
     _equip = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_equip"));
     _equip->addListener([=](const std::string& name, bool down) {
         if (!down) {
@@ -92,6 +97,9 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _equip->setVisible(false);
     _equipLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_equip_up_label"));
     _lockedItemTexture->setVisible(false);
+    for( int i = 0; i < 5; i++ ){
+        _itemTextures[i]->setVisible(false);
+    }
     _displayText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_displayed-item-text"));
     _displayText1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_displayed-item-text-line1"));
     _displayText2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_displayed-item-text-line2"));
@@ -119,12 +127,15 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _items[3] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_item3-locked"));
     _items[4] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_item4-locked"));
     //_items[5] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_item5-locked"));
+
+    // Textures of items
     for (int i = 0; i < 5; i++) {
         _itemAcquired[i] = true; // will replace once we can actually check this
         _items[i]->addListener([=](const std::string& name, bool down) {
             if (!down) {
                 if (_displayedItemId != i) {
                     _displayedItemId = i;
+                    undisplayItem();
                     displayItem(i);
                 }
             }
@@ -139,14 +150,14 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _equippedItem = -1; // start with no item selected
     _displayedItemId = -1;
     _display = false;
-    _equippedText[0] = "Equipped: Flourish Regen";
-    _itemNames[0] = "Flourish Regen";
-    _equippedText[1] = "Equipped: Lunge Regen";
-    _itemNames[1] = "Lunge Regen";
+    _equippedText[0] = "Equipped: Dance of Steel";
+    _itemNames[0] = "Dance of Steel";
+    _equippedText[1] = "Equipped: Sprint";
+    _itemNames[1] = "Sprint";
     _equippedText[2] = "Equipped: Second Wind";
     _itemNames[2] = "Second Wind";
-    _equippedText[3] = "Equipped: Deck Boost";
-    _itemNames[3] = "Deck Boost";
+    _equippedText[3] = "Equipped: Hoarder";
+    _itemNames[3] = "Hoarder";
     _equippedText[4] = "Equipped: Parasite";
     _itemNames[4] = "Parasite";
     return true;
@@ -189,22 +200,24 @@ void ItemScene::update(float timestep) {}
  */
 void ItemScene::displayItem(int id) {
     //_menuLabel->setText("Back");
+    CULog(to_string(id).c_str());
     if (!_itemAcquired[id]) {
         _displayItem = _lockedItemTexture;
         _equipLabel->setText("Locked");
     }
     else if (_equippedItem != id) {
-        _displayItem = _lockedItemTexture;        
+        _displayItem = _itemTextures[id];
         _equipLabel->setText("Equip");
         }
     else {
-        _displayItem = _lockedItemTexture;
+        _displayItem = _itemTextures[id];
         _equipLabel->setText("Unequip");
     }
     _display = true;
     _equip->setVisible(true);
     _equip->activate();
     _menuLabel->setText("Back");
+    
     _displayItem->setVisible(true);
     _displayText->setText(_itemNames[id]);
     _displayText->setVisible(true);

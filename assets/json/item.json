@@ -15,6 +15,31 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
+    "danceOfSteel": {
+      "file": "textures/cards/dance-of-steel.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "sprint": {
+      "file": "textures/cards/sprint.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "secondWind": {
+      "file": "textures/cards/second-wind.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "jackOfAllTrades": {
+      "file": "textures/cards/jack-of-all-trades.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "parasite": {
+      "file": "textures/cards/parasite.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
     "unequip-button": {
       "file": "textures/card_back_3_v3.png",
       "minfilter": "linear",
@@ -232,7 +257,7 @@
             "up": {
               "type": "Image",
               "data": {
-                "texture": "locked-item"
+                "texture": "danceOfSteel"
               }
             }
           }
@@ -258,7 +283,7 @@
             "up": {
               "type": "Image",
               "data": {
-                "texture": "locked-item"
+                "texture": "sprint"
               }
             }
           }
@@ -283,7 +308,7 @@
             "up": {
               "type": "Image",
               "data": {
-                "texture": "locked-item"
+                "texture": "secondWind"
               }
             }
           }
@@ -309,7 +334,7 @@
             "up": {
               "type": "Image",
               "data": {
-                "texture": "locked-item"
+                "texture": "jackOfAllTrades"
               }
             }
           }
@@ -335,7 +360,7 @@
             "up": {
               "type": "Image",
               "data": {
-                "texture": "locked-item"
+                "texture": "parasite"
               }
             }
           }
@@ -347,6 +372,91 @@
           },
           "data": {
             "texture": "locked-item",
+            "anchor": [ 0.5, 0.5 ],
+            "scale": 0.4
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "middle",
+            "x_offset": -0.14,
+            "y_offset": 0.02
+          }
+        },
+        "item0": {
+          "type": "NinePatch",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "texture": "danceOfSteel",
+            "anchor": [ 0.5, 0.5 ],
+            "scale": 0.4
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "middle",
+            "x_offset": -0.14,
+            "y_offset": 0.02
+          }
+        },
+        "item1": {
+          "type": "NinePatch",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "texture": "sprint",
+            "anchor": [ 0.5, 0.5 ],
+            "scale": 0.4
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "middle",
+            "x_offset": -0.14,
+            "y_offset": 0.02
+          }
+        },
+        "item2": {
+          "type": "NinePatch",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "texture": "secondWind",
+            "anchor": [ 0.5, 0.5 ],
+            "scale": 0.4
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "middle",
+            "x_offset": -0.14,
+            "y_offset": 0.02
+          }
+        },
+        "item3": {
+          "type": "NinePatch",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "texture": "jackOfAllTrades",
+            "anchor": [ 0.5, 0.5 ],
+            "scale": 0.4
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "middle",
+            "x_offset": -0.14,
+            "y_offset": 0.02
+          }
+        },
+        "item4": {
+          "type": "NinePatch",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "texture": "parasite",
             "anchor": [ 0.5, 0.5 ],
             "scale": 0.4
           },

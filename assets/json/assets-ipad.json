@@ -341,6 +341,31 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
+    "danceOfSteel": {
+      "file": "textures/cards/dance-of-steel.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "sprint": {
+      "file": "textures/cards/sprint.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "secondWind": {
+      "file": "textures/cards/second-wind.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "jackOfAllTrades": {
+      "file": "textures/cards/jack-of-all-trades.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "parasite": {
+      "file": "textures/cards/parasite.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
     "poison": {
       "file": "textures/cards/poison.png",
       "minfilter": "linear",
