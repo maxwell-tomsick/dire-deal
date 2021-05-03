@@ -1,61 +1,61 @@
 {
   "images" : [
     {
-      "filename" : "card back 1 v2 copy 6.png",
+      "filename" : "appicon16.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"
     },
     {
-      "filename" : "card back 1 v2 copy 5-1.png",
+      "filename" : "appicon32.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
     },
     {
-      "filename" : "card back 1 v2 copy 5.png",
+      "filename" : "appicon32-1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "32x32"
     },
     {
-      "filename" : "card back 1 v2 copy 4.png",
+      "filename" : "appicon64.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "32x32"
     },
     {
-      "filename" : "card back 1 v2 copy 2.png",
+      "filename" : "appicon128.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "128x128"
     },
     {
-      "filename" : "card back 1 v2 copy-1.png",
+      "filename" : "appicon256.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
     },
     {
-      "filename" : "card back 1 v2 copy.png",
+      "filename" : "appicon256-1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
     },
     {
-      "filename" : "card back 1 v2.png",
+      "filename" : "appicon512.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
-      "filename" : "card back 1 v2-1.png",
+      "filename" : "appicon512-1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "card back 1 v2 copy 3.png",
+      "filename" : "appicon1024.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"
