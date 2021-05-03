@@ -200,7 +200,7 @@ void ItemScene::update(float timestep) {}
  */
 void ItemScene::displayItem(int id) {
     //_menuLabel->setText("Back");
-    CULog(to_string(id).c_str());
+    // CULog(to_string(id).c_str());
     if (!_itemAcquired[id]) {
         _displayItem = _lockedItemTexture;
         _equipLabel->setText("Locked");
