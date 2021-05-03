@@ -51,6 +51,10 @@ protected:
 
 	/** The selection button for an unacquired item */
 	std::shared_ptr<cugl::scene2::NinePatch> _lockedItemTexture;
+
+	/** item textures */
+	std::shared_ptr<cugl::scene2::NinePatch> _itemTextures[5];
+
 	/** Selection buttons for acquired items */
 	std::shared_ptr<cugl::scene2::Button> _itemButtons[5];
 

@@ -1603,23 +1603,23 @@ Card GameScene::getItem(const int i){
      switch (i){
           case 0:
                //Flourish Regen
-               specialCard.allocate("Item", -1, _assets->get<Texture>("item"),{}, {0,3,0,0}, 1);
+               specialCard.allocate("Item", -1, _assets->get<Texture>("danceOfSteel"),{}, {0,3,0,0}, 1);
                return specialCard;
           case 1:
                //Lunge Regen
-               specialCard.allocate("Item", -1, _assets->get<Texture>("item"),{}, {0,0,4,0}, 1);
+               specialCard.allocate("Item", -1, _assets->get<Texture>("sprint"),{}, {0,0,4,0}, 1);
                return specialCard;
           case 2:
                //Second Wind
-               specialCard.allocate("Item", -1, _assets->get<Texture>("item"),{45}, {0,0,0,0}, 2);
+               specialCard.allocate("Item", -1, _assets->get<Texture>("secondWind"),{45}, {0,0,0,0}, 2);
                return specialCard;
           case 3:
                //Deck Boost
-               specialCard.allocate("Item", -1, _assets->get<Texture>("item"),{46}, {0,0,0,0}, 3);
+               specialCard.allocate("Item", -1, _assets->get<Texture>("jackOfAllTrades"),{46}, {0,0,0,0}, 3);
                return specialCard;
           case 4:
                //Parasite
-               specialCard.allocate("Item", -1, _assets->get<Texture>("item"),{47}, {0,0,0,0}, 3);
+               specialCard.allocate("Item", -1, _assets->get<Texture>("parasite"),{47}, {0,0,0,0}, 3);
                return specialCard;
      }
      return specialCard;
