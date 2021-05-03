@@ -1106,6 +1106,274 @@
             }
         }
     },
+      "nextFight": {
+        "type": "Node",
+        "data": {
+          "visible":false
+        },
+        "format": {
+          "type": "Anchored"
+        },
+        "children": {
+            "text": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "Next Fight: ",
+                "foreground": [  207,166,93,255 ],
+                "anchor": [ 0.5, 0.5],
+                "scale": 0.5,
+                "halign": "left",
+                "valign": "middle"
+              },
+              "format": {
+                "type": "Anchored"
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "y_offset": -0.14,
+                "x_offset": 0.18
+              }
+            },
+            "poison": {
+              "type": "Node",
+              "data": {
+                "visible":false
+              },
+              "format": {
+                "type": "Anchored"
+              },
+              "children": {
+                "ability": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "Target Ability: Poison Gas",
+                    "foreground": [  124,229,227,255 ],
+                    "anchor": [ 0.5, 0.5 ],
+                    "scale": 0.5,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": 0.18,
+                    "x_offset": 0.14
+                  }
+                  },
+                  "card" : {
+                      "type"   : "NinePatch",
+                      "data"   : {
+                          "texture": "poison",
+                          "scale": 0.33,
+                          "anchor": [ 0.5, 0.5 ]
+                      },
+                      "layout" : {
+                          "x_anchor": "center",
+                          "y_anchor": "middle",
+                          "y_offset": -0.05,
+                          "x_offset": -0.025
+                      }
+                  },
+                  "text1": {
+                      "type": "Label",
+                      "data": {
+                        "font": "sans",
+                        "text": "Responses remove",
+                        "foreground": [  207,166,93,255 ],
+                        "anchor": [ 0, 0 ],
+                        "scale": 0.4,
+                        "halign": "left",
+                        "valign": "middle"
+                      },
+                      "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": 0.05,
+                        "x_offset": 0.1
+                      }
+                  },
+                  "text2": {
+                      "type": "Label",
+                      "data": {
+                        "font": "sans",
+                        "text": "cards from the",
+                        "foreground": [  207,166,93,255 ],
+                        "anchor": [ 0, 0 ],
+                        "scale": 0.4,
+                        "halign": "left",
+                        "valign": "middle"
+                      },
+                      "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": -0.05,
+                        "x_offset": 0.1
+                      }
+                  },
+                  "text3": {
+                      "type": "Label",
+                      "data": {
+                        "font": "sans",
+                        "text": "deck",
+                        "foreground": [  207,166,93,255 ],
+                        "anchor": [ 0, 0 ],
+                        "scale": 0.4,
+                        "halign": "left",
+                        "valign": "middle"
+                      },
+                      "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": -0.15,
+                        "x_offset": 0.1
+                      }
+                  },
+                  "text4": {
+                      "type": "Label",
+                      "data": {
+                        "font": "sans",
+                        "text": "Cannot be burned",
+                        "foreground": [  207,166,93,255 ],
+                        "anchor": [ 0, 0 ],
+                        "scale": 0.4,
+                        "halign": "left",
+                        "valign": "middle"
+                      },
+                      "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": -0.25,
+                        "x_offset": 0.1
+                      }
+                  }
+                }
+              },
+            "brawler": {
+              "type": "Node",
+              "data": {
+                "visible":false
+              },
+              "format": {
+                "type": "Anchored"
+              },
+              "children": {
+                "ability": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "Target Ability: Brawler",
+                    "foreground": [  124,229,227,255 ],
+                    "anchor": [ 0.5, 0.5 ],
+                    "scale": 0.5,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": 0.18,
+                    "x_offset": 0.16
+                  }
+                  },
+                  "text1": {
+                      "type": "Label",
+                      "data": {
+                        "font": "sans",
+                        "text": "Responses that shuffle higher-",
+                        "foreground": [  207,166,93,255 ],
+                        "anchor": [ 0, 0 ],
+                        "scale": 0.4,
+                        "halign": "left",
+                        "valign": "middle"
+                      },
+                      "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle",
+                        "y_offset": 0.03,
+                        "x_offset": -0.12
+                      }
+                  },
+                  "text2": {
+                      "type": "Label",
+                      "data": {
+                        "font": "sans",
+                        "text": "leveled cards into the deck",
+                        "foreground": [  207,166,93,255 ],
+                        "anchor": [ 0, 0 ],
+                        "scale": 0.4,
+                        "halign": "left",
+                        "valign": "middle"
+                      },
+                      "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": -0.07,
+                        "x_offset": -0.12
+                      }
+                  },
+                  "text3": {
+                      "type": "Label",
+                      "data": {
+                        "font": "sans",
+                        "text": "cost     extra",
+                        "foreground": [  207,166,93,255 ],
+                        "anchor": [ 0, 0 ],
+                        "scale": 0.4,
+                        "halign": "left",
+                        "valign": "middle"
+                      },
+                      "layout": {
+                          "x_anchor": "center",
+                          "y_anchor": "middle",
+                        "y_offset": -0.17,
+                        "x_offset": -0.12
+                      },
+                      "format"    : {
+                          "type"  : "Anchored"
+                      },
+                      "children": {
+                          "brawn": {
+                              "type": "Image",
+                              "data": {
+                                  "texture": "brawn",
+                                  "anchor": [ 0.5, 0.5 ]
+                              },
+                              "layout": {
+                                  "x_anchor": "center",
+                                  "y_anchor": "middle",
+                                  "y_offset": 0,
+                                  "x_offset": -0.05
+                              },
+                              "format"    : {
+                                  "type"  : "Anchored"
+                              },
+                              "children": {
+                                  "amount": {
+                                      "type": "TextField",
+                                      "data": {
+                                        "font": "sans4",
+                                        "text": "2",
+                                        "foreground": [ 241,231,95, 255 ],
+                                        "halign": "center",
+                                        "valign": "true middle",
+                                        "anchor": [ 0.5, 0.5 ]
+                                      },
+                                      "layout": {
+                                        "x_anchor": "center",
+                                        "y_anchor": "middle"
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+                }
+              }
+            }
+        },
     "lab": {
       "comment": "We do not have an asset loader for filmstrips yet, so we do not add the ships",
       "type": "Node",

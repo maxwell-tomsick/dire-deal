@@ -96,6 +96,10 @@ protected:
     std::shared_ptr<cugl::scene2::NinePatch> _black;
     std::shared_ptr<cugl::scene2::Button> _pauseButton;
     std::shared_ptr<cugl::scene2::SceneNode> _pause;
+    std::shared_ptr<cugl::scene2::SceneNode> _nextFight;
+    std::shared_ptr<cugl::scene2::SceneNode> _nextFightPoison;
+    std::shared_ptr<cugl::scene2::SceneNode> _nextFightBrawler;
+    std::shared_ptr<cugl::scene2::Label> _nextFightText;
     std::shared_ptr<cugl::scene2::SceneNode> _musicSliderNode;
     std::shared_ptr<cugl::scene2::SceneNode> _soundSliderNode;
     std::shared_ptr<cugl::scene2::Label> _paused;
@@ -123,6 +127,7 @@ protected:
     std::shared_ptr<cugl::scene2::AnimationNode> _prevBackFlip;
     std::shared_ptr<cugl::scene2::AnimationNode> _cardCut;
     std::shared_ptr<cugl::scene2::AnimationNode> _enemyIdle;
+    std::shared_ptr<cugl::scene2::AnimationNode> _nextEnemy;
     std::shared_ptr<cugl::scene2::AnimationNode> _currentBurn;
     std::shared_ptr<cugl::scene2::NinePatch> _cardHolder;
     std::shared_ptr<cugl::scene2::NinePatch> _middleColumn;

@@ -250,6 +250,27 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      pause->setContentSize(dimen);
      pause->doLayout();
      addChild(pause);
+     
+     _nextEnemy =std::make_shared<scene2::AnimationNode>();
+     _nextEnemy->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
+     _nextEnemy->setScale(_enemyFights[_fight].getScale());
+     _nextEnemy->setPosition(dimen.width * 0.2f, dimen.height*0.44f);
+     _nextEnemy->setVisible(false);
+     addChild(_nextEnemy);
+     _nextFight = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight"));
+     _nextFight->setContentSize(dimen);
+     _nextFight->doLayout();
+     _nextFightPoison = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight_poison"));
+     _nextFightPoison->setContentSize(dimen);
+     _nextFightPoison->doLayout();
+     _nextFightBrawler = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight_brawler"));
+     _nextFightBrawler->setContentSize(dimen);
+     _nextFightBrawler->doLayout();
+     _nextFightText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("nextFight_text"));
+     _nextFightText->setText("Next Fight: Lupine Raider");
+     _nextFight->setVisible(false);
+     addChild(_nextFight);
+
      _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_currEvent"));
      _musicSliderNode = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("pause_musicSlider"));
      _soundSliderNode = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("pause_soundSlider"));
@@ -340,6 +361,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _currentBackFlip->setVisible(true);
      _mainMenu->setVisible(false);
      _mainMenu->setToggle(false);
+     _goonName->setVisible(true);
+     _goonNumber->setVisible(true);
      _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _currentBackFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _goon->setVisible(false);
@@ -583,6 +606,21 @@ void GameScene::reset() {
           _idleBuffer = 0;
           _enemyIdle->setPosition(_dimen.width * currFight.getWscale(), _dimen.height * currFight.getHscale());
           _enemyIdle->setScale(currFight.getScale());
+          
+          if (_fight < _enemyFights.size()){
+               EnemyFight nextFight = _enemyFights[_fight + 1];
+               _nextEnemy->dispose();
+               _nextEnemy->initWithFilmstrip(_assets->get<Texture>(nextFight.getEnemyTexture()),
+                                                                   nextFight.getRows(),
+                                                                   nextFight.getCols(),
+                                                                   nextFight.getFrames());
+               _nextEnemy->setFrame(0);
+               _nextEnemy->setScale(nextFight.getScale());
+               _nextEnemy->setPosition(_dimen.width * nextFight.getWscale(), _dimen.height * nextFight.getHscale());
+               _nextEnemy->setScale(nextFight.getScale());
+               _nextFightText->setText("Next Fight: " + nextFight.getEnemyName());
+          }
+          
           cardstring = "json/level" + to_string(_fight) + ".json";
      }
      //_fight = 4;
@@ -1151,7 +1189,19 @@ void GameScene::update(float timestep) {
          _mainMenu->setVisible(true);
      }
      if (_movement == 12){
-          _mainMenuLabel->setText("Next Fight");
+          _nextEnemy->setVisible(true);
+          _nextFight->setVisible(true);
+          _mainMenuLabel->setText("Start Fight");
+          if (_fight == 3 || _fight == 4){
+               _nextFightPoison->setVisible(true);
+               _nextFightBrawler->setVisible(false);
+          } else if (_fight == 5) {
+               _nextFightBrawler->setVisible(true);
+               _nextFightPoison->setVisible(false);
+          } else {
+               _nextFightPoison->setVisible(false);
+               _nextFightBrawler->setVisible(false);
+          }
           _mainMenu->setVisible(true);
      }
      if (_movement == 13){
@@ -1188,6 +1238,10 @@ void GameScene::update(float timestep) {
           _musicSliderNode->setVisible(true);
           _paused->setVisible(true);
           _pause->setVisible(false);
+          _goonName->setVisible(true);
+          _goonNumber->setVisible(true);
+          _nextEnemy->setVisible(false);
+          _nextFight->setVisible(false);
      }
 #ifndef CU_TOUCH_SCREEN
      if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13) & ((_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))){
@@ -1401,7 +1455,7 @@ void GameScene::buttonPress(const int r){
           _removeCard2->setVisible(false);
          _goon->setVisible(false);
          _currEvent->setText(_enemyFights[_fight-1].getEnemyName() +" Defeated!");
-         _currEvent->setVisible(true);
+         //_currEvent->setVisible(true);
           _currentFlip->setVisible(false);
           _currentBackFlip->setVisible(false);
           _cardHolder->setVisible(false);
@@ -1416,6 +1470,8 @@ void GameScene::buttonPress(const int r){
           _cardHolder->setVisible(false);
           _shuffleFlip->setVisible(false);
           _shuffleBackFlip->setVisible(false);
+          _goonName->setVisible(false);
+          _goonNumber->setVisible(false);
           //_currEvent->setColor(Color4::WHITE);
           if (_fight > _enemyFights.size()){
                _currEvent->setText("Hunt Complete!");
@@ -1658,6 +1714,9 @@ void GameScene::gameOver(){
      _soundSliderNode->setVisible(false);
      _musicSliderNode->setVisible(false);
      _paused->setVisible(false);
+     
+     _goonName->setVisible(false);
+     _goonNumber->setVisible(false);
      
      _black->setVisible(true);
      _cardHolder->setVisible(false);
