@@ -260,9 +260,9 @@ void ItemScene::displayItem(int id) {
         _lungeBurn->setVisible(false);
         _parasiteBurn->setVisible(false);
     } else if (id == 4) {
-        _displayText1->setText("Costs");
+        _displayText1->setText("Costs               to");
         _displayText1->setVisible(true);
-        _displayText2->setText("to keep in the deck. While");
+        _displayText2->setText("keep in the deck. While");
         _displayText2->setVisible(true);
         _displayText3->setText("in the deck, 1 random");
         _displayText3->setVisible(true);

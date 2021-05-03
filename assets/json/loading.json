@@ -81,8 +81,7 @@
                     "layout": {
                         "x_anchor": "center",
                         "y_anchor": "middle",
-                        "y_offset": 115,
-                        "absolute": true
+                        "y_offset": 0.16
                     }
                 },
                 "logo2": {
@@ -93,13 +92,12 @@
                     "data": {
                         "texture": "logo",
                         "anchor": [ 0.5, 0.5 ],
-                        "scale": 0.5
+                        "scale": 0.75
                     },
                     "layout": {
                         "x_anchor": "center",
                         "y_anchor": "middle",
-                        "y_offset": 200,
-                        "absolute": true
+                        "y_offset": 0.16
                     }
                 },
                 "studio1": {
@@ -115,8 +113,7 @@
                   "layout": {
                     "x_anchor": "center",
                     "y_anchor": "middle",
-                    "y_offset": 0,
-                    "absolute": true
+                    "y_offset": -0.1
                   }
                 },
                 "studio2": {
@@ -132,17 +129,14 @@
                     "layout": {
                         "x_anchor": "center",
                         "y_anchor": "middle",
-                        "y_offset": 100,
-                        "absolute": true
+                        "y_offset": -0.1
                     }
                 },
                 "play": {
                     "type": "Button",
                     "data": {
                         "upnode": "up",
-                        "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
                         "visible": false,
-                        "pushsize": true,
                         "anchor": [ 0.5, 0.5 ],
                         "scale": 0.5
                     },
@@ -177,8 +171,8 @@
                     "layout": {
                         "x_anchor": "center",
                         "y_anchor": "middle",
-                        "y_offset": 0,
-                        "absolute": true
+                        "x_offset": -0.2,
+                        "y_offset": -0.3
                     }
                 },
                 "bar": {
@@ -201,9 +195,7 @@
                     "type": "Button",
                     "data": {
                         "upnode": "up",
-                        "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
                         "visible": false,
-                        "pushsize": true,
                         "anchor": [ 0.5, 0.5 ],
                         "scale": 0.5
                     },
@@ -238,8 +230,8 @@
                     "layout": {
                         "x_anchor": "center",
                         "y_anchor": "middle",
-                        "y_offset": -150,
-                        "absolute": true
+                        "y_offset": -0.3,
+                        "x_offset": 0.2
                     }
                 }
             }

@@ -1301,30 +1301,31 @@ void GameScene::buttonPress(const int r){
                response=_responses[_responseId3];
                _shuffleFlip->setPosition(_dimen.width * SHUFFLE_WIDTH_SCALE, _dimen.height*R3_HEIGHT_SCALE);
           }
-
           std::vector<int> cost = response.getResources();
-          for (int i = 0; i < cost.size(); i++) {
-              if (_resources[i] < cost[i]) {
-                  if (r == 0) {
-                      _responseText1->setText("Need Resources");
-                       _responseText1->setScale(0.55f);
-                       _responseText1->setForeground(Color4::WHITE);
-                      _response1->setColor(Color4::GRAY);
-                  } else if (r == 1) {
-                      _responseText2->setText("Need Resources");
-                       _responseText2->setScale(0.55f);
-                       _responseText2->setForeground(Color4::WHITE);
-                      _response2->setColor(Color4::GRAY);
-                  }
-                  else if (r == 2) {
-                      _responseText3->setText("Need Resources");
-                       _responseText3->setScale(0.55f);
-                       _responseText3->setForeground(Color4::WHITE);
-                      _response3->setColor(Color4::GRAY);
-                  }
+          if (_resourceController.getFreeResponse() - 1 != r) {
+               for (int i = 0; i < cost.size(); i++) {
+                   if (_resources[i] < cost[i]) {
+                       if (r == 0) {
+                           _responseText1->setText("Need Resources");
+                            _responseText1->setScale(0.55f);
+                            _responseText1->setForeground(Color4::WHITE);
+                           _response1->setColor(Color4::GRAY);
+                       } else if (r == 1) {
+                           _responseText2->setText("Need Resources");
+                            _responseText2->setScale(0.55f);
+                            _responseText2->setForeground(Color4::WHITE);
+                           _response2->setColor(Color4::GRAY);
+                       }
+                       else if (r == 2) {
+                           _responseText3->setText("Need Resources");
+                            _responseText3->setScale(0.55f);
+                            _responseText3->setForeground(Color4::WHITE);
+                           _response3->setColor(Color4::GRAY);
+                       }
 
-                  return;
-              }
+                       return;
+                   }
+               }
           }
           for (int i = 0; i < cost.size(); i++) {
                if (_resourceController.getFreeResponse() - 1 != r){

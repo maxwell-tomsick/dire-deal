@@ -16,7 +16,7 @@
     },
     "Thug2":{
       "id":2,
-      "enemyName": "Wolven Thug 2",
+      "enemyName": "Lupine Raider",
       "enemyTexture": "thugIdle",
       "deck": [ 0, 1, 3, 3, 3],
       "nextDeck": [],
@@ -44,7 +44,7 @@
     },
     "Slime2":{
       "id": 4,
-      "enemyName": "Cave Slime 2",
+      "enemyName": "Mountain Blob",
       "enemyTexture": "slimeIdle",
       "deck": [ 1, 1, 3, 3],
       "nextDeck": [13],
