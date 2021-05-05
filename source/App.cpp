@@ -71,6 +71,8 @@ void LabApp::onStartup() {
         ofstream progress(Application::getSaveDirectory() + "progress.json");
         progress << "{\"Progress\":{\"HighestLevel\": 0}}";
         progress.close();
+    } else {
+        ifile.close();
     }
     Application::onStartup(); // YOU MUST END with call to parent
 }
