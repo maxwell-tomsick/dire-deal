@@ -583,18 +583,18 @@ void GameScene::reset() {
      std::shared_ptr<JsonValue> progress = jsonReaderHighestLevel->readJson()->get("Progress");
      int highestLevel = progress->get("HighestLevel")->asInt();
      if (_fight -1 > highestLevel){
-          ofstream progress(Application::get()->getSaveDirectory() + "progress.json", std::ofstream::trunc);
-          progress << "{\"Progress\":{\"HighestLevel\": "+ to_string(_fight-1) + "}}";
-          progress.close();
+          std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::get()->getSaveDirectory() + "progress.json");
+          textWriter->write("{\"Progress\":{\"HighestLevel\": "+ to_string(_fight-1) + "}}");
+          textWriter->close();
      }
      if (_fight == 3){
      _audioQueue->clear();
-     _audioQueue->play(_assets->get<Sound>("introSlime"));
-     _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true);
+     _audioQueue->play(_assets->get<Sound>("introSlime"), false, _musicVolume, false);
+     _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true, _musicVolume, false);
      } else if (_fight == 5){
           _audioQueue->clear();
-          _audioQueue->play(_assets->get<Sound>("introThug"));
-          _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true);
+          _audioQueue->play(_assets->get<Sound>("introThug"), false,_musicVolume, false);
+          _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true, _musicVolume, false);
      }
      
      _goonNumber->setText("Target " + std::to_string(_fight) + ":");

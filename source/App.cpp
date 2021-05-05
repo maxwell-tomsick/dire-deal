@@ -64,6 +64,12 @@ void LabApp::onStartup() {
     }
     AudioEngine::start();
     
+    if (!filetool::file_exists(Application::getSaveDirectory() + "progress.json")){
+        std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::getSaveDirectory() + "progress.json");
+        textWriter->write("{\"Progress\":{\"HighestLevel\": 0}}");
+        textWriter->close();
+    }
+    /*
     ifstream ifile;
     //cout<<Application::getSaveDirectory();
     ifile.open(Application::getSaveDirectory() + "progress.json");
@@ -73,7 +79,7 @@ void LabApp::onStartup() {
         progress.close();
     } else {
         ifile.close();
-    }
+    }*/
     Application::onStartup(); // YOU MUST END with call to parent
 }
 
