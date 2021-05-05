@@ -65,6 +65,7 @@ void LabApp::onStartup() {
     AudioEngine::start();
     
     if (!filetool::file_exists(Application::getSaveDirectory() + "progress.json")){
+        filetool::file_create(Application::getSaveDirectory() + "progress.json");
         std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::getSaveDirectory() + "progress.json");
         textWriter->write("{\"Progress\":{\"HighestLevel\": 0}}");
         textWriter->close();
