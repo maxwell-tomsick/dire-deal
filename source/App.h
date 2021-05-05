@@ -16,6 +16,7 @@
 #include "GameScene.h"
 #include "ItemScene.h"
 #include "LoadingScene.h"
+#include <fstream>
 
 /**
  * This class represents the application root for the ship demo.

@@ -577,6 +577,14 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
+     std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc(Application::get()->getSaveDirectory() + "progress.json");
+     std::shared_ptr<JsonValue> progress = jsonReaderHighestLevel->readJson()->get("Progress");
+     int highestLevel = progress->get("HighestLevel")->asInt();
+     if (_fight -1 > highestLevel){
+          ofstream progress(Application::get()->getSaveDirectory() + "progress.json", std::ofstream::trunc);
+          progress << "{\"Progress\":{\"HighestLevel\": "+ to_string(_fight-1) + "}}";
+          progress.close();
+     }
      if (_fight == 3){
      _audioQueue->clear();
      _audioQueue->play(_assets->get<Sound>("introSlime"));

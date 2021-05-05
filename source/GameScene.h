@@ -17,6 +17,7 @@
 #include <sstream>
 #include <vector>
 #include <map>
+#include <fstream>
 #include <cugl/audio/CUAudioEngine.h>
 #include "InputController.h"
 #include "ResourceController.h"
@@ -25,7 +26,6 @@
 #include "Deck.h"
 #include "Card.h"
 #include "Response.h"
-
 
 /**
  * This class is the primary gameplay constroller for the demo.

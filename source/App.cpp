@@ -63,6 +63,15 @@ void LabApp::onStartup() {
         _assets->loadDirectoryAsync("json/assets.json",nullptr);
     }
     AudioEngine::start();
+    
+    ifstream ifile;
+    //cout<<Application::getSaveDirectory();
+    ifile.open(Application::getSaveDirectory() + "progress.json");
+    if (!ifile) {
+        ofstream progress(Application::getSaveDirectory() + "progress.json");
+        progress << "{\"Progress\":{\"HighestLevel\": 0}}";
+        progress.close();
+    }
     Application::onStartup(); // YOU MUST END with call to parent
 }
 
