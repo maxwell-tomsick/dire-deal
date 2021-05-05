@@ -32,7 +32,8 @@ protected:
 	std::shared_ptr<cugl::scene2::Button> _equip;
 	std::shared_ptr<cugl::scene2::Label> _equipLabel;
 	/** The buttons for each item icon */
-	std::shared_ptr<cugl::scene2::Button> _items[5];
+	std::shared_ptr<cugl::scene2::Button> _unlockedItems[5];
+    std::shared_ptr<cugl::scene2::NinePatch> _lockedItems[5];
 
 	/** Text indicating the currently equipped item */
 	std::shared_ptr<cugl::scene2::Label> _currText;
@@ -64,10 +65,12 @@ protected:
 	/** The item the player currently has displayed */
 	int _displayedItemId;
 	/** Array indicating which items have been found */
-	bool _itemAcquired[5];
+    bool _itemAcquired[5] = {false, false, false, false,false};
 	/** Text for each item */
 	string _equippedText[5];
 	string _itemNames[5];
+    
+    int _highestLevel;
 
 	/** 
 	 * Value indicating whether to continue to the game or

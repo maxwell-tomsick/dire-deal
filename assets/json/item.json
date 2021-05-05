@@ -11,7 +11,32 @@
       "magfilter": "linear"
     },
     "locked-item": {
-      "file": "textures/card_back_3_v2.png",
+      "file": "textures/lockedsword.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "steel-Sword": {
+      "file": "textures/steelSword.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "sprint-Sword": {
+      "file": "textures/sprintSword.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "second-Wind-Sword": {
+      "file": "textures/secondWindSword.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "hoarder-Sword": {
+      "file": "textures/hoarderSword.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "parasite-Sword": {
+      "file": "textures/parasiteSword.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -83,13 +108,13 @@
             "upnode": "up",
             "visible": false,
             "anchor": [ 0.5, 0.5 ],
-            "scale": 0.4
+            "scale": 0.3
           },
           "layout": {
-            "x_anchor": "right",
-            "y_anchor": "bottom",
-            "x_offset": -0.15,
-            "y_offset":0.1
+              "x_anchor": "right",
+              "y_anchor": "top",
+              "x_offset": -0.1,
+              "y_offset": -0.32
           },
           "children": {
             "up": {
@@ -130,13 +155,13 @@
             "upnode": "up",
             "visible": false,
             "anchor": [ 0.5, 0.5 ],
-            "scale": 0.4
+            "scale": 0.3
           },
           "layout": {
             "x_anchor": "right",
             "y_anchor": "top",
-            "x_offset": -0.15,
-            "y_offset": -0.15
+            "x_offset": -0.1,
+            "y_offset": -0.49
           },
           "children": {
             "up": {
@@ -160,8 +185,7 @@
                   },
                   "layout": {
                     "x_anchor": "right",
-                    "y_anchor": "bottom",
-                    "absolute": true
+                    "y_anchor": "bottom"
                   }
                 }
               }
@@ -177,13 +201,13 @@
             "upnode": "up",
             "visible": false,
             "anchor": [ 0.5, 0.5 ],
-            "scale": 0.4
+            "scale": 0.3
           },
           "layout": {
-            "x_anchor": "left",
-            "y_anchor": "bottom",
-            "x_offset": 0.15,
-            "y_offset": 0.1
+              "x_anchor": "right",
+              "y_anchor": "top",
+              "x_offset": -0.1,
+              "y_offset": -0.15
           },
           "children": {
             "up": {
@@ -221,6 +245,7 @@
             "type": "Anchored"
           },
           "data": {
+              "visible": false,
             "font": "sans",
             "text": "Choose an Item:",
             "foreground": [ 255, 255, 255, 255 ],
@@ -236,131 +261,220 @@
             "y_offset": 0.42
           }
         },
-        "item0-locked": {
-          "type": "Button",
+        "items-locked": {
+          "type": "Image",
           "format": {
             "type": "Anchored"
           },
           "data": {
             "upnode": "up",
-            "visible": false,
             "anchor": [ 0, 0.5 ],
-            "scale": 0.1
+            "scale": 0.3,
+            "texture": "locked-item"
           },
           "layout": {
             "x_anchor": "left",
             "y_anchor": "middle",
             "x_offset": 0.05,
-            "y_offset": 0.22
+            "y_offset": 0.15
           },
           "children": {
-            "up": {
-              "type": "Image",
+              "item0-locked": {
+                "type": "NinePatch",
+                "format": {
+                  "type": "Anchored"
+                },
+                "data": {
+                    "texture": "locked-item",
+                  "visible": false,
+                  "anchor": [ 0, 0.5 ]
+                },
+                "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "middle"
+                }
+              },
+              "item1-locked": {
+                "type": "NinePatch",
+                "format": {
+                  "type": "Anchored"
+                },
+                "data": {
+                    "texture": "locked-item",
+                  "visible": false,
+                  "anchor": [ 0, 0.5 ]
+                },
+                "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "middle",
+                  "x_offset": 1.25
+                }
+              },
+              "item2-locked": {
+                "type": "NinePatch",
+                "format": {
+                  "type": "Anchored"
+                },
+                "data": {
+                    "texture": "locked-item",
+                  "visible": false,
+                  "anchor": [ 0, 0.5 ]
+                },
+                "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "middle",
+                  "x_offset": 2.5
+                }
+              },
+              "item3-locked": {
+                "type": "NinePatch",
+                "format": {
+                  "type": "Anchored"
+                },
+                "data": {
+                    "texture": "locked-item",
+                  "visible": false,
+                  "anchor": [ 0, 0.5 ]
+                },
+                "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "middle",
+                  "x_offset": 3.75
+                }
+              },
+              "item4-locked": {
+                "type": "NinePatch",
+                "format": {
+                  "type": "Anchored"
+                },
+                "data": {
+                    "texture": "locked-item",
+                  "visible": false,
+                  "anchor": [ 0, 0.5 ]
+                },
+                "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "middle",
+                  "x_offset": 5.0
+                }
+              },
+            "item0-unlocked": {
+              "type": "Button",
+              "format": {
+                "type": "Anchored"
+              },
               "data": {
-                "texture": "danceOfSteel"
+                "upnode": "up",
+                "visible": false,
+                "anchor": [ 0, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "middle"
+              },
+              "children": {
+                "up": {
+                  "type": "Image",
+                  "data": {
+                    "texture": "steel-Sword"
+                  }
+                }
               }
-            }
-          }
-        },
-        "item1-locked": {
-          "type": "Button",
-          "format": {
-            "type": "Anchored"
-          },
-          "data": {
-            "upnode": "up",
-            "visible": false,
-            "anchor": [ 0, 0.5 ],
-            "scale": 0.1
-          },
-          "layout": {
-            "x_anchor": "left",
-            "y_anchor": "middle",
-            "x_offset": 0.15,
-            "y_offset": 0.22
-          },
-          "children": {
-            "up": {
-              "type": "Image",
+            },
+            "item1-unlocked": {
+              "type": "Button",
+              "format": {
+                "type": "Anchored"
+              },
               "data": {
-                "texture": "sprint"
+                "upnode": "up",
+                "visible": false,
+                "anchor": [ 0, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "middle",
+                "x_offset": 1.25
+              },
+              "children": {
+                "up": {
+                  "type": "Image",
+                  "data": {
+                    "texture": "sprint-Sword"
+                  }
+                }
               }
-            }
-          }
-        },
-        "item2-locked": {
-          "type": "Button",
-          "format": {
-            "type": "Anchored"
-          },
-          "data": {
-            "upnode": "up",
-            "visible": false,
-            "anchor": [ 0, 0.5 ],
-            "scale": 0.1
-          },
-          "layout": {
-            "x_anchor": "left",
-            "y_anchor": "middle",
-            "x_offset": 0.1
-          },
-          "children": {
-            "up": {
-              "type": "Image",
+            },
+            "item2-unlocked": {
+              "type": "Button",
+              "format": {
+                "type": "Anchored"
+              },
               "data": {
-                "texture": "secondWind"
+                "upnode": "up",
+                "visible": false,
+                "anchor": [ 0, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "middle",
+                "x_offset": 2.5
+              },
+              "children": {
+                "up": {
+                  "type": "Image",
+                  "data": {
+                    "texture": "second-Wind-Sword"
+                  }
+                }
               }
-            }
-          }
-        },
-        "item3-locked": {
-          "type": "Button",
-          "format": {
-            "type": "Anchored"
-          },
-          "data": {
-            "upnode": "up",
-            "visible": false,
-            "anchor": [ 0, 0.5 ],
-            "scale": 0.1
-          },
-          "layout": {
-            "x_anchor": "left",
-            "y_anchor": "middle",
-            "x_offset": 0.05,
-            "y_offset": -0.22
-          },
-          "children": {
-            "up": {
-              "type": "Image",
+            },
+            "item3-unlocked": {
+              "type": "Button",
+              "format": {
+                "type": "Anchored"
+              },
               "data": {
-                "texture": "jackOfAllTrades"
+                "upnode": "up",
+                "visible": false,
+                "anchor": [ 0, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "middle",
+                "x_offset": 3.75
+              },
+              "children": {
+                "up": {
+                  "type": "Image",
+                  "data": {
+                    "texture": "hoarder-Sword"
+                  }
+                }
               }
-            }
-          }
-        },
-        "item4-locked": {
-          "type": "Button",
-          "format": {
-            "type": "Anchored"
-          },
-          "data": {
-            "upnode": "up",
-            "visible": false,
-            "anchor": [ 0, 0.5 ],
-            "scale": 0.1
-          },
-          "layout": {
-            "x_anchor": "left",
-            "y_anchor": "middle",
-            "x_offset": 0.15,
-            "y_offset": -0.22
-          },
-          "children": {
-            "up": {
-              "type": "Image",
+            },
+            "item4-unlocked": {
+              "type": "Button",
+              "format": {
+                "type": "Anchored"
+              },
               "data": {
-                "texture": "parasite"
+                "upnode": "up",
+                "visible": false,
+                "anchor": [ 0, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "middle",
+                "x_offset": 5.0
+              },
+              "children": {
+                "up": {
+                  "type": "Image",
+                  "data": {
+                    "texture": "parasite-Sword"
+                  }
+                }
               }
             }
           }
@@ -390,13 +504,13 @@
           "data": {
             "texture": "danceOfSteel",
             "anchor": [ 0.5, 0.5 ],
-            "scale": 0.4
+            "scale": 0.35
           },
           "layout": {
             "x_anchor": "center",
-            "y_anchor": "middle",
-            "x_offset": -0.14,
-            "y_offset": 0.02
+            "y_anchor": "top",
+            "x_offset": 0.17,
+            "y_offset": -0.35
           }
         },
         "item1": {
@@ -407,13 +521,13 @@
           "data": {
             "texture": "sprint",
             "anchor": [ 0.5, 0.5 ],
-            "scale": 0.4
+            "scale": 0.35
           },
           "layout": {
-            "x_anchor": "center",
-            "y_anchor": "middle",
-            "x_offset": -0.14,
-            "y_offset": 0.02
+              "x_anchor": "center",
+              "y_anchor": "top",
+              "x_offset": 0.17,
+              "y_offset": -0.35
           }
         },
         "item2": {
@@ -424,13 +538,13 @@
           "data": {
             "texture": "secondWind",
             "anchor": [ 0.5, 0.5 ],
-            "scale": 0.4
+            "scale": 0.35
           },
           "layout": {
-            "x_anchor": "center",
-            "y_anchor": "middle",
-            "x_offset": -0.14,
-            "y_offset": 0.02
+              "x_anchor": "center",
+              "y_anchor": "top",
+              "x_offset": 0.17,
+              "y_offset": -0.35
           }
         },
         "item3": {
@@ -441,13 +555,13 @@
           "data": {
             "texture": "jackOfAllTrades",
             "anchor": [ 0.5, 0.5 ],
-            "scale": 0.4
+            "scale": 0.35
           },
           "layout": {
-            "x_anchor": "center",
-            "y_anchor": "middle",
-            "x_offset": -0.14,
-            "y_offset": 0.02
+              "x_anchor": "center",
+              "y_anchor": "top",
+              "x_offset": 0.17,
+              "y_offset": -0.35
           }
         },
         "item4": {
@@ -458,13 +572,13 @@
           "data": {
             "texture": "parasite",
             "anchor": [ 0.5, 0.5 ],
-            "scale": 0.4
+            "scale": 0.35
           },
           "layout": {
-            "x_anchor": "center",
-            "y_anchor": "middle",
-            "x_offset": -0.14,
-            "y_offset": 0.02
+              "x_anchor": "center",
+              "y_anchor": "top",
+              "x_offset": 0.17,
+              "y_offset": -0.35
           }
         },
         "displayed-item-text": {
@@ -495,16 +609,16 @@
           "data": {
             "font": "sans",
             "text": "aaaaaaaaaaaaaaaaaaaa",
-            "anchor": [ 1, 0.5 ],
+            "anchor": [ 0, 0.5 ],
             "visible": false,
             "foreground": [ 255, 255, 255, 255 ],
             "scale": 0.4
           },
           "layout": {
-            "x_anchor": "right",
-            "y_anchor": "middle",
-            "x_offset": -0.07,
-            "y_offset": 0.1
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "x_offset": 0.05,
+            "y_offset": 0.25
           }
         },
         "displayed-item-text-line2": {
@@ -515,16 +629,16 @@
           "data": {
             "font": "sans",
             "text": "aaaaaaaaaaaaaaaaaaaa",
-            "anchor": [ 1, 0.5 ],
+            "anchor": [ 0, 0.5 ],
             "visible": false,
             "foreground": [ 255, 255, 255, 255 ],
             "scale": 0.4
           },
           "layout": {
-            "x_anchor": "right",
-            "y_anchor": "middle",
-            "x_offset": -0.07,
-            "y_offset": 0
+              "x_anchor": "left",
+              "y_anchor": "bottom",
+              "x_offset": 0.05,
+            "y_offset": 0.15
           }
         },
         "displayed-item-text-line3": {
@@ -535,16 +649,16 @@
           "data": {
             "font": "sans",
             "text": "aaaaaaaaaaaaaaaaaaaa",
-            "anchor": [ 1, 0.5 ],
+            "anchor": [ 0, 0.5 ],
             "visible": false,
             "foreground": [ 255, 255, 255, 255 ],
             "scale": 0.4
           },
           "layout": {
-            "x_anchor": "right",
-            "y_anchor": "middle",
-            "x_offset": -0.07,
-            "y_offset": -0.1
+              "x_anchor": "left",
+              "y_anchor": "bottom",
+              "x_offset": 0.05,
+            "y_offset": 0.05
           }
         },
         "displayed-item-text-line4": {
@@ -598,8 +712,8 @@
             "layout": {
                 "x_anchor": "left",
                 "y_anchor": "bottom",
-                "y_offset": 0.51,
-                "x_offset": 0.71
+                "y_offset": 0.26,
+                "x_offset": 0.53
             },
             "format"    : {
                 "type"  : "Anchored"
@@ -633,8 +747,8 @@
             "layout": {
                 "x_anchor": "left",
                 "y_anchor": "bottom",
-                "y_offset": 0.51,
-                "x_offset": 0.71
+                "y_offset": 0.26,
+                "x_offset": 0.53
             },
             "format"    : {
                 "type"  : "Anchored"
@@ -666,10 +780,10 @@
               "visible": false
           },
           "layout": {
-              "x_anchor": "center",
-              "y_anchor": "middle",
-              "y_offset": 0.105,
-              "x_offset": 0.13
+              "x_anchor": "left",
+              "y_anchor": "bottom",
+              "y_offset": 0.26,
+              "x_offset": 0.19
           },
           "format"    : {
               "type"  : "Anchored"
@@ -800,7 +914,7 @@
             "font": "sans",
             "text": "Equipped: None",
             "anchor": [ 0.5, 0.5 ],
-            "visible": true,
+            "visible": false,
             "foreground": [ 207, 166, 93, 255 ],
             "scale": 0.4
           },

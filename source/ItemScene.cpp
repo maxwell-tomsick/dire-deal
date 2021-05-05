@@ -121,27 +121,55 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 
     // Initializing the buttons
     // TODO: Check save file to determine which should be locked/unlocked
-    _items[0] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_item0-locked"));
-    _items[1] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_item1-locked"));
-    _items[2] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_item2-locked"));
-    _items[3] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_item3-locked"));
-    _items[4] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_item4-locked"));
+    std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc("json/progress.json");
+    std::shared_ptr<JsonValue> progress = jsonReaderHighestLevel->readJson()->get("Progress");
+    _highestLevel = progress->get("HighestLevel")->asInt();
+    if (_highestLevel >= 2) {
+        _itemAcquired[0] = true;
+        if (_highestLevel >= 4) {
+            _itemAcquired[1] = true;
+            if (_highestLevel >= 5) {
+                _itemAcquired[2] = true;
+                if (_highestLevel >= 6) {
+                    _itemAcquired[3] = true;
+                    if (_highestLevel >= 7) {
+                        _itemAcquired[4] = true;
+                    }
+                }
+            }
+        }
+    }
+
+    _unlockedItems[0] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item0-unlocked"));
+    _unlockedItems[1] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item1-unlocked"));
+    _unlockedItems[2] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item2-unlocked"));
+    _unlockedItems[3] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item3-unlocked"));
+    _unlockedItems[4] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item4-unlocked"));
+    
+    _lockedItems[0] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_items-locked_item0-locked"));
+    _lockedItems[1] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_items-locked_item1-locked"));
+    _lockedItems[2] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_items-locked_item2-locked"));
+    _lockedItems[3] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_items-locked_item3-locked"));
+    _lockedItems[4] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_items-locked_item4-locked"));
     //_items[5] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_item5-locked"));
 
     // Textures of items
     for (int i = 0; i < 5; i++) {
-        _itemAcquired[i] = true; // will replace once we can actually check this
-        _items[i]->addListener([=](const std::string& name, bool down) {
-            if (!down) {
-                if (_displayedItemId != i) {
-                    _displayedItemId = i;
-                    undisplayItem();
-                    displayItem(i);
+        if (_itemAcquired[i] == true) {
+            _unlockedItems[i]->addListener([=](const std::string& name, bool down) {
+                if (!down) {
+                    if (_displayedItemId != i) {
+                        _displayedItemId = i;
+                        undisplayItem();
+                        displayItem(i);
+                    }
                 }
-            }
-            });
-        _items[i]->setVisible(true);
-        _items[i]->activate();
+                });
+            _unlockedItems[i]->setVisible(true);
+            _unlockedItems[i]->activate();
+        } else {
+            _lockedItems[i]->setVisible(true);
+        }
     }
     _currText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_equipped-item-text"));
     _currText->setText("Equipped: None");
@@ -169,8 +197,8 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 void ItemScene::dispose() {
     removeAllChildren();
     for (int i = 0; i < 5; i++) {
-        _items[i]->clearListeners();
-        _items[i] = nullptr;
+        _unlockedItems[i]->clearListeners();
+        _unlockedItems[i] = nullptr;
     }
     _play->clearListeners();
     _menu->clearListeners();
@@ -216,73 +244,66 @@ void ItemScene::displayItem(int id) {
     _display = true;
     _equip->setVisible(true);
     _equip->activate();
-    _menuLabel->setText("Back");
+    _menuLabel->setText("Hide");
     
     _displayItem->setVisible(true);
     _displayText->setText(_itemNames[id]);
-    _displayText->setVisible(true);
+    _displayText->setVisible(false);
     if (id == 0){
-        _displayText1->setText("No Responses");
+        _displayText1->setText("No Responses. Burns for");
         _displayText1->setVisible(true);
-        _displayText2->setText("Burns for");
+        _displayText2->setText("Appears once per fight.");
         _displayText2->setVisible(true);
-        _displayText3->setText("Appears once per fight");
-        _displayText3->setVisible(true);
+        _displayText3->setVisible(false);
         _displayText4->setVisible(false);
         _displayText5->setVisible(false);
         _flourishBurn->setVisible(true);
         _lungeBurn->setVisible(false);
         _parasiteBurn->setVisible(false);
     } else if (id == 1) {
-        _displayText1->setText("No Responses");
+        _displayText1->setText("No Responses. Burns for");
         _displayText1->setVisible(true);
-        _displayText2->setText("Burns for");
+        _displayText2->setText("Appears once per fight.");
         _displayText2->setVisible(true);
-        _displayText3->setText("Appears once per fight");
-        _displayText3->setVisible(true);
+        _displayText3->setVisible(false);
         _displayText4->setVisible(false);
         _displayText5->setVisible(false);
         _flourishBurn->setVisible(false);
         _lungeBurn->setVisible(true);
         _parasiteBurn->setVisible(false);
     } else if (id == 2) {
-        _displayText1->setText("When this is the last card");
+        _displayText1->setText("When this is the last card in the deck,");
         _displayText1->setVisible(true);
-        _displayText2->setText("in the deck, becomes");
+        _displayText2->setText("this card becomes a copy of the last card burned.");
         _displayText2->setVisible(true);
-        _displayText3->setText("a copy of the last card");
+        _displayText3->setText("Appears once per hunt.");
         _displayText3->setVisible(true);
-        _displayText4->setText("burned");
-        _displayText4->setVisible(true);
-        _displayText5->setText("Appears once per hunt");
-        _displayText5->setVisible(true);
+        _displayText4->setVisible(false);
+        _displayText5->setVisible(false);
         _flourishBurn->setVisible(false);
         _lungeBurn->setVisible(false);
         _parasiteBurn->setVisible(false);
     } else if (id == 3) {
-        _displayText1->setText("Burns with a random");
+        _displayText1->setText("Burns with a random resource type for");
         _displayText1->setVisible(true);
-        _displayText2->setText("resource type for the");
+        _displayText2->setText("the total number of cards in the deck.");
         _displayText2->setVisible(true);
-        _displayText3->setText("total number of cards");
+        _displayText3->setText("Appears once per fight.");
         _displayText3->setVisible(true);
-        _displayText4->setText("Appears once per fight");
-        _displayText4->setVisible(true);
+        _displayText4->setVisible(false);
         _displayText5->setVisible(false);
         _flourishBurn->setVisible(false);
         _lungeBurn->setVisible(false);
         _parasiteBurn->setVisible(false);
     } else if (id == 4) {
-        _displayText1->setText("Costs               to");
+        _displayText1->setText("Costs               to keep in the deck.");
         _displayText1->setVisible(true);
-        _displayText2->setText("keep in the deck. While");
+        _displayText2->setText("While this card is in the deck, 1 random response");
         _displayText2->setVisible(true);
-        _displayText3->setText("in the deck, 1 random");
+        _displayText3->setText("will be free. Appears once per fight.");
         _displayText3->setVisible(true);
-        _displayText4->setText("response will be free");
-        _displayText4->setVisible(true);
-        _displayText5->setText("Appears once per fight");
-        _displayText5->setVisible(true);
+        _displayText4->setVisible(false);
+        _displayText5->setVisible(false);
         _flourishBurn->setVisible(false);
         _lungeBurn->setVisible(false);
         _parasiteBurn->setVisible(true);
