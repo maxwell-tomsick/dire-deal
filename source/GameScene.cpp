@@ -581,8 +581,9 @@ void GameScene::dispose() {
 void GameScene::reset() {
      std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc(Application::get()->getSaveDirectory() + "progress.json");
      std::shared_ptr<JsonValue> progress = jsonReaderHighestLevel->readJson()->get("Progress");
+     jsonReaderHighestLevel->close();
      int highestLevel = progress->get("HighestLevel")->asInt();
-     if (_fight -1 > highestLevel){
+     if (_fight - 1 > highestLevel) {
           std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::get()->getSaveDirectory() + "progress.json");
           textWriter->write("{\"Progress\":{\"HighestLevel\": "+ to_string(_fight-1) + "}}");
           textWriter->close();

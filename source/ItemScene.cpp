@@ -123,6 +123,7 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // TODO: Check save file to determine which should be locked/unlocked
     std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc(Application::get()->getSaveDirectory() + "progress.json");
     std::shared_ptr<JsonValue> progress = jsonReaderHighestLevel->readJson()->get("Progress");
+    jsonReaderHighestLevel->close();
     _highestLevel = progress->get("HighestLevel")->asInt();
     if (_highestLevel >= 2) {
         _itemAcquired[0] = true;
