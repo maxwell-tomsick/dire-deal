@@ -75,28 +75,30 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _pause->doLayout();
      
      _usedSecondWind = false;
-     if (!tutorial) {
-         _fight = 1;
-     }
-     else {
-         _fight = 6;
-     }
+     _fight = 1;
+     
      _item = equippedItem;
      _cards = {};
      _responses = {};
      _enemyFights = {};
      //RESEARCH WHETHER TO DELETE POINTER LATER
-     string enemyFightsJsonName = "json/enemyFights.json";
-     if (ratio <= 1.5) {
-          enemyFightsJsonName = "json/enemyFights-ipad.json";
-     }
-     std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
-     _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
      if (!tutorial) {
+         string enemyFightsJsonName = "json/enemyFights.json";
+         if (ratio <= 1.5) {
+              enemyFightsJsonName = "json/enemyFights-ipad.json";
+         }
+         std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
+         _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
          std::shared_ptr<JsonReader> jsonReaderLevel1 = JsonReader::alloc("json/level1.json");
          _cards = getJsonCards(jsonReaderLevel1, _cards, _assets);
      }
      else {
+         string enemyFightsJsonName = "json/tutorialFight.json";
+         if (ratio <= 1.5) {
+             enemyFightsJsonName = "json/tutorialFight-ipad.json";
+         }
+         std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
+         _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
          std::shared_ptr<JsonReader> jsonReaderTutorial = JsonReader::alloc("json/tutorial.json");
          _cards = getJsonCards(jsonReaderTutorial, _cards, _assets);
      }
@@ -577,14 +579,6 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
-     std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc(Application::get()->getSaveDirectory() + "progress.json");
-     std::shared_ptr<JsonValue> progress = jsonReaderHighestLevel->readJson()->get("Progress");
-     int highestLevel = progress->get("HighestLevel")->asInt();
-     if (_fight -1 > highestLevel){
-          ofstream progress(Application::get()->getSaveDirectory() + "progress.json", std::ofstream::trunc);
-          progress << "{\"Progress\":{\"HighestLevel\": "+ to_string(_fight-1) + "}}";
-          progress.close();
-     }
      if (_fight == 3){
      _audioQueue->clear();
      _audioQueue->play(_assets->get<Sound>("introSlime"));
