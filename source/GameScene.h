@@ -168,6 +168,7 @@ protected:
     int _item;
     int _goonInt;
     int _burnInt;
+    int _highestLevel;
     //std::shared_ptr<cugl::AudioEngine> _audioEngine;
     std::shared_ptr<cugl::AudioQueue> _audioQueue;
     const float WIDTH_SCALE = 0.517f;
@@ -328,6 +329,10 @@ public:
     void removeCard(const int id);
     
     void gameOver();
+    
+    void setProgressJson();
+    
+    void setGameJson(bool startingDeck);
 };
 
 #endif /* __GAME_SCENE_H__ */

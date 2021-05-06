@@ -99,7 +99,7 @@ namespace JsonLoader{
     }
 
     static std::map<int, EnemyFight> getJsonEnemyFights(std::shared_ptr<JsonReader> jsonReader, std::map<int, EnemyFight>& enemyFights) {
-        std::cout << "asdf";
+        //std::cout << "asdf";
         std::shared_ptr<JsonValue> fightsJson = getJsonItem(jsonReader, "Fights");
         for (int i = 0; i < fightsJson->size(); i++) {
             std::shared_ptr<JsonValue> jsonItem = fightsJson->get(i);
@@ -117,7 +117,7 @@ namespace JsonLoader{
             EnemyFight enemyFight;
             enemyFight.allocate(enemyName, deck, nextDeck, enemyTexture, rows, cols, frames, wscale, hscale, id, scale);
             // index at 1
-            enemyFights[i + 1] = enemyFight;
+            enemyFights[id] = enemyFight;
         }
         return enemyFights;
     }

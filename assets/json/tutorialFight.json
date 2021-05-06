@@ -1,7 +1,7 @@
 {
   "Fights": {
     "Tutorial": {
-      "id": 0,
+      "id": 1,
       "enemyName": "Tutorial",
       "enemyTexture": "thugIdle",
       "deck": [ 0, 1 ],

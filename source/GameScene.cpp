@@ -56,11 +56,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _dimen = dimen;
     // Start up the input handler
     _assets = assets;
-    
-     _audioQueue = AudioEngine::get()->getMusicQueue();
-     _audioQueue->play(_assets->get<Sound>("introThug"));
-     _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true);
-
      
     // Acquire the scene built by the asset loader and resize it the scene
      std::shared_ptr<scene2::SceneNode> background = _assets->get<scene2::SceneNode>("background");
@@ -74,10 +69,40 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _pause->setContentSize(dimen);
      _pause->doLayout();
      
-     _usedSecondWind = false;
-     _fight = 1;
+     bool savedGame = false;
+     bool startingDeck = true;
+     if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json") & !tutorial){
+          savedGame = true;
+          std::shared_ptr<JsonReader> jsonReaderSaveFile = JsonReader::alloc(Application::get()->getSaveDirectory() + "savedGame.json");
+          std::shared_ptr<JsonValue> readJ = jsonReaderSaveFile->readJson();
+          int fight = readJ->get("Fight")->asInt();
+          bool startDeck = readJ->get("StartingDeck")->asBool();
+          std::vector<int> currentDeck = readJ->get("CurrentDeck")->asIntArray();
+          int item = readJ->get("Item")->asInt();
+          bool secondWindUsed = readJ->get("SecondWindUsed")->asBool();
+          std::vector<int> resources = readJ->get("Resources")->asIntArray();
+          jsonReaderSaveFile->close();
+          
+          _fight = fight;
+          _item = item;
+          _usedSecondWind = secondWindUsed;
+          _resources = resources;
+          startingDeck = startDeck;
+          if (!startDeck){
+               _currentDeck = currentDeck;
+          }
+     } else {
+          _usedSecondWind = false;
+          _fight = 1;
+          _item = equippedItem;
+          if (!tutorial) {
+              _resources = { 40, 40, 40, 40 };
+          } else {
+              _resources = { 15, 15, 0, 0 };
+          }
+          setGameJson(true);
+     }
      
-     _item = equippedItem;
      _cards = {};
      _responses = {};
      _enemyFights = {};
@@ -89,8 +114,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
          }
          std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
          _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
-         std::shared_ptr<JsonReader> jsonReaderLevel1 = JsonReader::alloc("json/level1.json");
-         _cards = getJsonCards(jsonReaderLevel1, _cards, _assets);
+          string cardstring = "json/level" + to_string(_fight) + ".json";
+         std::shared_ptr<JsonReader> jsonReaderCardString = JsonReader::alloc(cardstring);
+         _cards = getJsonCards(jsonReaderCardString, _cards, _assets);
      }
      else {
          string enemyFightsJsonName = "json/tutorialFight.json";
@@ -105,7 +131,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      Card item = getItem(_item);
      _cards[-1] = item;
      if (!tutorial) {
-         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responses1.json");
+          std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responses" + to_string(_fight) + ".json");
          _responses = getJsonResponses(jsonReaderResponses, _responses);
      }
      else {
@@ -113,8 +139,24 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
          _responses = getJsonResponses(jsonReaderResponses, _responses);
      }
      //cout << cardsArray->asString();
-     _currentDeck = {};
      _nextDeck = {};
+     if (startingDeck){
+          _currentDeck = {};
+          if ((_item >= 0) & !((_item == 2) & _usedSecondWind)){
+               _currentDeck.push_back(-1);
+          }
+          std::vector<int> currDeck = _enemyFights[_fight].getDeck();
+          for (int i = 0; i < currDeck.size(); i++){
+               _currentDeck.push_back(currDeck[i]);
+          }
+          std::vector<int> nextDeck = _enemyFights[_fight].getNextDeck();
+          for (int i = 0; i < nextDeck.size(); i++){
+               _nextDeck.push_back(nextDeck[i]);
+          }
+          std::random_device rd;
+          std::mt19937 g(rd());
+          std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
+     }
      _keepCards = false;
      _win = false;
      _doBurn = false;
@@ -123,22 +165,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _display2 = true;
      _display3 = true;
      _tutorial = tutorial;
-     if (_item >= 0){
-          _currentDeck.push_back(-1);
-     }
-     std::vector<int> currDeck = _enemyFights[_fight].getDeck();
-     for (int i = 0; i < currDeck.size(); i++){
-          _currentDeck.push_back(currDeck[i]);
-     }
-     std::vector<int> nextDeck = _enemyFights[_fight].getNextDeck();
-     for (int i = 0; i < nextDeck.size(); i++){
-          _nextDeck.push_back(nextDeck[i]);
-     }
      // _currentDeck = (_enemyFights[1].getDeck());
      // _currentDeck.push_back(0);
-     std::random_device rd;
-     std::mt19937 g(rd());
-     std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
      bool itemFound = false;
      int r = 0;
      for (int i = 0; i < _currentDeck.size(); i++){
@@ -173,18 +201,33 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _deckNode->setDrag(false);
      _deckNode->reset();
      //_resources = { 99, 99, 99, 99 };
-     if (!tutorial) {
-         _resources = { 40, 40, 40, 40 };
-     }
-     else {
-         _resources = { 15, 15, 0, 0 };
-     }
+     _goonNumber = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_number"));
+     _goonNumber->setText("Target " + std::to_string(_fight) + ":");
+     _goonName = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_name"));
      _enemyIdle =std::make_shared<scene2::AnimationNode>();
+     /*
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
      _enemyIdle->setScale(_enemyFights[_fight].getScale());
      _idleBuffer = 0;
      _enemyIdle->setPosition(dimen.width * 0.2f, dimen.height*0.44f);
+      */
+     EnemyFight currFight = _enemyFights[_fight];
+     _goonName->setText(currFight.getEnemyName());
+     //CULog("beforefilmstrip");
+     _enemyIdle->initWithFilmstrip(_assets->get<Texture>(
+          currFight.getEnemyTexture()),
+          currFight.getRows(),
+          currFight.getCols(),
+          currFight.getFrames());
+     //CULog("afterfilmstrip");
+     //_enemyIdle->setScale(0.69f);
+     _enemyIdle->setFrame(0);
+     _enemyIdle->setScale(currFight.getScale());
+     _idleBuffer = 0;
+     _enemyIdle->setPosition(_dimen.width * currFight.getWscale(), _dimen.height * currFight.getHscale());
+     _enemyIdle->setScale(currFight.getScale());
      addChild(_enemyIdle);
+     
      addChild(scene);
      addChild(_deckNode);
      _black = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("darken"));
@@ -253,40 +296,75 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      pause->doLayout();
      addChild(pause);
      
-     _nextEnemy =std::make_shared<scene2::AnimationNode>();
+     _nextFightText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("nextFight_text"));
+     /*
      _nextEnemy->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
      _nextEnemy->setScale(_enemyFights[_fight].getScale());
      _nextEnemy->setPosition(dimen.width * 0.2f, dimen.height*0.44f);
-     _nextEnemy->setVisible(false);
-     addChild(_nextEnemy);
+      */
+     if (_fight < _enemyFights.size()){
+          _nextEnemy =std::make_shared<scene2::AnimationNode>();
+          EnemyFight nextFight = _enemyFights[_fight + 1];
+          _nextEnemy->initWithFilmstrip(_assets->get<Texture>(nextFight.getEnemyTexture()),
+                                                              nextFight.getRows(),
+                                                              nextFight.getCols(),
+                                                              nextFight.getFrames());
+          _nextEnemy->setFrame(0);
+          _nextEnemy->setScale(nextFight.getScale());
+          _nextEnemy->setPosition(_dimen.width * nextFight.getWscale(), _dimen.height * nextFight.getHscale());
+          _nextEnemy->setScale(nextFight.getScale());
+          _nextFightText->setText("Next Fight: " + nextFight.getEnemyName());
+          _nextEnemy->setVisible(false);
+          addChild(_nextEnemy);
+     }
      _nextFight = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight"));
      _nextFight->setContentSize(dimen);
      _nextFight->doLayout();
+     _nextFight->setVisible(false);
+     addChild(_nextFight);
      _nextFightPoison = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight_poison"));
      _nextFightPoison->setContentSize(dimen);
      _nextFightPoison->doLayout();
      _nextFightBrawler = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight_brawler"));
      _nextFightBrawler->setContentSize(dimen);
      _nextFightBrawler->doLayout();
-     _nextFightText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("nextFight_text"));
-     _nextFightText->setText("Next Fight: Lupine Raider");
-     _nextFight->setVisible(false);
-     addChild(_nextFight);
 
+     std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc(Application::get()->getSaveDirectory() + "progress.json");
+     std::shared_ptr<JsonValue> readJson = jsonReaderHighestLevel->readJson();
+     std::shared_ptr<JsonValue> progress = readJson->get("Progress");
+     std::shared_ptr<JsonValue> volume = readJson->get("Volume");
+     jsonReaderHighestLevel->close();
+     _highestLevel = progress->get("HighestLevel")->asInt();
+     _musicVolume = volume->get("Music")->asFloat();
+     _soundVolume = volume->get("Sound")->asFloat();
+     
+     _audioQueue = AudioEngine::get()->getMusicQueue();
+     if (_fight < 3){
+          _audioQueue->play(_assets->get<Sound>("introThug"), false,_musicVolume, false);
+          _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true, _musicVolume, false);
+     } else if (_fight < 5){
+          _audioQueue->play(_assets->get<Sound>("introSlime"), false, _musicVolume, false);
+          _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true, _musicVolume, false);
+     } else if (_fight >= 5){
+          _audioQueue->play(_assets->get<Sound>("introThug"), false,_musicVolume, false);
+          _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true, _musicVolume, false);
+     }
+     
      _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_currEvent"));
      _musicSliderNode = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("pause_musicSlider"));
      _soundSliderNode = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("pause_soundSlider"));
      _paused = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_paused"));
      _musicSlider = std::dynamic_pointer_cast<scene2::Slider>(assets->get<scene2::SceneNode>("pause_musicSlider_action"));
-     _musicVolume  = _musicSlider->getValue();
+     _musicSlider->setValue(_musicVolume);
      _audioQueue->setVolume(_musicVolume);
      _musicSlider->addListener([=](const std::string& name, float value) {
          if (_musicVolume != value & _movement == 14) {
              _musicVolume = value;
+              setProgressJson();
          }
      });
      _soundSlider = std::dynamic_pointer_cast<scene2::Slider>(assets->get<scene2::SceneNode>("pause_soundSlider_action"));
-     _soundVolume  = _soundSlider->getValue();
+     _soundSlider->setValue(_soundVolume);
      std::shared_ptr<cugl::scene2::Button> knob = std::dynamic_pointer_cast<scene2::Button>(_soundSlider->getKnob());
      knob->addListener([=](const std::string& name, bool down) {
           if (_movement == 14) {
@@ -300,8 +378,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _soundSlider->addListener([=](const std::string& name, float value) {
          if ( _soundVolume != value & _movement == 14) {
              _soundVolume = value;
+              setProgressJson();
          }
      });
+     
      _shuffle1 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response1_up_shuffle"));
      _shuffle2 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response2_up_shuffle"));
      _shuffle3 = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_response3_up_shuffle"));
@@ -340,8 +420,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _goon = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_goon"));
      _burnLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_cardHolder_amount"));
      _underline = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_goon_underline"));
-     _goonNumber = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_number"));
-     _goonName = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_name"));
      _cardHolder = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_cardHolder"));
      _middleColumn = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_middleColumn"));
      _mainMenu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("pause_mainMenu"));
@@ -579,15 +657,6 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
-     std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc(Application::get()->getSaveDirectory() + "progress.json");
-     std::shared_ptr<JsonValue> progress = jsonReaderHighestLevel->readJson()->get("Progress");
-     jsonReaderHighestLevel->close();
-     int highestLevel = progress->get("HighestLevel")->asInt();
-     if (_fight - 1 > highestLevel) {
-          std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::get()->getSaveDirectory() + "progress.json");
-          textWriter->write("{\"Progress\":{\"HighestLevel\": "+ to_string(_fight-1) + "}}");
-          textWriter->close();
-     }
      if (_fight == 3){
      _audioQueue->clear();
      _audioQueue->play(_assets->get<Sound>("introSlime"), false, _musicVolume, false);
@@ -686,6 +755,7 @@ void GameScene::reset() {
      std::random_device rd;
      std::mt19937 g(rd());
       std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
+     setGameJson(true);
      _currentCard = _cards[_currentDeck.back()];
      bool itemFound = false;
      int r = 0;
@@ -894,6 +964,7 @@ void GameScene::update(float timestep) {
                     std::mt19937 g(rd());
                      std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
                     _nextDeck = {};
+                    setGameJson(false);
                     bool itemFound = false;
                     int r = 0;
                     for (int i = 0; i < _currentDeck.size(); i++){
@@ -1457,6 +1528,10 @@ void GameScene::buttonPress(const int r){
      _keepCards = false;
      if (win){
           _fight += 1;
+          if (((_fight - 1 > _highestLevel)) & !_tutorial) {
+               _highestLevel = _fight-1;
+               setProgressJson();
+          }
           _burnTexture->setVisible(false);
           _prevFlip->setVisible(false);
           _prevBackFlip->setVisible(false);
@@ -1731,6 +1806,44 @@ void GameScene::gameOver(){
      
      _black->setVisible(true);
      _cardHolder->setVisible(false);
+     
+     if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json") & !_tutorial){
+          filetool::file_delete(Application::get()->getSaveDirectory() + "savedGame.json");
+     }
      _movement = 11;
      return;
+}
+
+void GameScene::setProgressJson(){
+     string progress = "{\"Progress\":{\"HighestLevel\": " + to_string(_highestLevel) + "},\"Volume\":{\"Music\":" + to_string(_musicVolume) + ",\"Sound\":" + to_string(_soundVolume) + "}}";
+     std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::get()->getSaveDirectory() + "progress.json");
+     textWriter->write(progress);
+     textWriter->close();
+}
+
+void GameScene::setGameJson(bool startingDeck){
+     if (_tutorial){
+          return;
+     }
+     string currentDeck = "[";
+     for (int i = 0; i < _currentDeck.size(); i++){
+          currentDeck += to_string(_currentDeck[i]);
+          if (i < _currentDeck.size() - 1){
+               currentDeck += ",";
+          }
+     }
+     currentDeck += "]";
+     string sDeck = "false";
+     if (startingDeck){
+          sDeck = "true";
+     }
+     string sWind = "false";
+     if (_usedSecondWind){
+          sWind = "true";
+     }
+     string resources = "[" + to_string(_resources[0]) + "," + to_string(_resources[1]) + "," + to_string(_resources[2]) + "," + to_string(_resources[3]) + "]";
+     string gameSave = "{\"Fight\":"+ to_string(_fight)+",\"StartingDeck\":"+ sDeck+",\"CurrentDeck\":"+ currentDeck+",\"Item\":"+ to_string(_item)+",\"SecondWindUsed\":"+ sWind+",\"Resources\":" + resources + "}";
+     std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::get()->getSaveDirectory() + "savedGame.json");
+     textWriter->write(gameSave);
+     textWriter->close();
 }

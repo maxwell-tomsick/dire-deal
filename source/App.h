@@ -41,6 +41,7 @@ protected:
     bool _itemChosen;
     /** Whether the player chose to go to the main game or tutorial */
     bool _mainGame;
+    bool _continueGame;
     /** Ratio of the display, mostly checking if ipad or not */
     double ratio;
     /** The item the player equips, initially -1. */

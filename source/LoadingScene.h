@@ -43,6 +43,9 @@ protected:
     /** The "play" button */
     std::shared_ptr<cugl::scene2::Button>    _play;
     std::shared_ptr<cugl::scene2::Label>    _playLabel;
+    
+    std::shared_ptr<cugl::scene2::Button>    _continue;
+    std::shared_ptr<cugl::scene2::Label>    _continueLabel;
     /** The "tutorial" button */
     std::shared_ptr<cugl::scene2::Button> _tutorial;
     std::shared_ptr<cugl::scene2::Label> _tutorialLabel;
@@ -60,6 +63,8 @@ protected:
     bool  _completed;
     /** Whether to proceed to the main game or the tutorial */
     bool _mainGame;
+    bool _continueGame;
+    bool _continuable;
 
     
 public:
@@ -123,6 +128,8 @@ public:
      * Returns false if the player chose to go to the tutorial.
      */
     bool goToMainGame() { return _mainGame;  }
+    
+    bool continueMainGame() {return _continueGame;}
 };
 
 #endif /* __LOADING_SCENE_H__ */

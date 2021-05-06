@@ -57,6 +57,7 @@ bool LoadingScene::init(const std::shared_ptr<AssetManager>& assets) {
     layer->setContentSize(dimen);
     layer->doLayout(); // This rearranges the children to fit the screen
     
+    _continuable = filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json");
     _bar = std::dynamic_pointer_cast<scene2::ProgressBar>(assets->get<scene2::SceneNode>("load_bar"));
     _logo1 = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("load_logo1"));
     _logo2 = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("load_logo2"));
@@ -66,6 +67,14 @@ bool LoadingScene::init(const std::shared_ptr<AssetManager>& assets) {
     _studio2->setVisible(false);
     _play = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("load_play"));
     _playLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("load_play_up_label"));
+    _continue = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("load_continue"));
+    _continueLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("load_continue_up_label"));
+    _continue->setVisible(false);
+    _play->setVisible(false);
+    _continue->addListener([=](const std::string& name, bool down) {
+        _continueGame = true;
+        this->_active = down;
+    });
     _play->addListener([=](const std::string& name, bool down) {
         _mainGame = true;
         this->_active = down;
@@ -90,10 +99,13 @@ void LoadingScene::dispose() {
     // Deactivate the button (platform dependent)
     if (isPending()) {
         _play->deactivate();
+        _continue->deactivate();
         _tutorial->deactivate();
     }
     removeAllChildren();
     _play->clearListeners();
+    _continue->clearListeners();
+    _continue = nullptr;
     _tutorial->clearListeners();
     _play = nullptr;
     _tutorial = nullptr;
@@ -123,6 +135,11 @@ void LoadingScene::update(float progress) {
             _logo1->setVisible(false);
             _logo2->setVisible(true);
             _play->setVisible(true);
+            if (_continuable){
+                _playLabel->setText("Restart");
+                _continue->setVisible(true);
+                _continue->activate();
+            }
             _play->activate();
             _tutorial->setVisible(true);
             _tutorial->activate();

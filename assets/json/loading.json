@@ -81,7 +81,7 @@
                     "layout": {
                         "x_anchor": "center",
                         "y_anchor": "middle",
-                        "y_offset": 0.16
+                        "y_offset": 0.25
                     }
                 },
                 "logo2": {
@@ -97,7 +97,7 @@
                     "layout": {
                         "x_anchor": "center",
                         "y_anchor": "middle",
-                        "y_offset": 0.16
+                        "y_offset": 0.25
                     }
                 },
                 "studio1": {
@@ -108,12 +108,12 @@
                   "data": {
                     "texture": "studio",
                     "anchor": [ 0.5, 0.5 ],
-                    "scale": 0.25
+                    "scale": 0.15
                   },
                   "layout": {
                     "x_anchor": "center",
                     "y_anchor": "middle",
-                    "y_offset": -0.1
+                    "y_offset": 0.02
                   }
                 },
                 "studio2": {
@@ -124,12 +124,12 @@
                     "data": {
                         "texture": "studio",
                         "anchor": [ 0.5, 0.5 ],
-                        "scale": 0.25
+                        "scale": 0.15
                     },
                     "layout": {
                         "x_anchor": "center",
                         "y_anchor": "middle",
-                        "y_offset": -0.1
+                        "y_offset": 0.02
                     }
                 },
                 "play": {
@@ -138,7 +138,7 @@
                         "upnode": "up",
                         "visible": false,
                         "anchor": [ 0.5, 0.5 ],
-                        "scale": 0.5
+                        "scale": 0.4
                     },
                     "children": {
                         "up": {
@@ -172,7 +172,50 @@
                         "x_anchor": "center",
                         "y_anchor": "middle",
                         "x_offset": -0.2,
-                        "y_offset": -0.3
+                        "y_offset": -0.16
+                    }
+                },
+                "continue": {
+                    "type": "Button",
+                    "data": {
+                        "upnode": "up",
+                        "visible": false,
+                        "anchor": [ 0.5, 0.5 ],
+                        "scale": 0.4
+                    },
+                    "children": {
+                        "up": {
+                          "type": "Image",
+                          "data": {
+                             "texture": "play"
+                          },
+                            "children": {
+                                "label": {
+                                    "type": "Label",
+                                    "format": {
+                                       "type": "Anchored"
+                                    },
+                                    "data": {
+                                        "font": "sans",
+                                        "text": "Continue",
+                                        "foreground": [ 0, 0, 0, 255 ],
+                                        "anchor": [ -0.25, -0.5 ],
+                                        "halign": "center",
+                                        "valign": "middle"
+                                    },
+                                    "layout": {
+                                        "x_anchor": "fill",
+                                        "y_anchor": "fill"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "x_offset": -0.2,
+                        "y_offset": -0.35
                     }
                 },
                 "bar": {
@@ -197,7 +240,7 @@
                         "upnode": "up",
                         "visible": false,
                         "anchor": [ 0.5, 0.5 ],
-                        "scale": 0.5
+                        "scale": 0.4
                     },
                     "children": {
                         "up": {
@@ -230,7 +273,7 @@
                     "layout": {
                         "x_anchor": "center",
                         "y_anchor": "middle",
-                        "y_offset": -0.3,
+                        "y_offset": -0.16,
                         "x_offset": 0.2
                     }
                 }

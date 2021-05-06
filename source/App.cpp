@@ -48,7 +48,11 @@ void LabApp::onStartup() {
     _assets->attach<Sound>(SoundLoader::alloc()->getHook());
     _assets->attach<scene2::SceneNode>(Scene2Loader::alloc()->getHook());
     _assets->attach<WidgetValue>(WidgetLoader::alloc()->getHook());
-
+    /*
+    if (filetool::file_exists(Application::getSaveDirectory() + "savedGame.json")){
+         filetool::file_delete(Application::getSaveDirectory() + "savedGame.json");
+    }
+     */
     // Create a "loading" screen
     _itemChosen = false;
     _loaded = false;
@@ -65,9 +69,8 @@ void LabApp::onStartup() {
     AudioEngine::start();
     
     if (!filetool::file_exists(Application::getSaveDirectory() + "progress.json")){
-        filetool::file_create(Application::getSaveDirectory() + "progress.json");
         std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::getSaveDirectory() + "progress.json");
-        textWriter->write("{\"Progress\":{\"HighestLevel\": 0}}");
+        textWriter->write("{\"Progress\":{\"HighestLevel\": 0},\"Volume\":{\"Music\":0.5,\"Sound\":0.5}}");
         textWriter->close();
     }
     /*
@@ -159,11 +162,14 @@ void LabApp::update(float timestep) {
         _loading.update(0.01f);
     } else if (!_loaded) {
         _mainGame = _loading.goToMainGame();
+        _continueGame = _loading.continueMainGame();
         _loading.dispose(); // Disables the input listeners in this mode
         if (_mainGame) {
             _item.init(_assets);
-        }
-        else {
+        } else if (_continueGame){
+            _itemChosen = true;
+            _gameplay.init(_assets, -1, ratio, false);
+        } else {
             _itemChosen = true;
             _gameplay.init(_assets, -1, ratio, true);
         }
