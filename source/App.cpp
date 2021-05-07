@@ -182,6 +182,9 @@ void LabApp::update(float timestep) {
         if (_item.getContinue()) {
             _equippedItem = _item.getItem();
             _item.dispose();
+            if (filetool::file_exists(Application::getSaveDirectory() + "savedGame.json")){
+                 filetool::file_delete(Application::getSaveDirectory() + "savedGame.json");
+            }
             _gameplay.init(_assets, _equippedItem, ratio, false);
             _itemChosen = true;
         }

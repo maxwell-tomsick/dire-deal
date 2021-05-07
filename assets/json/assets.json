@@ -557,6 +557,25 @@
                     "y_offset": -0.05
                 }
             },
+            "saving": {
+                "type": "Label",
+                "data": {
+                  "font": "sans4",
+                  "text": "Saving...",
+                  "foreground": [ 207,166,93,255 ],
+                  "halign": "right",
+                  "valign": "true middle",
+                  "anchor": [ 0.5, 0.5 ],
+                  "scale": 0.35,
+                  "visible": false
+                },
+                "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "bottom",
+                  "x_offset": 0.085,
+                  "y_offset":0.057
+                }
+            },
             "cardHolder": {
                 "type": "NinePatch",
                 "data": {

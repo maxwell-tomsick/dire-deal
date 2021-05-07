@@ -133,6 +133,7 @@ protected:
     std::shared_ptr<cugl::scene2::NinePatch> _middleColumn;
     std::shared_ptr<cugl::scene2::Button> _mainMenu;
     std::shared_ptr<cugl::scene2::Label> _mainMenuLabel;
+    std::shared_ptr<cugl::scene2::Label> _saving;
     int _cardBack;
     
     int _responseId1;

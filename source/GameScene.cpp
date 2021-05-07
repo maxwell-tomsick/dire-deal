@@ -69,10 +69,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _pause->setContentSize(dimen);
      _pause->doLayout();
      
-     bool savedGame = false;
      bool startingDeck = true;
      if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json") & !tutorial){
-          savedGame = true;
           std::shared_ptr<JsonReader> jsonReaderSaveFile = JsonReader::alloc(Application::get()->getSaveDirectory() + "savedGame.json");
           std::shared_ptr<JsonValue> readJ = jsonReaderSaveFile->readJson();
           int fight = readJ->get("Fight")->asInt();
@@ -100,7 +98,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           } else {
               _resources = { 15, 15, 0, 0 };
           }
-          setGameJson(true);
+          //setGameJson(true);
      }
      
      _cards = {};
@@ -424,6 +422,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _middleColumn = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_middleColumn"));
      _mainMenu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("pause_mainMenu"));
      _mainMenuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_mainMenu_up_label"));
+     _saving = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_saving"));
+     _saving->setVisible(false);
      _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      // make these more transparent
@@ -965,6 +965,7 @@ void GameScene::update(float timestep) {
                      std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
                     _nextDeck = {};
                     setGameJson(false);
+                    _saving->setVisible(true);
                     bool itemFound = false;
                     int r = 0;
                     for (int i = 0; i < _currentDeck.size(); i++){
@@ -1263,6 +1264,7 @@ void GameScene::update(float timestep) {
                _deckNode->setSize(int(_currentDeck.size()));
                _deckNode->setNextSize(int(_nextDeck.size()));
                _currentBackFlip->setVisible(true);
+               _saving->setVisible(false);
                _movement = 5;
           }
      }
