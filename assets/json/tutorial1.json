@@ -13,37 +13,11 @@
         },
       "level": 1
     },
-    "Grab":{
-      "id": 1,
-      "name": "Grab",
-      "texture": "grab",
-      "reactions": [2,3],
-      "resources": {
-          "blade": 0,
-          "flourish": 0,
-          "lunge": 0,
-          "brawn": 0
-        },
-      "level": 1
-    },
-    "Grappled":{
-      "id": 2,
-      "name": "Grappled",
-      "texture": "grappled",
-      "reactions": [4,5],
-      "resources": {
-          "blade": 0,
-          "flourish": 5,
-          "lunge": 0,
-          "brawn": 0
-        },
-      "level": 2
-    },
     "Exposed":{
-      "id": 3,
+      "id": 1,
       "name": "Exposed",
       "texture": "exposed",
-      "reactions": [6,7],
+      "reactions": [2,3],
       "resources": {
           "blade": 5,
           "flourish": 0,
@@ -52,24 +26,11 @@
         },
       "level": 2
     },
-    "Stunned":{
-      "id": 4,
-      "name": "Stunned",
-      "texture": "stunned",
-      "reactions": [8,9],
-      "resources": {
-          "blade": 0,
-          "flourish": 10,
-          "lunge": 0,
-          "brawn": 0
-        },
-      "level": 3
-    },
     "Wounded":{
-      "id": 5,
+      "id": 2,
       "name": "Wounded",
       "texture": "wounded",
-      "reactions": [10,11],
+      "reactions": [4,5],
       "resources": {
           "blade": 10,
           "flourish": 0,
@@ -78,24 +39,11 @@
         },
       "level": 3
     },
-    "Crushed":{
-      "id": 6,
-      "name": "Crushed",
-      "texture": "crushed",
-      "reactions": [12,13],
-      "resources": {
-          "blade": 0,
-          "flourish": 15,
-          "lunge": 0,
-          "brawn": 0
-        },
-      "level": 4
-    },
     "Impaled":{
-      "id": 7,
+      "id": 3,
       "name": "Impaled",
       "texture": "impaled",
-      "reactions": [14,15],
+      "reactions": [6,7],
       "resources": {
           "blade": 15,
           "flourish": 0,
@@ -105,7 +53,7 @@
       "level": 4
     },
     "Incapacitated":{
-      "id": 8,
+      "id": 4,
       "name": "Incapacitated",
       "texture": "incapacitated",
       "reactions": [],

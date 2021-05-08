@@ -96,7 +96,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           if (!tutorial) {
               _resources = { 40, 40, 40, 40 };
           } else {
-              _resources = { 15, 15, 0, 0 };
+              _resources = { 0, 20, 0, 0 };
           }
           //setGameJson(true);
      }
@@ -112,29 +112,35 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
          }
          std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
          _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
-          string cardstring = "json/level" + to_string(_fight) + ".json";
+         jsonReaderEnemyFights->close();
+         string cardstring = "json/level" + to_string(_fight) + ".json";
          std::shared_ptr<JsonReader> jsonReaderCardString = JsonReader::alloc(cardstring);
          _cards = getJsonCards(jsonReaderCardString, _cards, _assets);
+         jsonReaderCardString->close();
      }
      else {
-         string enemyFightsJsonName = "json/tutorialFight.json";
+         string enemyFightsJsonName = "json/tutorialFights.json";
          if (ratio <= 1.5) {
-             enemyFightsJsonName = "json/tutorialFight-ipad.json";
+             enemyFightsJsonName = "json/tutorialFights-ipad.json";
          }
          std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
          _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
-         std::shared_ptr<JsonReader> jsonReaderTutorial = JsonReader::alloc("json/tutorial.json");
+         jsonReaderEnemyFights->close();
+         std::shared_ptr<JsonReader> jsonReaderTutorial = JsonReader::alloc("json/tutorial1.json");
          _cards = getJsonCards(jsonReaderTutorial, _cards, _assets);
+         jsonReaderTutorial->close();
      }
      Card item = getItem(_item);
      _cards[-1] = item;
      if (!tutorial) {
           std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responses" + to_string(_fight) + ".json");
          _responses = getJsonResponses(jsonReaderResponses, _responses);
+         jsonReaderResponses->close();
      }
      else {
-         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responsestutorial.json");
+         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/tutorialResponses1.json");
          _responses = getJsonResponses(jsonReaderResponses, _responses);
+         jsonReaderResponses->close();
      }
      //cout << cardsArray->asString();
      _nextDeck = {};
@@ -158,7 +164,20 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _keepCards = false;
      _win = false;
      _doBurn = false;
-     _movement = 5;
+     if (!tutorial) {
+         _movement = 5;
+     }
+     else {
+         _tutorialBox = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_tutorialBox"));
+         _tutorialButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_tutorialButton"));
+         _tutorialButton->addListener([=](const std::string& name, float value) {
+             _movement = 5;
+             _tutorialButton->setVisible(false);
+             _tutorialBox->setVisible(false);
+             _goonLabel->setVisible(true);
+         });
+         _movement = 15;
+     }
      _display1 = true;
      _display2 = true;
      _display3 = true;
@@ -199,10 +218,19 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _deckNode->setDrag(false);
      _deckNode->reset();
      //_resources = { 99, 99, 99, 99 };
+     _goonLabel = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_enemyLabel"));
+     if (!tutorial) {
+         _goonLabel->setVisible(true);
+     }
      _goonNumber = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_number"));
      _goonNumber->setText("Target " + std::to_string(_fight) + ":");
      _goonName = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_name"));
-     _enemyIdle =std::make_shared<scene2::AnimationNode>();
+     _enemyIdle = std::make_shared<scene2::AnimationNode>();
+     _sword = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_topsword"));
+     if (!tutorial) {
+         _sword->setVisible(true);
+     }
+     
      /*
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
      _enemyIdle->setScale(_enemyFights[_fight].getScale());
@@ -1050,6 +1078,9 @@ void GameScene::update(float timestep) {
           }
      }
           if (_movement == 6){
+              if (_tutorial) {
+                  _tutorialButton->deactivate();
+              }
           int flipFrame = _currentBackFlip->getFrame();
           flipFrame += 1;
           if (flipFrame >= _currentBackFlip->getSize()){
@@ -1329,6 +1360,12 @@ void GameScene::update(float timestep) {
           _goonNumber->setVisible(true);
           _nextEnemy->setVisible(false);
           _nextFight->setVisible(false);
+     }
+     if (_movement == 15) {
+         _goonLabel->setVisible(false);
+         _tutorialButton->setVisible(true);
+         _tutorialBox->setVisible(true);
+         _tutorialButton->activate();
      }
 #ifndef CU_TOUCH_SCREEN
      if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13) & ((_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))){

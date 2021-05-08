@@ -1,0 +1,148 @@
+{
+  "Responses": {
+    "Attack1": {
+      "id": 0,
+      "name": "Parry",
+      "description": "Shuffle SLASH into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 1,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 0 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Attack2": {
+      "id": 1,
+      "name": "Roll Behind",
+      "description": "Shuffle EXPOSED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 2,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 3 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 0.75,
+      "animation": 1
+    },
+    "Exposed1": {
+      "id": 2,
+      "name": "Evade",
+      "description": "Shuffle EXPOSED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 1,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 3 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Exposed2": {
+      "id": 3,
+      "name": "Backstab",
+      "description": "Shuffle WOUNDED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 3,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 5 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Wounded1": {
+      "id": 4,
+      "name": "Re-Wound",
+      "description": "Shuffle WOUNDED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 1,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 5 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 0.85,
+      "animation": 1
+    },
+    "Wounded2": {
+      "id": 5,
+      "name": "Pierce",
+      "description": "Shuffle IMPALED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 6,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 7 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 1,
+      "animation": 1
+    },
+    "Impaled1": {
+      "id": 6,
+      "name": "Perforate",
+      "description": "Shuffle IMPALED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 1,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 7 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 0.9,
+      "animation": 1
+    },
+    "Impaled2": {
+      "id": 7,
+      "name": "Decapitate",
+      "description": "Shuffle INCAPACITATED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 8,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 8 ],
+      "delete": [],
+      "win": true,
+      "lose": false,
+      "fontSize": 0.85,
+      "animation": 1
+    }
+  }
+}

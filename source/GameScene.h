@@ -87,11 +87,16 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _brawnText;
     std::shared_ptr<cugl::scene2::Label> _flourishText;
     std::shared_ptr<cugl::scene2::Label> _lungeText;
+    std::shared_ptr<cugl::scene2::NinePatch> _sword;
     std::shared_ptr<cugl::scene2::Label> _goon;
+    std::shared_ptr<cugl::scene2::NinePatch> _goonLabel;
     std::shared_ptr<cugl::scene2::Label> _goonName;
     std::shared_ptr<cugl::scene2::Label> _goonNumber;
     std::shared_ptr<cugl::scene2::NinePatch> _underline;
     std::shared_ptr<cugl::scene2::Label> _burnLabel;
+
+    std::shared_ptr<cugl::scene2::NinePatch> _tutorialBox;
+    std::shared_ptr<cugl::scene2::Button> _tutorialButton;
     
     std::shared_ptr<cugl::scene2::NinePatch> _black;
     std::shared_ptr<cugl::scene2::Button> _pauseButton;

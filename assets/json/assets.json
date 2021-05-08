@@ -849,312 +849,153 @@
             }
         }
       }
-      },
-      "darken": {
-        "type": "NinePatch",
-        "data": {
-          "texture": "black",
-          "anchor": [ 0, 0 ],
-          "visible":false
-        },
-        "layout": {
-          "x_anchor": "fill",
-          "y_anchor": "fill"
-        },
-        "format"    : {
-            "type"  : "Anchored"
-        }
     },
-      "pause": {
-        "type": "Node",
-        "data": {
-          "visible":false
+    "darken": {
+      "type": "NinePatch",
+      "data": {
+        "texture": "black",
+        "anchor": [ 0, 0 ],
+        "visible": false
+      },
+      "layout": {
+        "x_anchor": "fill",
+        "y_anchor": "fill"
+      },
+      "format": {
+        "type": "Anchored"
+      }
+    },
+    "pause": {
+      "type": "Node",
+      "data": {
+        "visible": false
+      },
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "currEvent": {
+          "type": "Label",
+          "data": {
+            "font": "sans",
+            "text": "",
+            "foreground": [ 124, 229, 227, 255 ],
+            "anchor": [ 0.5, 0.5 ],
+            "halign": "center",
+            "valign": "middle"
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "bottom",
+            "y_offset": 0.5,
+            "x_offset": 0.015
+          }
         },
-        "format": {
-          "type": "Anchored"
-        },
-        "children": {
-            "currEvent": {
-              "type": "Label",
+        "paused": {
+          "type": "Label",
+          "data": {
+            "font": "sans",
+            "text": "Paused",
+            "foreground": [ 124, 229, 227, 255 ],
+            "anchor": [ 0.5, 0.5 ],
+            "halign": "center",
+            "valign": "middle"
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "bottom",
+            "y_offset": 0.875,
+            "x_offset": 0.015
+          },
+          "format": {
+            "type": "Anchored"
+          },
+          "children": {
+            "underline": {
+              "type": "NinePatch",
               "data": {
-                "font": "sans",
-                "text": "",
-                "foreground": [  124,229,227,255  ],
-                "anchor": [ 0.5, 0.5 ],
-                "halign": "center",
-                "valign": "middle"
+                "texture": "underline",
+                "anchor": [ 0.5, 0.5 ]
               },
               "layout": {
                 "x_anchor": "center",
-                "y_anchor": "bottom",
-                "y_offset": 0.5,
-                "x_offset": 0.015
+                "y_anchor": "middle",
+                "y_offset": -0.4,
+                "x_offset": 0
               }
-            },
-            "paused": {
-              "type": "Label",
+            }
+          }
+        },
+        "musicSlider": {
+          "type": "Node",
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.6,
+            "x_offset": 0.515
+          },
+          "children": {
+            "action": {
+              "type": "Slider",
               "data": {
-                "font": "sans",
-                "text": "Paused",
-                "foreground": [  124,229,227,255  ],
+                "bounds": [ 0, 20, 400, 0 ],
+                "range": [ 0, 1 ],
+                "value": 0.5,
+                "tick": 0.01,
+                "snap": true,
                 "anchor": [ 0.5, 0.5 ],
-                "halign": "center",
-                "valign": "middle"
-              },
-              "layout": {
-                "x_anchor": "center",
-                "y_anchor": "bottom",
-                "y_offset": 0.875,
-                "x_offset": 0.015
+                "knob": {
+                  "type": "Button",
+                  "data": {
+                    "upnode": "up",
+                    "anchor": [ 0.5, 0.5 ]
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle"
+                  },
+                  "children": {
+                    "up": {
+                      "type": "Image",
+                      "data": {
+                        "texture": "fire",
+                        "scale": 0.4
+                      },
+                      "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle"
+                      }
+                    }
+                  }
+                },
+                "path": {
+                  "type": "Path",
+                  "data": {
+                    "texture": "underline",
+                    "size": [ 400, 2 ]
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle"
+                  }
+                }
               },
               "format": {
                 "type": "Anchored"
               },
-              "children": {
-                  "underline": {
-                      "type": "NinePatch",
-                      "data": {
-                          "texture": "underline",
-                          "anchor": [ 0.5, 0.5 ]
-                      },
-                      "layout": {
-                          "x_anchor": "center",
-                          "y_anchor": "middle",
-                          "y_offset": -0.4,
-                          "x_offset": 0
-                      }
-                  }
-              }
-            },
-            "musicSlider" : {
-                "type"      : "Node",
-                "layout": {
-                  "x_anchor": "left",
-                  "y_anchor": "bottom",
-                  "y_offset": 0.6,
-                  "x_offset": 0.515
-                },
-                "children"  : {
-                    "action"  : {
-                        "type"   : "Slider",
-                        "data"   : {
-                            "bounds" : [0,20,400,0],
-                            "range"  : [0,1],
-                            "value"  : 0.5,
-                            "tick"   : 0.01,
-                            "snap"   : true,
-                            "anchor" : [0.5,0.5],
-                            "knob" : {
-                                    "type"   : "Button",
-                                    "data"   : {
-                                        "upnode"  : "up",
-                                        "anchor": [ 0.5, 0.5 ]
-                                    },
-                                    "layout": {
-                                        "x_anchor": "center",
-                                        "y_anchor": "middle"
-                                    },
-                                    "children": {
-                                        "up" : {
-                                            "type"   : "Image",
-                                            "data"   : {
-                                                "texture": "fire",
-                                                "scale": 0.4
-                                            },
-                                            "layout" : {
-                                                "x_anchor": "center",
-                                                "y_anchor": "middle"
-                                            }
-                                      }
-                                    }
-                            },
-                            "path" : {
-                                "type" : "Path",
-                                "data" : {
-                                    "texture" : "underline",
-                                    "size": [400,2]
-                                },
-                                "layout": {
-                                    "x_anchor": "center",
-                                    "y_anchor": "middle"
-                                }
-                            }
-                        },
-                        "format": {
-                          "type": "Anchored"
-                        },
-                        "layout" : {
-                            "x_anchor" : "center",
-                            "y_anchor" : "middle",
-                            "y_offset": 0,
-                            "x_offset": 0
-                        },
-                        "children" : {
-                            "label" : {
-                                "type": "Image",
-                                "data": {
-                                  "texture": "response5",
-                                  "anchor": [0.5, 0.5 ],
-                                  "scale": [0.5, 0.3]
-                                },
-                                "children": {
-                                  "label": {
-                                    "type": "Label",
-                                    "format": {
-                                      "type": "Anchored"
-                                    },
-                                    "data": {
-                                      "font": "sans",
-                                      "text": "Music Volume",
-                                      "scale": [0.75,1.25],
-                                      "foreground": [ 0, 0, 0, 255 ],
-                                      "anchor": [-0.08, -0.2 ],
-                                      "halign": "center",
-                                      "valign": "middle"
-                                    },
-                                    "layout": {
-                                      "x_anchor": "center",
-                                      "y_anchor": "middle",
-                                      "y_offset": 0.1,
-                                      "x_offset": 0
-                                    }
-                                  }
-                                },
-                                "layout": {
-                                  "x_anchor": "center",
-                                  "y_anchor": "middle",
-                                  "y_offset": 1.0,
-                                  "x_offset": 0
-                                }
-                              }
-                        }
-                    }
-                }
-            },
-            "soundSlider" : {
-                "type"      : "Node",
-                "layout": {
-                  "x_anchor": "left",
-                  "y_anchor": "bottom",
-                  "y_offset": 0.35,
-                  "x_offset": 0.515
-                },
-                "children"  : {
-                    "action"  : {
-                        "type"   : "Slider",
-                        "data"   : {
-                            "bounds" : [0,20,400,0],
-                            "range"  : [0,1],
-                            "value"  : 0.5,
-                            "tick"   : 0.01,
-                            "snap"   : true,
-                            "anchor" : [0.5,0.5],
-                            "knob" : {
-                                    "type"   : "Button",
-                                    "data"   : {
-                                        "upnode"  : "up",
-                                        "anchor": [ 0.5, 0.5 ]
-                                    },
-                                    "layout": {
-                                        "x_anchor": "center",
-                                        "y_anchor": "middle"
-                                    },
-                                    "children": {
-                                        "up" : {
-                                            "type"   : "Image",
-                                            "data"   : {
-                                                "texture": "fire",
-                                                "scale": 0.4
-                                            },
-                                            "layout" : {
-                                                "x_anchor": "center",
-                                                "y_anchor": "middle"
-                                            }
-                                      }
-                                    }
-                            },
-                            "path" : {
-                                "type" : "Path",
-                                "data" : {
-                                    "texture" : "underline",
-                                    "size": [400,2]
-                                },
-                                "layout": {
-                                    "x_anchor": "center",
-                                    "y_anchor": "middle"
-                                }
-                            }
-                        },
-                        "format": {
-                          "type": "Anchored"
-                        },
-                        "layout" : {
-                            "x_anchor" : "center",
-                            "y_anchor" : "middle",
-                            "y_offset": 0,
-                            "x_offset": 0
-                        },
-                        "children" : {
-                            "label" : {
-                                "type": "Image",
-                                "data": {
-                                  "texture": "response5",
-                                  "anchor": [0.5, 0.5 ],
-                                  "scale": [0.5, 0.3]
-                                },
-                                "children": {
-                                  "label": {
-                                    "type": "Label",
-                                    "format": {
-                                      "type": "Anchored"
-                                    },
-                                    "data": {
-                                      "font": "sans",
-                                      "text": "Sound Volume",
-                                      "scale": [0.75,1.25],
-                                      "foreground": [ 0, 0, 0, 255 ],
-                                      "anchor": [-0.07, -0.2 ],
-                                      "halign": "center",
-                                      "valign": "middle"
-                                    },
-                                    "layout": {
-                                      "x_anchor": "center",
-                                      "y_anchor": "middle",
-                                      "y_offset": 0.1,
-                                      "x_offset": 0
-                                    }
-                                  }
-                                },
-                                "layout": {
-                                  "x_anchor": "center",
-                                  "y_anchor": "middle",
-                                  "y_offset": 1.0,
-                                  "x_offset": 0
-                                }
-                              }
-                        }
-                    }
-                }
-            },
-            "mainMenu": {
-              "type": "Button",
-              "data": {
-                "upnode": "up",
-                "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
-                "visible": false,
-                "pushsize": true,
-                "anchor": [ 0.5, 0.5],
-                "scale": 0.6
-              },
-              "format": {
+              "layout": {
                 "x_anchor": "center",
-                "y_anchor": "middle"
+                "y_anchor": "middle",
+                "y_offset": 0,
+                "x_offset": 0
               },
               "children": {
-                "up": {
+                "label": {
                   "type": "Image",
                   "data": {
-                    "texture": "response1"
+                    "texture": "response5",
+                    "anchor": [ 0.5, 0.5 ],
+                    "scale": [ 0.5, 0.3 ]
                   },
                   "children": {
                     "label": {
@@ -1164,11 +1005,66 @@
                       },
                       "data": {
                         "font": "sans",
-                        "text": "Main Menu",
+                        "text": "Music Volume",
+                        "scale": [ 0.75, 1.25 ],
                         "foreground": [ 0, 0, 0, 255 ],
-                        "anchor": [-0.0625, -0.5 ],
+                        "anchor": [ -0.08, -0.2 ],
                         "halign": "center",
                         "valign": "middle"
+                      },
+                      "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": 0.1,
+                        "x_offset": 0
+                      }
+                    }
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": 1.0,
+                    "x_offset": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "soundSlider": {
+          "type": "Node",
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.35,
+            "x_offset": 0.515
+          },
+          "children": {
+            "action": {
+              "type": "Slider",
+              "data": {
+                "bounds": [ 0, 20, 400, 0 ],
+                "range": [ 0, 1 ],
+                "value": 0.5,
+                "tick": 0.01,
+                "snap": true,
+                "anchor": [ 0.5, 0.5 ],
+                "knob": {
+                  "type": "Button",
+                  "data": {
+                    "upnode": "up",
+                    "anchor": [ 0.5, 0.5 ]
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle"
+                  },
+                  "children": {
+                    "up": {
+                      "type": "Image",
+                      "data": {
+                        "texture": "fire",
+                        "scale": 0.4
                       },
                       "layout": {
                         "x_anchor": "center",
@@ -1176,33 +1072,137 @@
                       }
                     }
                   }
+                },
+                "path": {
+                  "type": "Path",
+                  "data": {
+                    "texture": "underline",
+                    "size": [ 400, 2 ]
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle"
+                  }
                 }
               },
+              "format": {
+                "type": "Anchored"
+              },
               "layout": {
-                  "x_anchor": "left",
-                  "y_anchor": "bottom",
-                  "y_offset": 0.15,
-                  "x_offset": 0.515
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": 0,
+                "x_offset": 0
+              },
+              "children": {
+                "label": {
+                  "type": "Image",
+                  "data": {
+                    "texture": "response5",
+                    "anchor": [ 0.5, 0.5 ],
+                    "scale": [ 0.5, 0.3 ]
+                  },
+                  "children": {
+                    "label": {
+                      "type": "Label",
+                      "format": {
+                        "type": "Anchored"
+                      },
+                      "data": {
+                        "font": "sans",
+                        "text": "Sound Volume",
+                        "scale": [ 0.75, 1.25 ],
+                        "foreground": [ 0, 0, 0, 255 ],
+                        "anchor": [ -0.07, -0.2 ],
+                        "halign": "center",
+                        "valign": "middle"
+                      },
+                      "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle",
+                        "y_offset": 0.1,
+                        "x_offset": 0
+                      }
+                    }
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": 1.0,
+                    "x_offset": 0
+                  }
+                }
               }
             }
+          }
+        },
+        "mainMenu": {
+          "type": "Button",
+          "data": {
+            "upnode": "up",
+            "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
+            "visible": false,
+            "pushsize": true,
+            "anchor": [ 0.5, 0.5 ],
+            "scale": 0.6
+          },
+          "format": {
+            "x_anchor": "center",
+            "y_anchor": "middle"
+          },
+          "children": {
+            "up": {
+              "type": "Image",
+              "data": {
+                "texture": "response1"
+              },
+              "children": {
+                "label": {
+                  "type": "Label",
+                  "format": {
+                    "type": "Anchored"
+                  },
+                  "data": {
+                    "font": "sans",
+                    "text": "Main Menu",
+                    "foreground": [ 0, 0, 0, 255 ],
+                    "anchor": [ -0.0625, -0.5 ],
+                    "halign": "center",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle"
+                  }
+                }
+              }
+            }
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.15,
+            "x_offset": 0.515
+          }
         }
+      }
     },
-  "nextFight": {
-    "type": "Node",
-    "data": {
-      "visible":false
-    },
-    "format": {
-      "type": "Anchored"
-    },
-    "children": {
+    "nextFight": {
+      "type": "Node",
+      "data": {
+        "visible": false
+      },
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
         "text": {
           "type": "Label",
           "data": {
             "font": "sans",
             "text": "Next Fight: ",
-            "foreground": [  207,166,93,255 ],
-            "anchor": [ 0.5, 0.5],
+            "foreground": [ 207, 166, 93, 255 ],
+            "anchor": [ 0.5, 0.5 ],
             "scale": 0.5,
             "halign": "left",
             "valign": "middle"
@@ -1220,7 +1220,7 @@
         "poison": {
           "type": "Node",
           "data": {
-            "visible":false
+            "visible": false
           },
           "format": {
             "type": "Anchored"
@@ -1231,7 +1231,7 @@
               "data": {
                 "font": "sans",
                 "text": "Target Ability: Poison Gas",
-                "foreground": [  124,229,227,255 ],
+                "foreground": [ 124, 229, 227, 255 ],
                 "anchor": [ 0.5, 0.5 ],
                 "scale": 0.5,
                 "halign": "left",
@@ -1243,81 +1243,81 @@
                 "y_offset": 0.18,
                 "x_offset": 0.14
               }
+            },
+            "card": {
+              "type": "NinePatch",
+              "data": {
+                "texture": "poison",
+                "scale": 0.33,
+                "anchor": [ 0.5, 0.5 ]
               },
-              "card" : {
-                  "type"   : "NinePatch",
-                  "data"   : {
-                      "texture": "poison",
-                      "scale": 0.33,
-                      "anchor": [ 0.5, 0.5 ]
-                  },
-                  "layout" : {
-                      "x_anchor": "center",
-                      "y_anchor": "middle",
-                      "y_offset": -0.05,
-                      "x_offset": 0
-                  }
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": -0.05,
+                "x_offset": 0
+              }
+            },
+            "text1": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "Responses remove cards",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 0 ],
+                "scale": 0.4,
+                "halign": "left",
+                "valign": "middle"
               },
-              "text1": {
-                  "type": "Label",
-                  "data": {
-                    "font": "sans",
-                    "text": "Responses remove cards",
-                    "foreground": [  207,166,93,255 ],
-                    "anchor": [ 0, 0 ],
-                    "scale": 0.4,
-                    "halign": "left",
-                    "valign": "middle"
-                  },
-                  "layout": {
-                    "x_anchor": "center",
-                    "y_anchor": "middle",
-                    "y_offset": 0.03,
-                    "x_offset": 0.1
-                  }
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": 0.03,
+                "x_offset": 0.1
+              }
+            },
+            "text2": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "from the deck",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 0 ],
+                "scale": 0.4,
+                "halign": "left",
+                "valign": "middle"
               },
-              "text2": {
-                  "type": "Label",
-                  "data": {
-                    "font": "sans",
-                    "text": "from the deck",
-                    "foreground": [  207,166,93,255 ],
-                    "anchor": [ 0, 0 ],
-                    "scale": 0.4,
-                    "halign": "left",
-                    "valign": "middle"
-                  },
-                  "layout": {
-                    "x_anchor": "center",
-                    "y_anchor": "middle",
-                    "y_offset": -0.07,
-                    "x_offset": 0.1
-                  }
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": -0.07,
+                "x_offset": 0.1
+              }
+            },
+            "text3": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "Cannot be burned",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 0 ],
+                "scale": 0.4,
+                "halign": "left",
+                "valign": "middle"
               },
-              "text3": {
-                  "type": "Label",
-                  "data": {
-                    "font": "sans",
-                    "text": "Cannot be burned",
-                    "foreground": [  207,166,93,255 ],
-                    "anchor": [ 0, 0 ],
-                    "scale": 0.4,
-                    "halign": "left",
-                    "valign": "middle"
-                  },
-                  "layout": {
-                    "x_anchor": "center",
-                    "y_anchor": "middle",
-                    "y_offset": -0.17,
-                    "x_offset": 0.1
-                  }
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": -0.17,
+                "x_offset": 0.1
               }
             }
-          },
+          }
+        },
         "brawler": {
           "type": "Node",
           "data": {
-            "visible":false
+            "visible": false
           },
           "format": {
             "type": "Anchored"
@@ -1328,7 +1328,7 @@
               "data": {
                 "font": "sans",
                 "text": "Target Ability: Brawler",
-                "foreground": [  124,229,227,255 ],
+                "foreground": [ 124, 229, 227, 255 ],
                 "anchor": [ 0.5, 0.5 ],
                 "scale": 0.5,
                 "halign": "left",
@@ -1340,102 +1340,102 @@
                 "y_offset": 0.18,
                 "x_offset": 0.14
               }
+            },
+            "text1": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "Responses that shuffle higher-",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 0 ],
+                "scale": 0.4,
+                "halign": "left",
+                "valign": "middle"
               },
-              "text1": {
-                  "type": "Label",
-                  "data": {
-                    "font": "sans",
-                    "text": "Responses that shuffle higher-",
-                    "foreground": [  207,166,93,255 ],
-                    "anchor": [ 0, 0 ],
-                    "scale": 0.4,
-                    "halign": "left",
-                    "valign": "middle"
-                  },
-                  "layout": {
-                      "x_anchor": "center",
-                      "y_anchor": "middle",
-                    "y_offset": 0.03,
-                    "x_offset": 0
-                  }
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": 0.03,
+                "x_offset": 0
+              }
+            },
+            "text2": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "leveled cards into the deck",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 0 ],
+                "scale": 0.4,
+                "halign": "left",
+                "valign": "middle"
               },
-              "text2": {
-                  "type": "Label",
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": -0.07,
+                "x_offset": 0
+              }
+            },
+            "text3": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "cost     extra",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 0 ],
+                "scale": 0.4,
+                "halign": "left",
+                "valign": "middle"
+              },
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": -0.17,
+                "x_offset": 0
+              },
+              "format": {
+                "type": "Anchored"
+              },
+              "children": {
+                "brawn": {
+                  "type": "Image",
                   "data": {
-                    "font": "sans",
-                    "text": "leveled cards into the deck",
-                    "foreground": [  207,166,93,255 ],
-                    "anchor": [ 0, 0 ],
-                    "scale": 0.4,
-                    "halign": "left",
-                    "valign": "middle"
+                    "texture": "brawn",
+                    "anchor": [ 0.5, 0.5 ]
                   },
                   "layout": {
                     "x_anchor": "center",
                     "y_anchor": "middle",
-                    "y_offset": -0.07,
-                    "x_offset": 0
-                  }
-              },
-              "text3": {
-                  "type": "Label",
-                  "data": {
-                    "font": "sans",
-                    "text": "cost     extra",
-                    "foreground": [  207,166,93,255 ],
-                    "anchor": [ 0, 0 ],
-                    "scale": 0.4,
-                    "halign": "left",
-                    "valign": "middle"
+                    "y_offset": 0,
+                    "x_offset": -0.05
                   },
-                  "layout": {
-                      "x_anchor": "center",
-                      "y_anchor": "middle",
-                    "y_offset": -0.17,
-                    "x_offset": 0
-                  },
-                  "format"    : {
-                      "type"  : "Anchored"
+                  "format": {
+                    "type": "Anchored"
                   },
                   "children": {
-                      "brawn": {
-                          "type": "Image",
-                          "data": {
-                              "texture": "brawn",
-                              "anchor": [ 0.5, 0.5 ]
-                          },
-                          "layout": {
-                              "x_anchor": "center",
-                              "y_anchor": "middle",
-                              "y_offset": 0,
-                              "x_offset": -0.05
-                          },
-                          "format"    : {
-                              "type"  : "Anchored"
-                          },
-                          "children": {
-                              "amount": {
-                                  "type": "TextField",
-                                  "data": {
-                                    "font": "sans4",
-                                    "text": "2",
-                                    "foreground": [ 241,231,95, 255 ],
-                                    "halign": "center",
-                                    "valign": "true middle",
-                                    "anchor": [ 0.5, 0.5 ]
-                                  },
-                                  "layout": {
-                                    "x_anchor": "center",
-                                    "y_anchor": "middle"
-                                  }
-                              }
-                          }
+                    "amount": {
+                      "type": "TextField",
+                      "data": {
+                        "font": "sans4",
+                        "text": "2",
+                        "foreground": [ 241, 231, 95, 255 ],
+                        "halign": "center",
+                        "valign": "true middle",
+                        "anchor": [ 0.5, 0.5 ]
+                      },
+                      "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle"
                       }
+                    }
                   }
+                }
               }
             }
           }
         }
+      }
     },
     "lab": {
       "comment": "We do not have an asset loader for filmstrips yet, so we do not add the ships",
@@ -1444,35 +1444,35 @@
         "type": "Anchored"
       },
       "children": {
-          "currCard": {
-              "type"   : "Button",
-              "data"   : {
-                  "anchor"   : [0.5,0.5],
-                  "upnode"  : "up",
-                  "visible":false
+        "currCard": {
+          "type": "Button",
+          "data": {
+            "anchor": [ 0.5, 0.5 ],
+            "upnode": "up",
+            "visible": false
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom"
+          },
+          "format": {
+            "type": "Anchored"
+          },
+          "children": {
+            "up": {
+              "type": "NinePatch",
+              "data": {
+                "texture": "slash",
+                "scale": 0.43,
+                "anchor": [ 0.5, 0.5 ]
               },
               "layout": {
-                  "x_anchor": "left",
-                  "y_anchor": "bottom"
-              },
-              "format"    : {
-                  "type"  : "Anchored"
-              },
-              "children": {
-                  "up" : {
-                      "type"   : "NinePatch",
-                      "data"   : {
-                          "texture": "slash",
-                          "scale": 0.43,
-                          "anchor": [ 0.5, 0.5 ]
-                      },
-                      "layout" : {
-                          "x_anchor": "center",
-                          "y_anchor": "middle"
-                      }
-                  }
+                "x_anchor": "center",
+                "y_anchor": "middle"
               }
-          },
+            }
+          }
+        },
         "action": {
           "type": "TextField",
           "data": {
@@ -1516,98 +1516,346 @@
             }
           }
         },
-        "enemyLabel": {
-            "type": "NinePatch",
-            "data": {
-                "texture": "enemyLabel",
-                "scale": 0.67
-            },
-            "layout": {
+        "tutorialBox": {
+          "type": "Ninepatch",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "texture": "response4",
+            "scale": [ 0.8, 3.5 ],
+            "visible": false,
+            "interior": [ 0.5, 0.5, 0, 500 ],
+            "anchor": [ 0.5, 0.5 ]
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.5,
+            "x_offset": 0.21
+          },
+          "children": {
+            "tutorial-line-1": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "Play by choosing responses from the",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 1 ],
+                "scale": [ 0.3, 0.15 ],
+                "halign": "left",
+                "valign": "middle"
+              },
+              "layout": {
                 "x_anchor": "left",
-                "y_anchor": "bottom",
-                "y_offset": 0.833,
-                "x_offset": 0.045
+                "y_anchor": "top",
+                "x_offset": 0.05,
+                "y_offset": -0.1
+              }
             },
-            "format"    : {
-                "type"  : "Anchored"
+            "tutorial-line-2": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "list on the right to shuffle new",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 1 ],
+                "scale": [ 0.3, 0.15 ],
+                "halign": "left",
+                "valign": "middle"
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "x_offset": 0.05,
+                "y_offset": -0.18
+              }
             },
-            "children":{
-                "number": {
-                    "type": "Label",
-                    "data": {
-                      "font": "sans7",
-                      "text": "Target 1:",
-                      "foreground": [ 207,166,93,255 ],
-                      "halign": "left",
-                      "valign": "true middle",
-                      "anchor": [ 0.5, 0.5 ]
-                    },
-                    "layout": {
-                      "x_anchor": "center",
-                      "y_anchor": "middle",
-                      "y_offset": 0.15,
-                      "x_offset": -0.28
-                    }
-                },
-                "name": {
-                    "type": "Label",
-                    "data": {
-                      "font": "sans6",
-                      "text": "WOLVEN THUG",
-                      "foreground": [ 207,166,93,255 ],
-                      "halign": "center",
-                      "valign": "true middle",
-                      "anchor": [ 0.5, 0.5 ]
-                    },
-                    "layout": {
-                      "x_anchor": "center",
-                      "y_anchor": "middle",
-                      "y_offset": -0.2
-                    }
-                }
+            "tutorial-line-3": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "cards into the deck.",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 1 ],
+                "scale": [ 0.3, 0.15 ],
+                "halign": "left",
+                "valign": "middle"
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "x_offset": 0.05,
+                "y_offset": -0.26
+              }
+            },
+            "tutorial-line-4": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 1 ],
+                "scale": [ 0.3, 0.15 ],
+                "halign": "left",
+                "valign": "middle"
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "x_offset": 0.05,
+                "y_offset": -0.34
+              }
+            },
+            "tutorial-line-5": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "Above responses are resources. Each",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 1 ],
+                "scale": [ 0.3, 0.15 ],
+                "halign": "left",
+                "valign": "middle"
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "x_offset": 0.05,
+                "y_offset": -0.42
+              }
+            },
+            "tutorial-line-6": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "response has a resource cost.",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 1 ],
+                "scale": [ 0.3, 0.15 ],
+                "halign": "left",
+                "valign": "middle"
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "x_offset": 0.05,
+                "y_offset": -0.50
+              }
+            },
+            "tutorial-line-7": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 1 ],
+                "scale": [ 0.3, 0.15 ],
+                "halign": "left",
+                "valign": "middle"
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "x_offset": 0.05,
+                "y_offset": -0.58
+              }
+            },
+            "tutorial-line-8": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "The gems at the bottom of the card",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 1 ],
+                "scale": [ 0.3, 0.15 ],
+                "halign": "left",
+                "valign": "middle"
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "x_offset": 0.05,
+                "y_offset": -0.66
+              }
+            },
+            "tutorial-line-9": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "are their level. Win by shuffling in a",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 1 ],
+                "scale": [ 0.3, 0.15 ],
+                "halign": "left",
+                "valign": "middle"
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "x_offset": 0.05,
+                "y_offset": -0.74
+              }
+            },
+            "tutorial-line-10": {
+              "type": "Label",
+              "data": {
+                "font": "sans",
+                "text": "level five card (blue response).",
+                "foreground": [ 207, 166, 93, 255 ],
+                "anchor": [ 0, 1 ],
+                "scale": [ 0.3, 0.15 ],
+                "halign": "left",
+                "valign": "middle"
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "x_offset": 0.05,
+                "y_offset": -0.82
+              }
             }
+          }
+        },
+        "tutorialButton": {
+          "type": "Button",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "upnode": "up",
+            "visible": false,
+            "anchor": [ 1, 0 ],
+            "scale": 0.3
+          },
+          "layout": {
+            "x_anchor": "right",
+            "y_anchor": "bottom",
+            "x_offset": -0.05,
+            "y_offset": 0.05
+          },
+          "children": {
+            "up": {
+              "type": "NinePatch",
+              "data": {
+                "texture": "response1"
+              },
+              "children": {
+                "label": {
+                  "type": "Label",
+                  "format": {
+                    "type": "Anchored"
+                  },
+                  "data": {
+                    "font": "sans",
+                    "text": "Next",
+                    "foreground": [ 0, 0, 0, 255 ],
+                    "halign": "center",
+                    "valign": "middle",
+                    "anchor": [ -0.85, -0.5 ]
+                  },
+                  "layout": {
+                    "x_anchor": "right",
+                    "y_anchor": "bottom"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "enemyLabel": {
+          "type": "NinePatch",
+          "data": {
+            "texture": "enemyLabel",
+            "scale": 0.67, 
+            "visible": false
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.833,
+            "x_offset": 0.045
+          },
+          "format": {
+            "type": "Anchored"
+          },
+          "children": {
+            "number": {
+              "type": "Label",
+              "data": {
+                "font": "sans7",
+                "text": "Target 1:",
+                "foreground": [ 207, 166, 93, 255 ],
+                "halign": "left",
+                "valign": "true middle",
+                "anchor": [ 0.5, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": 0.15,
+                "x_offset": -0.28
+              }
+            },
+            "name": {
+              "type": "Label",
+              "data": {
+                "font": "sans6",
+                "text": "WOLVEN THUG",
+                "foreground": [ 207, 166, 93, 255 ],
+                "halign": "center",
+                "valign": "true middle",
+                "anchor": [ 0.5, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": -0.2
+              }
+            }
+          }
         },
         "enemy": {
-            "type": "NinePatch",
-            "data": {
-                "texture": "enemy",
-                "scale": 0.67,
-                "visible": false
-            },
-            "layout": {
-                "x_anchor": "left",
-                "y_anchor": "bottom",
-                "y_offset": 0.03,
-                "x_offset": 0.015
-            }
+          "type": "NinePatch",
+          "data": {
+            "texture": "enemy",
+            "scale": 0.67,
+            "visible": false
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.03,
+            "x_offset": 0.015
+          }
         },
         "fire": {
-            "type": "NinePatch",
-            "data": {
-                "texture": "fire",
-                "scale": 0.675,
-                "anchor": [ 0.5, 0.0 ]
-            },
-            "layout": {
-                "x_anchor": "center",
-                "y_anchor": "middle",
-                "y_offset": -0.45,
-                "x_offset": 0.017
-            }
+          "type": "NinePatch",
+          "data": {
+            "texture": "fire",
+            "scale": 0.675,
+            "anchor": [ 0.5, 0.0 ]
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "middle",
+            "y_offset": -0.45,
+            "x_offset": 0.017
+          }
         },
         "fireHolder": {
-            "type": "NinePatch",
-            "data": {
-                "texture": "fireHolder",
-                "scale": 0.675,
-                "anchor": [ 0.5, 0.5 ]
-            },
-            "layout": {
-                "x_anchor": "center",
-                "y_anchor": "middle",
-                "y_offset": -0.45,
-                "x_offset": 0.017
-            }
+          "type": "NinePatch",
+          "data": {
+            "texture": "fireHolder",
+            "scale": 0.675,
+            "anchor": [ 0.5, 0.5 ]
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "middle",
+            "y_offset": -0.45,
+            "x_offset": 0.017
+          }
         },
         "burn": {
           "type": "Widget",
@@ -1620,53 +1868,54 @@
           }
         },
         "goon": {
-            "type": "Label",
-            "data": {
-              "font": "sans5",
-              "text": "Current Event",
-              "foreground": [ 124,229,227,255 ],
-              "halign": "right",
-              "valign": "true middle",
-              "anchor": [ 0.5, 0.5 ],
-              "scale": 0.7
-            },
-            "layout": {
-                "x_anchor": "left",
-                "y_anchor": "bottom",
-                "y_offset": 0.695,
-                "x_offset": 0.635
-            },
-            "format": {
-              "type": "Anchored"
-            },
-            "children": {
-                "underline": {
-                    "type": "NinePatch",
-                    "data": {
-                        "texture": "underline",
-                        "anchor": [ 0.5, 0.5 ]
-                    },
-                    "layout": {
-                        "x_anchor": "center",
-                        "y_anchor": "middle",
-                        "y_offset": -0.5,
-                        "x_offset": 0
-                    }
-                }
+          "type": "Label",
+          "data": {
+            "font": "sans5",
+            "text": "Current Event",
+            "foreground": [ 124, 229, 227, 255 ],
+            "halign": "right",
+            "valign": "true middle",
+            "anchor": [ 0.5, 0.5 ],
+            "scale": 0.7
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.695,
+            "x_offset": 0.635
+          },
+          "format": {
+            "type": "Anchored"
+          },
+          "children": {
+            "underline": {
+              "type": "NinePatch",
+              "data": {
+                "texture": "underline",
+                "anchor": [ 0.5, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle",
+                "y_offset": -0.5,
+                "x_offset": 0
+              }
             }
+          }
         },
         "topsword": {
-            "type": "Image",
-            "data": {
-                "texture": "sword",
-                "scale": 0.675
-            },
-            "layout": {
-                "x_anchor": "left",
-                "y_anchor": "bottom",
-                "y_offset": 0.695,
-                "x_offset": 0.635
-            }
+          "type": "NinePatch",
+          "data": {
+            "texture": "sword",
+            "scale": 0.675,
+            "visible": false
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.695,
+            "x_offset": 0.635
+          }
         },
         "removePreview1": {
           "type": "NinePatch",
@@ -1702,38 +1951,38 @@
             }
           }
         },
-        "burnPreview" : {
-            "type": "NinePatch",
-            "data": {
-                "texture": "brawn",
-                "scale": 0.3
-            },
-            "layout": {
-                "x_anchor": "left",
-                "y_anchor": "bottom",
-                "y_offset": 0.155,
-                "x_offset": 0.593
-            },
-            "format"    : {
-                "type"  : "Anchored"
-            },
-            "children": {
-                "amount": {
-                    "type": "Label",
-                    "data": {
-                      "font": "sans4",
-                      "text": "1",
-                      "foreground": [ 241,231,95, 255 ],
-                      "halign": "center",
-                      "valign": "true middle",
-                      "anchor": [ 0.5, 0.5 ]
-                    },
-                    "layout": {
-                      "x_anchor": "center",
-                      "y_anchor": "middle"
-                    }
-                }
+        "burnPreview": {
+          "type": "NinePatch",
+          "data": {
+            "texture": "brawn",
+            "scale": 0.3
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "bottom",
+            "y_offset": 0.155,
+            "x_offset": 0.593
+          },
+          "format": {
+            "type": "Anchored"
+          },
+          "children": {
+            "amount": {
+              "type": "Label",
+              "data": {
+                "font": "sans4",
+                "text": "1",
+                "foreground": [ 241, 231, 95, 255 ],
+                "halign": "center",
+                "valign": "true middle",
+                "anchor": [ 0.5, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "center",
+                "y_anchor": "middle"
+              }
             }
+          }
         },
         "removePreview2": {
           "type": "NinePatch",

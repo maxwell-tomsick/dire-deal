@@ -75,6 +75,7 @@ bool LoadingScene::init(const std::shared_ptr<AssetManager>& assets) {
         _continueGame = true;
         this->_active = down;
     });
+    _continueGame = false;
     _play->addListener([=](const std::string& name, bool down) {
         _mainGame = true;
         this->_active = down;
