@@ -420,18 +420,21 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _underline = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_goon_underline"));
      _cardHolder = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_cardHolder"));
      _middleColumn = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_middleColumn"));
+     _topBar = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_topEdgeBar"));
+     _bottomBar = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_bottomEdgeBar"));
+     _rightBox = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_middleColumn_rightBox"));
      _mainMenu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("pause_mainMenu"));
      _mainMenuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_mainMenu_up_label"));
      _saving = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_saving"));
      _saving->setVisible(false);
      _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
-     // make these more transparent
+     // start make these more transparent
      _middleColumn->setColor(Color4(255,255,255,180));
-     _responseGlow1->setColor(Color4(255,255,255,170));
-     _responseGlow2->setColor(Color4(255,255,255,170));
-     _responseGlow3->setColor(Color4(255,255,255,170));
-     // end make these transparent
+     _rightBox->setColor(Color4(255,255,255,80));
+     _topBar->setColor(Color4(255,255,255,80));
+     _bottomBar->setColor(Color4(255,255,255,80));
+     // // end make these transparent
      _burnLabel->setVisible(false);
      _cardHolder->setVisible(true);
      _burnTexture->setVisible(false);

@@ -185,6 +185,16 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
+    "edgeBar": {
+      "file": "textures/edge-bar.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "rightBox": {
+      "file": "textures/right-box.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
     "black": {
       "file": "textures/black.png",
       "minfilter": "linear",
@@ -555,6 +565,59 @@
                     "y_anchor": "middle",
                     "x_offset": 0.017,
                     "y_offset": -0.05
+                },
+                "children": {
+                  "rightBox": {
+                    "type": "NinePatch",
+                      "data": {
+                          "texture": "rightBox",
+                          "scale": 2.0,
+                          "anchor": [ 0, 0 ]
+                      },
+                      "format"    : {
+                          "type"  : "Anchored"
+                      },
+                      "layout": {
+                          "x_anchor": "left",
+                          "y_anchor": "bottom",
+                          "x_offset": 0.0,
+                          "y_offset": 0.0
+                      }
+                  }
+                }
+            },
+            "topEdgeBar": {
+              "type": "NinePatch",
+                "data": {
+                    "texture": "edgeBar",
+                    "scale": 1.0,
+                    "anchor": [ 0.0, 1.0 ]
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "x_offset": 0.0,
+                    "y_offset": 0.0
+                }
+            },
+            "bottomEdgeBar": {
+              "type": "NinePatch",
+                "data": {
+                    "texture": "edgeBar",
+                    "scale": 1.0,
+                    "anchor": [ 0.0, 0.0 ]
+                },
+                "format"    : {
+                    "type"  : "Anchored"
+                },
+                "layout": {
+                    "x_anchor": "bottom",
+                    "y_anchor": "left",
+                    "x_offset": 0.0,
+                    "y_offset": 0.0
                 }
             },
             "saving": {
