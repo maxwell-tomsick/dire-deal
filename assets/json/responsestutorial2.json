@@ -1,0 +1,76 @@
+{
+  "Responses": {
+    "Impaled1": {
+      "id": 0,
+      "name": "Perforate",
+      "description": "Shuffle IMPALED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 1,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 0 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 0.9,
+      "animation": 1
+    },
+    "Impaled2": {
+      "id": 1,
+      "name": "Decapitate",
+      "description": "Shuffle INCAPACITATED into the Deck",
+      "cost": {
+        "blade": 0,
+        "flourish": 8,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 2 ],
+      "delete": [],
+      "win": true,
+      "lose": false,
+      "fontSize": 0.85,
+      "animation": 1
+    },
+    "Crushed1": {
+      "id": 2,
+      "name": "Boot Stomp",
+      "description": "Shuffle CRUSHED into the Deck",
+      "cost": {
+        "blade": 1,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 1 ],
+      "delete": [],
+      "win": false,
+      "lose": false,
+      "fontSize": 0.75,
+      "animation": 1
+    },
+    "Crushed2": {
+      "id": 3,
+      "name": "Pulverize",
+      "description": "Shuffle INCAPACITATED into the Deck",
+      "cost": {
+        "blade": 8,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "reward": 0,
+      "addToDeck": [ 2 ],
+      "delete": [],
+      "win": true,
+      "lose": false,
+      "fontSize": 0.9,
+      "animation": 1
+    }
+  }
+}

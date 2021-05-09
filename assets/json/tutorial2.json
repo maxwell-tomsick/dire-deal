@@ -1,0 +1,43 @@
+{
+  "Cards": {
+    "Impaled": {
+      "id": 0,
+      "name": "Impaled",
+      "texture": "impaled",
+      "reactions": [ 0, 1 ],
+      "resources": {
+        "blade": 15,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "level": 4
+    },
+    "Crushed": {
+      "id": 1,
+      "name": "Crushed",
+      "texture": "crushed",
+      "reactions": [ 2, 3 ],
+      "resources": {
+        "blade": 0,
+        "flourish": 15,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "level": 4
+    },
+    "Incapacitated": {
+      "id": 2,
+      "name": "Incapacitated",
+      "texture": "incapacitated",
+      "reactions": [],
+      "resources": {
+        "blade": 0,
+        "flourish": 0,
+        "lunge": 0,
+        "brawn": 0
+      },
+      "level": 5
+    }
+  }
+}

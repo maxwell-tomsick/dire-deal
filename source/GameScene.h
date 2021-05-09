@@ -96,6 +96,7 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _burnLabel;
 
     std::shared_ptr<cugl::scene2::NinePatch> _tutorialBox;
+    std::shared_ptr<cugl::scene2::Label> _tutorialText[16];
     std::shared_ptr<cugl::scene2::Button> _tutorialButton;
     
     std::shared_ptr<cugl::scene2::NinePatch> _black;
@@ -172,6 +173,7 @@ protected:
     bool _doBurn;
     int _fight;
     float _idleBuffer;
+    double _ratio;
     bool _usedSecondWind;
     bool _tutorial;
     int _item;
@@ -224,7 +226,7 @@ public:
      *
      * @return true if the controller is initialized properly, false otherwise.
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets, int item, double ratio, bool tutorial);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, int item, double ratio, bool tutorial, bool savedGame);
 
     
 #pragma mark -
