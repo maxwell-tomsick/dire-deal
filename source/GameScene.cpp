@@ -171,7 +171,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      else {
          _tutorialBox = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_tutorialBox"));
          for (int i = 0; i < 16; i++) {
-             string assetname = "lab_tutorial-line-" + to_string(i + 1);
+             string assetname = "lab_tutorialBox_tutorial-line-" + to_string(i + 1);
              _tutorialText[i] = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>(assetname));
          }
          if (ratio <= 1.5) {
@@ -1761,7 +1761,7 @@ void GameScene::buttonPress(const int r){
           _goonNumber->setVisible(false);
           //_currEvent->setColor(Color4::WHITE);
           if (_fight > _enemyFights.size()){
-               if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json")){
+               if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json") & !_tutorial){
                     filetool::file_delete(Application::get()->getSaveDirectory() + "savedGame.json");
                }
                _currEvent->setText("Hunt Complete!");
@@ -2012,7 +2012,7 @@ void GameScene::gameOver(){
      _black->setVisible(true);
      _cardHolder->setVisible(false);
      
-     if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json")){
+     if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json") & !_tutorial){
           filetool::file_delete(Application::get()->getSaveDirectory() + "savedGame.json");
      }
      _movement = 11;
