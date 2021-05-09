@@ -2069,7 +2069,7 @@
           "data": {
             "texture": "sword",
             "scale": 0.675,
-            "visible": false
+            "visible": true
           },
           "layout": {
             "x_anchor": "left",

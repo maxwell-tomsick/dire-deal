@@ -822,7 +822,7 @@ void GameScene::reset() {
          _responses = getJsonResponses(jsonReaderResponses, _responses);
      }
      else {
-         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responsesTutorial" + to_string(_fight) + ".json");
+         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responsestutorial" + to_string(_fight) + ".json");
          _responses = getJsonResponses(jsonReaderResponses, _responses);
          if (_fight == 2) {
              _resources = { 1, 1, 0, 0 };
