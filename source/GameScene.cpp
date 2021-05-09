@@ -44,7 +44,7 @@ void GameScene::deckLoad(std::vector<int> deck) {
  *
  * @return true if the controller is initialized properly, false otherwise.
  */
-bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equippedItem, double ratio, bool tutorial) {
+bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equippedItem, double ratio, bool tutorial, bool savedGame) {
     // Initialize the scene to a locked width
     Size dimen = Application::get()->getDisplaySize();
     dimen *= SCENE_HEIGHT/dimen.height;
@@ -56,6 +56,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _dimen = dimen;
     // Start up the input handler
     _assets = assets;
+    _ratio = ratio;
      
     // Acquire the scene built by the asset loader and resize it the scene
      std::shared_ptr<scene2::SceneNode> background = _assets->get<scene2::SceneNode>("background");
@@ -70,7 +71,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _pause->doLayout();
      
      bool startingDeck = true;
-     if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json") & !tutorial){
+     if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json") & savedGame){
           std::shared_ptr<JsonReader> jsonReaderSaveFile = JsonReader::alloc(Application::get()->getSaveDirectory() + "savedGame.json");
           std::shared_ptr<JsonValue> readJ = jsonReaderSaveFile->readJson();
           int fight = readJ->get("Fight")->asInt();
@@ -169,10 +170,53 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      }
      else {
          _tutorialBox = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_tutorialBox"));
+         for (int i = 0; i < 16; i++) {
+             string assetname = "lab_tutorial-line-" + to_string(i + 1);
+             _tutorialText[i] = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>(assetname));
+         }
+         if (ratio <= 1.5) {
+             _tutorialText[0]->setText("Swipe the card, and choose");
+             _tutorialText[1]->setText("responses from the right");
+             _tutorialText[2]->setText("to shuffle new cards into");
+             _tutorialText[3]->setText("the deck. The old card is");
+             _tutorialText[4]->setText("removed");
+             _tutorialText[5]->setText("");
+             _tutorialText[6]->setText("Above responses are");
+             _tutorialText[7]->setText("resources. Each response");
+             _tutorialText[8]->setText("has a cost.");
+             _tutorialText[9]->setText("");
+             _tutorialText[10]->setText("The gems at the bottom of");
+             _tutorialText[11]->setText("a card show its level. Win");
+             _tutorialText[12]->setText("by shuffling in a level");
+             _tutorialText[13]->setText("five card. Darker responses");
+             _tutorialText[14]->setText("are higher leveled.");
+             _tutorialText[15]->setText("");
+         }
+         else {
+             _tutorialText[0]->setText("Swipe the card, and choose");
+             _tutorialText[1]->setText("responses from the right to");
+             _tutorialText[2]->setText("shuffle new cards into the");
+             _tutorialText[3]->setText("deck. The old card is removed.");
+             _tutorialText[4]->setText("");
+             _tutorialText[5]->setText("");
+             _tutorialText[6]->setText("Above responses are resources.");
+             _tutorialText[7]->setText("Each response has a cost.");
+             _tutorialText[8]->setText("");
+             _tutorialText[9]->setText("");
+             _tutorialText[10]->setText("The gems at the bottom of");
+             _tutorialText[11]->setText("a card show its level. Win");
+             _tutorialText[12]->setText("by shuffling in a level");
+             _tutorialText[13]->setText("five card. Darker responses");
+             _tutorialText[14]->setText("are higher leveled.");
+             _tutorialText[15]->setText("");
+         }
          _tutorialButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_tutorialButton"));
          _tutorialButton->addListener([=](const std::string& name, float value) {
              _movement = 5;
              _tutorialButton->setVisible(false);
+             for (int i = 0; i < 16; i++) {
+                 _tutorialText[i]->setVisible(false);
+             }
              _tutorialBox->setVisible(false);
              _goonLabel->setVisible(true);
          });
@@ -223,13 +267,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
          _goonLabel->setVisible(true);
      }
      _goonNumber = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_number"));
-     _goonNumber->setText("Target " + std::to_string(_fight) + ":");
+     if (!_tutorial) {
+         _goonNumber->setText("Target " + std::to_string(_fight) + ":");
+     }
+     else {
+         _goonNumber->setText("Lesson " + std::to_string(_fight) + ":");
+     }
      _goonName = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_name"));
      _enemyIdle = std::make_shared<scene2::AnimationNode>();
      _sword = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_topsword"));
-     if (!tutorial) {
-         _sword->setVisible(true);
-     }
      
      /*
      _enemyIdle->initWithFilmstrip(assets->get<Texture>("thugIdle"), 3, 4, 12);
@@ -339,7 +385,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           _nextEnemy->setScale(nextFight.getScale());
           _nextEnemy->setPosition(_dimen.width * nextFight.getWscale(), _dimen.height * nextFight.getHscale());
           _nextEnemy->setScale(nextFight.getScale());
-          _nextFightText->setText("Next Fight: " + nextFight.getEnemyName());
+          if (!_tutorial) {
+              _nextFightText->setText("Next Fight: " + nextFight.getEnemyName());
+          }
+          else {
+              _nextFightText->setText("Next Lesson: " + nextFight.getEnemyName());
+          }
           _nextEnemy->setVisible(false);
           addChild(_nextEnemy);
      }
@@ -678,6 +729,10 @@ void GameScene::dispose() {
     _musicSlider = nullptr;
     _pauseButton->clearListeners();
     _pauseButton = nullptr;
+    if (_tutorial) {
+        _tutorialButton->clearListeners();
+        _tutorialButton = nullptr;
+    }
     Scene2::dispose();
 }
 
@@ -688,7 +743,7 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
-     if (_fight == 3){
+     if (_fight == 3 & !_tutorial){
      _audioQueue->clear();
      _audioQueue->play(_assets->get<Sound>("introSlime"), false, _musicVolume, false);
      _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true, _musicVolume, false);
@@ -731,8 +786,13 @@ void GameScene::reset() {
                _nextEnemy->setScale(nextFight.getScale());
                _nextFightText->setText("Next Fight: " + nextFight.getEnemyName());
           }
+          if (!_tutorial) {
+              cardstring = "json/level" + to_string(_fight) + ".json";
+          }
+          else {
+              cardstring = "json/tutorial" + to_string(_fight) + ".json";
+          }
           
-          cardstring = "json/level" + to_string(_fight) + ".json";
      }
      //_fight = 4;
      // if (_fight == 1){
@@ -757,16 +817,107 @@ void GameScene::reset() {
      _cards = getJsonCards(jsonReaderCardString, _cards, _assets);
      Card item = getItem(_item);
      _cards[-1] = item;
-     std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responses" + to_string(_fight) + ".json");
+     if (!_tutorial) {
+         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responses" + to_string(_fight) + ".json");
+         _responses = getJsonResponses(jsonReaderResponses, _responses);
+     }
+     else {
+         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responsesTutorial" + to_string(_fight) + ".json");
+         _responses = getJsonResponses(jsonReaderResponses, _responses);
+         if (_fight == 2) {
+             _resources = { 1, 1, 0, 0 };
+             _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources);
+             if (_ratio <= 1.5) {
+                 _tutorialText[0]->setText("Resources carry over ");
+                 _tutorialText[1]->setText("between fights in the ");
+                 _tutorialText[2]->setText("main game.");
+                 _tutorialText[3]->setText("");
+                 _tutorialText[4]->setText("");
+                 _tutorialText[5]->setText("Exchange a card for the");
+                 _tutorialText[6]->setText("resources shown under it");
+                 _tutorialText[7]->setText("by dragging it to the");
+                 _tutorialText[8]->setText("bottom of the screen.");
+                 _tutorialText[9]->setText("");
+                 _tutorialText[10]->setText("");
+                 _tutorialText[11]->setText("Sold cards are removed ");
+                 _tutorialText[12]->setText("from the deck. You lose if");
+                 _tutorialText[13]->setText("there are no cards");
+                 _tutorialText[14]->setText("shuffled into the deck.");
+                 _tutorialText[15]->setText("");
+             }
+             else {
+                 _tutorialText[0]->setText("Resources carry over between");
+                 _tutorialText[1]->setText("fights in the main game.");
+                 _tutorialText[2]->setText("");
+                 _tutorialText[3]->setText("");
+                 _tutorialText[4]->setText("");
+                 _tutorialText[5]->setText("Exchange a card for the");
+                 _tutorialText[6]->setText("resources shown under it");
+                 _tutorialText[7]->setText("by dragging it to the");
+                 _tutorialText[8]->setText("bottom of the screen.");
+                 _tutorialText[9]->setText("");
+                 _tutorialText[10]->setText("");
+                 _tutorialText[11]->setText("");
+                 _tutorialText[12]->setText("Sold cards are removed from");
+                 _tutorialText[13]->setText("the deck. You lose if there");
+                 _tutorialText[14]->setText("are no cards shuffled into");
+                 _tutorialText[15]->setText("the deck.");
+             }
+         }
+         else if (_fight == 3) {
+             _resources = { 15, 15, 0, 0 };
+             _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources);
+             if (_ratio <= 1.5) {
+                 _tutorialText[0]->setText("Both response costs and");
+                 _tutorialText[1]->setText("the reward for selling");
+                 _tutorialText[2]->setText("increase with a card's");
+                 _tutorialText[3]->setText("level.");
+                 _tutorialText[4]->setText("");
+                 _tutorialText[5]->setText("");
+                 _tutorialText[6]->setText("Hold down a response to");
+                 _tutorialText[7]->setText("see how much you the");
+                 _tutorialText[8]->setText("card it shuffles in");
+                 _tutorialText[9]->setText("can sell for.");
+                 _tutorialText[10]->setText("");
+                 _tutorialText[11]->setText("");
+                 _tutorialText[12]->setText("Leveling up many cards");
+                 _tutorialText[13]->setText("can leave you short on");
+                 _tutorialText[14]->setText("resources, but is necessary");
+                 _tutorialText[15]->setText("to gain them.");
+             }
+             else {
+                 _tutorialText[0]->setText("Both response costs and the");
+                 _tutorialText[1]->setText("reward for selling increase");
+                 _tutorialText[2]->setText("with a card's level.");
+                 _tutorialText[3]->setText("");
+                 _tutorialText[4]->setText("");
+                 _tutorialText[5]->setText("");
+                 _tutorialText[6]->setText("Hold down a response to see");
+                 _tutorialText[7]->setText("how much you the card it");
+                 _tutorialText[8]->setText("shuffles in can sell for.");
+                 _tutorialText[9]->setText("");
+                 _tutorialText[10]->setText("");
+                 _tutorialText[11]->setText("");
+                 _tutorialText[12]->setText("Leveling up too many cards");
+                 _tutorialText[13]->setText("can leave you short on");
+                 _tutorialText[14]->setText("resources, but is necessary");
+                 _tutorialText[15]->setText("to gain them.");
+             }
+         }
+     }
      // std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responses1.json");
-     _responses = getJsonResponses(jsonReaderResponses, _responses);
      //cout << cardsArray->asString();
      _currentDeck = {};
      _nextDeck = {};
      _keepCards = false;
      _win = false;
      _doBurn = false;
-     _movement = 5;
+     if (!_tutorial) {
+         _movement = 5;
+     }
+     else {
+         _movement = 15;
+     }
      _display2 = true;
      _display3 = true;
      if ((_item >= 0) & !_usedSecondWind){
@@ -1308,11 +1459,16 @@ void GameScene::update(float timestep) {
      if (_movement == 12){
           _nextEnemy->setVisible(true);
           _nextFight->setVisible(true);
-          _mainMenuLabel->setText("Start Fight");
-          if (_fight == 3 || _fight == 4){
+          if (!_tutorial) {
+              _mainMenuLabel->setText("Start Fight");
+          }
+          else {
+              _mainMenuLabel->setText("Continue");
+          }
+          if ((_fight == 3 || _fight == 4) && !_tutorial){
                _nextFightPoison->setVisible(true);
                _nextFightBrawler->setVisible(false);
-          } else if (_fight == 5) {
+          } else if (_fight == 5 && !_tutorial) {
                _nextFightBrawler->setVisible(true);
                _nextFightPoison->setVisible(false);
           } else {
@@ -1364,6 +1520,9 @@ void GameScene::update(float timestep) {
          _goonLabel->setVisible(false);
          _tutorialButton->setVisible(true);
          _tutorialBox->setVisible(true);
+         for (int i = 0; i < 16; i++) {
+             _tutorialText[i]->setVisible(true);
+         }
          _tutorialButton->activate();
      }
 #ifndef CU_TOUCH_SCREEN
@@ -1848,7 +2007,7 @@ void GameScene::gameOver(){
      _black->setVisible(true);
      _cardHolder->setVisible(false);
      
-     if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json") & !_tutorial){
+     if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json")){
           filetool::file_delete(Application::get()->getSaveDirectory() + "savedGame.json");
      }
      _movement = 11;

@@ -33,7 +33,7 @@
         "delete": [],
         "win": false,
         "lose":false,
-        "fontSize":1,
+        "fontSize": 0.75,
         "animation":1
       },
       "Attack3":{
@@ -69,7 +69,7 @@
         "delete": [],
         "win": false,
         "lose":false,
-        "fontSize":0.75,
+        "fontSize":0.5,
         "animation":1
       },
       "BideTime1":{

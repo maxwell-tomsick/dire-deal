@@ -1,10 +1,38 @@
 {
   "Fights": {
-    "Tutorial": {
+    "tutorial1": {
       "id": 1,
       "enemyName": "Progression",
       "enemyTexture": "thugIdle",
       "deck": [ 0 ],
+      "nextDeck": [],
+      "background": "background",
+      "rows": 3,
+      "cols": 4,
+      "frames": 12,
+      "wscale": 0.2,
+      "hscale": 0.44,
+      "scale": 0.9
+    },
+    "tutorial2": {
+      "id": 2,
+      "enemyName": "Burn",
+      "enemyTexture": "thugIdle",
+      "deck": [ 0, 1 ],
+      "nextDeck": [],
+      "background": "background",
+      "rows": 3,
+      "cols": 4,
+      "frames": 12,
+      "wscale": 0.2,
+      "hscale": 0.44,
+      "scale": 0.9
+    },
+    "tutorial3": {
+      "id": 3,
+      "enemyName": "Increasing Costs",
+      "enemyTexture": "thugIdle",
+      "deck": [ 0, 1 ],
       "nextDeck": [],
       "background": "background",
       "rows": 3,

@@ -168,10 +168,10 @@ void LabApp::update(float timestep) {
             _item.init(_assets);
         } else if (_continueGame){
             _itemChosen = true;
-            _gameplay.init(_assets, -1, ratio, false);
+            _gameplay.init(_assets, -1, ratio, false, true);
         } else {
             _itemChosen = true;
-            _gameplay.init(_assets, -1, ratio, true);
+            _gameplay.init(_assets, -1, ratio, true, false);
         }
         _loaded = true;
     }
@@ -183,9 +183,9 @@ void LabApp::update(float timestep) {
             _equippedItem = _item.getItem();
             _item.dispose();
             if (filetool::file_exists(Application::getSaveDirectory() + "savedGame.json")){
-                 filetool::file_delete(Application::getSaveDirectory() + "savedGame.json");
+                 bool out = filetool::file_delete(Application::getSaveDirectory() + "savedGame.json");
             }
-            _gameplay.init(_assets, _equippedItem, ratio, false);
+            _gameplay.init(_assets, _equippedItem, ratio, false, false);
             _itemChosen = true;
         }
         else {
