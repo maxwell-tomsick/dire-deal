@@ -71,7 +71,7 @@
       "magfilter": "linear"
     },
     "button": {
-      "file": "textures/responses/response-1.png",
+      "file": "textures/newbutton.png",
       "wrapS": "clamp",
       "wrapT": "clamp",
       "minfilter": "linear",
@@ -181,7 +181,7 @@
                     "foreground": [ 0, 0, 0, 255 ],
                     "halign": "center",
                     "valign": "middle",
-                    "anchor": [ -0.85, -0.5 ]
+                    "anchor": [ -0.95, -0.5 ]
                   },
                   "layout": {
                     "x_anchor": "right",
@@ -227,7 +227,7 @@
                     "foreground": [ 0, 0, 0, 255 ],
                     "halign": "center",
                     "valign": "middle",
-                    "anchor": [ -0.625, -0.5 ]
+                    "anchor": [ -0.675, -0.5 ]
                   },
                   "layout": {
                     "x_anchor": "left",

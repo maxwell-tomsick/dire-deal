@@ -65,8 +65,28 @@
         "minfilter": "linear",
         "magfilter": "linear"
       },
-      "ItemBurn": {
-        "file": "textures/cardburns/incapacitated_burn.png",
+      "DanceBurn": {
+          "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "SprintBurn": {
+          "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "SecondWindBurn": {
+          "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "HoarderBurn": {
+          "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "ParasiteBurn": {
+          "file": "textures/cardburns/incapacitated_burn.png",
         "minfilter": "linear",
         "magfilter": "linear"
       },
@@ -155,8 +175,28 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
-    "ItemFlip": {
-      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+    "DanceFlip": {
+      "file": "textures/cardflips/card-dance-of-steel-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "SprintFlip": {
+      "file": "textures/cardflips/card-sprint-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "SecondWindFlip": {
+      "file": "textures/cardflips/card-second-wind-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "HoarderFlip": {
+      "file": "textures/cardflips/card-jack-of-all-trades-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "ParasiteFlip": {
+      "file": "textures/cardflips/card-parasite-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -216,6 +256,9 @@
     "slimeIdle": {
       "file": "textures/enemy-slime-idle.png"
     },
+    "wormIdle": {
+      "file": "textures/enemy-worm-idle.png"
+    },
     "enemyLabel": {
       "file": "textures/enemy-label.png",
       "minfilter": "linear",
@@ -243,6 +286,11 @@
     },
     "fireHolder": {
       "file": "textures/fire-holder.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "newButton": {
+      "file": "textures/newbutton.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },

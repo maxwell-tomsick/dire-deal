@@ -950,7 +950,7 @@ void GameScene::update(float timestep) {
      }
      _idleBuffer += timestep;
      //printf("%f",_idleBuffer);
-     if (_idleBuffer >= 0.1){
+     if (_idleBuffer >= 0.05){
           int enemyFrame = _enemyIdle->getFrame();
           enemyFrame += 1;
           if (enemyFrame == _enemyIdle->getSize()){
@@ -996,7 +996,6 @@ void GameScene::update(float timestep) {
                      std::shuffle(_currentDeck.begin(), _currentDeck.end(), g);
                     _nextDeck = {};
                     setGameJson(false);
-                    _saving->setVisible(true);
                     bool itemFound = false;
                     int r = 0;
                     for (int i = 0; i < _currentDeck.size(); i++){
@@ -1788,23 +1787,23 @@ Card GameScene::getItem(const int i){
      switch (i){
           case 0:
                //Flourish Regen
-               specialCard.allocate("Item", -1, _assets->get<Texture>("danceOfSteel"),{}, {0,3,0,0}, 1);
+               specialCard.allocate("Dance", -1, _assets->get<Texture>("danceOfSteel"),{}, {0,3,0,0}, 1);
                return specialCard;
           case 1:
                //Lunge Regen
-               specialCard.allocate("Item", -1, _assets->get<Texture>("sprint"),{}, {0,0,4,0}, 1);
+               specialCard.allocate("Sprint", -1, _assets->get<Texture>("sprint"),{}, {0,0,4,0}, 1);
                return specialCard;
           case 2:
                //Second Wind
-               specialCard.allocate("Item", -1, _assets->get<Texture>("secondWind"),{45}, {0,0,0,0}, 2);
+               specialCard.allocate("SecondWind", -1, _assets->get<Texture>("secondWind"),{45}, {0,0,0,0}, 2);
                return specialCard;
           case 3:
                //Deck Boost
-               specialCard.allocate("Item", -1, _assets->get<Texture>("jackOfAllTrades"),{46}, {0,0,0,0}, 3);
+               specialCard.allocate("Hoarder", -1, _assets->get<Texture>("jackOfAllTrades"),{46}, {0,0,0,0}, 3);
                return specialCard;
           case 4:
                //Parasite
-               specialCard.allocate("Item", -1, _assets->get<Texture>("parasite"),{47}, {0,0,0,0}, 3);
+               specialCard.allocate("Parasite", -1, _assets->get<Texture>("parasite"),{47}, {0,0,0,0}, 3);
                return specialCard;
      }
      return specialCard;
@@ -1867,6 +1866,7 @@ void GameScene::setGameJson(bool startingDeck){
      if (_tutorial){
           return;
      }
+     _saving->setVisible(true);
      string currentDeck = "[";
      for (int i = 0; i < _currentDeck.size(); i++){
           currentDeck += to_string(_currentDeck[i]);

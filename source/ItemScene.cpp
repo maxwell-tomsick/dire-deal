@@ -297,11 +297,11 @@ void ItemScene::displayItem(int id) {
         _lungeBurn->setVisible(false);
         _parasiteBurn->setVisible(false);
     } else if (id == 4) {
-        _displayText1->setText("Costs               to keep in the deck.");
+        _displayText1->setText("Costs               to keep in the deck. When the");
         _displayText1->setVisible(true);
-        _displayText2->setText("While this card is in the deck, 1 random response");
+        _displayText2->setText("deck is shuffled, if this card is present, 1 random");
         _displayText2->setVisible(true);
-        _displayText3->setText("will be free. Appears once per fight.");
+        _displayText3->setText("response will be free. Appears once per fight.");
         _displayText3->setVisible(true);
         _displayText4->setVisible(false);
         _displayText5->setVisible(false);

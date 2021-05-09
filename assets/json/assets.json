@@ -65,8 +65,28 @@
         "minfilter": "linear",
         "magfilter": "linear"
       },
-      "ItemBurn": {
-        "file": "textures/cardburns/incapacitated_burn.png",
+      "DanceBurn": {
+          "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "SprintBurn": {
+          "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "SecondWindBurn": {
+          "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "HoarderBurn": {
+          "file": "textures/cardburns/incapacitated_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "ParasiteBurn": {
+          "file": "textures/cardburns/incapacitated_burn.png",
         "minfilter": "linear",
         "magfilter": "linear"
       },
@@ -155,22 +175,32 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
-    "ItemFlip": {
-      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+    "DanceFlip": {
+      "file": "textures/cardflips/card-dance-of-steel-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "SprintFlip": {
+      "file": "textures/cardflips/card-sprint-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "SecondWindFlip": {
+      "file": "textures/cardflips/card-second-wind-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "HoarderFlip": {
+      "file": "textures/cardflips/card-jack-of-all-trades-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "ParasiteFlip": {
+      "file": "textures/cardflips/card-parasite-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
     "PoisonFlip": {
-      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
-      "minfilter": "linear",
-      "magfilter": "linear"
-    },
-    "PunchFlip": {
-      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
-      "minfilter": "linear",
-      "magfilter": "linear"
-    },
-    "SuplexFlip": {
       "file": "textures/cardflips/card-incapacitated-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
@@ -216,6 +246,9 @@
     "slimeIdle": {
       "file": "textures/enemy-slime-idle.png"
     },
+    "wormIdle": {
+      "file": "textures/enemy-worm-idle.png"
+    },
     "enemyLabel": {
       "file": "textures/enemy-label.png",
       "minfilter": "linear",
@@ -243,6 +276,11 @@
     },
     "fireHolder": {
       "file": "textures/fire-holder.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "newButton": {
+      "file": "textures/newbutton.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -1154,7 +1192,7 @@
             "up": {
               "type": "Image",
               "data": {
-                "texture": "response1"
+                "texture": "newButton"
               },
               "children": {
                 "label": {
@@ -1166,9 +1204,10 @@
                     "font": "sans",
                     "text": "Main Menu",
                     "foreground": [ 0, 0, 0, 255 ],
-                    "anchor": [ -0.0625, -0.5 ],
+                    "anchor": [ -0.3, -0.8 ],
                     "halign": "center",
-                    "valign": "middle"
+                    "valign": "middle",
+                    "scale": 0.7
                   },
                   "layout": {
                     "x_anchor": "center",
@@ -1726,7 +1765,7 @@
             "upnode": "up",
             "visible": false,
             "anchor": [ 1, 0 ],
-            "scale": 0.3
+            "scale": 0.5
           },
           "layout": {
             "x_anchor": "right",
@@ -1738,7 +1777,7 @@
             "up": {
               "type": "NinePatch",
               "data": {
-                "texture": "response1"
+                "texture": "newButton"
               },
               "children": {
                 "label": {
@@ -1752,7 +1791,7 @@
                     "foreground": [ 0, 0, 0, 255 ],
                     "halign": "center",
                     "valign": "middle",
-                    "anchor": [ -0.85, -0.5 ]
+                    "anchor": [ -0.95, -0.5 ]
                   },
                   "layout": {
                     "x_anchor": "right",

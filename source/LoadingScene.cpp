@@ -71,6 +71,7 @@ bool LoadingScene::init(const std::shared_ptr<AssetManager>& assets) {
     _continueLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("load_continue_up_label"));
     _continue->setVisible(false);
     _play->setVisible(false);
+    _playLabel->setText("Play");
     _continue->addListener([=](const std::string& name, bool down) {
         _continueGame = true;
         this->_active = down;
@@ -140,7 +141,7 @@ void LoadingScene::update(float progress) {
                 _playLabel->setText("Restart");
                 _continue->setVisible(true);
                 _continue->activate();
-            }
+            } 
             _play->activate();
             _tutorial->setVisible(true);
             _tutorial->activate();

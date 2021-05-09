@@ -20,7 +20,7 @@
       "magfilter": "linear"
     },
     "play": {
-      "file": "textures/responses/response-1.png",
+      "file": "textures/newbutton.png",
       "wrapS": "clamp",
       "wrapT": "clamp",
       "minfilter": "linear",
@@ -258,7 +258,7 @@
                                         "font": "sans",
                                         "text": "Tutorial",
                                         "foreground": [ 0, 0, 0, 255 ],
-                                        "anchor": [ -0.25, -0.5 ],
+                                        "anchor": [ -0.3, -0.5 ],
                                         "halign": "center",
                                         "valign": "middle"
                                     },

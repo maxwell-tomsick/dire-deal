@@ -1,7 +1,7 @@
 {
   "Fights":{
     "Thug1":{
-      "id": 1,
+      "id": 5,
       "enemyName": "Wolven Thug",
       "enemyTexture": "thugIdle",
       "deck": [ 0, 1, 2, 3],
@@ -46,7 +46,7 @@
       "id": 4,
       "enemyName": "Cave Slime 2",
       "enemyTexture": "slimeIdle",
-      "deck": [ 1, 1, 3, 3],
+      "deck": [ 1, 1, 1, 3, 3],
       "nextDeck": [13],
       "background": "background",
       "rows": 3,
@@ -57,15 +57,15 @@
       "scale": 0.85
     },
     "Brawler1":{
-      "id": 5,
-      "enemyName": "Brawler",
-      "enemyTexture": "thugIdle",
+      "id": 1,
+      "enemyName": "Ballistic Wurm",
+      "enemyTexture": "wormIdle",
       "deck": [ 0, 0, 0, 3, 3],
       "nextDeck": [],
       "background": "background",
-      "rows": 3,
-      "cols": 4,
-      "frames": 12,
+      "rows": 1,
+      "cols": 1,
+      "frames": 1,
       "wscale": 0.2,
       "hscale": 0.44,
       "scale": 0.65
