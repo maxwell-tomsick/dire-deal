@@ -201,7 +201,7 @@
       "magfilter": "linear"
     },
     "PoisonFlip": {
-      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+      "file": "textures/cardflips/card-poison-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },

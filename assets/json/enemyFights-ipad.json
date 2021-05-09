@@ -1,7 +1,7 @@
 {
   "Fights":{
     "Thug1":{
-      "id": 5,
+      "id": 1,
       "enemyName": "Wolven Thug",
       "enemyTexture": "thugIdle",
       "deck": [ 0, 1, 2, 3],
@@ -57,7 +57,7 @@
       "scale": 0.85
     },
     "Brawler1":{
-      "id": 1,
+      "id": 5,
       "enemyName": "Ballistic Wurm",
       "enemyTexture": "wormIdle",
       "deck": [ 0, 0, 0, 3, 3],
@@ -67,8 +67,8 @@
       "cols": 1,
       "frames": 1,
       "wscale": 0.2,
-      "hscale": 0.44,
-      "scale": 0.65
+      "hscale": 0.42,
+      "scale": 0.6
     }
   }
 }

@@ -743,7 +743,7 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again.
  */
 void GameScene::reset() {
-     if (_fight == 3 & !_tutorial){
+     if ((_fight == 3) & !_tutorial){
      _audioQueue->clear();
      _audioQueue->play(_assets->get<Sound>("introSlime"), false, _musicVolume, false);
      _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true, _musicVolume, false);
@@ -830,25 +830,25 @@ void GameScene::reset() {
              if (_ratio <= 1.5) {
                  _tutorialText[0]->setText("Resources carry over ");
                  _tutorialText[1]->setText("between fights in the ");
-                 _tutorialText[2]->setText("main game.");
-                 _tutorialText[3]->setText("");
+                 _tutorialText[2]->setText("main game. Cards in");
+                 _tutorialText[3]->setText("the deck do not.");
                  _tutorialText[4]->setText("");
-                 _tutorialText[5]->setText("Exchange a card for the");
-                 _tutorialText[6]->setText("resources shown under it");
-                 _tutorialText[7]->setText("by dragging it to the");
-                 _tutorialText[8]->setText("bottom of the screen.");
-                 _tutorialText[9]->setText("");
+                  _tutorialText[5]->setText("");
+                 _tutorialText[6]->setText("Exchange a card for the");
+                 _tutorialText[7]->setText("resources shown under it");
+                 _tutorialText[8]->setText("by dragging it to the");
+                 _tutorialText[9]->setText("bottom of the screen.");
                  _tutorialText[10]->setText("");
-                 _tutorialText[11]->setText("Sold cards are removed ");
-                 _tutorialText[12]->setText("from the deck. You lose if");
-                 _tutorialText[13]->setText("there are no cards");
-                 _tutorialText[14]->setText("shuffled into the deck.");
-                 _tutorialText[15]->setText("");
+                 _tutorialText[11]->setText("");
+                 _tutorialText[12]->setText("Sold cards are removed ");
+                 _tutorialText[13]->setText("from the deck. You lose if");
+                 _tutorialText[14]->setText("there are no cards");
+                 _tutorialText[15]->setText("shuffled into the deck.");
              }
              else {
                  _tutorialText[0]->setText("Resources carry over between");
                  _tutorialText[1]->setText("fights in the main game.");
-                 _tutorialText[2]->setText("");
+                 _tutorialText[2]->setText("Cards in the deck do not.");
                  _tutorialText[3]->setText("");
                  _tutorialText[4]->setText("");
                  _tutorialText[5]->setText("Exchange a card for the");
@@ -979,6 +979,7 @@ void GameScene::reset() {
      _burnTexture->setVisible(false);
      _burnLabel->setVisible(false);
      _underline->setVisible(false);
+     _saving->setVisible(false);
      _goon->setVisible(false);
      _deckNode->reset();
      _idleBuffer = 0;
@@ -1086,7 +1087,7 @@ void GameScene::update(float timestep) {
      } else if (_movement == 3){
           int frame = _cardCut->getFrame();
           frame += 1;
-          if (frame < _enemyIdle->getSize()){
+          if (frame < _cardCut->getSize()){
                _cardCut->setFrame(frame);
           } else {
                _cardCut->setVisible(false);
@@ -1101,7 +1102,7 @@ void GameScene::update(float timestep) {
      }
      _idleBuffer += timestep;
      //printf("%f",_idleBuffer);
-     if (_idleBuffer >= 0.05){
+     if (_idleBuffer >= 0.1){
           int enemyFrame = _enemyIdle->getFrame();
           enemyFrame += 1;
           if (enemyFrame == _enemyIdle->getSize()){
@@ -1760,7 +1761,11 @@ void GameScene::buttonPress(const int r){
           _goonNumber->setVisible(false);
           //_currEvent->setColor(Color4::WHITE);
           if (_fight > _enemyFights.size()){
+               if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json")){
+                    filetool::file_delete(Application::get()->getSaveDirectory() + "savedGame.json");
+               }
                _currEvent->setText("Hunt Complete!");
+               _currEvent->setVisible(true);
                _movement = 11;
           } else {
                _movement = 12;
