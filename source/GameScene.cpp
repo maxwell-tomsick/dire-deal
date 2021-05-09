@@ -251,7 +251,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      
      _deckNode = DeckNode::alloc();
      _deckNode->setSize(int(_currentDeck.size()));
-     _deckNode->setNextSize(0);
+     _deckNode->setNextSize(int(_nextDeck.size()));
      auto cardBackTexture1 = _assets->get<Texture>("cardBack1");
      auto cardBackTexture2 = _assets->get<Texture>("cardBack2");
      _deckNode->setBackTexture(cardBackTexture1);

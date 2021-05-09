@@ -183,7 +183,12 @@ void LabApp::update(float timestep) {
             _equippedItem = _item.getItem();
             _item.dispose();
             if (filetool::file_exists(Application::getSaveDirectory() + "savedGame.json")){
-                 bool out = filetool::file_delete(Application::getSaveDirectory() + "savedGame.json");
+#if defined (__WINDOWS__)
+                string path = Application::getSaveDirectory() + "savedGame.json";
+                std::remove(path.c_str());
+#else
+                filetool::file_delete(Application::getSaveDirectory() + "savedGame.json");
+#endif
             }
             _gameplay.init(_assets, _equippedItem, ratio, false, false);
             _itemChosen = true;
