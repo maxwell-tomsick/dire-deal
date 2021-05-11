@@ -7,8 +7,8 @@
         "cost": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 0,
-          "brawn": 1
+          "lunge": 1,
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [3],
@@ -42,8 +42,8 @@
         "description":"Shuffle GUARD into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 1,
-          "lunge": 0,
+          "flourish": 0,
+          "lunge": 1,
           "brawn": 0
         },
         "reward": 0,
@@ -77,9 +77,9 @@
         "name":"Lunge",
         "description":"Shuffle GRAB into the Deck",
         "cost": {
-          "blade": 0,
+          "blade": 1,
           "flourish": 0,
-          "lunge": 1,
+          "lunge": 0,
           "brawn": 0
         },
         "reward": 0,
@@ -95,10 +95,10 @@
         "name":"Guard",
         "description":"Shuffle SLASH into the Deck",
         "cost": {
-          "blade": 0,
+          "blade": 1,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 1
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [0],
@@ -131,9 +131,9 @@
         "name":"Feint",
         "description":"Shuffle STAGGERED into the Deck",
         "cost": {
-          "blade": 0,
-          "flourish": 1,
-          "lunge": 1,
+          "blade": 2,
+          "flourish": 0,
+          "lunge": 0,
           "brawn": 0
         },
         "reward": 0,
@@ -149,10 +149,10 @@
         "name":"Stand By",
         "description":"Shuffle BIDE TIME into the Deck",
         "cost": {
-          "blade": 0,
+          "blade": 1,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 1
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [1],
@@ -167,10 +167,10 @@
         "name":"Strike",
         "description":"Shuffle GRAB into the Deck",
         "cost": {
-          "blade": 1,
+          "blade": 0,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [3],
@@ -186,9 +186,9 @@
         "description":"Shuffle SLASH into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 1,
+          "flourish": 0,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [0],
@@ -205,8 +205,8 @@
         "cost": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 1,
-          "brawn": 0
+          "lunge": 0,
+          "brawn": 1
         },
         "reward": 0,
         "addToDeck": [1],
@@ -222,9 +222,9 @@
         "description":"Shuffle GRAPPLED into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 2,
+          "flourish": 0,
           "lunge": 0,
-          "brawn": 0
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [4],
@@ -240,9 +240,9 @@
         "description":"Shuffle BIDE TIME into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 0,
+          "flourish": 1,
           "lunge": 0,
-          "brawn": 1
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [1],
@@ -276,9 +276,9 @@
         "description":"Shuffle STAGGERED into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 0,
-          "lunge": 1,
-          "brawn": 1
+          "flourish": 2,
+          "lunge": 0,
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [6],
@@ -294,8 +294,8 @@
         "description":"Shuffle EXPOSED into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 1,
-          "lunge": 1,
+          "flourish": 2,
+          "lunge": 0,
           "brawn": 0
         },
         "reward": 0,
@@ -330,8 +330,8 @@
         "description":"Shuffle STAGGERED into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 0,
-          "lunge": 2,
+          "flourish": 2,
+          "lunge": 0,
           "brawn": 0
         },
         "reward": 0,
@@ -348,9 +348,9 @@
         "description":"Shuffle BLINDED into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 3,
+          "flourish": 4,
           "lunge": 0,
-          "brawn": 1
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [9],
@@ -366,9 +366,9 @@
         "description":"Shuffle STUNNED into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 0,
-          "lunge": 2,
-          "brawn": 2
+          "flourish": 4,
+          "lunge": 0,
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [7],
@@ -403,8 +403,8 @@
         "cost": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 1,
-          "brawn": 3
+          "lunge": 4,
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [7],
@@ -419,9 +419,9 @@
         "name":"Cut Above the Eyes",
         "description":"Shuffle BLINDED into the Deck",
         "cost": {
-          "blade": 1,
-          "flourish": 3,
-          "lunge": 0,
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 4,
           "brawn": 0
         },
         "reward": 0,
@@ -437,9 +437,9 @@
         "name":"Backstab",
         "description":"Shuffle WOUNDED into the Deck",
         "cost": {
-          "blade": 4,
+          "blade": 0,
           "flourish": 0,
-          "lunge": 0,
+          "lunge": 4,
           "brawn": 0
         },
         "reward": 0,
@@ -456,9 +456,9 @@
         "description":"Shuffle EXPOSED into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 1,
-          "lunge": 1,
-          "brawn": 0
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [5],
@@ -475,8 +475,8 @@
         "cost": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 2,
-          "brawn": 0
+          "lunge": 0,
+          "brawn": 2
         },
         "reward": 0,
         "addToDeck": [4],
@@ -491,9 +491,9 @@
         "name":"Eye Stab",
         "description":"Shuffle BLINDED into the Deck",
         "cost": {
-          "blade": 1,
-          "flourish": 3,
-          "lunge": 0,
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 4,
           "brawn": 0
         },
         "reward": 0,
@@ -511,8 +511,8 @@
         "cost": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 0,
-          "brawn": 4
+          "lunge": 4,
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [8],
@@ -528,8 +528,8 @@
         "description":"Shuffle WOUNDED into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 3,
-          "lunge": 1,
+          "flourish": 4,
+          "lunge": 0,
           "brawn": 0
         },
         "reward": 0,
@@ -546,8 +546,8 @@
         "description":"Shuffle CRUSHED into the Deck",
         "cost": {
           "blade": 0,
-          "flourish": 0,
-          "lunge": 6,
+          "flourish": 6,
+          "lunge": 0,
           "brawn": 0
         },
         "reward": 0,
@@ -563,8 +563,8 @@
         "name":"Pierce",
         "description":"Shuffle IMPALED into the Deck",
         "cost": {
-          "blade": 2,
-          "flourish": 4,
+          "blade": 0,
+          "flourish": 6,
           "lunge": 0,
           "brawn": 0
         },
@@ -581,10 +581,10 @@
         "name":"Discombobulate",
         "description":"Shuffle BLINDED into the Deck",
         "cost": {
-          "blade": 0,
+          "blade": 4,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 4
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [9],
@@ -599,10 +599,10 @@
         "name":"Mangle",
         "description":"Shuffle WOUNDED into the Deck",
         "cost": {
-          "blade": 2,
+          "blade": 4,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 2
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [8],
@@ -653,10 +653,10 @@
         "name":"Skewer",
         "description":"Shuffle IMPALED into the Deck",
         "cost": {
-          "blade": 2,
-          "flourish": 2,
-          "lunge": 2,
-          "brawn": 0
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 6
         },
         "reward": 0,
         "addToDeck": [11],
@@ -673,8 +673,8 @@
         "cost": {
           "blade": 0,
           "flourish": 0,
-          "lunge": 6,
-          "brawn": 0
+          "lunge": 0,
+          "brawn": 6
         },
         "reward": 0,
         "addToDeck": [10],
@@ -707,8 +707,8 @@
         "name":"Perforate",
         "description":"Shuffle IMPALED into the Deck",
         "cost": {
-          "blade": 0,
-          "flourish": 6,
+          "blade": 6,
+          "flourish": 0,
           "lunge": 0,
           "brawn": 0
         },
@@ -725,10 +725,10 @@
         "name":"Shield Crush",
         "description":"Shuffle CRUSHED into the Deck",
         "cost": {
-          "blade": 0,
+          "blade": 6,
           "flourish": 0,
           "lunge": 0,
-          "brawn": 6
+          "brawn": 0
         },
         "reward": 0,
         "addToDeck": [10],

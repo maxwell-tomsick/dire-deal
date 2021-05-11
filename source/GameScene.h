@@ -105,6 +105,7 @@ protected:
     std::shared_ptr<cugl::scene2::SceneNode> _nextFight;
     std::shared_ptr<cugl::scene2::SceneNode> _nextFightPoison;
     std::shared_ptr<cugl::scene2::SceneNode> _nextFightBrawler;
+    std::shared_ptr<cugl::scene2::SceneNode> _nextFightWorm;
     std::shared_ptr<cugl::scene2::Label> _nextFightText;
     std::shared_ptr<cugl::scene2::SceneNode> _musicSliderNode;
     std::shared_ptr<cugl::scene2::SceneNode> _soundSliderNode;
@@ -121,6 +122,8 @@ protected:
     std::shared_ptr<cugl::scene2::NinePatch> _removeCard1;
     std::shared_ptr<cugl::scene2::NinePatch> _removeCard2;
     std::shared_ptr<cugl::scene2::NinePatch> _displayCardBurnTexture;
+    std::shared_ptr<cugl::scene2::NinePatch> _displayCardResponseType;
+    std::shared_ptr<cugl::scene2::NinePatch> _displayCardResponseBurn;
     std::shared_ptr<cugl::scene2::Label> _displayCardBurnText;
     std::shared_ptr<cugl::scene2::Button> _currCardButton;
     std::shared_ptr<cugl::scene2::PolygonNode> _cardFront;
@@ -173,6 +176,9 @@ protected:
     bool _doBurn;
     int _fight;
     float _idleBuffer;
+    float _enemyIdleBuffer;
+    int _enemyIdleSheet;
+    int _enemyIdleSheetNum;
     double _ratio;
     bool _usedSecondWind;
     bool _tutorial;
@@ -180,6 +186,7 @@ protected:
     int _goonInt;
     int _burnInt;
     int _highestLevel;
+    int _mod;
     //std::shared_ptr<cugl::AudioEngine> _audioEngine;
     std::shared_ptr<cugl::AudioQueue> _audioQueue;
     const float WIDTH_SCALE = 0.517f;
@@ -279,6 +286,8 @@ public:
 
     void setDisplayCardBurnText(Card displayCard);
     
+    void setDisplayCardResponseType(Card displayCard, bool brawn);
+    
     /**
      * Callback for the beginning of a touch event
      *
@@ -344,6 +353,8 @@ public:
     void setProgressJson();
     
     void setGameJson(bool startingDeck);
+    
+    void resourceIncrease();
 };
 
 #endif /* __GAME_SCENE_H__ */

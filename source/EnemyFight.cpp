@@ -17,6 +17,8 @@ EnemyFight::EnemyFight(){
 	_deck = {0};
     _nextDeck ={};
     _enemyTexture = "";
+    _enemyTexture2 = "";
+    _enemyTexture3 = "";
     // std::shared_ptr<cugl::scene2::SceneNode> background;
     _rows = 3;
     _cols = 4;
@@ -25,6 +27,8 @@ EnemyFight::EnemyFight(){
     _hscale = 1.0f;
     _id = 0;
     _scale = 1.0f;
+    _idleBuffer  =0.1f;
+    _numSheets = 1;
 }
 
 void EnemyFight::allocate(
@@ -38,7 +42,9 @@ void EnemyFight::allocate(
     float wscale,
     float hscale,
     int id,
-    float scale){
+    float scale,
+    float idleBuffer,
+    int numSheets){
         
     _enemyName = enemyName;
 	_deck = deck;
@@ -51,4 +57,6 @@ void EnemyFight::allocate(
     _hscale = hscale;
     _scale = scale;
     _id = id;
+    _idleBuffer = idleBuffer;
+    _numSheets = numSheets;
 }

@@ -11,6 +11,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "lunge",
       "level": 1
     },
     "Bide Time":{
@@ -24,6 +25,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "blade",
       "level": 1
     },
     "Guard":{
@@ -37,6 +39,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "flourish",
       "level": 1
     },
     "Grab":{
@@ -50,6 +53,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "brawn",
       "level": 1
     },
     "Grappled":{
@@ -63,6 +67,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "flourish",
       "level": 2
     },
     "Exposed":{
@@ -76,6 +81,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "lunge",
       "level": 2
     },
     "Staggered":{
@@ -89,6 +95,7 @@
           "lunge": 5,
           "brawn": 0
         },
+      "responseType": "brawn",
       "level": 2
     },
     "Stunned":{
@@ -102,6 +109,7 @@
           "lunge": 0,
           "brawn": 10
         },
+      "responseType": "lunge",
       "level": 3
     },
     "Wounded":{
@@ -115,6 +123,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "flourish",
       "level": 3
     },
     "Crushed":{
@@ -128,6 +137,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "brawn",
       "level": 4
     },
     "Impaled":{
@@ -141,6 +151,7 @@
           "lunge": 0,
           "brawn": 15
         },
+      "responseType": "blade",
       "level": 4
     },
     "Incapacitated":{
@@ -154,6 +165,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "none",
       "level": 5
     }
   }

@@ -205,6 +205,16 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
+    "ReloadFlip": {
+      "file": "textures/cardflips/card-reload-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "BarrageFlip": {
+      "file": "textures/cardflips/card-barrage-spritesheet.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
     "PunchFlip": {
       "file": "textures/cardflips/card-incapacitated-spritesheet.png",
       "minfilter": "linear",
@@ -261,8 +271,23 @@
     "slimeIdle": {
       "file": "textures/enemy-slime-idle.png"
     },
-    "wormIdle": {
-      "file": "textures/enemy-worm-idle.png"
+    "worm1aIdle": {
+      "file": "textures/enemy-worm1a-idle.png"
+    },
+    "worm1bIdle": {
+      "file": "textures/enemy-worm1b-idle.png"
+    },
+    "worm1cIdle": {
+      "file": "textures/enemy-worm1c-idle.png"
+    },
+    "worm3aIdle": {
+      "file": "textures/enemy-worm3a-idle.png"
+    },
+    "worm3bIdle": {
+      "file": "textures/enemy-worm3b-idle.png"
+    },
+    "worm3cIdle": {
+      "file": "textures/enemy-worm3c-idle.png"
     },
     "enemyLabel": {
       "file": "textures/enemy-label.png",
@@ -431,6 +456,16 @@
     },
     "poison": {
       "file": "textures/cards/poison.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "barrage": {
+      "file": "textures/cards/barrage.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "reload": {
+      "file": "textures/cards/reload.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -1454,7 +1489,7 @@
                       "type": "Label",
                       "data": {
                         "font": "sans",
-                        "text": "cost     extra",
+                        "text": "cost     extra.",
                         "foreground": [  207,166,93,255 ],
                         "anchor": [ 0, 0 ],
                         "scale": 0.4,
@@ -1507,7 +1542,135 @@
                       }
                   }
                 }
+              },
+            "worm": {
+              "type": "Node",
+              "data": {
+                "visible": false
+              },
+              "format": {
+                "type": "Anchored"
+              },
+              "children": {
+                "ability": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "Target Ability: Artillery",
+                    "foreground": [ 124, 229, 227, 255 ],
+                    "anchor": [ 0.5, 0.5 ],
+                    "scale": 0.5,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": 0.18,
+                    "x_offset": 0.14
+                  }
+                },
+                "text1": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "Responses that shuffle higher-",
+                    "foreground": [ 207, 166, 93, 255 ],
+                    "anchor": [ 0, 0 ],
+                    "scale": 0.4,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": 0.05,
+                    "x_offset": -0.15
+                  }
+                },
+                "text2": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "leveled cards into the deck",
+                    "foreground": [ 207, 166, 93, 255 ],
+                    "anchor": [ 0, 0 ],
+                    "scale": 0.4,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": -0.025,
+                    "x_offset": -0.15
+                  }
+                },
+                "text3": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "cost more for each",
+                    "foreground": [ 207, 166, 93, 255 ],
+                    "anchor": [ 0, 0 ],
+                    "scale": 0.4,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": -0.1,
+                    "x_offset": -0.15
+                  },
+                  "format": {
+                    "type": "Anchored"
+                  }
+                },
+                "text4": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "\"Cannon Barrage\" that was",
+                    "foreground": [ 207, 166, 93, 255 ],
+                    "anchor": [ 0, 0 ],
+                    "scale": 0.4,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": -0.175,
+                    "x_offset": -0.15
+                  },
+                  "format": {
+                    "type": "Anchored"
+                  }
+                },
+                "text5": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "shuffled into the current deck.",
+                    "foreground": [ 207, 166, 93, 255 ],
+                    "anchor": [ 0, 0 ],
+                    "scale": 0.4,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": -0.25,
+                    "x_offset": -0.15
+                  },
+                  "format": {
+                    "type": "Anchored"
+                  }
+                }
               }
+            }
             }
         },
     "lab": {
@@ -2206,12 +2369,44 @@
             "x_anchor": "left",
             "y_anchor": "bottom",
             "y_offset": 0.3,
-            "x_offset": 0.125
+            "x_offset": 0.1
           },
           "format": {
             "type": "Anchored"
           },
           "children": {
+              "responseType": {
+                "type": "NinePatch",
+                "data": {
+                  "texture": "brawn",
+                  "anchor": [ 0.5, 0.5 ]
+                },
+                "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "bottom",
+                  "y_offset": 0.95,
+                  "x_offset": 0.05
+                },
+                "format": {
+                  "type": "Anchored"
+                }
+              },
+              "responseTypeBrawn": {
+                "type": "NinePatch",
+                "data": {
+                  "texture": "brawn",
+                  "anchor": [ 0.5, 0.5 ]
+                },
+                "layout": {
+                  "x_anchor": "left",
+                  "y_anchor": "bottom",
+                  "y_offset": 0.75,
+                  "x_offset": 0.05
+                },
+                "format": {
+                  "type": "Anchored"
+                }
+              },
             "burnAmount": {
               "type": "NinePatch",
               "data": {

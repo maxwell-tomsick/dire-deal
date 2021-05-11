@@ -10,6 +10,7 @@
 class Card {
 private:
 	string _text; // do we want this to be a string?
+    string _responseType;
 	int _id;
     int _level;
     std::vector<int> _responses; // responses;
@@ -19,10 +20,14 @@ private:
 public:
     Card();
     
-    void allocate(const string text, const int id, const std::shared_ptr<cugl::Texture> texture, const std::vector<int> responses, const std::vector<int> resources, const int level);
+    void allocate(const string text, const int id, const std::shared_ptr<cugl::Texture> texture, const std::vector<int> responses, const std::vector<int> resources, const int level, const string responseType);
     
     string getText(){
         return _text;
+    }
+    
+    string getResponseType(){
+        return _responseType;
     }
     
     int getId(){

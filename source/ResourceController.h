@@ -61,7 +61,8 @@ class ResourceController {
         std::map<int, Response> &responses, 
         int responseId, 
         int response, 
-        std::shared_ptr<cugl::AssetManager> &assets);
+        std::shared_ptr<cugl::AssetManager> &assets,
+                              int mod);
 
     void setBurnText(
         Card &currentCard, 
@@ -74,6 +75,13 @@ class ResourceController {
         std::shared_ptr<cugl::scene2::Label> &displayCardBurnText, 
         std::shared_ptr<cugl::AssetManager> &assets,
         std::shared_ptr<cugl::scene2::NinePatch> &displayCardBurnTexture);
+    
+    void setDisplayCardResponseType(
+        Card &displayCard,
+        std::shared_ptr<cugl::AssetManager> &assets,
+        std::shared_ptr<cugl::scene2::NinePatch> &displayCardResponseType,
+        std::shared_ptr<cugl::scene2::NinePatch> &displayCardResponseBrawn,
+                                    bool brawn);
     
     void setFree(int f){
         _curr = 0;

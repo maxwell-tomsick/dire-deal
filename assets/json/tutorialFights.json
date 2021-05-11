@@ -3,6 +3,7 @@
     "tutorial1": {
       "id": 1,
       "enemyName": "Progression",
+      "numSheets":1,
       "enemyTexture": "thugIdle",
       "deck": [ 0 ],
       "nextDeck": [],
@@ -12,12 +13,14 @@
       "frames": 12,
       "wscale": 0.2,
       "hscale": 0.44,
-      "scale": 0.9
+      "scale": 0.9,
+      "idleBuffer": 0.1
     },
     "tutorial2": {
       "id": 2,
       "enemyName": "Burn",
       "enemyTexture": "thugIdle",
+      "numSheets":1,
       "deck": [ 0, 1 ],
       "nextDeck": [],
       "background": "background",
@@ -26,12 +29,14 @@
       "frames": 12,
       "wscale": 0.2,
       "hscale": 0.44,
-      "scale": 0.9
+      "scale": 0.9,
+      "idleBuffer": 0.1
     },
     "tutorial3": {
       "id": 3,
       "enemyName": "Increasing Costs",
       "enemyTexture": "thugIdle",
+      "numSheets":1,
       "deck": [ 0, 1 ],
       "nextDeck": [],
       "background": "background",
@@ -40,7 +45,8 @@
       "frames": 12,
       "wscale": 0.2,
       "hscale": 0.44,
-      "scale": 0.9
+      "scale": 0.9,
+      "idleBuffer": 0.1
     }
   }
 }

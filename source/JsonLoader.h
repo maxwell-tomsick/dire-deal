@@ -70,8 +70,9 @@ namespace JsonLoader{
           std::vector<int> responses = jsonCard->get("reactions")->asIntArray();
           std::vector<int> resources = jsonCard->get("resources")->asIntArray();
           int level = jsonCard->get("level")->asInt();
+            string responseType = jsonCard->get("responseType")->asString();
           Card card;
-          card.allocate(name, id, texture, responses, resources, level);
+          card.allocate(name, id, texture, responses, resources, level, responseType);
           cards[id] = card;
         }
         return cards;
@@ -107,15 +108,23 @@ namespace JsonLoader{
             string enemyTexture = jsonItem->get("enemyTexture")->asString();
             std::vector<int> deck = jsonItem->get("deck")->asIntArray();
             std::vector<int> nextDeck = jsonItem->get("nextDeck")->asIntArray();
+            int numSheets = jsonItem->get("numSheets")->asInt();
             int rows = jsonItem->get("rows")->asInt();
             int cols = jsonItem->get("cols")->asInt();
             int frames = jsonItem->get("frames")->asInt();
             float wscale = jsonItem->get("wscale")->asFloat();
             float hscale = jsonItem->get("hscale")->asFloat();
             float scale = jsonItem->get("scale")->asFloat();
+            float idleBuffer = jsonItem->get("idleBuffer")->asFloat();
             int id = jsonItem->get("id")->asInt();
             EnemyFight enemyFight;
-            enemyFight.allocate(enemyName, deck, nextDeck, enemyTexture, rows, cols, frames, wscale, hscale, id, scale);
+            enemyFight.allocate(enemyName, deck, nextDeck, enemyTexture, rows, cols, frames, wscale, hscale, id, scale, idleBuffer, numSheets);
+            if (numSheets > 1) {
+                for (int i = 1; i < numSheets; i++){
+                    string texture = "enemyTexture" + to_string(i+1);
+                    enemyFight.setEnemyTexture(i, jsonItem->get(texture)->asString());
+                }
+            }
             // index at 1
             enemyFights[id] = enemyFight;
         }

@@ -723,7 +723,7 @@
                     "type": "TextField",
                     "data": {
                       "font": "sans4",
-                      "text": "3",
+                      "text": "7",
                       "foreground": [ 241,231,95, 255 ],
                       "halign": "center",
                       "valign": "true middle",
@@ -758,7 +758,7 @@
                     "type": "TextField",
                     "data": {
                       "font": "sans4",
-                      "text": "4",
+                      "text": "5",
                       "foreground": [ 241,231,95, 255 ],
                       "halign": "center",
                       "valign": "true middle",

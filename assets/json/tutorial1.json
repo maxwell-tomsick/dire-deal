@@ -11,6 +11,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "flourish",
       "level": 1
     },
     "Exposed":{
@@ -24,6 +25,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "flourish",
       "level": 2
     },
     "Wounded":{
@@ -37,6 +39,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "flourish",
       "level": 3
     },
     "Impaled":{
@@ -50,6 +53,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "flourish",
       "level": 4
     },
     "Incapacitated":{
@@ -63,6 +67,7 @@
           "lunge": 0,
           "brawn": 0
         },
+      "responseType": "none",
       "level": 5
     }
   }

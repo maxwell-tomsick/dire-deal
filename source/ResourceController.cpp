@@ -24,7 +24,8 @@ void ResourceController::setResponseResources(
     std::map<int, Response> &responses, 
     int responseId, 
     int response, 
-    std::shared_ptr<cugl::AssetManager> &assets){
+    std::shared_ptr<cugl::AssetManager> &assets,
+    int mod){
      std::vector<int> cost = responses[responseId].getResources();
     //std::printf("curr: %d\n", _curr);
     if (responseId != 47 & responseId != 50){
@@ -55,7 +56,7 @@ void ResourceController::setResponseResources(
                     resource = "lunge";
                }
                responseResourcePointer->setTexture(assets->get<Texture>(resource));
-               responseResourceAmountPointer->setText(to_string(cost[i]));
+               responseResourceAmountPointer->setText(to_string((int)(cost[i] * (float)mod/2.0f)));
           }
      }
      for (int j = acc; j <= 4; j++){
@@ -99,6 +100,11 @@ void ResourceController::setDisplayCardBurnText(
     std::shared_ptr<cugl::scene2::Label> &displayCardBurnText, 
     std::shared_ptr<cugl::AssetManager> &assets,
     std::shared_ptr<cugl::scene2::NinePatch> &displayCardBurnTexture){
+    if (displayCard.getText() == "Incapacitated" || displayCard.getId() == 13 || displayCard.getId() == 14 || displayCard.getId() == 15){
+        displayCardBurnTexture->setVisible(false);
+    } else {
+        displayCardBurnTexture->setVisible(true);
+    }
     for (int i = 0; i < 4; i ++){
           if (displayCard.getResource(i) > 0){
                displayCardBurnText->setText(to_string(displayCard.getResource(i)));
@@ -116,4 +122,26 @@ void ResourceController::setDisplayCardBurnText(
      }
     displayCardBurnText->setText(to_string(0));
     displayCardBurnTexture->setTexture(assets->get<Texture>("flourish"));
+}
+
+void ResourceController::setDisplayCardResponseType(
+     Card &displayCard,
+     std::shared_ptr<cugl::AssetManager> &assets,
+     std::shared_ptr<cugl::scene2::NinePatch> &displayCardResponseType,
+    std::shared_ptr<cugl::scene2::NinePatch> &displayCardResponseBrawn,
+    bool brawler){
+    string resource = displayCard.getResponseType();
+    if (resource == "none"){
+        displayCardResponseType->setVisible(false);
+        displayCardResponseBrawn->setVisible(false);
+    } else {
+        displayCardResponseType->setTexture(assets->get<Texture>(resource));
+        displayCardResponseType->setVisible(true);
+        displayCardResponseBrawn->setVisible(false);
+        if (brawler){
+            if (resource != "brawn"){
+                displayCardResponseBrawn->setVisible(true);
+            }
+        }
+    }
 }

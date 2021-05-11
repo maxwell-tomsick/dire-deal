@@ -11,6 +11,7 @@
         "lunge": 0,
         "brawn": 0
       },
+      "responseType": "flourish",
       "level": 4
     },
     "Crushed": {
@@ -24,6 +25,7 @@
         "lunge": 0,
         "brawn": 0
       },
+      "responseType": "blade",
       "level": 4
     },
     "Incapacitated": {
@@ -37,6 +39,7 @@
         "lunge": 0,
         "brawn": 0
       },
+      "responseType": "none",
       "level": 5
     }
   }

@@ -4,7 +4,7 @@
       "id": 0,
       "name": "Slash",
       "texture": "slash",
-      "reactions": [0,1,2,3],
+      "reactions": [1,2,3],
       "resources": {
           "blade": 0,
           "flourish": 0,
@@ -18,7 +18,7 @@
       "id": 1,
       "name": "Bide Time",
       "texture": "bidetime",
-      "reactions": [4,5,6,7,29],
+      "reactions": [5,6,7,29],
       "resources": {
           "blade": 0,
           "flourish": 0,
@@ -32,7 +32,7 @@
       "id": 2,
       "name": "Guard",
       "texture": "guard",
-      "reactions": [8,9,10,11],
+      "reactions": [9,10,11],
       "resources": {
           "blade": 0,
           "flourish": 0,
@@ -42,25 +42,11 @@
       "responseType": "flourish",
       "level": 1
     },
-    "Grab":{
-      "id": 3,
-      "name": "Grab",
-      "texture": "grab",
-      "reactions": [12,13,14,25],
-      "resources": {
-          "blade": 0,
-          "flourish": 0,
-          "lunge": 0,
-          "brawn": 0
-        },
-      "responseType": "brawn",
-      "level": 1
-    },
     "Grappled":{
       "id": 4,
       "name": "Grappled",
       "texture": "grappled",
-      "reactions": [15,16,17,18],
+      "reactions": [15,16,18],
       "resources": {
           "blade": 5,
           "flourish": 0,
@@ -181,6 +167,34 @@
         },
       "responseType": "none",
       "level": 5
+    },
+    "Barrage":{
+      "id": 14,
+      "name": "Barrage",
+      "texture": "barrage",
+      "reactions": [51],
+      "resources": {
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 0
+        },
+      "responseType": "none",
+      "level": 1
+    },
+    "Reload":{
+      "id": 15,
+      "name": "Reload",
+      "texture": "reload",
+      "reactions": [52,53],
+      "resources": {
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 0
+        },
+      "responseType": "lunge",
+      "level": 1
     }
   }
 }

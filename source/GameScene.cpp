@@ -95,7 +95,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           _fight = 1;
           _item = equippedItem;
           if (!tutorial) {
-              _resources = { 40, 40, 40, 40 };
+               _resources = { 20, 20, 20, 20 };
+              //_resources = { 40, 40, 40, 40 };
           } else {
               _resources = { 0, 20, 0, 0 };
           }
@@ -230,7 +231,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      // _currentDeck.push_back(0);
      bool itemFound = false;
      int r = 0;
+     _mod = 2;
      for (int i = 0; i < _currentDeck.size(); i++){
+          if (_currentDeck[i] == 14){
+               _mod += 1;
+          }
           if (_currentDeck[i] == -1){
                itemFound = true;
           } else if (_currentDeck[i] != 13){
@@ -284,6 +289,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _enemyIdle->setPosition(dimen.width * 0.2f, dimen.height*0.44f);
       */
      EnemyFight currFight = _enemyFights[_fight];
+     _enemyIdleBuffer = currFight.getIdleBuffer();
+     _enemyIdleSheet = 0;
+     _enemyIdleSheetNum = currFight.getNumSheets();
      _goonName->setText(currFight.getEnemyName());
      //CULog("beforefilmstrip");
      _enemyIdle->initWithFilmstrip(_assets->get<Texture>(
@@ -398,6 +406,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _nextFight->setContentSize(dimen);
      _nextFight->doLayout();
      _nextFight->setVisible(false);
+     //_nextFight->setVisible(true);
      addChild(_nextFight);
      _nextFightPoison = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight_poison"));
      _nextFightPoison->setContentSize(dimen);
@@ -405,6 +414,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _nextFightBrawler = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight_brawler"));
      _nextFightBrawler->setContentSize(dimen);
      _nextFightBrawler->doLayout();
+     _nextFightWorm = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight_worm"));
+     _nextFightWorm->setContentSize(dimen);
+     _nextFightWorm->doLayout();
 
      std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc(Application::get()->getSaveDirectory() + "progress.json");
      std::shared_ptr<JsonValue> readJson = jsonReaderHighestLevel->readJson();
@@ -494,6 +506,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _currCardButton =std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_currCard"));
      _displayCardBurnTexture =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount"));
      _displayCardBurnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount_amount"));
+     _displayCardResponseType=std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard_responseType"));
+     _displayCardResponseBurn=std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard_responseTypeBrawn"));
      _goon = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_goon"));
      _burnLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_cardHolder_amount"));
      _underline = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_goon_underline"));
@@ -676,6 +690,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
 void GameScene::responseUpdate(const int responseId, const int response) {
      int id = _responses[responseId].getCards()[0];
      int level = _cards[id].getLevel();
+     int mod = 2;
+     if (level > _currentCard.getLevel()){
+          mod = _mod;
+     }
      string responseAddress = "response" + std::to_string(level);
      string glowAddress = "glow" + std::to_string(level);
      auto responseTexture = _assets->get<Texture>(responseAddress);
@@ -684,17 +702,17 @@ void GameScene::responseUpdate(const int responseId, const int response) {
           case 1:
                _responseTexture1->setTexture(responseTexture);
                _responseGlow1->setTexture(responseGlow);
-               _resourceController.setResponseResources(_responses, _responseId1, 1, _assets);
+               _resourceController.setResponseResources(_responses, _responseId1, 1, _assets, mod);
                return;
           case 2:
                _responseTexture2->setTexture(responseTexture);
                _responseGlow2->setTexture(responseGlow);
-               _resourceController.setResponseResources(_responses, _responseId2, 2, _assets);
+               _resourceController.setResponseResources(_responses, _responseId2, 2, _assets, mod);
                return;
           case 3:
                _responseTexture3->setTexture(responseTexture);
                _responseGlow3->setTexture(responseGlow);
-               _resourceController.setResponseResources(_responses, _responseId3, 3, _assets);
+               _resourceController.setResponseResources(_responses, _responseId3, 3, _assets, mod);
                return;
      }
 }
@@ -757,6 +775,9 @@ void GameScene::reset() {
      string cardstring = "json/cards.json";
      if (_fight < _enemyFights.size() + 1){
           EnemyFight currFight = _enemyFights[_fight];
+          _enemyIdleBuffer = currFight.getIdleBuffer();
+          _enemyIdleSheet = 0;
+          _enemyIdleSheetNum = currFight.getNumSheets();
           _goonName->setText(currFight.getEnemyName());
           _enemyIdle->dispose();
           //CULog("beforefilmstrip");
@@ -1070,7 +1091,7 @@ void GameScene::update(float timestep) {
                }
           }
           if (frame < 30){
-               _burnLabel ->setVisible(true);
+               //_burnLabel ->setVisible(true);
                string burnText = "";
                string burnCard = "Burn card to receive";
                if (_burnInt <= 20){
@@ -1102,11 +1123,16 @@ void GameScene::update(float timestep) {
      }
      _idleBuffer += timestep;
      //printf("%f",_idleBuffer);
-     if (_idleBuffer >= 0.1){
+     if (_idleBuffer >= _enemyIdleBuffer){
           int enemyFrame = _enemyIdle->getFrame();
           enemyFrame += 1;
           if (enemyFrame == _enemyIdle->getSize()){
                enemyFrame = 0;
+               _enemyIdleSheet += 1;
+               if (_enemyIdleSheet == _enemyIdleSheetNum){
+                    _enemyIdleSheet = 0;
+               }
+               _enemyIdle->setTexture(_assets->get<Texture>(_enemyFights[_fight].getEnemyTexture(_enemyIdleSheet)));
           }
           _enemyIdle->setFrame(enemyFrame);
           _idleBuffer = 0;
@@ -1130,15 +1156,23 @@ void GameScene::update(float timestep) {
                //_currEvent->setColor(Color4::BLACK);
                if (_nextDeck.size() > 0) {
                     if (_nextDeck.size() == 1) {
-                         if (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4){
-                              if (_nextDeck[0] == 13){
-                                   gameOver();
-                                   return;
-                              }
+                         if (_nextDeck[0] == 13 || _nextDeck[0] == 14 || _nextDeck[0] == 15){
+                              gameOver();
+                              return;
                          }
                          if (_nextDeck[0] == -1 & _item != 2) {
                               gameOver();
                               return;
+                         }
+                    }
+                    if (_nextDeck.size() == 3) {
+                         if (_nextDeck[0] == 14 || _nextDeck[0] == 15){
+                              if (_nextDeck[1] == 14 || _nextDeck[1] == 15){
+                                   if (_nextDeck[2] == 14 || _nextDeck[2] == 15){
+                                        gameOver();
+                                        return;
+                                   }
+                              }
                          }
                     }
                     _deckNode->setNextSize(int(_nextDeck.size()));
@@ -1150,7 +1184,11 @@ void GameScene::update(float timestep) {
                     setGameJson(false);
                     bool itemFound = false;
                     int r = 0;
+                    _mod = 2;
                     for (int i = 0; i < _currentDeck.size(); i++){
+                         if (_currentDeck[i] == 14){
+                              _mod += 1;
+                         }
                          if (_currentDeck[i] == -1){
                               itemFound = true;
                          } else if (_currentDeck[i] != 13){
@@ -1178,11 +1216,9 @@ void GameScene::update(float timestep) {
                     return;
                }
           } else if (_currentDeck.size() == 1 && _nextDeck.size() == 0) {
-               if (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4){
-                    if (_currentDeck[0] == 13) {
-                         gameOver();
-                         return;
-                    }
+               if (_currentDeck[0] == 13 || _currentDeck[0] == 14 || _currentDeck[0] == 15) {
+                    gameOver();
+                    return;
                }
                if (_currentDeck[0] == -1){
                     if (_item != 2)  {
@@ -1267,7 +1303,7 @@ void GameScene::update(float timestep) {
                     _underline->setVisible(true);
                }
           }
-          if (!((_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))){
+          if (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15) {
                if (flipFrame > 7){
                     _burnTexture->setVisible(true);
                }
@@ -1291,7 +1327,7 @@ void GameScene::update(float timestep) {
           _removeOptions = {-2,-2,-2};
           if (!_keepCards) {
                std::vector<int> displayedResponses = _currentCard.getRandomResponses();
-               if ((_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4)){
+               if (_currentCard.getId() == 13){
                     std::vector<int> cardsInDeck = _currentDeck;
                     cardsInDeck.insert(cardsInDeck.end(), _nextDeck.begin(), _nextDeck.end());
                     sort( cardsInDeck.begin(), cardsInDeck.end() );
@@ -1469,12 +1505,19 @@ void GameScene::update(float timestep) {
           if ((_fight == 3 || _fight == 4) && !_tutorial){
                _nextFightPoison->setVisible(true);
                _nextFightBrawler->setVisible(false);
+               _nextFightWorm->setVisible(false);
           } else if (_fight == 5 && !_tutorial) {
                _nextFightBrawler->setVisible(true);
                _nextFightPoison->setVisible(false);
+               _nextFightWorm->setVisible(false);
+          } else if ((_fight == 6 || _fight == 7) && !_tutorial) {
+               _nextFightBrawler->setVisible(false);
+               _nextFightPoison->setVisible(false);
+               _nextFightWorm->setVisible(true);
           } else {
                _nextFightPoison->setVisible(false);
                _nextFightBrawler->setVisible(false);
+               _nextFightWorm->setVisible(false);
           }
           _mainMenu->setVisible(true);
      }
@@ -1527,7 +1570,7 @@ void GameScene::update(float timestep) {
          _tutorialButton->activate();
      }
 #ifndef CU_TOUCH_SCREEN
-     if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13) & ((_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))){
+     if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13)){
           if (_response1->containsScreen(_mouse->pointerPosition()) & _display1) {
                _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
@@ -1555,25 +1598,40 @@ void GameScene::update(float timestep) {
           if (_response1->containsScreen(_mouse->pointerPosition()) & _display1) {
                displayCard = _cards[_responses[_responseId1].getCards()[0]];
                setDisplayCardBurnText(displayCard);
+               if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
+                    setDisplayCardResponseType(displayCard, true);
+               } else {
+                    setDisplayCardResponseType(displayCard, false);
+               }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           }
           else if (_response2->containsScreen(_mouse->pointerPosition()) & _display2) {
               displayCard = _cards[_responses[_responseId2].getCards()[0]];
                setDisplayCardBurnText(displayCard);
+               if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
+                    setDisplayCardResponseType(displayCard, true);
+               } else {
+                    setDisplayCardResponseType(displayCard, false);
+               }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           }
           else if (_response3->containsScreen(_mouse->pointerPosition()) & _display3) {
               displayCard = _cards[_responses[_responseId3].getCards()[0]];
                setDisplayCardBurnText(displayCard);
+               if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
+                    setDisplayCardResponseType(displayCard, true);
+               } else {
+                    setDisplayCardResponseType(displayCard, false);
+               }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           } else {
                _displayCard->setVisible(false);
           }
      } else if ((_movement == 0) & _deckNode->getDrag()) {
-          if (_burn->containsScreen(_mouse->pointerPosition()) & !((_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))){
+          if (_burn->containsScreen(_mouse->pointerPosition()) & (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15)){
                _doBurn = true;
           } else {
                _doBurn = false;
@@ -1639,9 +1697,13 @@ void GameScene::buttonPress(const int r){
                _shuffleFlip->setPosition(_dimen.width * SHUFFLE_WIDTH_SCALE, _dimen.height*R3_HEIGHT_SCALE);
           }
           std::vector<int> cost = response.getResources();
+          int mod = 2;
+          if (_cards[response.getCards()[0]].getLevel() > _currentCard.getLevel()){
+               mod = _mod;
+          }
           if (_resourceController.getFreeResponse() - 1 != r) {
                for (int i = 0; i < cost.size(); i++) {
-                   if (_resources[i] < cost[i]) {
+                   if (_resources[i] < (int)(cost[i] * (float)mod / 2)) {
                        if (r == 0) {
                            _responseText1->setText("Need Resources");
                             _responseText1->setScale(0.55f);
@@ -1666,7 +1728,7 @@ void GameScene::buttonPress(const int r){
           }
           for (int i = 0; i < cost.size(); i++) {
                if (_resourceController.getFreeResponse() - 1 != r){
-                    _resources[i] -= cost[i];
+                    _resources[i] -= (int)(cost[i] * (float)mod / 2);
                }
                _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources);
           }
@@ -1728,6 +1790,7 @@ void GameScene::buttonPress(const int r){
      _prevFlip->setFrame(_prevFlip->getSize()-1);
      _keepCards = false;
      if (win){
+          resourceIncrease();
           _fight += 1;
           if (((_fight - 1 > _highestLevel)) & !_tutorial) {
                _highestLevel = _fight-1;
@@ -1775,6 +1838,11 @@ void GameScene::buttonPress(const int r){
 
 
 void GameScene::setDisplayCardBurnText(Card displayCard){
+     if (displayCard.getText() == "Incapacitated" || displayCard.getId() == 13 || displayCard.getId() == 14 || displayCard.getId() == 15){
+         _displayCardBurnTexture->setVisible(false);
+     } else {
+         _displayCardBurnTexture->setVisible(true);
+     }
      for (int i = 0; i < 4; i ++){
           if (displayCard.getResource(i) > 0){
                _displayCardBurnText->setText(to_string(displayCard.getResource(i)));
@@ -1792,6 +1860,23 @@ void GameScene::setDisplayCardBurnText(Card displayCard){
      }
      _displayCardBurnText->setText(to_string(0));
      _displayCardBurnTexture->setTexture(_assets->get<Texture>("flourish"));
+}
+
+void GameScene::setDisplayCardResponseType(Card displayCard, bool brawler){
+    string resource = displayCard.getResponseType();
+    if (resource == "none"){
+        _displayCardResponseType->setVisible(false);
+        _displayCardResponseBurn->setVisible(false);
+    } else {
+        _displayCardResponseType->setTexture(_assets->get<Texture>(resource));
+        _displayCardResponseType->setVisible(true);
+         _displayCardResponseBurn->setVisible(false);
+        if (brawler){
+            if (resource != "brawn"){
+                 _displayCardResponseBurn->setVisible(true);
+            }
+        }
+    }
 }
 
 void GameScene::touchBeganCB(const cugl::TouchEvent& event, bool focus) {
@@ -1823,18 +1908,33 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
      else if (_response1->containsScreen(pos) & _display1) {
          displayCard = _cards[_responses[_responseId1].getCards()[0]];
           _resourceController.setDisplayCardBurnText(displayCard, _displayCardBurnText, _assets, _displayCardBurnTexture);
+          if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
+               _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,true);
+          } else {
+               _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
+          }
           _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      }
      else if (_response2->containsScreen(pos) & _display2) {
          displayCard = _cards[_responses[_responseId2].getCards()[0]];
           _resourceController.setDisplayCardBurnText(displayCard, _displayCardBurnText, _assets, _displayCardBurnTexture);
+          if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
+               _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,true);
+          } else {
+               _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
+          }
           _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      }
      else if (_response3->containsScreen(pos) & _display3) {
          displayCard = _cards[_responses[_responseId3].getCards()[0]];
           _resourceController.setDisplayCardBurnText(displayCard, _displayCardBurnText, _assets, _displayCardBurnTexture);
+          if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
+               _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,true);
+          } else {
+               _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
+          }
           _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      } else if (_mainMenu->containsScreen(pos)){
@@ -1863,7 +1963,7 @@ void GameScene::touchEnded(const cugl::Vec2& pos) {
                buttonPress(2);
           }
      } else {
-          if (_burn->containsScreen(pos) & !((_currentCard.getId() == 13) & (_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))) {
+          if (_burn->containsScreen(pos) & (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15)) {
                _currentBurn->setPosition(_deckNode->screenToNodeCoords(pos) + _deckNode->getOffset());
                string burnTexture = _currentCard.getText() + "Burn";
                _currentBurn->setTexture(_assets->get<Texture>(burnTexture));
@@ -1897,7 +1997,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                _movement = 6;
                AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
           }
-     } else if (!_deckNode->getDrag() & (_currentCard.getId() == 13) & ((_enemyFights[_fight].getId() == 3 || _enemyFights[_fight].getId() == 4))){
+     } else if (!_deckNode->getDrag() & (_currentCard.getId() == 13)){
           if (_response1->containsScreen(pos)) {
                _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
@@ -1924,18 +2024,33 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
           if (_response1->containsScreen(pos)) {
               displayCard = _cards[_responses[_responseId1].getCards()[0]];
                setDisplayCardBurnText(displayCard);
+               if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
+                    _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,true);
+               } else {
+                    _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
+               }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           }
           else if (_response2->containsScreen(pos) & _display2) {
               displayCard = _cards[_responses[_responseId2].getCards()[0]];
                setDisplayCardBurnText(displayCard);
+               if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
+                    _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,true);
+               } else {
+                    _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
+               }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           }
           else if (_response3->containsScreen(pos) & _display3) {
               displayCard = _cards[_responses[_responseId3].getCards()[0]];
                setDisplayCardBurnText(displayCard);
+               if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
+                    _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,true);
+               } else {
+                    _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
+               }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           } else {
@@ -1951,23 +2066,23 @@ Card GameScene::getItem(const int i){
      switch (i){
           case 0:
                //Flourish Regen
-               specialCard.allocate("Dance", -1, _assets->get<Texture>("danceOfSteel"),{}, {0,3,0,0}, 1);
+               specialCard.allocate("Dance", -1, _assets->get<Texture>("danceOfSteel"),{}, {0,7,0,0}, 1, "none");
                return specialCard;
           case 1:
                //Lunge Regen
-               specialCard.allocate("Sprint", -1, _assets->get<Texture>("sprint"),{}, {0,0,4,0}, 1);
+               specialCard.allocate("Sprint", -1, _assets->get<Texture>("sprint"),{}, {0,0,5,0}, 1, "none");
                return specialCard;
           case 2:
                //Second Wind
-               specialCard.allocate("SecondWind", -1, _assets->get<Texture>("secondWind"),{45}, {0,0,0,0}, 2);
+               specialCard.allocate("SecondWind", -1, _assets->get<Texture>("secondWind"),{45}, {0,0,0,0}, 2, "none");
                return specialCard;
           case 3:
                //Deck Boost
-               specialCard.allocate("Hoarder", -1, _assets->get<Texture>("jackOfAllTrades"),{46}, {0,0,0,0}, 3);
+               specialCard.allocate("Hoarder", -1, _assets->get<Texture>("jackOfAllTrades"),{46}, {0,0,0,0}, 3, "none");
                return specialCard;
           case 4:
                //Parasite
-               specialCard.allocate("Parasite", -1, _assets->get<Texture>("parasite"),{47}, {0,0,0,0}, 3);
+               specialCard.allocate("Parasite", -1, _assets->get<Texture>("parasite"),{47}, {0,0,0,0}, 3, "none");
                return specialCard;
      }
      return specialCard;
@@ -2052,4 +2167,29 @@ void GameScene::setGameJson(bool startingDeck){
      std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::get()->getSaveDirectory() + "savedGame.json");
      textWriter->write(gameSave);
      textWriter->close();
+}
+
+void GameScene::resourceIncrease(){
+     /*
+     std::vector<int> flatIncrease = { 5, 5, 5, 5 };
+     for (int i = 0; i < _currentDeck.size(); i++){
+          for (int j = 0; j < 4; j++){
+               flatIncrease[j] = flatIncrease[j] + _cards[_currentDeck[i]].getResource(j);
+          }
+     }
+     for (int k = 0; k < _nextDeck.size(); k++){
+          for (int m = 0; m < 4; m++){
+               flatIncrease[m] = flatIncrease[m] + _cards[_nextDeck[k]].getResource(m);
+          }
+     }
+     for (int n = 0; n < 4; n++){
+          _resources[n] = _resources[n] + flatIncrease[n];
+     }
+     _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources);
+      */
+     std::vector<int> flatIncrease = { 5, 5, 5, 5 };
+     for (int n = 0; n < 4; n++){
+          _resources[n] = _resources[n] + flatIncrease[n];
+     }
+     _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources);
 }

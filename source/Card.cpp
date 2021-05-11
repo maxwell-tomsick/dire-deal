@@ -14,19 +14,21 @@ using namespace cugl;
 
 Card::Card(){
     _text = "";
+    _responseType = "none";
     _id = 0;
     _responses = {};
     _resources = {};
     _level = 1;
 }
 
-void Card::allocate(const string text, const int id, const std::shared_ptr<cugl::Texture> texture, const std::vector<int> responses, const std::vector<int> resources, const int level){
+void Card::allocate(const string text, const int id, const std::shared_ptr<cugl::Texture> texture, const std::vector<int> responses, const std::vector<int> resources, const int level, const string responseType){
     _text = text;
     _id = id;
     _responses = responses;
     _resources = resources;
     _texture = texture;
     _level = level;
+    _responseType = responseType;
 }
 
 std::vector<int> Card::getRandomResponses(){

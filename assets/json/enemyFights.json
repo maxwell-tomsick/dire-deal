@@ -3,6 +3,7 @@
     "Thug1":{
       "id": 1,
       "enemyName": "Wolven Thug",
+      "numSheets":1,
       "enemyTexture": "thugIdle",
       "deck": [ 0, 1, 2, 3],
       "nextDeck": [],
@@ -12,11 +13,13 @@
       "frames": 12,
       "wscale": 0.2,
       "hscale": 0.44,
-      "scale": 0.9
+      "scale": 0.9,
+      "idleBuffer": 0.1
     },
     "Thug2":{
       "id":2,
       "enemyName": "Lupine Raider",
+      "numSheets":1,
       "enemyTexture": "thugIdle",
       "deck": [ 0, 1, 3, 3, 3],
       "nextDeck": [],
@@ -26,11 +29,13 @@
       "frames": 12,
       "wscale": 0.2,
       "hscale": 0.44,
-      "scale": 0.9
+      "scale": 0.9,
+      "idleBuffer": 0.1
     },
     "Slime1":{
       "id": 3,
       "enemyName": "Cave Slime",
+      "numSheets":1,
       "enemyTexture": "slimeIdle",
       "deck": [ 1, 1, 1, 3, 3, 3],
       "nextDeck": [13],
@@ -40,11 +45,13 @@
       "frames": 12,
       "wscale": 0.2,
       "hscale": 0.375,
-      "scale": 1.2
+      "scale": 1.2,
+      "idleBuffer": 0.1
     },
     "Slime2":{
       "id": 4,
       "enemyName": "Mountain Blob",
+      "numSheets":1,
       "enemyTexture": "slimeIdle",
       "deck": [ 1, 1, 1, 3, 3],
       "nextDeck": [13],
@@ -54,21 +61,60 @@
       "frames": 12,
       "wscale": 0.2,
       "hscale": 0.375,
-      "scale": 1.2
+      "scale": 1.2,
+      "idleBuffer": 0.1
     },
     "Brawler1": {
       "id": 5,
-      "enemyName": "Ballistic Wurm",
-      "enemyTexture": "wormIdle",
+      "enemyName": "Brawler",
+      "numSheets":1,
+      "enemyTexture": "thugIdle",
       "deck": [ 0, 0, 0, 3, 3 ],
       "nextDeck": [],
       "background": "background",
-      "rows": 1,
-      "cols": 1,
-      "frames": 1,
+      "rows": 3,
+      "cols": 4,
+      "frames": 12,
       "wscale": 0.2,
       "hscale": 0.44,
-      "scale": 0.9
+      "scale": 0.9,
+      "idleBuffer": 0.1
+    },
+    "Worm1": {
+      "id": 6,
+      "enemyName": "Fire Wyrm",
+      "numSheets":3,
+      "enemyTexture": "worm1aIdle",
+      "enemyTexture2": "worm1bIdle",
+      "enemyTexture3": "worm1cIdle",
+      "deck": [ 0, 0, 1, 1, 2, 15 ],
+      "nextDeck": [],
+      "background": "background",
+      "rows": 5,
+      "cols": 5,
+      "frames": 21,
+      "wscale": 0.2,
+      "hscale": 0.35,
+      "scale": 1.5,
+      "idleBuffer": 0.05
+    },
+    "Worm2": {
+      "id": 7,
+      "enemyName": "Ballistic Wurm",
+      "numSheets":3,
+      "enemyTexture": "worm3aIdle",
+      "enemyTexture2": "worm3bIdle",
+      "enemyTexture3": "worm3cIdle",
+      "deck": [ 0, 1, 2, 15, 15, 14 ],
+      "nextDeck": [],
+      "background": "background",
+      "rows": 5,
+      "cols": 5,
+      "frames": 21,
+      "wscale": 0.2,
+      "hscale": 0.35,
+      "scale": 1.5,
+      "idleBuffer": 0.05
     }
   }
 }

@@ -778,10 +778,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 0.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.iOS.DireDealrose;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.iOS.DireDeal;
 				PRODUCT_NAME = DireDealiOS;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -809,10 +809,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 0.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.iOS.DireDealrose;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.gdiac.iOS.DireDeal;
 				PRODUCT_NAME = DireDealiOS;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
