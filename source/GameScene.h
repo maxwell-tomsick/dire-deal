@@ -106,6 +106,7 @@ protected:
     std::shared_ptr<cugl::scene2::SceneNode> _nextFightPoison;
     std::shared_ptr<cugl::scene2::SceneNode> _nextFightBrawler;
     std::shared_ptr<cugl::scene2::SceneNode> _nextFightWorm;
+    std::shared_ptr<cugl::scene2::SceneNode> _nextFightCultist;
     std::shared_ptr<cugl::scene2::Label> _nextFightText;
     std::shared_ptr<cugl::scene2::SceneNode> _musicSliderNode;
     std::shared_ptr<cugl::scene2::SceneNode> _soundSliderNode;
@@ -148,6 +149,7 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _saving;
     int _cardBack;
     
+    bool _allRunes;
     int _responseId1;
     int _responseId2;
     int _responseId3;

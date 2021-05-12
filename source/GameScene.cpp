@@ -226,7 +226,19 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      bool itemFound = false;
      int r = 0;
      _mod = 1;
+     bool redFound = false;
+     bool blueFound = false;
+     bool greenFound = false;
      for (int i = 0; i < _currentDeck.size(); i++){
+          if (_currentDeck[i] == 16){
+               blueFound = true;
+          }
+          if (_currentDeck[i] == 17){
+               greenFound = true;
+          }
+          if (_currentDeck[i] == 18){
+               redFound = true;
+          }
           if (_currentDeck[i] == 14){
                _mod += 1;
           }
@@ -240,6 +252,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
                }
           }
      }
+     _allRunes = redFound & blueFound & greenFound;
      _currentCard = _cards[_currentDeck.back()];
      _currentDeck.pop_back();
      if (_currentCard.getId() == -1 & _item == 3){
@@ -411,6 +424,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _nextFightWorm = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight_worm"));
      _nextFightWorm->setContentSize(dimen);
      _nextFightWorm->doLayout();
+     _nextFightCultist = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight_cultist"));
+     _nextFightCultist->setContentSize(dimen);
+     _nextFightCultist->doLayout();
 
      std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc(Application::get()->getSaveDirectory() + "progress.json");
      std::shared_ptr<JsonValue> readJson = jsonReaderHighestLevel->readJson();
@@ -1179,7 +1195,19 @@ void GameScene::update(float timestep) {
                     bool itemFound = false;
                     int r = 0;
                     _mod = 1;
+                    bool redFound = false;
+                    bool blueFound = false;
+                    bool greenFound = false;
                     for (int i = 0; i < _currentDeck.size(); i++){
+                         if (_currentDeck[i] == 16){
+                              blueFound = true;
+                         }
+                         if (_currentDeck[i] == 17){
+                              greenFound = true;
+                         }
+                         if (_currentDeck[i] == 18){
+                              redFound = true;
+                         }
                          if (_currentDeck[i] == 14){
                               _mod += 1;
                          }
@@ -1193,6 +1221,7 @@ void GameScene::update(float timestep) {
                               }
                          }
                     }
+                    _allRunes = redFound & blueFound & greenFound;
                     //std::printf("r: %d\n", r);
                     if (_item == 4 && itemFound){
                          int i = rand() % r;
@@ -1348,6 +1377,11 @@ void GameScene::update(float timestep) {
                               }
                          }
                     }
+               }
+               if ((displayedResponses[0] == 48) & !_allRunes) {
+                    displayedResponses = {displayedResponses[1]};
+               } else if ((displayedResponses[1] == 48) & !_allRunes) {
+                    displayedResponses = {displayedResponses[0]};
                }
                if (displayedResponses.size() > 2) {
                     _responseId1 = displayedResponses[0];

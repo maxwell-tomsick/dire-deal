@@ -105,8 +105,38 @@
         "minfilter": "linear",
         "magfilter": "linear"
       },
+      "Red RuneBurn": {
+        "file": "textures/cardburns/redrune_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "Blue RuneBurn": {
+        "file": "textures/cardburns/bluerune_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "Green RuneBurn": {
+        "file": "textures/cardburns/greenrune_burn.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
       "BackFlip": {
         "file": "textures/cardflips/card-back-spritesheet.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "Blue RuneFlip": {
+        "file": "textures/cardflips/card-bluerune-spritesheet.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "Red RuneFlip": {
+        "file": "textures/cardflips/card-redrune-spritesheet.png",
+        "minfilter": "linear",
+        "magfilter": "linear"
+      },
+      "Green RuneFlip": {
+        "file": "textures/cardflips/card-greenrune-spritesheet.png",
         "minfilter": "linear",
         "magfilter": "linear"
       },
@@ -496,6 +526,21 @@
     },
     "wounded": {
       "file": "textures/cards/wounded.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "bluerune": {
+      "file": "textures/cards/bluerune.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "greenrune": {
+      "file": "textures/cards/greenrune.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "redrune": {
+      "file": "textures/cards/redrune.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -1667,6 +1712,167 @@
                   },
                   "format": {
                     "type": "Anchored"
+                  }
+                }
+              }
+            },
+            "cultist": {
+              "type": "Node",
+              "data": {
+                "visible": false
+              },
+              "format": {
+                "type": "Anchored"
+              },
+              "children": {
+                "ability": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "Target Ability: Dire Curse",
+                    "foreground": [ 124, 229, 227, 255 ],
+                    "anchor": [ 0.5, 0.5 ],
+                    "scale": 0.5,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": 0.18,
+                    "x_offset": 0.14
+                  }
+                },
+                "card": {
+                  "type": "NinePatch",
+                  "data": {
+                    "texture": "bluerune",
+                    "scale": 0.33,
+                    "anchor": [ 0.5, 0.5 ]
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": -0.05,
+                    "x_offset": -0.05
+                  }
+                },
+                "card2": {
+                  "type": "NinePatch",
+                  "data": {
+                    "texture": "greenrune",
+                    "scale": 0.33,
+                    "anchor": [ 0.5, 0.5 ]
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": -0.05,
+                    "x_offset": 0
+                  }
+                },
+                "card3": {
+                  "type": "NinePatch",
+                  "data": {
+                    "texture": "redrune",
+                    "scale": 0.33,
+                    "anchor": [ 0.5, 0.5 ]
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": -0.05,
+                    "x_offset": 0.05
+                  }
+                },
+                "text1": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "Can only be",
+                    "foreground": [ 207, 166, 93, 255 ],
+                    "anchor": [ 0, 0 ],
+                    "scale": 0.4,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": 0.075,
+                    "x_offset": 0.2
+                  }
+                },
+                "text2": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "banished once",
+                    "foreground": [ 207, 166, 93, 255 ],
+                    "anchor": [ 0, 0 ],
+                    "scale": 0.4,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": 0,
+                    "x_offset": 0.2
+                  }
+                },
+                "text3": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "all 3 Runes",
+                    "foreground": [ 207, 166, 93, 255 ],
+                    "anchor": [ 0, 0 ],
+                    "scale": 0.4,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": -0.075,
+                    "x_offset": 0.2
+                  }
+                },
+                "text4": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "are in the",
+                    "foreground": [ 207, 166, 93, 255 ],
+                    "anchor": [ 0, 0 ],
+                    "scale": 0.4,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": -0.15,
+                    "x_offset": 0.2
+                  }
+                },
+                "text5": {
+                  "type": "Label",
+                  "data": {
+                    "font": "sans",
+                    "text": "current deck",
+                    "foreground": [ 207, 166, 93, 255 ],
+                    "anchor": [ 0, 0 ],
+                    "scale": 0.4,
+                    "halign": "left",
+                    "valign": "middle"
+                  },
+                  "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
+                    "y_offset": -0.225,
+                    "x_offset": 0.2
                   }
                 }
               }
