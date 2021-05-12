@@ -1378,10 +1378,12 @@ void GameScene::update(float timestep) {
                          }
                     }
                }
-               if ((displayedResponses[0] == 48) & !_allRunes) {
-                    displayedResponses = {displayedResponses[1]};
-               } else if ((displayedResponses[1] == 48) & !_allRunes) {
-                    displayedResponses = {displayedResponses[0]};
+               if (displayedResponses.size() > 0){
+                    if ((displayedResponses[0] == 48) & !_allRunes) {
+                         displayedResponses = {displayedResponses[1]};
+                    } else if ((displayedResponses[1] == 48) & !_allRunes) {
+                         displayedResponses = {displayedResponses[0]};
+                    }
                }
                if (displayedResponses.size() > 2) {
                     _responseId1 = displayedResponses[0];
