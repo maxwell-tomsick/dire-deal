@@ -225,7 +225,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      // _currentDeck.push_back(0);
      bool itemFound = false;
      int r = 0;
-     _mod = 2;
+     _mod = 1;
      for (int i = 0; i < _currentDeck.size(); i++){
           if (_currentDeck[i] == 14){
                _mod += 1;
@@ -684,7 +684,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
 void GameScene::responseUpdate(const int responseId, const int response) {
      int id = _responses[responseId].getCards()[0];
      int level = _cards[id].getLevel();
-     int mod = 2;
+     int mod = 1;
      if (level > _currentCard.getLevel()){
           mod = _mod;
      }
@@ -1178,7 +1178,7 @@ void GameScene::update(float timestep) {
                     setGameJson(false);
                     bool itemFound = false;
                     int r = 0;
-                    _mod = 2;
+                    _mod = 1;
                     for (int i = 0; i < _currentDeck.size(); i++){
                          if (_currentDeck[i] == 14){
                               _mod += 1;
@@ -1691,13 +1691,13 @@ void GameScene::buttonPress(const int r){
                _shuffleFlip->setPosition(_dimen.width * SHUFFLE_WIDTH_SCALE, _dimen.height*R3_HEIGHT_SCALE);
           }
           std::vector<int> cost = response.getResources();
-          int mod = 2;
+          int mod = 1;
           if (_cards[response.getCards()[0]].getLevel() > _currentCard.getLevel()){
                mod = _mod;
           }
           if (_resourceController.getFreeResponse() - 1 != r) {
                for (int i = 0; i < cost.size(); i++) {
-                   if (_resources[i] < (int)(cost[i] * (float)mod / 2)) {
+                   if (_resources[i] < (cost[i] * mod)) {
                        if (r == 0) {
                            _responseText1->setText("Need Resources");
                             _responseText1->setScale(0.55f);
@@ -1722,7 +1722,7 @@ void GameScene::buttonPress(const int r){
           }
           for (int i = 0; i < cost.size(); i++) {
                if (_resourceController.getFreeResponse() - 1 != r){
-                    _resources[i] -= (int)(cost[i] * (float)mod / 2);
+                    _resources[i] -= (cost[i] * mod);
                }
                _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources);
           }
@@ -1819,7 +1819,12 @@ void GameScene::buttonPress(const int r){
           //_currEvent->setColor(Color4::WHITE);
           if (_fight > _enemyFights.size()){
                if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json") & !_tutorial){
-                    filetool::file_delete(Application::get()->getSaveDirectory() + "savedGame.json");
+#if defined (__WINDOWS__)
+                string path = Application::get()->getSaveDirectory() + "savedGame.json";
+                std::remove(path.c_str());
+#else
+                filetool::file_delete(Application::get()->getSaveDirectory() + "savedGame.json");
+#endif
                }
                _currEvent->setText("Hunt Complete!");
                _currEvent->setVisible(true);
@@ -2122,7 +2127,12 @@ void GameScene::gameOver(){
      _cardHolder->setVisible(false);
      
      if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json") & !_tutorial){
-          filetool::file_delete(Application::get()->getSaveDirectory() + "savedGame.json");
+#if defined (__WINDOWS__)
+                string path = Application::get()->getSaveDirectory() + "savedGame.json";
+                std::remove(path.c_str());
+#else
+                filetool::file_delete(Application::get()->getSaveDirectory() + "savedGame.json");
+#endif
      }
      _movement = 11;
      return;

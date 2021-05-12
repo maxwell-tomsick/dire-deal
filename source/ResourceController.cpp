@@ -56,7 +56,7 @@ void ResourceController::setResponseResources(
                     resource = "lunge";
                }
                responseResourcePointer->setTexture(assets->get<Texture>(resource));
-               responseResourceAmountPointer->setText(to_string((int)(cost[i] * (float)mod/2.0f)));
+               responseResourceAmountPointer->setText(to_string((cost[i] * mod)));
           }
      }
      for (int j = acc; j <= 4; j++){
