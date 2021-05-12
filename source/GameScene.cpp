@@ -109,11 +109,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      //RESEARCH WHETHER TO DELETE POINTER LATER
      if (!tutorial) {
          string enemyFightsJsonName = "json/enemyFights.json";
-         if (ratio <= 1.5) {
-              enemyFightsJsonName = "json/enemyFights-ipad.json";
-         }
          std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
-         _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
+         _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights, ratio);
          jsonReaderEnemyFights->close();
          string cardstring = "json/level" + to_string(_fight) + ".json";
          std::shared_ptr<JsonReader> jsonReaderCardString = JsonReader::alloc(cardstring);
@@ -122,11 +119,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      }
      else {
          string enemyFightsJsonName = "json/tutorialFights.json";
-         if (ratio <= 1.5) {
-             enemyFightsJsonName = "json/tutorialFights-ipad.json";
-         }
          std::shared_ptr<JsonReader> jsonReaderEnemyFights = JsonReader::alloc(enemyFightsJsonName);
-         _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights);
+         _enemyFights = getJsonEnemyFights(jsonReaderEnemyFights, _enemyFights, ratio);
          jsonReaderEnemyFights->close();
          std::shared_ptr<JsonReader> jsonReaderTutorial = JsonReader::alloc("json/tutorial1.json");
          _cards = getJsonCards(jsonReaderTutorial, _cards, _assets);

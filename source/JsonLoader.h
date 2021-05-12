@@ -99,7 +99,7 @@ namespace JsonLoader{
         return responses;
     }
 
-    static std::map<int, EnemyFight> getJsonEnemyFights(std::shared_ptr<JsonReader> jsonReader, std::map<int, EnemyFight>& enemyFights) {
+    static std::map<int, EnemyFight> getJsonEnemyFights(std::shared_ptr<JsonReader> jsonReader, std::map<int, EnemyFight>& enemyFights, float ratio) {
         //std::cout << "asdf";
         std::shared_ptr<JsonValue> fightsJson = getJsonItem(jsonReader, "Fights");
         for (int i = 0; i < fightsJson->size(); i++) {
@@ -114,7 +114,12 @@ namespace JsonLoader{
             int frames = jsonItem->get("frames")->asInt();
             float wscale = jsonItem->get("wscale")->asFloat();
             float hscale = jsonItem->get("hscale")->asFloat();
-            float scale = jsonItem->get("scale")->asFloat();
+            float scale;
+            if (ratio <= 1.5){
+                scale = jsonItem->get("scale-ipad")->asFloat();
+            }else {
+                scale = jsonItem->get("scale")->asFloat();
+            }
             float idleBuffer = jsonItem->get("idleBuffer")->asFloat();
             int id = jsonItem->get("id")->asInt();
             EnemyFight enemyFight;
