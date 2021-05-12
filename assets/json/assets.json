@@ -1679,7 +1679,7 @@
               "type": "Label",
               "data": {
                 "font": "sans",
-                "text": "Target Ability: Dire Curse",
+                "text": "Target Ability: Cultist",
                 "foreground": [ 124, 229, 227, 255 ],
                 "anchor": [ 0.5, 0.5 ],
                 "scale": 0.5,

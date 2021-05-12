@@ -99,8 +99,8 @@
       "cols": 5,
       "frames": 21,
       "wscale": 0.2,
-      "hscale": 0.35,
-      "scale": 1.5,
+      "hscale": 0.4,
+      "scale": 1.7,
       "scale-ipad": 1.3,
       "idleBuffer": 0.05
     },
@@ -118,14 +118,14 @@
       "cols": 5,
       "frames": 21,
       "wscale": 0.2,
-      "hscale": 0.35,
-      "scale": 1.5,
+      "hscale": 0.4,
+      "scale": 1.7,
       "scale-ipad": 1.3,
       "idleBuffer": 0.05
     },
     "Cultist":{
       "id": 8,
-      "enemyName": "Dire Cultist",
+      "enemyName": "Dire Duelist",
       "numSheets":1,
       "enemyTexture": "thugIdle",
       "deck": [ 9,5,0,2,2,1],
