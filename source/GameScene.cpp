@@ -92,7 +92,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           }
      } else {
           _usedSecondWind = false;
-          _fight = 1;
+          _fight = 4;
           _item = equippedItem;
           if (!tutorial) {
                _resources = { 20, 20, 20, 20 };
@@ -1378,7 +1378,7 @@ void GameScene::update(float timestep) {
                          }
                     }
                }
-               if (displayedResponses.size() > 0){
+               if (displayedResponses.size() > 1){
                     if ((displayedResponses[0] == 48) & !_allRunes) {
                          displayedResponses = {displayedResponses[1]};
                     } else if ((displayedResponses[1] == 48) & !_allRunes) {
