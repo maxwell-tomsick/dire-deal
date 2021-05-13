@@ -92,7 +92,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           }
      } else {
           _usedSecondWind = false;
-          _fight = 4;
+          _fight = 1;
           _item = equippedItem;
           if (!tutorial) {
                _resources = { 20, 20, 20, 20 };
