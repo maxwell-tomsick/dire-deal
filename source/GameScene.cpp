@@ -258,7 +258,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      if (_currentCard.getId() == -1 & _item == 3){
           int i = rand() % 4;
           int r = (int) _currentDeck.size() + (int)_nextDeck.size() + 1;
-          _currentCard.setResources(i, r);
+          _currentCard.setResources(i, r * 2);
      }
      
      _deckNode = DeckNode::alloc();
@@ -995,7 +995,7 @@ void GameScene::reset() {
      if (_currentCard.getId() == -1 & _item == 3){
           int i = rand() % 4;
           int r = (int) _currentDeck.size() + (int)_nextDeck.size() + 1;
-          _currentCard.setResources(i, r);
+          _currentCard.setResources(i, r * 2);
      }
      _deckNode->setSize(int(_currentDeck.size()));
      _deckNode->setNextSize((int)(_nextDeck.size()));
@@ -1268,7 +1268,7 @@ void GameScene::update(float timestep) {
           if (_currentCard.getId() == -1 & _item == 3){
                int i = rand() % 4;
                int r = (int) _currentDeck.size() + (int)_nextDeck.size() + 1;
-               _currentCard.setResources(i, r);
+               _currentCard.setResources(i, r * 2);
           }
           _deckNode->setFrontTexture(_currentCard.getTexture());
           _currEvent->setText(_currentCard.getText());

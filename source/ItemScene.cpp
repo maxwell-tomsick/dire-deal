@@ -287,9 +287,9 @@ void ItemScene::displayItem(int id) {
     } else if (id == 3) {
         _displayText1->setText("Burns with a random resource type for");
         _displayText1->setVisible(true);
-        _displayText2->setText("the total number of cards in the deck.");
+        _displayText2->setText("double the total number of cards in");
         _displayText2->setVisible(true);
-        _displayText3->setText("Appears once per fight.");
+        _displayText3->setText("the deck. Appears once per fight.");
         _displayText3->setVisible(true);
         _displayText4->setVisible(false);
         _displayText5->setVisible(false);
