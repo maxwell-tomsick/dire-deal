@@ -11,12 +11,28 @@ void ResourceController::setResources(
     std::shared_ptr<cugl::scene2::Label> &flourishText, 
     std::shared_ptr<cugl::scene2::Label> &lungeText,
     std::shared_ptr<cugl::scene2::Label> &brawnText,
-    std::vector<int> &resources
+    std::vector<int> &resources, int preview
     ){
     bladeText->setText(to_string(resources[0]));
     flourishText->setText(to_string(resources[1]));
     lungeText->setText(to_string(resources[2]));
     brawnText->setText(to_string(resources[3]));
+    if (preview == 0) {
+        bladeText->setForeground(Color4(124, 229, 227, 255));
+    } else if (preview == 1){
+        flourishText->setForeground(Color4(124, 229, 227, 255));
+    } else if (preview == 2){
+        lungeText->setForeground(Color4(124, 229, 227, 255));
+    } else if (preview == 3){
+        brawnText->setForeground(Color4(124, 229, 227, 255));
+    } else {
+        bladeText->setForeground(Color4(241,231,95, 255 ));
+        flourishText->setForeground(Color4(241,231,95, 255 ));
+        lungeText->setForeground(Color4(241,231,95, 255 ));
+        brawnText->setForeground(Color4(241,231,95, 255 ));
+    }
+
+
 
 }  
 

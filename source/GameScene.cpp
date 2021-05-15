@@ -70,6 +70,16 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _pause->setContentSize(dimen);
      _pause->doLayout();
      
+     std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc(Application::get()->getSaveDirectory() + "settings.json");
+     std::shared_ptr<JsonValue> readJson = jsonReaderHighestLevel->readJson();
+     std::shared_ptr<JsonValue> progress = readJson->get("Progress");
+     std::shared_ptr<JsonValue> volume = readJson->get("Volume");
+     jsonReaderHighestLevel->close();
+     _highestLevel = progress->get("HighestLevel")->asInt();
+     _musicVolume = volume->get("Music")->asFloat();
+     _soundVolume = volume->get("Sound")->asFloat();
+     _autoFlip = volume->get("Autoflip")->asBool();
+     
      bool startingDeck = true;
      if (filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json") & savedGame){
           std::shared_ptr<JsonReader> jsonReaderSaveFile = JsonReader::alloc(Application::get()->getSaveDirectory() + "savedGame.json");
@@ -161,7 +171,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _win = false;
      _doBurn = false;
      if (!tutorial) {
-         _movement = 5;
+          if (_autoFlip){
+               _goonInt = 0;
+               _burnInt = 0;
+               _movement = 6;
+               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
+          } else {
+               _movement = 5;
+          }
      }
      else {
          _tutorialBox = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_tutorialBox"));
@@ -207,7 +224,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
          }
          _tutorialButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_tutorialButton"));
          _tutorialButton->addListener([=](const std::string& name, float value) {
-             _movement = 5;
+              if (_autoFlip){
+                   _goonInt = 0;
+                   _burnInt = 0;
+                   _movement = 6;
+                   AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
+              } else {
+                   _movement = 5;
+              }
              _tutorialButton->setVisible(false);
              for (int i = 0; i < 16; i++) {
                  _tutorialText[i]->setVisible(false);
@@ -427,15 +451,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _nextFightCultist = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("nextFight_cultist"));
      _nextFightCultist->setContentSize(dimen);
      _nextFightCultist->doLayout();
-
-     std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc(Application::get()->getSaveDirectory() + "progress.json");
-     std::shared_ptr<JsonValue> readJson = jsonReaderHighestLevel->readJson();
-     std::shared_ptr<JsonValue> progress = readJson->get("Progress");
-     std::shared_ptr<JsonValue> volume = readJson->get("Volume");
-     jsonReaderHighestLevel->close();
-     _highestLevel = progress->get("HighestLevel")->asInt();
-     _musicVolume = volume->get("Music")->asFloat();
-     _soundVolume = volume->get("Sound")->asFloat();
      
      _audioQueue = AudioEngine::get()->getMusicQueue();
      if (_fight < 3){
@@ -528,6 +543,24 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _rightBox = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("background_middleColumn_rightBox"));
      _mainMenu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("pause_mainMenu"));
      _mainMenuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_mainMenu_up_label"));
+     _autoFlipButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("pause_autoFlip"));
+     _autoFlipLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_autoFlip_up_label"));
+     if (_autoFlip) {
+          _autoFlipLabel->setText("Autoflip: ON");
+     } else {
+          _autoFlipLabel->setText("Autoflip: OFF");
+     }
+     _autoFlipButton->addListener([=](const std::string& name, bool down) {
+          if ( (_movement == 14) & down) {
+               _autoFlip = !_autoFlip;
+               if (_autoFlip) {
+                    _autoFlipLabel->setText("Autoflip: ON");
+               } else {
+                    _autoFlipLabel->setText("Autoflip: OFF");
+               }
+               setProgressJson();
+          }
+         });
      _saving = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("background_saving"));
      _saving->setVisible(false);
      _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
@@ -668,6 +701,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
          _pauseButton->activate();
          _musicSlider->activate();
          _soundSlider->activate();
+         _autoFlipButton->activate();
     }
     _currEvent->setVisible(false);
     _currEvent->setText(_currentCard.getText());
@@ -693,7 +727,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           int i = rand() % r;
           _resourceController.setFree(i);
      }
-    _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources); 
+    _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
     return success;
 }
 
@@ -757,6 +791,8 @@ void GameScene::dispose() {
     _musicSlider = nullptr;
     _pauseButton->clearListeners();
     _pauseButton = nullptr;
+     _autoFlipButton->clearListeners();
+     _autoFlipButton= nullptr;
     if (_tutorial) {
         _tutorialButton->clearListeners();
         _tutorialButton = nullptr;
@@ -857,7 +893,7 @@ void GameScene::reset() {
          _responses = getJsonResponses(jsonReaderResponses, _responses);
          if (_fight == 2) {
              _resources = { 1, 1, 0, 0 };
-             _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources);
+             _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
              if (_ratio <= 1.5) {
                  _tutorialText[0]->setText("Resources carry over ");
                  _tutorialText[1]->setText("between fights in the ");
@@ -897,7 +933,7 @@ void GameScene::reset() {
          }
          else if (_fight == 3) {
              _resources = { 15, 15, 0, 0 };
-             _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources);
+             _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
              if (_ratio <= 1.5) {
                  _tutorialText[0]->setText("Both response costs and");
                  _tutorialText[1]->setText("the reward for selling");
@@ -944,7 +980,14 @@ void GameScene::reset() {
      _win = false;
      _doBurn = false;
      if (!_tutorial) {
-         _movement = 5;
+          if (_autoFlip){
+               _goonInt = 0;
+               _burnInt = 0;
+               _movement = 6;
+               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
+          } else {
+               _movement = 5;
+          }
      }
      else {
          _movement = 15;
@@ -1026,11 +1069,22 @@ void GameScene::update(float timestep) {
      if (_act < 60){
           _act ++;
      }
-     if (_deckNode->getDrag()){
 #ifndef CU_TOUCH_SCREEN
+     if (_deckNode->getDrag()){
           _deckNode->setCurrCardPos(_deckNode->screenToNodeCoords(_mouse->pointerPosition()));
-#endif
      }
+     if (_doBurn){
+          std::vector<int> resources = _resources;
+          for (int i = 0; i < _resources.size(); i++) {
+               if (_currentCard.getResource(i) > 0){
+                    resources[i] += _currentCard.getResource(i);
+                    _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+               }
+          }
+     } else {
+          _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
+     }
+#endif
      if ((_movement != 0) & (_movement != 14) & _pauseButton->isVisible()){
           _pauseButton->setVisible(false);
      } else if ((_movement == 0) || (_movement == 14) & !_pauseButton->isVisible()) {
@@ -1284,7 +1338,14 @@ void GameScene::update(float timestep) {
                _deckNode->setNextSize(int(_nextDeck.size()));
                _currentFlip->setVisible(false);
                _currentBackFlip->setVisible(true);
-               _movement = 5;
+               if (_autoFlip){
+                    _goonInt = 0;
+                    _burnInt = 0;
+                    _movement = 6;
+                    AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
+               } else {
+                    _movement = 5;
+               }
           }
      }
           if (_movement == 6){
@@ -1516,7 +1577,14 @@ void GameScene::update(float timestep) {
                _deckNode->setNextSize(int(_nextDeck.size()));
                _currentBackFlip->setVisible(true);
                _saving->setVisible(false);
-               _movement = 5;
+               if (_autoFlip){
+                    _goonInt = 0;
+                    _burnInt = 0;
+                    _movement = 6;
+                    AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
+               } else {
+                    _movement = 5;
+               }
           }
      }
      if (_movement == 11) {
@@ -1580,6 +1648,7 @@ void GameScene::update(float timestep) {
          _enemyIdle->setVisible(true);
           _black->setVisible(false);
           _soundSlider->setVisible(true);
+          _autoFlipButton->setVisible(true);
           _musicSlider->setVisible(true);
           _soundSliderNode->setVisible(true);
           _musicSliderNode->setVisible(true);
@@ -1712,7 +1781,7 @@ void GameScene::buttonPress(const int r){
      if (r == -1){
           for (int i = 0; i < _resources.size(); i++) {
                _resources[i] += _currentCard.getResource(i);
-               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources); 
+               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
           }
      } else {
           Response response;
@@ -1760,7 +1829,7 @@ void GameScene::buttonPress(const int r){
                if (_resourceController.getFreeResponse() - 1 != r){
                     _resources[i] -= (cost[i] * mod);
                }
-               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources);
+               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
           }
 
           std::vector<int> cards =response.getCards();
@@ -1842,6 +1911,7 @@ void GameScene::buttonPress(const int r){
           _enemyIdle->setVisible(false);
           _pause->setVisible(true);
           _soundSlider->setVisible(false);
+          _autoFlipButton->setVisible(false);
           _musicSlider->setVisible(false);
           _soundSliderNode->setVisible(false);
           _musicSliderNode->setVisible(false);
@@ -2093,6 +2163,17 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
           }
      } else {
           _deckNode->setCurrCardPos(_deckNode->screenToNodeCoords(pos));
+          if (_burn->containsScreen(pos) & (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15)) {
+               std::vector<int> resources = _resources;
+               for (int i = 0; i < _resources.size(); i++) {
+                    if (_currentCard.getResource(i) > 0){
+                         resources[i] += _currentCard.getResource(i);
+                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                    }
+               }
+          } else {
+               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
+          }
      }
 }
 
@@ -2151,6 +2232,7 @@ void GameScene::gameOver(){
      
      _pause->setVisible(true);
      _soundSlider->setVisible(false);
+     _autoFlipButton->setVisible(false);
      _musicSlider->setVisible(false);
      _soundSliderNode->setVisible(false);
      _musicSliderNode->setVisible(false);
@@ -2175,8 +2257,12 @@ void GameScene::gameOver(){
 }
 
 void GameScene::setProgressJson(){
-     string progress = "{\"Progress\":{\"HighestLevel\": " + to_string(_highestLevel) + "},\"Volume\":{\"Music\":" + to_string(_musicVolume) + ",\"Sound\":" + to_string(_soundVolume) + "}}";
-     std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::get()->getSaveDirectory() + "progress.json");
+     string sa = "false";
+     if (_autoFlip){
+          sa = "true";
+     }
+     string progress = "{\"Progress\":{\"HighestLevel\": " + to_string(_highestLevel) + "},\"Volume\":{\"Music\":" + to_string(_musicVolume) + ",\"Sound\":" + to_string(_soundVolume) +",\"Autoflip\":" + sa + "}}";
+     std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::get()->getSaveDirectory() + "settings.json");
      textWriter->write(progress);
      textWriter->close();
 }
@@ -2231,5 +2317,5 @@ void GameScene::resourceIncrease(){
      for (int n = 0; n < 4; n++){
           _resources[n] = _resources[n] + flatIncrease[n];
      }
-     _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources);
+     _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
 }

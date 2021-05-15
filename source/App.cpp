@@ -68,9 +68,9 @@ void LabApp::onStartup() {
     }
     AudioEngine::start();
     
-    if (!filetool::file_exists(Application::getSaveDirectory() + "progress.json")){
-        std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::getSaveDirectory() + "progress.json");
-        textWriter->write("{\"Progress\":{\"HighestLevel\": 0},\"Volume\":{\"Music\":0.5,\"Sound\":0.5}}");
+    if (!filetool::file_exists(Application::getSaveDirectory() + "settings.json")){
+        std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::getSaveDirectory() + "settings.json");
+        textWriter->write("{\"Progress\":{\"HighestLevel\": 0},\"Volume\":{\"Music\":0.5,\"Sound\":0.5, \"Autoflip\":false}}");
         textWriter->close();
     }
     /*

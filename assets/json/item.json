@@ -280,27 +280,35 @@
           },
           "children": {
               "item0-locked": {
-                "type": "NinePatch",
+                "type": "Button",
                 "format": {
                   "type": "Anchored"
                 },
                 "data": {
-                    "texture": "locked-item",
+                  "upnode": "up",
                   "visible": false,
                   "anchor": [ 0, 0.5 ]
                 },
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "middle"
+                },
+                "children": {
+                  "up": {
+                    "type": "Image",
+                    "data": {
+                      "texture": "locked-item"
+                    }
+                  }
                 }
               },
               "item1-locked": {
-                "type": "NinePatch",
+                "type": "Button",
                 "format": {
                   "type": "Anchored"
                 },
                 "data": {
-                    "texture": "locked-item",
+                  "upnode": "up",
                   "visible": false,
                   "anchor": [ 0, 0.5 ]
                 },
@@ -308,15 +316,23 @@
                   "x_anchor": "left",
                   "y_anchor": "middle",
                   "x_offset": 1.25
+                },
+                "children": {
+                  "up": {
+                    "type": "Image",
+                    "data": {
+                      "texture": "locked-item"
+                    }
+                  }
                 }
               },
               "item2-locked": {
-                "type": "NinePatch",
+                "type": "Button",
                 "format": {
                   "type": "Anchored"
                 },
                 "data": {
-                    "texture": "locked-item",
+                  "upnode": "up",
                   "visible": false,
                   "anchor": [ 0, 0.5 ]
                 },
@@ -324,15 +340,23 @@
                   "x_anchor": "left",
                   "y_anchor": "middle",
                   "x_offset": 2.5
+                },
+                "children": {
+                  "up": {
+                    "type": "Image",
+                    "data": {
+                      "texture": "locked-item"
+                    }
+                  }
                 }
               },
               "item3-locked": {
-                "type": "NinePatch",
+                "type": "Button",
                 "format": {
                   "type": "Anchored"
                 },
                 "data": {
-                    "texture": "locked-item",
+                  "upnode": "up",
                   "visible": false,
                   "anchor": [ 0, 0.5 ]
                 },
@@ -340,15 +364,23 @@
                   "x_anchor": "left",
                   "y_anchor": "middle",
                   "x_offset": 3.75
+                },
+                "children": {
+                  "up": {
+                    "type": "Image",
+                    "data": {
+                      "texture": "locked-item"
+                    }
+                  }
                 }
               },
               "item4-locked": {
-                "type": "NinePatch",
+                "type": "Button",
                 "format": {
                   "type": "Anchored"
                 },
                 "data": {
-                    "texture": "locked-item",
+                  "upnode": "up",
                   "visible": false,
                   "anchor": [ 0, 0.5 ]
                 },
@@ -356,6 +388,14 @@
                   "x_anchor": "left",
                   "y_anchor": "middle",
                   "x_offset": 5.0
+                },
+                "children": {
+                  "up": {
+                    "type": "Image",
+                    "data": {
+                      "texture": "locked-item"
+                    }
+                  }
                 }
               },
             "item0-unlocked": {

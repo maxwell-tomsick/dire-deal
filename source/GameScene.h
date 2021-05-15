@@ -145,11 +145,14 @@ protected:
     std::shared_ptr<cugl::scene2::NinePatch> _topBar;
     std::shared_ptr<cugl::scene2::NinePatch> _bottomBar;
     std::shared_ptr<cugl::scene2::Button> _mainMenu;
+    std::shared_ptr<cugl::scene2::Button> _autoFlipButton;
+    std::shared_ptr<cugl::scene2::Label> _autoFlipLabel;
     std::shared_ptr<cugl::scene2::Label> _mainMenuLabel;
     std::shared_ptr<cugl::scene2::Label> _saving;
     int _cardBack;
     
     bool _allRunes;
+    bool _autoFlip;
     int _responseId1;
     int _responseId2;
     int _responseId3;

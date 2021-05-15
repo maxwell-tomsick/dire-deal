@@ -147,11 +147,11 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _unlockedItems[3] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item3-unlocked"));
     _unlockedItems[4] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item4-unlocked"));
     
-    _lockedItems[0] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_items-locked_item0-locked"));
-    _lockedItems[1] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_items-locked_item1-locked"));
-    _lockedItems[2] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_items-locked_item2-locked"));
-    _lockedItems[3] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_items-locked_item3-locked"));
-    _lockedItems[4] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_items-locked_item4-locked"));
+    _lockedItems[0] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item0-locked"));
+    _lockedItems[1] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item1-locked"));
+    _lockedItems[2] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item2-locked"));
+    _lockedItems[3] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item3-locked"));
+    _lockedItems[4] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item4-locked"));
     //_items[5] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_item5-locked"));
 
     // Textures of items
@@ -169,7 +169,17 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             _unlockedItems[i]->setVisible(true);
             _unlockedItems[i]->activate();
         } else {
+            _lockedItems[i]->addListener([=](const std::string& name, bool down) {
+                if (!down) {
+                    if (_displayedItemId != i) {
+                        _displayedItemId = i;
+                        undisplayItem();
+                        displayItem(-1);
+                    }
+                }
+                });
             _lockedItems[i]->setVisible(true);
+            _lockedItems[i]->activate();
         }
     }
     _currText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_equipped-item-text"));
@@ -200,6 +210,8 @@ void ItemScene::dispose() {
     for (int i = 0; i < 5; i++) {
         _unlockedItems[i]->clearListeners();
         _unlockedItems[i] = nullptr;
+        _lockedItems[i]->clearListeners();
+        _lockedItems[i] = nullptr;
     }
     _play->clearListeners();
     _menu->clearListeners();
@@ -237,17 +249,19 @@ void ItemScene::displayItem(int id) {
     else if (_equippedItem != id) {
         _displayItem = _itemTextures[id];
         _equipLabel->setText("Equip");
+        _displayItem->setVisible(true);
         }
     else {
         _displayItem = _itemTextures[id];
         _equipLabel->setText("Unequip");
+        _displayItem->setVisible(true);
     }
     _display = true;
     _equip->setVisible(true);
     _equip->activate();
     _menuLabel->setText("Hide");
     
-    _displayItem->setVisible(true);
+    //_displayItem->setVisible(true);
     _displayText->setText(_itemNames[id]);
     _displayText->setVisible(false);
     if (id == 0){
@@ -308,6 +322,16 @@ void ItemScene::displayItem(int id) {
         _flourishBurn->setVisible(false);
         _lungeBurn->setVisible(false);
         _parasiteBurn->setVisible(true);
+    } else if (id == -1){
+        _displayText1->setText("Defeat targets to unlock this item!");
+        _displayText1->setVisible(true);
+        _displayText2->setVisible(false);
+        _displayText3->setVisible(false);
+        _displayText4->setVisible(false);
+        _displayText5->setVisible(false);
+        _flourishBurn->setVisible(false);
+        _lungeBurn->setVisible(false);
+        _parasiteBurn->setVisible(false);
     } else {
         _displayText1->setVisible(false);
         _displayText2->setVisible(false);

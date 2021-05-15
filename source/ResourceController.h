@@ -54,7 +54,7 @@ class ResourceController {
         std::shared_ptr<cugl::scene2::Label> &flourishText, 
         std::shared_ptr<cugl::scene2::Label> &lungeText,
         std::shared_ptr<cugl::scene2::Label> &brawnText,
-        std::vector<int> &resources
+        std::vector<int> &resources, int preview
         );  
         
     void setResponseResources(

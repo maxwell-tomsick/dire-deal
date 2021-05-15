@@ -33,7 +33,7 @@ protected:
 	std::shared_ptr<cugl::scene2::Label> _equipLabel;
 	/** The buttons for each item icon */
 	std::shared_ptr<cugl::scene2::Button> _unlockedItems[5];
-    std::shared_ptr<cugl::scene2::NinePatch> _lockedItems[5];
+    std::shared_ptr<cugl::scene2::Button> _lockedItems[5];
 
 	/** Text indicating the currently equipped item */
 	std::shared_ptr<cugl::scene2::Label> _currText;
