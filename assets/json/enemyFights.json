@@ -55,7 +55,7 @@
       "id": 4,
       "enemyName": "Mountain Blob",
       "numSheets":1,
-      "enemyTexture": "slimeIdle",
+      "enemyTexture": "slime2Idle",
       "deck": [ 1, 1, 1, 3, 3],
       "nextDeck": [13],
       "background": "background",

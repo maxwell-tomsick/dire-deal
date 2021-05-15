@@ -291,6 +291,9 @@
     "slimeIdle": {
       "file": "textures/enemy-slime-idle.png"
     },
+    "slime2Idle": {
+      "file": "textures/enemy-slime2-idle.png"
+    },
     "worm1aIdle": {
       "file": "textures/enemy-worm1a-idle.png"
     },

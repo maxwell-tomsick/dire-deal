@@ -301,6 +301,9 @@
     "slimeIdle": {
       "file": "textures/enemy-slime-idle.png"
     },
+    "slime2Idle": {
+      "file": "textures/enemy-slime2-idle.png"
+    },
     "worm1aIdle": {
       "file": "textures/enemy-worm1a-idle.png"
     },
@@ -2484,14 +2487,14 @@
           "type": "NinePatch",
           "data": {
             "texture": "slash",
-            "scale": 0.37,
+            "scale": 0.30,
             "visible": false
           },
           "layout": {
             "x_anchor": "left",
             "y_anchor": "bottom",
-            "y_offset": 0.32,
-            "x_offset": 0.215
+            "y_offset": 0.13,
+            "x_offset": 0.1
           },
           "format": {
             "type": "Anchored"
@@ -2551,14 +2554,14 @@
           "type": "NinePatch",
           "data": {
             "texture": "slash",
-            "scale": 0.37,
+            "scale": 0.30,
             "visible": false
           },
           "layout": {
             "x_anchor": "left",
             "y_anchor": "bottom",
-            "y_offset": 0.32,
-            "x_offset": 0.04
+            "y_offset": 0.48,
+            "x_offset": 0.1
           },
           "format": {
             "type": "Anchored"
