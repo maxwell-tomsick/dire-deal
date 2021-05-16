@@ -1281,7 +1281,7 @@
                 "visible": false,
                 "pushsize": true,
                 "anchor": [ 0.5, 0.5],
-                "scale": 0.6
+                "scale": 0.45
               },
               "format": {
                 "x_anchor": "center",
@@ -1306,7 +1306,7 @@
                         "anchor": [-0.3, -0.8 ],
                         "halign": "center",
                         "valign": "middle",
-                        "scale": 0.7
+                        "scale": 0.65
                       },
                       "layout": {
                         "x_anchor": "center",
@@ -1331,7 +1331,7 @@
                 "visible": true,
                 "pushsize": true,
                 "anchor": [ 0.5, 0.5 ],
-                "scale": 0.6
+                "scale": 0.45
               },
               "format": {
                 "x_anchor": "center",
@@ -1356,7 +1356,7 @@
                         "anchor": [ -0.225, -0.8 ],
                         "halign": "center",
                         "valign": "middle",
-                        "scale": 0.7
+                        "scale": 0.65
                       },
                       "layout": {
                         "x_anchor": "center",
