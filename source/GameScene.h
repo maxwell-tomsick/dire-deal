@@ -122,10 +122,14 @@ protected:
     std::shared_ptr<cugl::scene2::NinePatch> _displayCard;
     std::shared_ptr<cugl::scene2::NinePatch> _removeCard1;
     std::shared_ptr<cugl::scene2::NinePatch> _removeCard2;
+    std::shared_ptr<cugl::scene2::NinePatch> _removePreviewBurnTexture;
+    std::shared_ptr<cugl::scene2::NinePatch> _removePreviewResponseType;
+    std::shared_ptr<cugl::scene2::Label> _removePreviewBurnText;
+
     std::shared_ptr<cugl::scene2::NinePatch> _displayCardBurnTexture;
     std::shared_ptr<cugl::scene2::NinePatch> _displayCardResponseType;
-    std::shared_ptr<cugl::scene2::NinePatch> _displayCardResponseBurn;
     std::shared_ptr<cugl::scene2::Label> _displayCardBurnText;
+    std::shared_ptr<cugl::scene2::NinePatch> _displayCardResponseBurn;
     std::shared_ptr<cugl::scene2::Button> _currCardButton;
     std::shared_ptr<cugl::scene2::PolygonNode> _cardFront;
     std::shared_ptr<DeckNode> _deckNode;
@@ -289,10 +293,14 @@ public:
     
     void setBurnText();
 
-    void setDisplayCardBurnText(Card displayCard);
+    void setDisplayCardBurnText(std::shared_ptr<cugl::scene2::NinePatch> nodeTexture, 
+                                std::shared_ptr<cugl::scene2::Label> nodeText, 
+                                Card displayCard);
     
-    void setDisplayCardResponseType(Card displayCard, bool brawn);
-    
+    void setDisplayCardResponseType(std::shared_ptr<cugl::scene2::NinePatch> nodeResponseType, 
+                                        std::shared_ptr<cugl::scene2::NinePatch> nodeBrawler, 
+                                        Card displayCard, 
+                                        bool brawn);
     /**
      * Callback for the beginning of a touch event
      *

@@ -529,6 +529,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _removeCard1 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_removePreview1"));
      _removeCard2 =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_removePreview2"));
      _currCardButton =std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_currCard"));
+     _removePreviewBurnTexture =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_removePreview1_burnAmount"));
+     _removePreviewBurnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_removePreview1_burnAmount_amount"));
+     _removePreviewResponseType=std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_removePreview1_responseType"));
      _displayCardBurnTexture =std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount"));
      _displayCardBurnText = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_displayCard_burnAmount_amount"));
      _displayCardResponseType=std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_displayCard_responseType"));
@@ -1671,20 +1674,30 @@ void GameScene::update(float timestep) {
 #ifndef CU_TOUCH_SCREEN
      if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13)){
           if (_response1->containsScreen(_mouse->pointerPosition()) & _display1) {
+               
                _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
+               setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[0]]);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[0]], true);
+               // setDisplayCardBurnText(_displayCardBurnTexture, _displayCardBurnText, displayCard);
+               // if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
+               //      setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, true);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           }
           else if (_response2->containsScreen(_mouse->pointerPosition()) & _display2) {
                _removeCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[1]].getTexture());
+               setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[1]]);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[1]], true);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           }
           else if (_response3->containsScreen(_mouse->pointerPosition()) & _display3) {
                _removeCard2->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[2]].getTexture());
+               setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[2]]);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[2]], true);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           } else {
@@ -1696,33 +1709,33 @@ void GameScene::update(float timestep) {
           Card displayCard;
           if (_response1->containsScreen(_mouse->pointerPosition()) & _display1) {
                displayCard = _cards[_responses[_responseId1].getCards()[0]];
-               setDisplayCardBurnText(displayCard);
+               setDisplayCardBurnText(_displayCardBurnTexture, _displayCardBurnText, displayCard);
                if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
-                    setDisplayCardResponseType(displayCard, true);
+                    setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, true);
                } else {
-                    setDisplayCardResponseType(displayCard, false);
+                    setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, false);
                }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           }
           else if (_response2->containsScreen(_mouse->pointerPosition()) & _display2) {
               displayCard = _cards[_responses[_responseId2].getCards()[0]];
-               setDisplayCardBurnText(displayCard);
+               setDisplayCardBurnText(_displayCardBurnTexture, _displayCardBurnText, displayCard);
                if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
-                    setDisplayCardResponseType(displayCard, true);
+                    setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, true);
                } else {
-                    setDisplayCardResponseType(displayCard, false);
+                    setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, false);
                }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           }
           else if (_response3->containsScreen(_mouse->pointerPosition()) & _display3) {
               displayCard = _cards[_responses[_responseId3].getCards()[0]];
-               setDisplayCardBurnText(displayCard);
+               setDisplayCardBurnText(_displayCardBurnTexture, _displayCardBurnText, displayCard);
                if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
-                    setDisplayCardResponseType(displayCard, true);
+                    setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, true);
                } else {
-                    setDisplayCardResponseType(displayCard, false);
+                    setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, false);
                }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
@@ -1942,15 +1955,16 @@ void GameScene::buttonPress(const int r){
 }
 
 
-void GameScene::setDisplayCardBurnText(Card displayCard){
+void GameScene::setDisplayCardBurnText(std::shared_ptr<cugl::scene2::NinePatch> nodeTexture, 
+                                        std::shared_ptr<cugl::scene2::Label> nodeText, Card displayCard){
      if (displayCard.getText() == "Incapacitated" || displayCard.getId() == 13 || displayCard.getId() == 14 || displayCard.getId() == 15){
-         _displayCardBurnTexture->setVisible(false);
+         nodeTexture->setVisible(false);
      } else {
-         _displayCardBurnTexture->setVisible(true);
+         nodeTexture->setVisible(true);
      }
      for (int i = 0; i < 4; i ++){
           if (displayCard.getResource(i) > 0){
-               _displayCardBurnText->setText(to_string(displayCard.getResource(i)));
+               nodeText->setText(to_string(displayCard.getResource(i)));
                string resource = "brawn";
                if (i == 0){
                     resource = "blade";
@@ -1959,30 +1973,51 @@ void GameScene::setDisplayCardBurnText(Card displayCard){
                } else if (i == 2){
                     resource = "lunge";
                }
-               _displayCardBurnTexture->setTexture(_assets->get<Texture>(resource));
+               nodeTexture->setTexture(_assets->get<Texture>(resource));
                return;
           }
      }
-     _displayCardBurnText->setText(to_string(0));
-     _displayCardBurnTexture->setTexture(_assets->get<Texture>("flourish"));
+     //displaycardburn formerly
+     nodeText->setText(to_string(0));
+     nodeTexture->setTexture(_assets->get<Texture>("flourish"));
 }
 
-void GameScene::setDisplayCardResponseType(Card displayCard, bool brawler){
+void GameScene::setDisplayCardResponseType(std::shared_ptr<cugl::scene2::NinePatch> nodeResponseType,
+                                        std::shared_ptr<cugl::scene2::NinePatch> nodeBrawler,
+                                        Card displayCard, bool brawler){
     string resource = displayCard.getResponseType();
     if (resource == "none"){
-        _displayCardResponseType->setVisible(false);
-        _displayCardResponseBurn->setVisible(false);
+           nodeResponseType->setVisible(false);
+           nodeBrawler->setVisible(false);
     } else {
-        _displayCardResponseType->setTexture(_assets->get<Texture>(resource));
-        _displayCardResponseType->setVisible(true);
-         _displayCardResponseBurn->setVisible(false);
+          nodeResponseType->setTexture(_assets->get<Texture>(resource));
+          nodeResponseType->setVisible(true);
+          nodeBrawler->setVisible(false);
         if (brawler){
             if (resource != "brawn"){
-                 _displayCardResponseBurn->setVisible(true);
+                 nodeBrawler->setVisible(true);
             }
         }
     }
 }
+// void GameScene::setDisplayCardResponseType(std::shared_ptr<cugl::scene2::NinePatch> nodeResponseType,
+//                                         std::shared_ptr<cugl::scene2::NinePatch> nodeBrawler,
+//                                         Card displayCard, bool brawler){
+//     string resource = displayCard.getResponseType();
+//     if (resource == "none"){
+//         nodeResponseType->setVisible(false);
+//         _displayCardResponseBurn->setVisible(false);
+//     } else {
+//         _displayCardResponseType->setTexture(_assets->get<Texture>(resource));
+//         _displayCardResponseType->setVisible(true);
+//          _displayCardResponseBurn->setVisible(false);
+//         if (brawler){
+//             if (resource != "brawn"){
+//                  _displayCardResponseBurn->setVisible(true);
+//             }
+//         }
+//     }
+// }
 
 void GameScene::touchBeganCB(const cugl::TouchEvent& event, bool focus) {
      if ((_movement == 0) & !_deckNode->getDrag() & _act == 60){
@@ -2128,7 +2163,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
      } else if (!_deckNode->getDrag()){
           if (_response1->containsScreen(pos)) {
               displayCard = _cards[_responses[_responseId1].getCards()[0]];
-               setDisplayCardBurnText(displayCard);
+               setDisplayCardBurnText(_displayCardBurnTexture, _displayCardBurnText, displayCard);
                if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
                     _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,true);
                } else {
@@ -2139,7 +2174,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
           }
           else if (_response2->containsScreen(pos) & _display2) {
               displayCard = _cards[_responses[_responseId2].getCards()[0]];
-               setDisplayCardBurnText(displayCard);
+               setDisplayCardBurnText(_displayCardBurnTexture, _displayCardBurnText, displayCard);
                if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
                     _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,true);
                } else {
@@ -2150,7 +2185,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
           }
           else if (_response3->containsScreen(pos) & _display3) {
               displayCard = _cards[_responses[_responseId3].getCards()[0]];
-               setDisplayCardBurnText(displayCard);
+               setDisplayCardBurnText(_displayCardBurnTexture, _displayCardBurnText, displayCard);
                if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
                     _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,true);
                } else {
