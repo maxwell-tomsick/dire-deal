@@ -1060,7 +1060,11 @@ void GameScene::reset() {
      _currentCard = _cards[_currentDeck.back()];
      bool itemFound = false;
      int r = 0;
+     _mod = 1;
      for (int i = 0; i < _currentDeck.size(); i++){
+          if (_currentDeck[i] == 14){
+               _mod += 1;
+          }
           if (_currentDeck[i] == -1){
                itemFound = true;
           } else if (_currentDeck[i] != 13){
