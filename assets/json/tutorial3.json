@@ -70,22 +70,36 @@
       "responseType": "blade",
       "level": 3
     },
-    "Wounded":{
-      "id": 5,
-      "name": "Wounded",
-      "texture": "wounded",
-      "reactions": [10,11],
-      "resources": {
+    "Wounded": {
+        "id": 5,
+        "name": "Wounded",
+        "texture": "wounded",
+        "reactions": [ 10, 11 ],
+        "resources": {
           "blade": 10,
           "flourish": 0,
           "lunge": 0,
           "brawn": 0
         },
-      "responseType": "flourish",
-      "level": 3
+        "responseType": "flourish",
+        "level": 3
+    },
+    "Blinded": {
+        "id": 6,
+        "name": "Blinded",
+        "texture": "blinded",
+        "reactions": [],
+        "resources": {
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 10
+        },
+        "responseType": "none",
+        "level": 3
     },
     "Crushed":{
-      "id": 6,
+      "id": 7,
       "name": "Crushed",
       "texture": "crushed",
       "reactions": [12,13],
@@ -99,7 +113,7 @@
       "level": 4
     },
     "Impaled":{
-      "id": 7,
+      "id": 8,
       "name": "Impaled",
       "texture": "impaled",
       "reactions": [14,15],
@@ -113,7 +127,7 @@
       "level": 4
     },
     "Incapacitated":{
-      "id": 8,
+      "id": 9,
       "name": "Incapacitated",
       "texture": "incapacitated",
       "reactions": [],

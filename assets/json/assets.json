@@ -2273,52 +2273,6 @@
               }
           }
         },
-        "tutorialButton": {
-          "type": "Button",
-          "format": {
-            "type": "Anchored"
-          },
-          "data": {
-            "upnode": "up",
-            "visible": false,
-            "anchor": [ 1, 0 ],
-            "scale": 0.5
-          },
-          "layout": {
-            "x_anchor": "right",
-            "y_anchor": "bottom",
-            "x_offset": -0.05,
-            "y_offset": 0.05
-          },
-          "children": {
-            "up": {
-              "type": "NinePatch",
-              "data": {
-                "texture": "newButton"
-              },
-              "children": {
-                "label": {
-                  "type": "Label",
-                  "format": {
-                    "type": "Anchored"
-                  },
-                  "data": {
-                    "font": "sans",
-                    "text": "Next",
-                    "foreground": [ 0, 0, 0, 255 ],
-                    "halign": "center",
-                    "valign": "middle",
-                    "anchor": [ -0.95, -0.5 ]
-                  },
-                  "layout": {
-                    "x_anchor": "right",
-                    "y_anchor": "bottom"
-                  }
-                }
-              }
-            }
-          }
-        },
         "enemyLabel": {
           "type": "NinePatch",
           "data": {

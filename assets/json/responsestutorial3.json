@@ -173,7 +173,7 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [ 6 ],
+      "addToDeck": [ 7 ],
       "delete": [],
       "win": false,
       "lose": false,
@@ -209,7 +209,7 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [ 7 ],
+      "addToDeck": [ 8 ],
       "delete": [],
       "win": false,
       "lose": false,
@@ -227,7 +227,7 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [ 6 ],
+      "addToDeck": [ 7 ],
       "delete": [],
       "win": false,
       "lose": false,
@@ -245,7 +245,7 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [ 8 ],
+      "addToDeck": [ 9 ],
       "delete": [],
       "win": true,
       "lose": false,
@@ -263,7 +263,7 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [ 7 ],
+      "addToDeck": [ 8 ],
       "delete": [],
       "win": false,
       "lose": false,
@@ -281,7 +281,7 @@
         "brawn": 0
       },
       "reward": 0,
-      "addToDeck": [ 8 ],
+      "addToDeck": [ 9 ],
       "delete": [],
       "win": true,
       "lose": false,

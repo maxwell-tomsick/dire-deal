@@ -1,0 +1,74 @@
+{
+  "Cards":{
+    "Grab":{
+      "id": 0,
+      "name": "Grab",
+      "texture": "grab",
+      "reactions": [0,1],
+      "resources": {
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 0
+        },
+      "responseType": "brawn",
+      "level": 1
+    },
+    "Grappled":{
+      "id": 1,
+      "name": "Grappled",
+      "texture": "grappled",
+      "reactions": [2,3],
+      "resources": {
+          "blade": 0,
+          "flourish": 5,
+          "lunge": 0,
+          "brawn": 0
+        },
+      "responseType": "brawn",
+      "level": 2
+    },
+    "Stunned":{
+      "id": 2,
+      "name": "Stunned",
+      "texture": "stunned",
+      "reactions": [4,5],
+      "resources": {
+          "blade": 0,
+          "flourish": 10,
+          "lunge": 0,
+          "brawn": 0
+        },
+      "responseType": "brawn",
+      "level": 3
+    },
+    "Crushed":{
+      "id": 3,
+      "name": "Crushed",
+      "texture": "crushed",
+      "reactions": [6,7],
+      "resources": {
+          "blade": 0,
+          "flourish": 15,
+          "lunge": 0,
+          "brawn": 0
+        },
+      "responseType": "brawn",
+      "level": 4
+    },
+    "Incapacitated":{
+      "id": 4,
+      "name": "Incapacitated",
+      "texture": "incapacitated",
+      "reactions": [],
+      "resources": {
+          "blade": 0,
+          "flourish": 0,
+          "lunge": 0,
+          "brawn": 0
+        },
+      "responseType": "none",
+      "level": 5
+    }
+  }
+}

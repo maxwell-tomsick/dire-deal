@@ -144,7 +144,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
          jsonReaderResponses->close();
      }
      else {
-         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/tutorialResponses1.json");
+         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responsesTutorial1.json");
          _responses = getJsonResponses(jsonReaderResponses, _responses);
          jsonReaderResponses->close();
      }
@@ -170,18 +170,16 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _keepCards = false;
      _win = false;
      _doBurn = false;
-     if (!tutorial) {
-          if (_autoFlip){
-               _goonInt = 0;
-               _burnInt = 0;
-               _movement = 6;
-               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
-          } else {
-               _movement = 5;
-          }
+     if (_autoFlip){
+        _goonInt = 0;
+        _burnInt = 0;
+        _movement = 6;
+        AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
+     } else {
+        _movement = 5;
      }
-     else {
-         _tutorialBox = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_tutorialBox"));
+     _tutorialBox = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_tutorialBox"));
+     if (tutorial) {
          for (int i = 0; i < 16; i++) {
              string assetname = "lab_tutorialBox_tutorial-line-" + to_string(i + 1);
              _tutorialText[i] = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>(assetname));
@@ -190,12 +188,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
              _tutorialText[0]->setText("Swipe the card, and choose");
              _tutorialText[1]->setText("responses from the right");
              _tutorialText[2]->setText("to shuffle new cards into");
-             _tutorialText[3]->setText("the deck. The old card is");
-             _tutorialText[4]->setText("removed");
+             _tutorialText[3]->setText("the next deck (above). The");
+             _tutorialText[4]->setText("old card is removed.");
              _tutorialText[5]->setText("");
-             _tutorialText[6]->setText("Above responses are");
+             _tutorialText[6]->setText("Above responses are your");
              _tutorialText[7]->setText("resources. Each response");
-             _tutorialText[8]->setText("has a cost.");
+             _tutorialText[8]->setText("costs a specific resource.");
              _tutorialText[9]->setText("");
              _tutorialText[10]->setText("The gems at the bottom of");
              _tutorialText[11]->setText("a card show its level. Win");
@@ -208,12 +206,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
              _tutorialText[0]->setText("Swipe the card, and choose");
              _tutorialText[1]->setText("responses from the right to");
              _tutorialText[2]->setText("shuffle new cards into the");
-             _tutorialText[3]->setText("deck. The old card is removed.");
-             _tutorialText[4]->setText("");
+             _tutorialText[3]->setText("next deck (above). The old");
+             _tutorialText[4]->setText("card is removed from deck.");
              _tutorialText[5]->setText("");
-             _tutorialText[6]->setText("Above responses are resources.");
-             _tutorialText[7]->setText("Each response has a cost.");
-             _tutorialText[8]->setText("");
+             _tutorialText[6]->setText("Above responses are your");
+             _tutorialText[7]->setText("resources. Each response");
+             _tutorialText[8]->setText("costs a specific resource.");
              _tutorialText[9]->setText("");
              _tutorialText[10]->setText("The gems at the bottom of");
              _tutorialText[11]->setText("a card show its level. Win");
@@ -222,24 +220,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
              _tutorialText[14]->setText("are higher leveled.");
              _tutorialText[15]->setText("");
          }
-         _tutorialButton = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("lab_tutorialButton"));
-         _tutorialButton->addListener([=](const std::string& name, float value) {
-              if (_autoFlip){
-                   _goonInt = 0;
-                   _burnInt = 0;
-                   _movement = 6;
-                   AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
-              } else {
-                   _movement = 5;
-              }
-             _tutorialButton->setVisible(false);
-             for (int i = 0; i < 16; i++) {
-                 _tutorialText[i]->setVisible(false);
-             }
-             _tutorialBox->setVisible(false);
-             _goonLabel->setVisible(true);
-         });
-         _movement = 15;
+         _tutorialBox->setVisible(true);
+         for (int i = 0; i < 16; i++) {
+             _tutorialText[i]->setVisible(true);
+         };
+     }
+     else {
+         _tutorialBox->setVisible(false);
      }
      _display1 = true;
      _display2 = true;
@@ -302,6 +289,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      if (!tutorial) {
          _goonLabel->setVisible(true);
      }
+     else {
+         _goonLabel->setVisible(false);
+     }
      _goonNumber = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_number"));
      if (!_tutorial) {
          _goonNumber->setText("Target " + std::to_string(_fight) + ":");
@@ -311,6 +301,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      }
      _goonName = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("lab_enemyLabel_name"));
      _enemyIdle = std::make_shared<scene2::AnimationNode>();
+     if (!tutorial) {
+         _enemyIdle->setVisible(true);
+     }
+     else {
+         _enemyIdle->setVisible(false);
+     }
      _sword = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("lab_topsword"));
      
      /*
@@ -793,10 +789,6 @@ void GameScene::dispose() {
     _pauseButton = nullptr;
      _autoFlipButton->clearListeners();
      _autoFlipButton= nullptr;
-    if (_tutorial) {
-        _tutorialButton->clearListeners();
-        _tutorialButton = nullptr;
-    }
     Scene2::dispose();
 }
 
@@ -895,80 +887,118 @@ void GameScene::reset() {
              _resources = { 1, 1, 0, 0 };
              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
              if (_ratio <= 1.5) {
-                 _tutorialText[0]->setText("Resources carry over ");
-                 _tutorialText[1]->setText("between fights in the ");
-                 _tutorialText[2]->setText("main game. Cards in");
-                 _tutorialText[3]->setText("the deck do not.");
-                 _tutorialText[4]->setText("");
-                  _tutorialText[5]->setText("");
-                 _tutorialText[6]->setText("Exchange a card for the");
-                 _tutorialText[7]->setText("resources shown under it");
-                 _tutorialText[8]->setText("by dragging it to the");
-                 _tutorialText[9]->setText("bottom of the screen.");
+                 _tutorialText[0]->setText("Burn a card to gain the");
+                 _tutorialText[1]->setText("resources shown under it");
+                 _tutorialText[2]->setText("by dragging it to the fire");
+                 _tutorialText[3]->setText("at the bottom of the");
+                 _tutorialText[4]->setText("screen. This is a vital");
+                 _tutorialText[5]->setText("way to gain resources.");
+                 _tutorialText[6]->setText("");
+                 _tutorialText[7]->setText("Burnt cards are removed");
+                 _tutorialText[8]->setText("from the current deck, and");
+                 _tutorialText[9]->setText("don't shuffle in new cards.");
                  _tutorialText[10]->setText("");
-                 _tutorialText[11]->setText("");
-                 _tutorialText[12]->setText("Sold cards are removed ");
-                 _tutorialText[13]->setText("from the deck. You lose if");
-                 _tutorialText[14]->setText("there are no cards");
-                 _tutorialText[15]->setText("shuffled into the deck.");
+                 _tutorialText[11]->setText("You lose if both the");
+                 _tutorialText[12]->setText("current and the next");
+                 _tutorialText[13]->setText("deck are empty.");
+                 _tutorialText[14]->setText("");
+                 _tutorialText[15]->setText("");
              }
              else {
-                 _tutorialText[0]->setText("Resources carry over between");
-                 _tutorialText[1]->setText("fights in the main game.");
-                 _tutorialText[2]->setText("Cards in the deck do not.");
-                 _tutorialText[3]->setText("");
-                 _tutorialText[4]->setText("");
-                 _tutorialText[5]->setText("Exchange a card for the");
-                 _tutorialText[6]->setText("resources shown under it");
-                 _tutorialText[7]->setText("by dragging it to the");
-                 _tutorialText[8]->setText("bottom of the screen.");
-                 _tutorialText[9]->setText("");
+                 _tutorialText[0]->setText("Burn a card to gain the");
+                 _tutorialText[1]->setText("resources shown under it");
+                 _tutorialText[2]->setText("by dragging it to the fire");
+                 _tutorialText[3]->setText("at the bottom of the screen.");
+                 _tutorialText[4]->setText("This is a vital way to gain");
+                 _tutorialText[5]->setText("resources.");
+                 _tutorialText[6]->setText("");
+                 _tutorialText[7]->setText("Burnt cards are removed");
+                 _tutorialText[8]->setText("from the current deck, and");
+                 _tutorialText[9]->setText("don't shuffle in new cards.");
                  _tutorialText[10]->setText("");
-                 _tutorialText[11]->setText("");
-                 _tutorialText[12]->setText("Sold cards are removed from");
-                 _tutorialText[13]->setText("the deck. You lose if there");
-                 _tutorialText[14]->setText("are no cards shuffled into");
-                 _tutorialText[15]->setText("the deck.");
+                 _tutorialText[11]->setText("You lose if both the current");
+                 _tutorialText[12]->setText("and the next deck are empty.");
+                 _tutorialText[13]->setText("");
+                 _tutorialText[14]->setText("");
+                 _tutorialText[15]->setText("");
              }
          }
          else if (_fight == 3) {
              _resources = { 15, 15, 0, 0 };
              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
              if (_ratio <= 1.5) {
-                 _tutorialText[0]->setText("Both response costs and");
-                 _tutorialText[1]->setText("the reward for selling");
-                 _tutorialText[2]->setText("increase with a card's");
-                 _tutorialText[3]->setText("level.");
-                 _tutorialText[4]->setText("");
-                 _tutorialText[5]->setText("");
-                 _tutorialText[6]->setText("Hold down a response to");
-                 _tutorialText[7]->setText("see how much you the");
-                 _tutorialText[8]->setText("card it shuffles in");
-                 _tutorialText[9]->setText("can sell for.");
-                 _tutorialText[10]->setText("");
-                 _tutorialText[11]->setText("");
-                 _tutorialText[12]->setText("Leveling up many cards");
-                 _tutorialText[13]->setText("can leave you short on");
-                 _tutorialText[14]->setText("resources, but is necessary");
-                 _tutorialText[15]->setText("to gain them.");
+                 _tutorialText[0]->setText("Both response costs and the");
+                 _tutorialText[1]->setText("reward for burning");
+                 _tutorialText[2]->setText("increase with a card's level.");
+                 _tutorialText[3]->setText("");
+                 _tutorialText[4]->setText("Hold a response to see the");
+                 _tutorialText[5]->setText("card it shuffles in. The");
+                 _tutorialText[6]->setText("icons show how much it");
+                 _tutorialText[7]->setText("burns for and what");
+                 _tutorialText[8]->setText("resource its responses use.");
+                 _tutorialText[9]->setText("");
+                 _tutorialText[10]->setText("Actively selling cards will");
+                 _tutorialText[11]->setText("give you valuable resources");
+                 _tutorialText[12]->setText("for future fights.");
+                 _tutorialText[13]->setText("");
+                 _tutorialText[14]->setText("");
+                 _tutorialText[15]->setText("");
              }
              else {
                  _tutorialText[0]->setText("Both response costs and the");
-                 _tutorialText[1]->setText("reward for selling increase");
+                 _tutorialText[1]->setText("reward for burning increase");
                  _tutorialText[2]->setText("with a card's level.");
                  _tutorialText[3]->setText("");
-                 _tutorialText[4]->setText("");
-                 _tutorialText[5]->setText("");
-                 _tutorialText[6]->setText("Hold down a response to see");
-                 _tutorialText[7]->setText("how much you the card it");
-                 _tutorialText[8]->setText("shuffles in can sell for.");
+                 _tutorialText[4]->setText("Hold a response to see");
+                 _tutorialText[5]->setText("the card it shuffles in. The");
+                 _tutorialText[6]->setText("icons show how much it burns");
+                 _tutorialText[7]->setText("for and what resource its");
+                 _tutorialText[8]->setText("responses use.");
                  _tutorialText[9]->setText("");
-                 _tutorialText[10]->setText("");
-                 _tutorialText[11]->setText("");
-                 _tutorialText[12]->setText("Leveling up too many cards");
-                 _tutorialText[13]->setText("can leave you short on");
-                 _tutorialText[14]->setText("resources, but is necessary");
-                 _tutorialText[15]->setText("to gain them.");
+                 _tutorialText[10]->setText("Actively selling cards will");
+                 _tutorialText[11]->setText("give you valuable resources");
+                 _tutorialText[12]->setText("for future fights.");
+                 _tutorialText[13]->setText("");
+                 _tutorialText[14]->setText("");
+                 _tutorialText[15]->setText("");
+             }
+         }
+         else if (_fight == 4) {
+             if (_ratio <= 1.5) {
+                 _tutorialText[0]->setText("Between fights, you'll gain");
+                 _tutorialText[1]->setText("five of each resource.");
+                 _tutorialText[2]->setText("");
+                 _tutorialText[3]->setText("Leveling up too many cards");
+                 _tutorialText[4]->setText("at once can leave you");
+                 _tutorialText[5]->setText("short on resources, but is");
+                 _tutorialText[6]->setText("necessary to gain them.");
+                 _tutorialText[7]->setText("");
+                 _tutorialText[8]->setText("For this fight, you only");
+                 _tutorialText[9]->setText("have enough resources to");
+                 _tutorialText[10]->setText("level one of your cards");
+                 _tutorialText[11]->setText("to max. Upgrade one, and");
+                 _tutorialText[12]->setText("either sell or avoid");
+                 _tutorialText[13]->setText("upgrading the other.");
+                 _tutorialText[14]->setText("");
+                 _tutorialText[15]->setText("");
+             }
+             else {
+                 _tutorialText[0]->setText("Between fights, you'll gain");
+                 _tutorialText[1]->setText("five of each resource.");
+                 _tutorialText[2]->setText("");
+                 _tutorialText[3]->setText("Leveling up too many cards");
+                 _tutorialText[4]->setText("at once can leave you short");
+                 _tutorialText[5]->setText("on resources, but is ");
+                 _tutorialText[6]->setText("necessary to gain them.");
+                 _tutorialText[7]->setText("");
+                 _tutorialText[8]->setText("For this fight, you only have");
+                 _tutorialText[9]->setText("enough resources to level one");
+                 _tutorialText[10]->setText("of your cards to max.");
+                 _tutorialText[11]->setText("Upgrade one, and either sell");
+                 _tutorialText[12]->setText("or avoid upgrading the other.");
+                 _tutorialText[13]->setText("");
+                 _tutorialText[14]->setText("");
+                 _tutorialText[15]->setText("");
              }
          }
      }
@@ -979,18 +1009,20 @@ void GameScene::reset() {
      _keepCards = false;
      _win = false;
      _doBurn = false;
-     if (!_tutorial) {
-          if (_autoFlip){
-               _goonInt = 0;
-               _burnInt = 0;
-               _movement = 6;
-               AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
-          } else {
-               _movement = 5;
-          }
+     if (_autoFlip){
+        _goonInt = 0;
+        _burnInt = 0;
+        _movement = 6;
+        AudioEngine::get()->play("flipSound", _assets->get<Sound>("flipSound"), false, _soundVolume, false);
+     } else {
+        _movement = 5;
      }
-     else {
-         _movement = 15;
+     if (_tutorial) {
+         _goonLabel->setVisible(false);
+         _tutorialBox->setVisible(true);
+         for (int i = 0; i < 16; i++) {
+             _tutorialText[i]->setVisible(true);
+         }
      }
      _display2 = true;
      _display3 = true;
@@ -1349,9 +1381,6 @@ void GameScene::update(float timestep) {
           }
      }
           if (_movement == 6){
-              if (_tutorial) {
-                  _tutorialButton->deactivate();
-              }
           int flipFrame = _currentBackFlip->getFrame();
           flipFrame += 1;
           if (flipFrame >= _currentBackFlip->getSize()){
@@ -1641,32 +1670,35 @@ void GameScene::update(float timestep) {
          _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
           _currentBackFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
          _currentFlip->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
-          _currEvent->setVisible(false);
+         _currEvent->setVisible(false);
          _deckNode->setVisible(true);
          _currentBackFlip->setVisible(true);
          _cardHolder->setVisible(true);
-         _enemyIdle->setVisible(true);
-          _black->setVisible(false);
-          _soundSlider->setVisible(true);
-          _autoFlipButton->setVisible(true);
-          _musicSlider->setVisible(true);
-          _soundSliderNode->setVisible(true);
-          _musicSliderNode->setVisible(true);
-          _paused->setVisible(true);
-          _pause->setVisible(false);
-          _goonName->setVisible(true);
-          _goonNumber->setVisible(true);
-          _nextEnemy->setVisible(false);
-          _nextFight->setVisible(false);
+         if (!_tutorial) {
+             _enemyIdle->setVisible(true);
+         }
+         else {
+             _enemyIdle->setVisible(false);
+         }
+         _black->setVisible(false);
+         _soundSlider->setVisible(true);
+         _autoFlipButton->setVisible(true);
+         _musicSlider->setVisible(true);
+         _soundSliderNode->setVisible(true);
+         _musicSliderNode->setVisible(true);
+         _paused->setVisible(true);
+         _pause->setVisible(false);
+         _goonName->setVisible(true);
+         _goonNumber->setVisible(true);
+         _nextEnemy->setVisible(false);
+         _nextFight->setVisible(false);
      }
      if (_movement == 15) {
          _goonLabel->setVisible(false);
-         _tutorialButton->setVisible(true);
          _tutorialBox->setVisible(true);
          for (int i = 0; i < 16; i++) {
              _tutorialText[i]->setVisible(true);
          }
-         _tutorialButton->activate();
      }
 #ifndef CU_TOUCH_SCREEN
      if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13)){
