@@ -298,6 +298,12 @@
     "thugIdle": {
       "file": "textures/enemy-thug-idle.png"
     },
+    "thug2aIdle": {
+      "file": "textures/enemy-thug2a-idle.png"
+    },
+    "thug2bIdle": {
+      "file": "textures/enemy-thug2b-idle.png"
+    },
     "slimeIdle": {
       "file": "textures/enemy-slime-idle.png"
     },
@@ -1321,6 +1327,56 @@
                   "y_anchor": "bottom",
                   "y_offset": 0.15,
                   "x_offset": 0.515
+              }
+            },
+            "autoFlip": {
+              "type": "Button",
+              "data": {
+                "upnode": "up",
+                "pushable": [ 0, 0, 0, 228, 607, 228, 607, 0 ],
+                "visible": true,
+                "pushsize": true,
+                "anchor": [ 0.5, 0.5 ],
+                "scale": 0.6
+              },
+              "format": {
+                "x_anchor": "center",
+                "y_anchor": "middle"
+              },
+              "children": {
+                "up": {
+                  "type": "Image",
+                  "data": {
+                    "texture": "newButton"
+                  },
+                  "children": {
+                    "label": {
+                      "type": "Label",
+                      "format": {
+                        "type": "Anchored"
+                      },
+                      "data": {
+                        "font": "sans",
+                        "text": "Autoflip: OFF",
+                        "foreground": [ 0, 0, 0, 255 ],
+                        "anchor": [ -0.225, -0.8 ],
+                        "halign": "center",
+                        "valign": "middle",
+                        "scale": 0.7
+                      },
+                      "layout": {
+                        "x_anchor": "center",
+                        "y_anchor": "middle"
+                      }
+                    }
+                  }
+                }
+              },
+              "layout": {
+                "x_anchor": "right",
+                "y_anchor": "bottom",
+                "y_offset": 0.15,
+                "x_offset": -0.15
               }
             }
         }
