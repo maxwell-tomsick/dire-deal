@@ -1983,7 +1983,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.1
+                  "y_offset": -0.05
                 }
               },
               "tutorial-line-2": {
@@ -2002,7 +2002,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.15
+                  "y_offset": -0.1
                 }
               },
               "tutorial-line-3": {
@@ -2021,7 +2021,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.2
+                  "y_offset": -0.15
                 }
               },
               "tutorial-line-4": {
@@ -2040,7 +2040,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.25
+                  "y_offset": -0.2
                 }
               },
               "tutorial-line-5": {
@@ -2059,7 +2059,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.3
+                  "y_offset": -0.25
                 }
               },
               "tutorial-line-6": {
@@ -2078,7 +2078,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.35
+                  "y_offset": -0.3
                 }
               },
               "tutorial-line-7": {
@@ -2097,7 +2097,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.4
+                  "y_offset": -0.35
                 }
               },
               "tutorial-line-8": {
@@ -2116,7 +2116,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.45
+                  "y_offset": -0.4
                 }
               },
               "tutorial-line-9": {
@@ -2135,7 +2135,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.5
+                  "y_offset": -0.45
                 }
               },
               "tutorial-line-10": {
@@ -2154,7 +2154,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.55
+                  "y_offset": -0.5
                 }
               },
               "tutorial-line-11": {
@@ -2173,7 +2173,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.6
+                  "y_offset": -0.55
                 }
               },
               "tutorial-line-12": {
@@ -2192,7 +2192,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.65
+                  "y_offset": -0.6
                 }
               },
               "tutorial-line-13": {
@@ -2211,7 +2211,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.7
+                  "y_offset": -0.65
                 }
               },
               "tutorial-line-14": {
@@ -2230,7 +2230,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.75
+                  "y_offset": -0.7
                 }
               },
               "tutorial-line-15": {
@@ -2249,7 +2249,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.8
+                  "y_offset": -0.75
                 }
               },
               "tutorial-line-16": {
@@ -2268,7 +2268,7 @@
                   "x_anchor": "left",
                   "y_anchor": "top",
                   "x_offset": 0.04,
-                  "y_offset": -0.85
+                  "y_offset": -0.8
                 }
               }
           }

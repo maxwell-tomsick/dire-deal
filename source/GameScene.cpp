@@ -144,7 +144,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
          jsonReaderResponses->close();
      }
      else {
-         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responsesTutorial1.json");
+         std::shared_ptr<JsonReader> jsonReaderResponses = JsonReader::alloc("json/responsestutorial1.json");
          _responses = getJsonResponses(jsonReaderResponses, _responses);
          jsonReaderResponses->close();
      }
@@ -930,21 +930,21 @@ void GameScene::reset() {
              _resources = { 15, 15, 0, 0 };
              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
              if (_ratio <= 1.5) {
-                 _tutorialText[0]->setText("Both response costs and the");
-                 _tutorialText[1]->setText("reward for burning");
-                 _tutorialText[2]->setText("increase with a card's level.");
-                 _tutorialText[3]->setText("");
-                 _tutorialText[4]->setText("Hold a response to see the");
-                 _tutorialText[5]->setText("card it shuffles in. The");
-                 _tutorialText[6]->setText("icons show how much it");
-                 _tutorialText[7]->setText("burns for and what");
-                 _tutorialText[8]->setText("resource its responses use.");
-                 _tutorialText[9]->setText("");
-                 _tutorialText[10]->setText("Actively selling cards will");
-                 _tutorialText[11]->setText("give you valuable resources");
-                 _tutorialText[12]->setText("for future fights.");
-                 _tutorialText[13]->setText("");
-                 _tutorialText[14]->setText("");
+                 _tutorialText[0]->setText("Both response costs and");
+                 _tutorialText[1]->setText("the reward for burning");
+                 _tutorialText[2]->setText("increase with a card's");
+                 _tutorialText[3]->setText("level.");
+                  _tutorialText[4]->setText("");
+                 _tutorialText[5]->setText("Hold a response to see the");
+                 _tutorialText[6]->setText("card it shuffles in. The");
+                 _tutorialText[7]->setText("icons show how much it");
+                 _tutorialText[8]->setText("burns for and what");
+                 _tutorialText[9]->setText("resource its responses use.");
+                 _tutorialText[10]->setText("");
+                 _tutorialText[11]->setText("Actively selling cards");
+                 _tutorialText[12]->setText("will give you valuable");
+                 _tutorialText[13]->setText("resources for future");
+                 _tutorialText[14]->setText("fights.");
                  _tutorialText[15]->setText("");
              }
              else {
@@ -968,40 +968,40 @@ void GameScene::reset() {
          }
          else if (_fight == 4) {
              if (_ratio <= 1.5) {
-                 _tutorialText[0]->setText("Between fights, you'll gain");
-                 _tutorialText[1]->setText("five of each resource.");
-                 _tutorialText[2]->setText("");
-                 _tutorialText[3]->setText("Leveling up too many cards");
-                 _tutorialText[4]->setText("at once can leave you");
-                 _tutorialText[5]->setText("short on resources, but is");
-                 _tutorialText[6]->setText("necessary to gain them.");
-                 _tutorialText[7]->setText("");
-                 _tutorialText[8]->setText("For this fight, you only");
-                 _tutorialText[9]->setText("have enough resources to");
-                 _tutorialText[10]->setText("level one of your cards");
-                 _tutorialText[11]->setText("to max. Upgrade one, and");
-                 _tutorialText[12]->setText("either sell or avoid");
-                 _tutorialText[13]->setText("upgrading the other.");
-                 _tutorialText[14]->setText("");
-                 _tutorialText[15]->setText("");
+                 _tutorialText[0]->setText("Between fights, your");
+                 _tutorialText[1]->setText("resources will carry over");
+                 _tutorialText[2]->setText("and you'll gain five of");
+                  _tutorialText[3]->setText("each resource. The cards");
+                  _tutorialText[4]->setText("in the deck will not ");
+                  _tutorialText[5]->setText("carry over. Leveling up");
+                 _tutorialText[6]->setText("too many cards at once");
+                 _tutorialText[7]->setText("can leave you short on");
+                 _tutorialText[8]->setText("resources, but is necessary ");
+                 _tutorialText[9]->setText("to gain them.");
+                 _tutorialText[10]->setText("For this fight, you only");
+                 _tutorialText[11]->setText("have enough resources to");
+                 _tutorialText[12]->setText("level one of your cards");
+                 _tutorialText[13]->setText("to max. Upgrade one, and");
+                 _tutorialText[14]->setText("either sell or avoid");
+                 _tutorialText[15]->setText("upgrading the other.");
              }
              else {
-                 _tutorialText[0]->setText("Between fights, you'll gain");
-                 _tutorialText[1]->setText("five of each resource.");
-                 _tutorialText[2]->setText("");
-                 _tutorialText[3]->setText("Leveling up too many cards");
-                 _tutorialText[4]->setText("at once can leave you short");
-                 _tutorialText[5]->setText("on resources, but is ");
-                 _tutorialText[6]->setText("necessary to gain them.");
-                 _tutorialText[7]->setText("");
-                 _tutorialText[8]->setText("For this fight, you only have");
-                 _tutorialText[9]->setText("enough resources to level one");
-                 _tutorialText[10]->setText("of your cards to max.");
-                 _tutorialText[11]->setText("Upgrade one, and either sell");
-                 _tutorialText[12]->setText("or avoid upgrading the other.");
-                 _tutorialText[13]->setText("");
-                 _tutorialText[14]->setText("");
-                 _tutorialText[15]->setText("");
+                 _tutorialText[0]->setText("Between fights, your ");
+                 _tutorialText[1]->setText("resources will carry over");
+                 _tutorialText[2]->setText("and you'll gain five of each ");
+                 _tutorialText[3]->setText("resource. The cards in the ");
+                 _tutorialText[4]->setText("deck will not carry over.");
+                 _tutorialText[5]->setText("");
+                 _tutorialText[6]->setText("Leveling up too many cards");
+                 _tutorialText[7]->setText("at once can leave you short");
+                 _tutorialText[8]->setText("on resources, but is ");
+                 _tutorialText[9]->setText("necessary to gain them.");
+                 _tutorialText[10]->setText("");
+                 _tutorialText[11]->setText("For this fight, you only have");
+                 _tutorialText[12]->setText("enough resources to level one");
+                 _tutorialText[13]->setText("of your cards to max.");
+                 _tutorialText[14]->setText("Upgrade one, and either sell");
+                 _tutorialText[15]->setText("or avoid upgrading the other.");
              }
          }
      }
@@ -1108,7 +1108,7 @@ void GameScene::update(float timestep) {
      if (_deckNode->getDrag()){
           _deckNode->setCurrCardPos(_deckNode->screenToNodeCoords(_mouse->pointerPosition()));
      }
-     if (_doBurn){
+     if (_doBurn & !(_tutorial == true & _fight == 1)){
           std::vector<int> resources = _resources;
           for (int i = 0; i < _resources.size(); i++) {
                if (_currentCard.getResource(i) > 0){
@@ -1419,7 +1419,7 @@ void GameScene::update(float timestep) {
                     _underline->setVisible(true);
                }
           }
-          if (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15) {
+          if (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15 & !(_tutorial == true & _fight == 1)) {
                if (flipFrame > 7){
                     _burnTexture->setVisible(true);
                }
@@ -1624,8 +1624,10 @@ void GameScene::update(float timestep) {
          _mainMenu->setVisible(true);
      }
      if (_movement == 12){
-          _nextEnemy->setVisible(true);
-          _nextFight->setVisible(true);
+          if (!_tutorial){
+               _nextEnemy->setVisible(true);
+               _nextFight->setVisible(true);
+          }
           if (!_tutorial) {
               _mainMenuLabel->setText("Start Fight");
           }
@@ -1775,7 +1777,7 @@ void GameScene::update(float timestep) {
                _displayCard->setVisible(false);
           }
      } else if ((_movement == 0) & _deckNode->getDrag()) {
-          if (_burn->containsScreen(_mouse->pointerPosition()) & (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15)){
+          if (_burn->containsScreen(_mouse->pointerPosition()) & (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15) & !(_tutorial == true & _fight == 1)){
                _doBurn = true;
           } else {
                _doBurn = false;
@@ -1989,7 +1991,7 @@ void GameScene::buttonPress(const int r){
 
 void GameScene::setDisplayCardBurnText(std::shared_ptr<cugl::scene2::NinePatch> nodeTexture, 
                                         std::shared_ptr<cugl::scene2::Label> nodeText, Card displayCard){
-     if (displayCard.getText() == "Incapacitated" || displayCard.getId() == 13 || displayCard.getId() == 14 || displayCard.getId() == 15){
+     if (displayCard.getText() == "Incapacitated" || displayCard.getId() == 13 || displayCard.getId() == 14 || displayCard.getId() == 15 || (_tutorial == true & _fight == 1)){
          nodeTexture->setVisible(false);
      } else {
          nodeTexture->setVisible(true);
@@ -2135,7 +2137,7 @@ void GameScene::touchEnded(const cugl::Vec2& pos) {
                buttonPress(2);
           }
      } else {
-          if (_burn->containsScreen(pos) & (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15)) {
+          if (_burn->containsScreen(pos) & (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15) & !(_tutorial == true & _fight == 1)) {
                _currentBurn->setPosition(_deckNode->screenToNodeCoords(pos) + _deckNode->getOffset());
                string burnTexture = _currentCard.getText() + "Burn";
                _currentBurn->setTexture(_assets->get<Texture>(burnTexture));
@@ -2230,7 +2232,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
           }
      } else {
           _deckNode->setCurrCardPos(_deckNode->screenToNodeCoords(pos));
-          if (_burn->containsScreen(pos) & (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15)) {
+          if (_burn->containsScreen(pos) & (_currentCard.getId() != 13 & _currentCard.getId() != 14 & _currentCard.getId() != 15) & !(_tutorial == true & _fight == 1))  {
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
                     if (_currentCard.getResource(i) > 0){

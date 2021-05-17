@@ -125,6 +125,7 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     std::shared_ptr<JsonValue> progress = jsonReaderHighestLevel->readJson()->get("Progress");
     jsonReaderHighestLevel->close();
     _highestLevel = progress->get("HighestLevel")->asInt();
+    /*
     if (_highestLevel >= 2) {
         _itemAcquired[0] = true;
         if (_highestLevel >= 4) {
@@ -140,6 +141,23 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             }
         }
     }
+     */
+    if (_highestLevel >= 0) {
+        _itemAcquired[0] = true;
+        if (_highestLevel >= 0) {
+            _itemAcquired[1] = true;
+            if (_highestLevel >= 0) {
+                _itemAcquired[2] = true;
+                if (_highestLevel >= 0) {
+                    _itemAcquired[3] = true;
+                    if (_highestLevel >= 0) {
+                        _itemAcquired[4] = true;
+                    }
+                }
+            }
+        }
+    }
+    
 
     _unlockedItems[0] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item0-unlocked"));
     _unlockedItems[1] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item1-unlocked"));

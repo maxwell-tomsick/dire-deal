@@ -33,7 +33,7 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 0.5,
+      "fontSize": 0.75,
       "animation": 1
     },
     "Grab1": {

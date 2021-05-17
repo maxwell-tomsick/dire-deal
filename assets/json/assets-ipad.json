@@ -2050,8 +2050,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.1
+                  "x_offset": 0.04,
+                  "y_offset": -0.05
                 }
               },
               "tutorial-line-2": {
@@ -2069,8 +2069,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.15
+                  "x_offset": 0.04,
+                  "y_offset": -0.1
                 }
               },
               "tutorial-line-3": {
@@ -2088,8 +2088,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.2
+                  "x_offset": 0.04,
+                  "y_offset": -0.15
                 }
               },
               "tutorial-line-4": {
@@ -2107,8 +2107,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.25
+                  "x_offset": 0.04,
+                  "y_offset": -0.2
                 }
               },
               "tutorial-line-5": {
@@ -2126,8 +2126,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.3
+                  "x_offset": 0.04,
+                  "y_offset": -0.25
                 }
               },
               "tutorial-line-6": {
@@ -2145,8 +2145,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.35
+                  "x_offset": 0.04,
+                  "y_offset": -0.3
                 }
               },
               "tutorial-line-7": {
@@ -2164,8 +2164,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.4
+                  "x_offset": 0.04,
+                  "y_offset": -0.35
                 }
               },
               "tutorial-line-8": {
@@ -2183,8 +2183,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.45
+                  "x_offset": 0.04,
+                  "y_offset": -0.4
                 }
               },
               "tutorial-line-9": {
@@ -2202,8 +2202,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.5
+                  "x_offset": 0.04,
+                  "y_offset": -0.45
                 }
               },
               "tutorial-line-10": {
@@ -2221,8 +2221,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.55
+                  "x_offset": 0.04,
+                  "y_offset": -0.5
                 }
               },
               "tutorial-line-11": {
@@ -2240,8 +2240,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.6
+                  "x_offset": 0.04,
+                  "y_offset": -0.55
                 }
               },
               "tutorial-line-12": {
@@ -2259,8 +2259,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.65
+                  "x_offset": 0.04,
+                  "y_offset": -0.6
                 }
               },
               "tutorial-line-13": {
@@ -2278,8 +2278,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.7
+                  "x_offset": 0.04,
+                  "y_offset": -0.65
                 }
               },
               "tutorial-line-14": {
@@ -2297,8 +2297,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.75
+                  "x_offset": 0.04,
+                  "y_offset": -0.7
                 }
               },
               "tutorial-line-15": {
@@ -2316,8 +2316,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.8
+                  "x_offset": 0.04,
+                  "y_offset": -0.75
                 }
               },
               "tutorial-line-16": {
@@ -2335,8 +2335,8 @@
                 "layout": {
                   "x_anchor": "left",
                   "y_anchor": "top",
-                  "x_offset": 0.02,
-                  "y_offset": -0.85
+                  "x_offset": 0.04,
+                  "y_offset": -0.8
                 }
               }
           }
@@ -2634,7 +2634,7 @@
                 "x_anchor": "left",
                 "y_anchor": "bottom",
                 "y_offset": 0.155,
-                "x_offset": 0.61
+                "x_offset": 0.62
             },
             "format"    : {
                 "type"  : "Anchored"
