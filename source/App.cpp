@@ -99,8 +99,16 @@ void LabApp::onStartup() {
  * causing the application to be deleted.
  */
 void LabApp::onShutdown() {
-    _loading.dispose();
-    _gameplay.dispose();
+    if (_loading.isActive()) {
+        _loading.dispose();
+    }
+    else if (_item.isActive()) {
+        _item.dispose();
+    } 
+    else if (_gameplay.isActive()) {
+        _gameplay.dispose();
+    }
+    
     _assets = nullptr;
     _batch = nullptr;
 

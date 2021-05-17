@@ -288,6 +288,12 @@
     "thugIdle": {
       "file": "textures/enemy-thug-idle.png"
     },
+    "thug2aIdle": {
+      "file": "textures/enemy-thug2a-idle.png"
+    },
+    "thug2bIdle": {
+      "file": "textures/enemy-thug2b-idle.png"
+    },
     "slimeIdle": {
       "file": "textures/enemy-slime-idle.png"
     },

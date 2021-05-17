@@ -20,19 +20,20 @@
     "Thug2":{
       "id":2,
       "enemyName": "Lupine Raider",
-      "numSheets":1,
-      "enemyTexture": "thugIdle",
+      "numSheets":2,
+      "enemyTexture": "thug2aIdle",
+      "enemyTexture2": "thug2bIdle",
       "deck": [ 0, 1, 3, 3, 3],
       "nextDeck": [],
       "background": "background",
-      "rows": 3,
-      "cols": 4,
-      "frames": 12,
+      "rows": 6,
+      "cols": 5,
+      "frames": 30,
       "wscale": 0.2,
       "hscale": 0.44,
-      "scale": 0.9,
-      "scale-ipad": 0.65,
-      "idleBuffer": 0.1
+      "scale": 1.6,
+      "scale-ipad": 1.2,
+      "idleBuffer": 0.05
     },
     "Slime1":{
       "id": 3,
