@@ -59,10 +59,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
     _ratio = ratio;
      
     // Acquire the scene built by the asset loader and resize it the scene
-     std::shared_ptr<scene2::SceneNode> background = _assets->get<scene2::SceneNode>("background");
-     background->setContentSize(dimen);
-     background->doLayout();
-     addChild(background);
+     _background = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("background"));
+     _background->setContentSize(dimen);
+     _background->doLayout();
+     addChild(_background);
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("lab");
     scene->setContentSize(dimen);
     scene->doLayout(); // Repositions the HUD;
@@ -459,6 +459,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           _audioQueue->play(_assets->get<Sound>("introThug"), false,_musicVolume, false);
           _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true, _musicVolume, false);
      }
+     if (_fight > 4){
+          _background->setTexture(_assets->get<Texture>("background2"));
+     } else {
+          _background->setTexture(_assets->get<Texture>("background"));
+     }
      
      _currEvent = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("pause_currEvent"));
      _musicSliderNode = std::dynamic_pointer_cast<scene2::SceneNode>(assets->get<scene2::SceneNode>("pause_musicSlider"));
@@ -810,6 +815,11 @@ void GameScene::reset() {
           _audioQueue->clear();
           _audioQueue->play(_assets->get<Sound>("introThug"), false,_musicVolume, false);
           _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true, _musicVolume, false);
+     }
+     if (_fight > 4){
+          _background->setTexture(_assets->get<Texture>("background2"));
+     } else {
+          _background->setTexture(_assets->get<Texture>("background"));
      }
      
      _goonNumber->setText("Target " + std::to_string(_fight) + ":");

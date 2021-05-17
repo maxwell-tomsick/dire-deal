@@ -1,61 +1,61 @@
 {
   "images" : [
     {
-      "filename" : "appicon16.png",
+      "filename" : "diredealapp16.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"
     },
     {
-      "filename" : "appicon32.png",
+      "filename" : "diredealapp32.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
     },
     {
-      "filename" : "appicon32-1.png",
+      "filename" : "diredealapp32-1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "32x32"
     },
     {
-      "filename" : "appicon64.png",
+      "filename" : "diredealapp64.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "32x32"
     },
     {
-      "filename" : "appicon128.png",
+      "filename" : "diredealapp128.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "128x128"
     },
     {
-      "filename" : "appicon256.png",
+      "filename" : "diredealapp256.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
     },
     {
-      "filename" : "appicon256-1.png",
+      "filename" : "diredealapp256-1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
     },
     {
-      "filename" : "appicon512.png",
+      "filename" : "diredealapp512.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
-      "filename" : "appicon512-1.png",
+      "filename" : "diredealapp512-1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "appicon1024.png",
+      "filename" : "diredealapp1024.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"

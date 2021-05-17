@@ -260,6 +260,11 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
+    "background2": {
+      "file": "textures/background2.PNG",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
     "middleColumn": {
       "file": "textures/middle-column.png",
       "minfilter": "linear",
@@ -296,37 +301,62 @@
       "magfilter": "linear"
     },
     "thugIdle": {
-      "file": "textures/enemy-thug-idle.png"
+      "file": "textures/enemy-thug-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "thug2aIdle": {
-      "file": "textures/enemy-thug2a-idle.png"
+      "file": "textures/enemy-thug2a-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "thug2bIdle": {
-      "file": "textures/enemy-thug2b-idle.png"
+      "file": "textures/enemy-thug2b-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "slimeIdle": {
-      "file": "textures/enemy-slime-idle.png"
+      "file": "textures/enemy-slime-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "slime2Idle": {
       "file": "textures/enemy-slime2-idle.png"
     },
+    "brawlerIdle": {
+      "file": "textures/enemy-brawler-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
     "worm1aIdle": {
-      "file": "textures/enemy-worm1a-idle.png"
+      "file": "textures/enemy-worm1a-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "worm1bIdle": {
-      "file": "textures/enemy-worm1b-idle.png"
+      "file": "textures/enemy-worm1b-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "worm1cIdle": {
-      "file": "textures/enemy-worm1c-idle.png"
+      "file": "textures/enemy-worm1c-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "worm3aIdle": {
-      "file": "textures/enemy-worm3a-idle.png"
+      "file": "textures/enemy-worm3a-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "worm3bIdle": {
-      "file": "textures/enemy-worm3b-idle.png"
+      "file": "textures/enemy-worm3b-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "worm3cIdle": {
-      "file": "textures/enemy-worm3c-idle.png"
+      "file": "textures/enemy-worm3c-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
     "enemyLabel": {
       "file": "textures/enemy-label.png",

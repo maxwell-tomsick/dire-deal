@@ -132,6 +132,7 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _currCardButton;
     std::shared_ptr<cugl::scene2::PolygonNode> _cardFront;
     std::shared_ptr<DeckNode> _deckNode;
+    std::shared_ptr<scene2::TexturedNode> _background;
     std::shared_ptr<cugl::scene2::AnimationNode> _shuffleFlip;
     std::shared_ptr<cugl::scene2::AnimationNode> _shuffleBackFlip;
     std::shared_ptr<cugl::scene2::AnimationNode> _currentBackFlip;
