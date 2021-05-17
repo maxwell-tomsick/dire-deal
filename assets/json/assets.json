@@ -2458,6 +2458,57 @@
               "format": {
                 "type": "Anchored"
               }
+            },
+            "responseType": {
+              "type": "NinePatch",
+              "data": {
+                "texture": "brawn",
+                "anchor": [ 0.5, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.95,
+                "x_offset": 0.05
+              },
+              "format": {
+                "type": "Anchored"
+              }
+            },
+            "burnAmount": {
+              "type": "NinePatch",
+              "data": {
+                "texture": "brawn",
+                "anchor": [ 0.5, 0.5 ]
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "y_offset": 0.95,
+                "x_offset": 0.95
+              },
+              "format": {
+                "type": "Anchored"
+              },
+              "children": {
+                "amount": {
+                  "type": "TextField",
+                  "data": {
+                    "font": "sans4",
+                    "text": "1",
+                    "foreground": [ 241, 231, 95, 255 ],
+                    "halign": "center",
+                    "valign": "true middle",
+                    "anchor": [ 0.5, 0.5 ]
+                  },
+                  "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "x_offset": 0.5,
+                    "y_offset": 0.5
+                  }
+                }
+              }
             }
           }
         },
@@ -2505,7 +2556,7 @@
             "x_anchor": "left",
             "y_anchor": "bottom",
             "y_offset": 0.32,
-            "x_offset": 0.04
+            "x_offset": 0.02
           },
           "format": {
             "type": "Anchored"
