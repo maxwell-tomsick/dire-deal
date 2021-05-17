@@ -102,7 +102,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           }
      } else {
           _usedSecondWind = false;
-          _fight = 1;
+          _fight = 4;
           _item = equippedItem;
           if (!tutorial) {
                _resources = { 20, 20, 20, 20 };
@@ -456,8 +456,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           _audioQueue->play(_assets->get<Sound>("introSlime"), false, _musicVolume, false);
           _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true, _musicVolume, false);
      } else if (_fight >= 5){
-          _audioQueue->play(_assets->get<Sound>("introThug"), false,_musicVolume, false);
-          _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true, _musicVolume, false);
+          _audioQueue->play(_assets->get<Sound>("introMenu"), false,_musicVolume, false);
+          _audioQueue->enqueue(_assets->get<Sound>("repeatMenu"), true, _musicVolume, false);
      }
      if (_fight > 4){
           _background->setTexture(_assets->get<Texture>("background2"));
@@ -813,8 +813,8 @@ void GameScene::reset() {
      _audioQueue->enqueue(_assets->get<Sound>("repeatSlime"), true, _musicVolume, false);
      } else if (_fight == 5){
           _audioQueue->clear();
-          _audioQueue->play(_assets->get<Sound>("introThug"), false,_musicVolume, false);
-          _audioQueue->enqueue(_assets->get<Sound>("repeatThug"), true, _musicVolume, false);
+          _audioQueue->play(_assets->get<Sound>("introMenu"), false,_musicVolume, false);
+          _audioQueue->enqueue(_assets->get<Sound>("repeatMenu"), true, _musicVolume, false);
      }
      if (_fight > 4){
           _background->setTexture(_assets->get<Texture>("background2"));

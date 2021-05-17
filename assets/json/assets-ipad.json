@@ -640,6 +640,14 @@
         "type": "sample",
         "file": "sounds/loopharpsichord.ogg"
       },
+      "introMenu": {
+        "type": "sample",
+        "file": "sounds/intromenu.ogg"
+      },
+      "repeatMenu": {
+        "type": "sample",
+        "file": "sounds/loopmenu.ogg"
+      },
       "introSlime": {
         "type": "sample",
         "file": "sounds/introbigslimyboi.ogg"
