@@ -1358,14 +1358,26 @@ void GameScene::update(float timestep) {
           } else {
                _currEvent->setVisible(false);
           }
-          Card lastCard = _currentCard;
+          if (_currentCard.getId() < 13){
+               _lastCard = _currentCard;
+          }
           _currentCard = _cards[_currentDeck.back()];
           _currentDeck.pop_back();
           if (_currentCard.getId() == -1 & _item == 2){
-               if (_currentDeck.size() == 0 & _nextDeck.size() == 0){
-               //CULog("HEY");
-               _currentCard = lastCard;
-               _usedSecondWind = true;
+               bool nonSpecialFound = false;
+               for (int i = 0; i < _currentDeck.size(); i++){
+                    if (_currentDeck[i] < 13){
+                         nonSpecialFound = true;
+                    }
+               }
+               for (int i = 0; i < _nextDeck.size(); i++){
+                    if (_nextDeck[i] < 13){
+                         nonSpecialFound = true;
+                    }
+               }
+               if (!nonSpecialFound){
+                    _currentCard = _lastCard;
+                    _usedSecondWind = true;
                }
           }
           if (_currentCard.getId() == -1 & _item == 3){

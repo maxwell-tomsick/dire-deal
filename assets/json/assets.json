@@ -66,27 +66,27 @@
         "magfilter": "linear"
       },
       "DanceBurn": {
-          "file": "textures/cardburns/incapacitated_burn.png",
+          "file": "textures/cardburns/danceofsteel_burn.png",
         "minfilter": "linear",
         "magfilter": "linear"
       },
       "SprintBurn": {
-          "file": "textures/cardburns/incapacitated_burn.png",
+          "file": "textures/cardburns/sprint_burn.png",
         "minfilter": "linear",
         "magfilter": "linear"
       },
       "SecondWindBurn": {
-          "file": "textures/cardburns/incapacitated_burn.png",
+          "file": "textures/cardburns/secondwind_burn.png",
         "minfilter": "linear",
         "magfilter": "linear"
       },
       "HoarderBurn": {
-          "file": "textures/cardburns/incapacitated_burn.png",
+          "file": "textures/cardburns/gambit_burn.png",
         "minfilter": "linear",
         "magfilter": "linear"
       },
       "ParasiteBurn": {
-          "file": "textures/cardburns/incapacitated_burn.png",
+          "file": "textures/cardburns/parasite_burn.png",
         "minfilter": "linear",
         "magfilter": "linear"
       },

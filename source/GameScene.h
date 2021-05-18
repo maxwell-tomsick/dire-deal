@@ -177,6 +177,7 @@ protected:
     bool _display2;
     bool _display3;
     Card _currentCard;
+    Card _lastCard;
     bool _flipSwitch;
     int _act = 0;
     cugl::Mouse* _mouse;
