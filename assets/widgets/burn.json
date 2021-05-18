@@ -1,7 +1,5 @@
 {
     "variables" : {
-        "size" : ["children","up","data","size"],
-        "text" : ["children","up","children","label","data","text"],
         "font" : ["children","up","children","label","data","font"],
         "priority" : ["layout","priority"],
         "texture"  : ["children","up","children","patch","data","texture"],

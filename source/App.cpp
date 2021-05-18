@@ -67,7 +67,8 @@ void LabApp::onStartup() {
         _assets->loadDirectoryAsync("json/assets.json",nullptr);
     }
     AudioEngine::start();
-    
+    //filetool::file_delete(Application::get()->getSaveDirectory() + "settings.json");
+    //filetool::file_delete(Application::get()->getSaveDirectory() + "settings.json");
     if (!filetool::file_exists(Application::getSaveDirectory() + "settings.json")){
         std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::getSaveDirectory() + "settings.json");
         textWriter->write("{\"Progress\":{\"HighestLevel\": 0},\"Volume\":{\"Music\":0.5,\"Sound\":0.5, \"Autoflip\":false}}");
