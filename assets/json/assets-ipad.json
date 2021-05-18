@@ -1031,18 +1031,14 @@
       }
       },
       "darken": {
-        "type": "NinePatch",
+        "type": "Image",
         "data": {
           "texture": "black",
-          "anchor": [ 0, 0 ],
           "visible":false
         },
         "layout": {
           "x_anchor": "fill",
           "y_anchor": "fill"
-        },
-        "format"    : {
-            "type"  : "Anchored"
         }
     },
       "pause": {

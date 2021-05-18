@@ -98,7 +98,7 @@ protected:
     std::shared_ptr<cugl::scene2::NinePatch> _tutorialBox;
     std::shared_ptr<cugl::scene2::Label> _tutorialText[16];
     
-    std::shared_ptr<cugl::scene2::NinePatch> _black;
+    std::shared_ptr<cugl::scene2::TexturedNode> _black;
     std::shared_ptr<cugl::scene2::Button> _pauseButton;
     std::shared_ptr<cugl::scene2::SceneNode> _pause;
     std::shared_ptr<cugl::scene2::SceneNode> _nextFight;

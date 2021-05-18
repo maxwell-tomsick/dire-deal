@@ -337,7 +337,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      
      addChild(scene);
      addChild(_deckNode);
-     _black = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("darken"));
+     _black = std::dynamic_pointer_cast<scene2::TexturedNode>(assets->get<scene2::SceneNode>("darken"));
      _black->setContentSize(dimen);
      _black->doLayout();
      _black->setBlendEquation( GL_FUNC_ADD );
