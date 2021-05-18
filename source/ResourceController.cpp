@@ -44,7 +44,7 @@ void ResourceController::setResponseResources(
     int mod){
      std::vector<int> cost = responses[responseId].getResources();
     //std::printf("curr: %d\n", _curr);
-    if (responseId != 47 & responseId != 50){
+    if (responseId != 47 & responseId != 50 & responseId != 51 & responseId != 53 & responseId != 48){
         if (_curr == _free){
             _freeResponse = response;
             cost = {0,0,0,0};
