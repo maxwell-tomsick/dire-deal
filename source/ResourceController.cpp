@@ -17,14 +17,35 @@ void ResourceController::setResources(
     flourishText->setText(to_string(resources[1]));
     lungeText->setText(to_string(resources[2]));
     brawnText->setText(to_string(resources[3]));
+    bool red = false;
+    if (preview > 3){
+        red = true;
+        preview -= 3;
+    }
     if (preview == 0) {
-        bladeText->setForeground(Color4(124, 229, 227, 255));
+        if (red){
+            bladeText->setForeground(Color4(255, 0, 0, 255));
+        } else {
+            bladeText->setForeground(Color4(124, 229, 227, 255));
+        }
     } else if (preview == 1){
-        flourishText->setForeground(Color4(124, 229, 227, 255));
+        if (red){
+            flourishText->setForeground(Color4(255, 0, 0, 255));
+        } else {
+            flourishText->setForeground(Color4(124, 229, 227, 255));
+        }
     } else if (preview == 2){
-        lungeText->setForeground(Color4(124, 229, 227, 255));
+        if (red){
+            lungeText->setForeground(Color4(255, 0, 0, 255));
+        } else {
+            lungeText->setForeground(Color4(124, 229, 227, 255));
+        }
     } else if (preview == 3){
-        brawnText->setForeground(Color4(124, 229, 227, 255));
+        if (red){
+            brawnText->setForeground(Color4(255, 0, 0, 255));
+        } else {
+            brawnText->setForeground(Color4(124, 229, 227, 255));
+        }
     } else {
         bladeText->setForeground(Color4(241,231,95, 255 ));
         flourishText->setForeground(Color4(241,231,95, 255 ));

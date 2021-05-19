@@ -105,7 +105,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           _fight = 1;
           _item = equippedItem;
           if (!tutorial) {
-               _resources = { 20, 20, 20, 20 };
+               _resources = { 20, 20, 0, 20 };
               //_resources = { 40, 40, 40, 40 };
           } else {
               _resources = { 0, 20, 0, 0 };
@@ -1775,6 +1775,17 @@ void GameScene::update(float timestep) {
                } else {
                     setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, false);
                }
+               std::vector<int> resources = _resources;
+               for (int i = 0; i < _resources.size(); i++) {
+                    if (_responses[_responseId1].getResources()[i] > 0){
+                         if (resources[i] - _responses[_responseId1].getResources()[i] >= 0){
+                              resources[i] -= _responses[_responseId1].getResources()[i];
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                         } else {
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                         }
+                    }
+               }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           }
@@ -1785,6 +1796,17 @@ void GameScene::update(float timestep) {
                     setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, true);
                } else {
                     setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, false);
+               }
+               std::vector<int> resources = _resources;
+               for (int i = 0; i < _resources.size(); i++) {
+                    if (_responses[_responseId2].getResources()[i] > 0){
+                         if (resources[i] - _responses[_responseId2].getResources()[i] >= 0){
+                              resources[i] -= _responses[_responseId2].getResources()[i];
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                         } else {
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                         }
+                    }
                }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
@@ -1797,9 +1819,21 @@ void GameScene::update(float timestep) {
                } else {
                     setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, false);
                }
+               std::vector<int> resources = _resources;
+               for (int i = 0; i < _resources.size(); i++) {
+                    if (_responses[_responseId3].getResources()[i] > 0){
+                         if (resources[i] - _responses[_responseId3].getResources()[i] >= 0){
+                              resources[i] -= _responses[_responseId3].getResources()[i];
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                         } else {
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                         }
+                    }
+               }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
-          } else {
+          } else {
+               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
                _displayCard->setVisible(false);
           }
      } else if ((_movement == 0) & _deckNode->getDrag()) {
@@ -2113,6 +2147,17 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           } else {
                _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
           }
+          std::vector<int> resources = _resources;
+          for (int i = 0; i < _resources.size(); i++) {
+               if (_responses[_responseId1].getResources()[i] > 0){
+                    if (resources[i] - _responses[_responseId1].getResources()[i] >= 0){
+                         resources[i] -= _responses[_responseId1].getResources()[i];
+                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                    } else {
+                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                    }
+               }
+          }
           _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      }
@@ -2124,6 +2169,17 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           } else {
                _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
           }
+          std::vector<int> resources = _resources;
+          for (int i = 0; i < _resources.size(); i++) {
+               if (_responses[_responseId2].getResources()[i] > 0){
+                    if (resources[i] - _responses[_responseId2].getResources()[i] >= 0){
+                         resources[i] -= _responses[_responseId2].getResources()[i];
+                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                    } else {
+                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                    }
+               }
+          }
           _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
      }
@@ -2134,6 +2190,17 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
                _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,true);
           } else {
                _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
+          }
+          std::vector<int> resources = _resources;
+          for (int i = 0; i < _resources.size(); i++) {
+               if (_responses[_responseId3].getResources()[i] > 0){
+                    if (resources[i] - _responses[_responseId3].getResources()[i] >= 0){
+                         resources[i] -= _responses[_responseId3].getResources()[i];
+                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                    } else {
+                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                    }
+               }
           }
           _displayCard->setTexture(displayCard.getTexture());
           _displayCard->setVisible(true);
@@ -2149,6 +2216,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
 }
 
 void GameScene::touchEnded(const cugl::Vec2& pos) {
+     _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
      _displayCard->setVisible(false);
      _removeCard1->setVisible(false);
      _removeCard2->setVisible(false);
@@ -2229,6 +2297,17 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                } else {
                     _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
                }
+               std::vector<int> resources = _resources;
+               for (int i = 0; i < _resources.size(); i++) {
+                    if (_responses[_responseId1].getResources()[i] > 0){
+                         if (resources[i] - _responses[_responseId1].getResources()[i] >= 0){
+                              resources[i] -= _responses[_responseId1].getResources()[i];
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                         } else {
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                         }
+                    }
+               }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           }
@@ -2239,6 +2318,17 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                     _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,true);
                } else {
                     _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
+               }
+               std::vector<int> resources = _resources;
+               for (int i = 0; i < _resources.size(); i++) {
+                    if (_responses[_responseId2].getResources()[i] > 0){
+                         if (resources[i] - _responses[_responseId2].getResources()[i] >= 0){
+                              resources[i] -= _responses[_responseId2].getResources()[i];
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                         } else {
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                         }
+                    }
                }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
@@ -2251,9 +2341,21 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                } else {
                     _resourceController.setDisplayCardResponseType(displayCard, _assets, _displayCardResponseType, _displayCardResponseBurn,false);
                }
+               std::vector<int> resources = _resources;
+               for (int i = 0; i < _resources.size(); i++) {
+                    if (_responses[_responseId3].getResources()[i] > 0){
+                         if (resources[i] - _responses[_responseId3].getResources()[i] >= 0){
+                              resources[i] -= _responses[_responseId3].getResources()[i];
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                         } else {
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                         }
+                    }
+               }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
           } else {
+               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
                _displayCard->setVisible(false);
           }
      } else {
