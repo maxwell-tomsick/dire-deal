@@ -102,7 +102,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           }
      } else {
           _usedSecondWind = false;
-          _fight = 1;
+          _fight = 5;
           _item = equippedItem;
           if (!tutorial) {
                _resources = { 20, 20, 0, 20 };
@@ -1832,7 +1832,7 @@ void GameScene::update(float timestep) {
                }
                _displayCard->setTexture(displayCard.getTexture());
                _displayCard->setVisible(true);
-          } else {
+          } else {
                _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
                _displayCard->setVisible(false);
           }

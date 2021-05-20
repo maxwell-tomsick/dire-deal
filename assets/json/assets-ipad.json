@@ -261,7 +261,7 @@
       "magfilter": "linear"
     },
     "background2": {
-      "file": "textures/background2.PNG",
+      "file": "textures/lv2-background.jpg",
       "minfilter": "linear",
       "magfilter": "linear"
     },
