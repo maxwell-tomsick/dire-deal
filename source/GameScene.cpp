@@ -105,7 +105,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
           _fight = 1;
           _item = equippedItem;
           if (!tutorial) {
-               _resources = { 20, 20, 0, 20 };
+               _resources = { 20, 20, 20, 20 };
               //_resources = { 40, 40, 40, 40 };
           } else {
               _resources = { 0, 20, 0, 0 };
@@ -570,7 +570,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
      _goon->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (GOON_HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      _currCardButton->setPosition(_dimen.width * WIDTH_SCALE, _dimen.height * (HEIGHT_SCALE + DECK_SCALE * _currentDeck.size()));
      // start make these more transparent
-     _middleColumn->setColor(Color4(255,255,255,180));
+     _middleColumn->setColor(Color4(255,255,255,200));
      _rightBox->setColor(Color4(255,255,255,80));
      _topBar->setColor(Color4(255,255,255,80));
      _bottomBar->setColor(Color4(255,255,255,80));
