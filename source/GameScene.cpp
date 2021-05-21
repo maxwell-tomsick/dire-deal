@@ -962,16 +962,16 @@ void GameScene::reset() {
                  _tutorialText[1]->setText("reward for burning increase");
                  _tutorialText[2]->setText("with a card's level.");
                  _tutorialText[3]->setText("");
-                 _tutorialText[4]->setText("Hold a response to see");
-                 _tutorialText[5]->setText("the card it shuffles in. The");
-                 _tutorialText[6]->setText("icons show how much it burns");
-                 _tutorialText[7]->setText("for and what resource its");
-                 _tutorialText[8]->setText("responses use.");
-                 _tutorialText[9]->setText("");
-                 _tutorialText[10]->setText("Actively selling cards will");
-                 _tutorialText[11]->setText("give you valuable resources");
-                 _tutorialText[12]->setText("for future fights.");
-                 _tutorialText[13]->setText("");
+                 _tutorialText[4]->setText("Hold a response to see the card");
+                 _tutorialText[5]->setText("it shuffles in, with two icons.");
+                 _tutorialText[6]->setText("The top left icon shows what");
+                 _tutorialText[7]->setText("resource its responses use.");
+                 _tutorialText[8]->setText("The top right icon shows how");
+                 _tutorialText[9]->setText("much it burns for.");
+                 _tutorialText[10]->setText("");
+                 _tutorialText[11]->setText("Actively selling cards will");
+                 _tutorialText[12]->setText("give you valuable resources");
+                 _tutorialText[13]->setText("for future fights.");
                  _tutorialText[14]->setText("");
                  _tutorialText[15]->setText("");
              }
