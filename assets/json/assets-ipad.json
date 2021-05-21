@@ -713,6 +713,10 @@
     "sans7": {
       "file": "fonts/rise-of-kingdom.regular.ttf",
       "size": 38
+    },
+    "timesNewRoman": {
+      "file": "fonts/times-new-roman.ttf",
+      "size": 110
     }
   },
   "scene2s": {
@@ -2072,7 +2076,7 @@
               "tutorial-line-1": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "Swipe the card, and choose",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2091,7 +2095,7 @@
               "tutorial-line-2": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "responses from the right to",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2110,7 +2114,7 @@
               "tutorial-line-3": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "shuffle new cards into the",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2129,7 +2133,7 @@
               "tutorial-line-4": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "deck. The old card is removed.",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2148,7 +2152,7 @@
               "tutorial-line-5": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2167,7 +2171,7 @@
               "tutorial-line-6": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2186,7 +2190,7 @@
               "tutorial-line-7": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "Above responses are resources.",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2205,7 +2209,7 @@
               "tutorial-line-8": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "Each response has a cost.",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2224,7 +2228,7 @@
               "tutorial-line-9": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2243,7 +2247,7 @@
               "tutorial-line-10": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2262,7 +2266,7 @@
               "tutorial-line-11": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "The gems at the bottom of",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2281,7 +2285,7 @@
               "tutorial-line-12": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "a card show its level. Win",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2300,7 +2304,7 @@
               "tutorial-line-13": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "by shuffling in a level",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2319,7 +2323,7 @@
               "tutorial-line-14": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "five card. Darker responses",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2338,7 +2342,7 @@
               "tutorial-line-15": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "are higher leveled.",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],
@@ -2357,7 +2361,7 @@
               "tutorial-line-16": {
                 "type": "Label",
                 "data": {
-                  "font": "sans",
+                  "font": "timesNewRoman",
                   "text": "",
                   "visible": false,
                   "foreground": [ 207, 166, 93, 255 ],

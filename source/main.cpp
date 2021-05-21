@@ -52,8 +52,8 @@ int main(int argc, char * argv[]) {
     app.setFPS(60.0f);
 
     // VARY THIS TO TRY OUT YOUR SCENE GRAPH
-    // app.setSize(1560, 720); // iphone11
-    app.setSize(1280, 720); // 16x9,  Android phones, PC Gaming
+    app.setSize(1560, 720); // iphone11
+    // app.setSize(1280, 720); // 16x9,  Android phones, PC Gaming
     // app.setSize(683, 512); // ipad pro (smaller)
     //app.setSize(1366, 1024); // ipad pro
 
