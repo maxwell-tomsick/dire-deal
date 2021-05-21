@@ -946,15 +946,15 @@ void GameScene::reset() {
                  _tutorialText[3]->setText("level.");
                   _tutorialText[4]->setText("");
                  _tutorialText[5]->setText("Hold a response to see the");
-                 _tutorialText[6]->setText("card it shuffles in. The");
-                 _tutorialText[7]->setText("icons show how much it");
-                 _tutorialText[8]->setText("burns for and what");
-                 _tutorialText[9]->setText("resource its responses use.");
-                 _tutorialText[10]->setText("");
-                 _tutorialText[11]->setText("Actively selling cards");
-                 _tutorialText[12]->setText("will give you valuable");
-                 _tutorialText[13]->setText("resources for future");
-                 _tutorialText[14]->setText("fights.");
+                 _tutorialText[6]->setText("card it shuffles in. The top");
+                 _tutorialText[7]->setText("left icon shows how what");
+                 _tutorialText[8]->setText("resource its responses use.");
+                 _tutorialText[9]->setText("The top right icon shows");
+                 _tutorialText[10]->setText("how much it burns for.");
+                 _tutorialText[11]->setText("");
+                 _tutorialText[12]->setText("Actively selling cards will");
+                 _tutorialText[13]->setText("give you valuable resources");
+                 _tutorialText[14]->setText("for future fights.");
                  _tutorialText[15]->setText("");
              }
              else {
