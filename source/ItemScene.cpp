@@ -61,6 +61,7 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _play->activate();
     _menu = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_menu"));
     _menuLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_menu_up_label"));
+    _menuLabel->setText("Menu");
 
     _menu->addListener([=](const std::string& name, bool down) {
         if (!down) {
@@ -83,19 +84,6 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _itemTextures[2] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_item2"));
     _itemTextures[3] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_item3"));
     _itemTextures[4] = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("item_item4"));
-    _equip = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_equip"));
-    _equip->addListener([=](const std::string& name, bool down) {
-        if (!down) {
-            if (_displayedItemId != _equippedItem) {
-                equipItem();
-            }
-            else {
-                unequipItem();
-            }
-        }
-        });
-    _equip->setVisible(false);
-    _equipLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("item_equip_up_label"));
     _lockedItemTexture->setVisible(false);
     for( int i = 0; i < 5; i++ ){
         _itemTextures[i]->setVisible(false);
@@ -157,7 +145,6 @@ bool ItemScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             }
         }
     }
-    
 
     _unlockedItems[0] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item0-unlocked"));
     _unlockedItems[1] = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("item_items-locked_item1-unlocked"));
@@ -233,10 +220,8 @@ void ItemScene::dispose() {
     }
     _play->clearListeners();
     _menu->clearListeners();
-    _equip->clearListeners();
     _play = nullptr;
     _menu = nullptr;
-    _equip = nullptr;
     _equippedItem = -1;
     _displayedItemId = -1;
     _continue = false;
@@ -262,22 +247,15 @@ void ItemScene::displayItem(int id) {
     // CULog(to_string(id).c_str());
     if (!_itemAcquired[id]) {
         _displayItem = _lockedItemTexture;
-        _equipLabel->setText("Locked");
+        _menuLabel->setText("Hide");
     }
-    else if (_equippedItem != id) {
-        _displayItem = _itemTextures[id];
-        _equipLabel->setText("Equip");
-        _displayItem->setVisible(true);
-        }
     else {
         _displayItem = _itemTextures[id];
-        _equipLabel->setText("Unequip");
         _displayItem->setVisible(true);
+        _equippedItem = id;
+        _menuLabel->setText("Unequip");
     }
     _display = true;
-    _equip->setVisible(true);
-    _equip->activate();
-    _menuLabel->setText("Hide");
     
     //_displayItem->setVisible(true);
     _displayText->setText(_itemNames[id]);
@@ -363,9 +341,8 @@ void ItemScene::displayItem(int id) {
 }
 
 void ItemScene::undisplayItem() {
+    _equippedItem = -1;
     _display = false;
-    _equip->deactivate();
-    _equip->setVisible(false);
     _displayItem->setVisible(false);
     _displayText->setVisible(false);
     _displayText1->setVisible(false);
@@ -377,24 +354,4 @@ void ItemScene::undisplayItem() {
     _parasiteBurn->setVisible(false);
     _lungeBurn->setVisible(false);
     _menuLabel->setText("Menu");
-}
-
-/**
- * Equip the item corresponding to the currently selected item
- */
-void ItemScene::equipItem() {
-    if (_itemAcquired[_displayedItemId]) {
-        _equippedItem = _displayedItemId;
-        _currText->setText(_equippedText[_displayedItemId]);
-        _equipLabel->setText("Unequip");
-    }
-}
-
-/**
-     * Remove the item the currently equipped item
-     */
-void ItemScene::unequipItem() {
-    _equippedItem = -1;
-    _currText->setText("Equipped: None");
-    _equipLabel->setText("Equip");
 }

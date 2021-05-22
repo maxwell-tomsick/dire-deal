@@ -28,9 +28,6 @@ protected:
 	/** The button to return to the main menu */
 	std::shared_ptr<cugl::scene2::Button> _menu;
 	std::shared_ptr<cugl::scene2::Label> _menuLabel;
-	/** The equip button */
-	std::shared_ptr<cugl::scene2::Button> _equip;
-	std::shared_ptr<cugl::scene2::Label> _equipLabel;
 	/** The buttons for each item icon */
 	std::shared_ptr<cugl::scene2::Button> _unlockedItems[5];
     std::shared_ptr<cugl::scene2::Button> _lockedItems[5];
@@ -146,15 +143,5 @@ public:
 	 * Undisplay the currently displayed information.
 	 */
 	void undisplayItem();
-
-	/**
-	 * Equip the item corresponding to the currently selected item
-	 */
-	void equipItem();
-
-	/**
-	 * Remove the item the currently equipped item
-	 */
-	void unequipItem();
 };
 #endif /* __ITEM_SCENE_H__ */

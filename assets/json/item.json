@@ -146,52 +146,6 @@
             }
           }
         },
-        "equip": {
-          "type": "Button",
-          "format": {
-            "type": "Anchored"
-          },
-          "data": {
-            "upnode": "up",
-            "visible": false,
-            "anchor": [ 0.5, 0.5 ],
-            "scale": 0.3
-          },
-          "layout": {
-            "x_anchor": "right",
-            "y_anchor": "top",
-            "x_offset": -0.15,
-            "y_offset": -0.49
-          },
-          "children": {
-            "up": {
-              "type": "NinePatch",
-              "data": {
-                "texture": "button"
-              },
-              "children": {
-                "label": {
-                  "type": "Label",
-                  "format": {
-                    "type": "Anchored"
-                  },
-                  "data": {
-                    "font": "sans",
-                    "text": "Play",
-                    "foreground": [ 0, 0, 0, 255 ],
-                    "halign": "center",
-                    "valign": "middle",
-                    "anchor": [ -0.95, -0.5 ]
-                  },
-                  "layout": {
-                    "x_anchor": "right",
-                    "y_anchor": "bottom"
-                  }
-                }
-              }
-            }
-          }
-        },
         "menu": {
           "type": "Button",
           "format": {
