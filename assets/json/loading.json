@@ -240,9 +240,9 @@
                       },
                       "data": {
                         "font": "sans",
-                        "text": "Skip",
+                        "text": "Brawler",
                         "foreground": [ 0, 0, 0, 255 ],
-                        "anchor": [ -1.2, -0.5 ],
+                        "anchor": [ -0.25, -0.5 ],
                         "halign": "center",
                         "valign": "middle"
                       },

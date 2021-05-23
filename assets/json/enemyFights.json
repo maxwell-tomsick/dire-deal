@@ -71,7 +71,7 @@
     },
     "Brawler1": {
       "id": 5,
-      "enemyName": "Brawler",
+      "enemyName": "The Brawler",
       "numSheets":1,
       "enemyTexture": "brawlerIdle",
       "deck": [ 0, 0, 0, 3, 3 ],

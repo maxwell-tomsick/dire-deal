@@ -69,6 +69,7 @@ protected:
     bool _continueGame;
     bool _skipToBrawler;
     bool _continuable;
+    bool _skipable;
 
     
 public:

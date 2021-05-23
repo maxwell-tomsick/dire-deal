@@ -58,6 +58,14 @@ bool LoadingScene::init(const std::shared_ptr<AssetManager>& assets) {
     layer->doLayout(); // This rearranges the children to fit the screen
     
     _continuable = filetool::file_exists(Application::get()->getSaveDirectory() + "savedGame.json");
+    std::shared_ptr<JsonReader> jsonReaderHighestLevel = JsonReader::alloc(Application::get()->getSaveDirectory() + "settings.json");
+    std::shared_ptr<JsonValue> progress = jsonReaderHighestLevel->readJson()->get("Progress");
+    jsonReaderHighestLevel->close();
+    int highestLevel = progress->get("HighestLevel")->asInt();
+    _skipable = false;
+    if (highestLevel > 4){
+        _skipable = true;
+    }
     _bar = std::dynamic_pointer_cast<scene2::ProgressBar>(assets->get<scene2::SceneNode>("load_bar"));
     _logo1 = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("load_logo1"));
     _logo2 = std::dynamic_pointer_cast<scene2::NinePatch>(assets->get<scene2::SceneNode>("load_logo2"));
@@ -152,12 +160,14 @@ void LoadingScene::update(float progress) {
                 _playLabel->setText("Restart");
                 _continue->setVisible(true);
                 _continue->activate();
-            } 
+            }
+            if (_skipable){
+                _skip->setVisible(true);
+                _skip->activate();
+            }
             _play->activate();
             _tutorial->setVisible(true);
             _tutorial->activate();
-            _skip->setVisible(true);
-            _skip->activate();
         }
         _bar->setProgress(_progress);
     }
