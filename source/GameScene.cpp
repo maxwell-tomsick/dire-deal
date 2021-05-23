@@ -1355,7 +1355,24 @@ void GameScene::update(float timestep) {
                          return;
                     }
                }
-          } else {
+          }
+          else if (_fight == 7 && _currentDeck.size() + _nextDeck.size() == 3) {
+              if (_currentDeck[0] == 14 || _currentDeck[0] == 15) {
+                  gameOver();
+                  return;
+              }
+              if (_currentDeck[0] == -1) {
+                  if (_item != 2) {
+                      gameOver();
+                      return;
+                  }
+                  else if (_usedSecondWind) {
+                      gameOver();
+                      return;
+                  }
+              }
+          }
+          else {
                _currEvent->setVisible(false);
           }
           if (_currentCard.getId() < 13){
@@ -1779,10 +1796,14 @@ void GameScene::update(float timestep) {
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId1].getResources()[i] > 0){
                          if (resources[i] - _responses[_responseId1].getResources()[i] >= 0){
-                              resources[i] -= _responses[_responseId1].getResources()[i];
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                             int mod = 1;
+                             if (_cards[_responses[_responseId1].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                                 mod = _mod;
+                             }
+                             resources[i] -= (_responses[_responseId1].getResources()[i] * mod);
+                             _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                             _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
                          }
                     }
                }
@@ -1801,7 +1822,11 @@ void GameScene::update(float timestep) {
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId2].getResources()[i] > 0){
                          if (resources[i] - _responses[_responseId2].getResources()[i] >= 0){
-                              resources[i] -= _responses[_responseId2].getResources()[i];
+                              int mod = 1;
+                              if (_cards[_responses[_responseId2].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                                  mod = _mod;
+                              }
+                              resources[i] -= (_responses[_responseId2].getResources()[i] * mod);
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
@@ -1823,7 +1848,11 @@ void GameScene::update(float timestep) {
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId3].getResources()[i] > 0){
                          if (resources[i] - _responses[_responseId3].getResources()[i] >= 0){
-                              resources[i] -= _responses[_responseId3].getResources()[i];
+                              int mod = 1;
+                              if (_cards[_responses[_responseId3].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                                 mod = _mod;
+                              }
+                              resources[i] -= (_responses[_responseId3].getResources()[i] * mod); 
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
