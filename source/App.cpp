@@ -171,9 +171,10 @@ void LabApp::update(float timestep) {
         _loading.update(0.01f);
     } else if (!_loaded) {
         _mainGame = _loading.goToMainGame();
+        _skip = _loading.goToBrawler();
         _continueGame = _loading.continueMainGame();
         _loading.dispose(); // Disables the input listeners in this mode
-        if (_mainGame) {
+        if (_mainGame || _skip ) {
             _item.init(_assets);
         } else if (_continueGame){
             _itemChosen = true;
@@ -191,16 +192,28 @@ void LabApp::update(float timestep) {
         if (_item.getContinue()) {
             _equippedItem = _item.getItem();
             _item.dispose();
-            if (filetool::file_exists(Application::getSaveDirectory() + "savedGame.json")){
+            if (_mainGame) {
+                if (filetool::file_exists(Application::getSaveDirectory() + "savedGame.json")) {
 #if defined (__WINDOWS__)
-                string path = Application::getSaveDirectory() + "savedGame.json";
-                std::remove(path.c_str());
+                    string path = Application::getSaveDirectory() + "savedGame.json";
+                    std::remove(path.c_str());
 #else
-                filetool::file_delete(Application::getSaveDirectory() + "savedGame.json");
+                    filetool::file_delete(Application::getSaveDirectory() + "savedGame.json");
 #endif
+                }
+                _gameplay.init(_assets, _equippedItem, ratio, false, false);
+                _itemChosen = true;
             }
-            _gameplay.init(_assets, _equippedItem, ratio, false, false);
-            _itemChosen = true;
+            else if (_skip) {
+                string deck = "[ 0, 0, 0, 3, 3 ]";
+                string resources = "[ 20, 20, 20, 20 ]";
+                string gameSave = "{\"Fight\":" + to_string(5) + ",\"StartingDeck\":" + "true" + ",\"CurrentDeck\":" + deck + ",\"Item\":" + to_string(_equippedItem) + ",\"SecondWindUsed\":" + "false" + ",\"Resources\":" + resources + "}";
+                std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::get()->getSaveDirectory() + "savedGame.json");
+                textWriter->write(gameSave);
+                textWriter->close();
+                _gameplay.init(_assets, -1, ratio, false, true);
+                _itemChosen = true;
+            }
         }
         else {
             _item.dispose();

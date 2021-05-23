@@ -43,9 +43,12 @@ protected:
     /** The "play" button */
     std::shared_ptr<cugl::scene2::Button>    _play;
     std::shared_ptr<cugl::scene2::Label>    _playLabel;
-    
+    /** The continue button */
     std::shared_ptr<cugl::scene2::Button>    _continue;
     std::shared_ptr<cugl::scene2::Label>    _continueLabel;
+    /** The "skip" button */
+    std::shared_ptr<cugl::scene2::Button>   _skip;
+    std::shared_ptr<cugl::scene2::Label>    _skipLabel;
     /** The "tutorial" button */
     std::shared_ptr<cugl::scene2::Button> _tutorial;
     std::shared_ptr<cugl::scene2::Label> _tutorialLabel;
@@ -64,6 +67,7 @@ protected:
     /** Whether to proceed to the main game or the tutorial */
     bool _mainGame;
     bool _continueGame;
+    bool _skipToBrawler;
     bool _continuable;
 
     
@@ -130,6 +134,8 @@ public:
     bool goToMainGame() { return _mainGame;  }
     
     bool continueMainGame() {return _continueGame;}
+
+    bool goToBrawler() { return _skipToBrawler; }
 };
 
 #endif /* __LOADING_SCENE_H__ */
