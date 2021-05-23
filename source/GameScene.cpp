@@ -952,7 +952,7 @@ void GameScene::reset() {
                  _tutorialText[9]->setText("The top right icon shows");
                  _tutorialText[10]->setText("how much it burns for.");
                  _tutorialText[11]->setText("");
-                 _tutorialText[12]->setText("Actively selling cards will");
+                 _tutorialText[12]->setText("Actively burning cards will");
                  _tutorialText[13]->setText("give you valuable resources");
                  _tutorialText[14]->setText("for future fights.");
                  _tutorialText[15]->setText("");
@@ -969,7 +969,7 @@ void GameScene::reset() {
                  _tutorialText[8]->setText("The top right icon shows how");
                  _tutorialText[9]->setText("much it burns for.");
                  _tutorialText[10]->setText("");
-                 _tutorialText[11]->setText("Actively selling cards will");
+                 _tutorialText[11]->setText("Actively burning cards will");
                  _tutorialText[12]->setText("give you valuable resources");
                  _tutorialText[13]->setText("for future fights.");
                  _tutorialText[14]->setText("");
@@ -992,7 +992,7 @@ void GameScene::reset() {
                  _tutorialText[11]->setText("have enough resources to");
                  _tutorialText[12]->setText("level one of your cards");
                  _tutorialText[13]->setText("to max. Upgrade one, and");
-                 _tutorialText[14]->setText("either sell or avoid");
+                 _tutorialText[14]->setText("either burn or avoid");
                  _tutorialText[15]->setText("upgrading the other.");
              }
              else {
@@ -1010,7 +1010,7 @@ void GameScene::reset() {
                  _tutorialText[11]->setText("For this fight, you only have");
                  _tutorialText[12]->setText("enough resources to level one");
                  _tutorialText[13]->setText("of your cards to max.");
-                 _tutorialText[14]->setText("Upgrade one, and either sell");
+                 _tutorialText[14]->setText("Upgrade one, and either burn");
                  _tutorialText[15]->setText("or avoid upgrading the other.");
              }
          }
