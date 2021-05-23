@@ -69,9 +69,16 @@ bool LoadingScene::init(const std::shared_ptr<AssetManager>& assets) {
     _playLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("load_play_up_label"));
     _continue = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("load_continue"));
     _continueLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("load_continue_up_label"));
+    _skip = std::dynamic_pointer_cast<scene2::Button>(assets->get<scene2::SceneNode>("load_skip"));
+    _skipLabel = std::dynamic_pointer_cast<scene2::Label>(assets->get<scene2::SceneNode>("load_skip_up_label"));
+    _skip->setVisible(false);
     _continue->setVisible(false);
     _play->setVisible(false);
     _playLabel->setText("Play");
+    _skip->addListener([=](const std::string& name, bool down) {
+        _skipToBrawler = true;
+        this->_active = down;
+    });
     _continue->addListener([=](const std::string& name, bool down) {
         _continueGame = true;
         this->_active = down;
@@ -88,6 +95,7 @@ bool LoadingScene::init(const std::shared_ptr<AssetManager>& assets) {
         this->_active = down;
         });
     _mainGame = false;
+    _skipToBrawler = false;
     
     Application::get()->setClearColor(Color4(192,192,192,255));
     addChild(layer);
@@ -103,14 +111,17 @@ void LoadingScene::dispose() {
         _play->deactivate();
         _continue->deactivate();
         _tutorial->deactivate();
+        _skip->deactivate();
     }
     removeAllChildren();
     _play->clearListeners();
     _continue->clearListeners();
-    _continue = nullptr;
     _tutorial->clearListeners();
+    _skip->clearListeners();
     _play = nullptr;
+    _continue = nullptr;
     _tutorial = nullptr;
+    _skip = nullptr;
     _bar = nullptr;
     _assets = nullptr;
     _progress = 0.0f;
@@ -145,6 +156,8 @@ void LoadingScene::update(float progress) {
             _play->activate();
             _tutorial->setVisible(true);
             _tutorial->activate();
+            _skip->setVisible(true);
+            _skip->activate();
         }
         _bar->setProgress(_progress);
     }
