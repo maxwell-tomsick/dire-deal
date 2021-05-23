@@ -1707,7 +1707,7 @@
               "type": "Label",
               "data": {
                 "font": "sans",
-                "text": " card into the deck cost more for",
+                "text": "cards into the deck cost more for",
                 "foreground": [ 207, 166, 93, 255 ],
                 "anchor": [ 0, 0 ],
                 "scale": 0.4,
