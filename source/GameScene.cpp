@@ -949,8 +949,8 @@ void GameScene::reset() {
                  _tutorialText[6]->setText("card it shuffles in. The top");
                  _tutorialText[7]->setText("left icon of the card shows");
                  _tutorialText[8]->setText("what resource its responses");
-                 _tutorialText[9]->setText("use. The top right icon shows");
-                 _tutorialText[10]->setText("how much it burns for.");
+                 _tutorialText[9]->setText("use. The top right icon");
+                 _tutorialText[10]->setText("shows how much it burns for.");
                  _tutorialText[11]->setText("");
                  _tutorialText[12]->setText("Actively burning cards will");
                  _tutorialText[13]->setText("give you valuable resources");
