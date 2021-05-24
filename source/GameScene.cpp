@@ -1390,12 +1390,12 @@ void GameScene::update(float timestep) {
           if (_currentCard.getId() == -1 & _item == 2){
                bool nonSpecialFound = false;
                for (int i = 0; i < _currentDeck.size(); i++){
-                    if (_currentDeck[i] < 13 || _currentDeck[i] > 15){
+                    if (_currentDeck[i] < 13){
                          nonSpecialFound = true;
                     }
                }
                for (int i = 0; i < _nextDeck.size(); i++){
-                    if (_nextDeck[i] < 13 || _nextDeck[i] > 15){
+                    if (_nextDeck[i] < 13){
                          nonSpecialFound = true;
                     }
                }

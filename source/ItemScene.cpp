@@ -282,7 +282,7 @@ void ItemScene::displayItem(int id) {
         _lungeBurn->setVisible(true);
         _parasiteBurn->setVisible(false);
     } else if (id == 2) {
-        _displayText1->setText("When this is the last card in the deck,");
+        _displayText1->setText("When this is the last normal card in the deck,");
         _displayText1->setVisible(true);
         _displayText2->setText("this card becomes a copy of the last card burned.");
         _displayText2->setVisible(true);
