@@ -206,7 +206,7 @@ void LabApp::update(float timestep) {
             }
             else if (_skip) {
                 string deck = "[ 0, 0, 0, 3, 3 ]";
-                string resources = "[ 20, 20, 20, 20 ]";
+                string resources = "[ 30, 30, 30, 30 ]";
                 string gameSave = "{\"Fight\":" + to_string(5) + ",\"StartingDeck\":" + "true" + ",\"CurrentDeck\":" + deck + ",\"Item\":" + to_string(_equippedItem) + ",\"SecondWindUsed\":" + "false" + ",\"Resources\":" + resources + "}";
                 std::shared_ptr<TextWriter> textWriter = TextWriter::alloc(Application::get()->getSaveDirectory() + "savedGame.json");
                 textWriter->write(gameSave);
