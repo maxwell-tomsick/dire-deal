@@ -1681,18 +1681,27 @@ void GameScene::update(float timestep) {
                _nextFightPoison->setVisible(true);
                _nextFightBrawler->setVisible(false);
                _nextFightWorm->setVisible(false);
+               _nextFightCultist->setVisible(false);
           } else if (_fight == 5 && !_tutorial) {
                _nextFightBrawler->setVisible(true);
                _nextFightPoison->setVisible(false);
                _nextFightWorm->setVisible(false);
+               _nextFightCultist->setVisible(false);
           } else if ((_fight == 6 || _fight == 7) && !_tutorial) {
                _nextFightBrawler->setVisible(false);
                _nextFightPoison->setVisible(false);
                _nextFightWorm->setVisible(true);
+               _nextFightCultist->setVisible(false);
+          } else if ((_fight == 8) && !_tutorial) {
+               _nextFightBrawler->setVisible(false);
+               _nextFightPoison->setVisible(false);
+               _nextFightWorm->setVisible(false);
+               _nextFightCultist->setVisible(true);
           } else {
                _nextFightPoison->setVisible(false);
                _nextFightBrawler->setVisible(false);
                _nextFightWorm->setVisible(false);
+               _nextFightCultist->setVisible(false);
           }
           _mainMenu->setVisible(true);
      }
@@ -1795,15 +1804,15 @@ void GameScene::update(float timestep) {
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId1].getResources()[i] > 0){
-                         if (resources[i] - _responses[_responseId1].getResources()[i] >= 0){
-                             int mod = 1;
-                             if (_cards[_responses[_responseId1].getCards()[0]].getLevel() > _currentCard.getLevel()) {
-                                 mod = _mod;
-                             }
+                         int mod = 1;
+                         if (_cards[_responses[_responseId1].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                             mod = _mod;
+                         }
+                         if (resources[i] - _responses[_responseId1].getResources()[i] * mod >= 0){
                              resources[i] -= (_responses[_responseId1].getResources()[i] * mod);
                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
-                             _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                             _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
                          }
                     }
                }
@@ -1821,15 +1830,15 @@ void GameScene::update(float timestep) {
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId2].getResources()[i] > 0){
-                         if (resources[i] - _responses[_responseId2].getResources()[i] >= 0){
-                              int mod = 1;
-                              if (_cards[_responses[_responseId2].getCards()[0]].getLevel() > _currentCard.getLevel()) {
-                                  mod = _mod;
-                              }
+                         int mod = 1;
+                         if (_cards[_responses[_responseId2].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                             mod = _mod;
+                         }
+                         if (resources[i] - _responses[_responseId2].getResources()[i] * mod >= 0){
                               resources[i] -= (_responses[_responseId2].getResources()[i] * mod);
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
                          }
                     }
                }
@@ -1847,15 +1856,15 @@ void GameScene::update(float timestep) {
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId3].getResources()[i] > 0){
-                         if (resources[i] - _responses[_responseId3].getResources()[i] >= 0){
-                              int mod = 1;
-                              if (_cards[_responses[_responseId3].getCards()[0]].getLevel() > _currentCard.getLevel()) {
-                                 mod = _mod;
-                              }
+                         int mod = 1;
+                         if (_cards[_responses[_responseId3].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                            mod = _mod;
+                         }
+                         if (resources[i] - _responses[_responseId3].getResources()[i] * mod >= 0){
                               resources[i] -= (_responses[_responseId3].getResources()[i] * mod); 
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
                          }
                     }
                }
@@ -2179,8 +2188,12 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           std::vector<int> resources = _resources;
           for (int i = 0; i < _resources.size(); i++) {
                if (_responses[_responseId1].getResources()[i] > 0){
-                    if (resources[i] - _responses[_responseId1].getResources()[i] >= 0){
-                         resources[i] -= _responses[_responseId1].getResources()[i];
+                    int mod = 1;
+                    if (_cards[_responses[_responseId1].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                       mod = _mod;
+                    }
+                    if (resources[i] - _responses[_responseId1].getResources()[i] * mod >= 0){
+                         resources[i] -= _responses[_responseId1].getResources()[i] * mod;
                          _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                     } else {
                          _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
@@ -2201,8 +2214,12 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           std::vector<int> resources = _resources;
           for (int i = 0; i < _resources.size(); i++) {
                if (_responses[_responseId2].getResources()[i] > 0){
-                    if (resources[i] - _responses[_responseId2].getResources()[i] >= 0){
-                         resources[i] -= _responses[_responseId2].getResources()[i];
+                    int mod = 1;
+                    if (_cards[_responses[_responseId2].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                       mod = _mod;
+                    }
+                    if (resources[i] - _responses[_responseId2].getResources()[i] * mod >= 0){
+                         resources[i] -= _responses[_responseId2].getResources()[i] * mod;
                          _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                     } else {
                          _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
@@ -2223,8 +2240,12 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           std::vector<int> resources = _resources;
           for (int i = 0; i < _resources.size(); i++) {
                if (_responses[_responseId3].getResources()[i] > 0){
-                    if (resources[i] - _responses[_responseId3].getResources()[i] >= 0){
-                         resources[i] -= _responses[_responseId3].getResources()[i];
+                    int mod = 1;
+                    if (_cards[_responses[_responseId3].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                       mod = _mod;
+                    }
+                    if (resources[i] - _responses[_responseId3].getResources()[i] * mod >= 0){
+                         resources[i] -= _responses[_responseId3].getResources()[i] * mod;
                          _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                     } else {
                          _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
@@ -2329,8 +2350,12 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId1].getResources()[i] > 0){
-                         if (resources[i] - _responses[_responseId1].getResources()[i] >= 0){
-                              resources[i] -= _responses[_responseId1].getResources()[i];
+                         int mod = 1;
+                         if (_cards[_responses[_responseId1].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                            mod = _mod;
+                         }
+                         if (resources[i] - _responses[_responseId1].getResources()[i] * mod >= 0){
+                              resources[i] -= _responses[_responseId1].getResources()[i] * mod;
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
@@ -2351,8 +2376,12 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId2].getResources()[i] > 0){
-                         if (resources[i] - _responses[_responseId2].getResources()[i] >= 0){
-                              resources[i] -= _responses[_responseId2].getResources()[i];
+                         int mod = 1;
+                         if (_cards[_responses[_responseId2].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                            mod = _mod;
+                         }
+                         if (resources[i] - _responses[_responseId2].getResources()[i] * mod >= 0){
+                              resources[i] -= _responses[_responseId2].getResources()[i] * mod;
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
@@ -2373,8 +2402,12 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId3].getResources()[i] > 0){
-                         if (resources[i] - _responses[_responseId3].getResources()[i] >= 0){
-                              resources[i] -= _responses[_responseId3].getResources()[i];
+                         int mod = 1;
+                         if (_cards[_responses[_responseId3].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                            mod = _mod;
+                         }
+                         if (resources[i] - _responses[_responseId3].getResources()[i] * mod >= 0){
+                              resources[i] -= _responses[_responseId3].getResources()[i] * mod;
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
