@@ -115,13 +115,16 @@ namespace JsonLoader{
             float wscale = jsonItem->get("wscale")->asFloat();
             float hscale = jsonItem->get("hscale")->asFloat();
             float scale;
+            int id = jsonItem->get("id")->asInt();
             if (ratio <= 1.5){
                 scale = jsonItem->get("scale-ipad")->asFloat();
+                if (id == 8){
+                    wscale = 0.18f;
+                }
             }else {
                 scale = jsonItem->get("scale")->asFloat();
             }
             float idleBuffer = jsonItem->get("idleBuffer")->asFloat();
-            int id = jsonItem->get("id")->asInt();
             EnemyFight enemyFight;
             enemyFight.allocate(enemyName, deck, nextDeck, enemyTexture, rows, cols, frames, wscale, hscale, id, scale, idleBuffer, numSheets);
             if (numSheets > 1) {

@@ -20,7 +20,7 @@ void ResourceController::setResources(
     bool red = false;
     if (preview > 3){
         red = true;
-        preview -= 3;
+        preview -= 4;
     }
     if (preview == 0) {
         if (red){

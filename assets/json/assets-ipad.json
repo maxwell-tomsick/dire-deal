@@ -358,6 +358,16 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
+    "cultistaIdle": {
+      "file": "textures/enemy-cultista-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "cultistbIdle": {
+      "file": "textures/enemy-cultistb-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
     "enemyLabel": {
       "file": "textures/enemy-label.png",
       "minfilter": "linear",
@@ -1826,7 +1836,7 @@
                   "type": "Label",
                   "data": {
                     "font": "sans",
-                    "text": "Target Ability: Cultist",
+                    "text": "Target Ability: Dark Cultist",
                     "foreground": [ 124, 229, 227, 255 ],
                     "anchor": [ 0.5, 0.5 ],
                     "scale": 0.5,

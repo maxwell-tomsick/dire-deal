@@ -127,19 +127,20 @@
     "Cultist":{
       "id": 8,
       "enemyName": "Dire Duelist",
-      "numSheets":1,
-      "enemyTexture": "thugIdle",
+      "numSheets":2,
+      "enemyTexture": "cultistaIdle",
+      "enemyTexture2": "cultistbIdle",
       "deck": [ 9,5,0,2,2,1],
       "nextDeck": [],
       "background": "background2",
-      "rows": 3,
-      "cols": 4,
-      "frames": 12,
-      "wscale": 0.2,
+      "rows": 5,
+      "cols": 5,
+      "frames": 23,
+      "wscale": 0.21,
       "hscale": 0.44,
-      "scale": 0.9,
-      "scale-ipad": 0.65,
-      "idleBuffer": 0.1
+      "scale": 1.25,
+      "scale-ipad": 0.9,
+      "idleBuffer": 0.05
     }
   }
 }
