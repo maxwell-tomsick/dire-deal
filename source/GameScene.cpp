@@ -2194,7 +2194,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
                _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
                setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[0]]);
-               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[0]], true);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[0]], false);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           }
@@ -2202,7 +2202,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
                _removeCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[1]].getTexture());
                setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[1]]);
-               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[1]], true);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[1]], false);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           }
@@ -2210,7 +2210,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
                _removeCard2->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[2]].getTexture());
                setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[2]]);
-               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[2]], true);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[2]], false);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           } else {
@@ -2361,7 +2361,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
                setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[0]]);
-               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[0]], true);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[0]], false);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           }
@@ -2369,7 +2369,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                _removeCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[1]].getTexture());
                setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[1]]);
-               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[1]], true);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[1]], false);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           }
@@ -2377,7 +2377,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                _removeCard2->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[2]].getTexture());
                setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[2]]);
-               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[2]], true);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[2]], false);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           } else {
