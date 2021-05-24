@@ -1770,11 +1770,10 @@ void GameScene::update(float timestep) {
 #ifndef CU_TOUCH_SCREEN
      if ((_movement == 0) & !_deckNode->getDrag() & (_currentCard.getId() == 13)){
           if (_response1->containsScreen(_mouse->pointerPosition()) & _display1) {
-               
                _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
                setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[0]]);
-               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[0]], true);
+               setDisplayCardResponseType(_removePreviewResponseType, _displayCardResponseBurn, _cards[_removeOptions[0]], false);
                // setDisplayCardBurnText(_displayCardBurnTexture, _displayCardBurnText, displayCard);
                // if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
                //      setDisplayCardResponseType(_displayCardResponseType, _displayCardResponseBurn, displayCard, true);
@@ -1785,7 +1784,7 @@ void GameScene::update(float timestep) {
                _removeCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[1]].getTexture());
                setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[1]]);
-               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[1]], true);
+               setDisplayCardResponseType(_removePreviewResponseType, _displayCardResponseBurn, _cards[_removeOptions[1]], false);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           }
@@ -1793,7 +1792,7 @@ void GameScene::update(float timestep) {
                _removeCard2->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[2]].getTexture());
                setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[2]]);
-               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[2]], true);
+               setDisplayCardResponseType(_removePreviewResponseType, _displayCardResponseBurn, _cards[_removeOptions[2]], false);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           } else {
@@ -1813,7 +1812,7 @@ void GameScene::update(float timestep) {
                }
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
-                    if (_responses[_responseId1].getResources()[i] > 0){
+                    if (_responses[_responseId1].getResources()[i] > 0 & _resourceController.getFreeResponse() != 1){
                          int mod = 1;
                          if (_cards[_responses[_responseId1].getCards()[0]].getLevel() > _currentCard.getLevel()) {
                              mod = _mod;
@@ -1839,7 +1838,7 @@ void GameScene::update(float timestep) {
                }
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
-                    if (_responses[_responseId2].getResources()[i] > 0){
+                    if (_responses[_responseId2].getResources()[i] > 0 & _resourceController.getFreeResponse() != 2){
                          int mod = 1;
                          if (_cards[_responses[_responseId2].getCards()[0]].getLevel() > _currentCard.getLevel()) {
                              mod = _mod;
@@ -1865,7 +1864,7 @@ void GameScene::update(float timestep) {
                }
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
-                    if (_responses[_responseId3].getResources()[i] > 0){
+                    if (_responses[_responseId3].getResources()[i] > 0 & _resourceController.getFreeResponse() != 3){
                          int mod = 1;
                          if (_cards[_responses[_responseId3].getCards()[0]].getLevel() > _currentCard.getLevel()) {
                             mod = _mod;
@@ -2226,7 +2225,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           }
           std::vector<int> resources = _resources;
           for (int i = 0; i < _resources.size(); i++) {
-               if (_responses[_responseId1].getResources()[i] > 0){
+               if (_responses[_responseId1].getResources()[i] > 0 & _resourceController.getFreeResponse() != 1){
                     int mod = 1;
                     if (_cards[_responses[_responseId1].getCards()[0]].getLevel() > _currentCard.getLevel()) {
                        mod = _mod;
@@ -2252,7 +2251,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           }
           std::vector<int> resources = _resources;
           for (int i = 0; i < _resources.size(); i++) {
-               if (_responses[_responseId2].getResources()[i] > 0){
+               if (_responses[_responseId2].getResources()[i] > 0 & _resourceController.getFreeResponse() != 2){
                     int mod = 1;
                     if (_cards[_responses[_responseId2].getCards()[0]].getLevel() > _currentCard.getLevel()) {
                        mod = _mod;
@@ -2278,7 +2277,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           }
           std::vector<int> resources = _resources;
           for (int i = 0; i < _resources.size(); i++) {
-               if (_responses[_responseId3].getResources()[i] > 0){
+               if (_responses[_responseId3].getResources()[i] > 0 & _resourceController.getFreeResponse() != 3){
                     int mod = 1;
                     if (_cards[_responses[_responseId3].getCards()[0]].getLevel() > _currentCard.getLevel()) {
                        mod = _mod;
@@ -2395,15 +2394,19 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId1].getResources()[i] > 0){
-                         int mod = 1;
-                         if (_cards[_responses[_responseId1].getCards()[0]].getLevel() > _currentCard.getLevel()) {
-                            mod = _mod;
-                         }
-                         if (resources[i] - _responses[_responseId1].getResources()[i] * mod >= 0){
-                              resources[i] -= _responses[_responseId1].getResources()[i] * mod;
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                         if (_resourceController.getFreeResponse() == 1){
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
                          } else {
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
+                              int mod = 1;
+                              if (_cards[_responses[_responseId1].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                                 mod = _mod;
+                              }
+                              if (resources[i] - _responses[_responseId1].getResources()[i] * mod >= 0){
+                                   resources[i] -= _responses[_responseId1].getResources()[i] * mod;
+                                   _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                              } else {
+                                   _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
+                              }
                          }
                     }
                }
@@ -2421,15 +2424,19 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId2].getResources()[i] > 0){
-                         int mod = 1;
-                         if (_cards[_responses[_responseId2].getCards()[0]].getLevel() > _currentCard.getLevel()) {
-                            mod = _mod;
-                         }
-                         if (resources[i] - _responses[_responseId2].getResources()[i] * mod >= 0){
-                              resources[i] -= _responses[_responseId2].getResources()[i] * mod;
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                         if (_resourceController.getFreeResponse() == 2){
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
                          } else {
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
+                              int mod = 1;
+                              if (_cards[_responses[_responseId2].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                                 mod = _mod;
+                              }
+                              if (resources[i] - _responses[_responseId2].getResources()[i] * mod >= 0){
+                                   resources[i] -= _responses[_responseId2].getResources()[i] * mod;
+                                   _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                              } else {
+                                   _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
+                              }
                          }
                     }
                }
@@ -2447,15 +2454,19 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                std::vector<int> resources = _resources;
                for (int i = 0; i < _resources.size(); i++) {
                     if (_responses[_responseId3].getResources()[i] > 0){
-                         int mod = 1;
-                         if (_cards[_responses[_responseId3].getCards()[0]].getLevel() > _currentCard.getLevel()) {
-                            mod = _mod;
-                         }
-                         if (resources[i] - _responses[_responseId3].getResources()[i] * mod >= 0){
-                              resources[i] -= _responses[_responseId3].getResources()[i] * mod;
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                         if (_resourceController.getFreeResponse() == 3){
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
                          } else {
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
+                              int mod = 1;
+                              if (_cards[_responses[_responseId3].getCards()[0]].getLevel() > _currentCard.getLevel()) {
+                                 mod = _mod;
+                              }
+                              if (resources[i] - _responses[_responseId3].getResources()[i] * mod >= 0){
+                                   resources[i] -= _responses[_responseId3].getResources()[i] * mod;
+                                   _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
+                              } else {
+                                   _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
+                              }
                          }
                     }
                }
