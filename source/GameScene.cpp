@@ -2196,7 +2196,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
                          resources[i] -= _responses[_responseId1].getResources()[i] * mod;
                          _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                     } else {
-                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
                     }
                }
           }
@@ -2222,7 +2222,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
                          resources[i] -= _responses[_responseId2].getResources()[i] * mod;
                          _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                     } else {
-                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
                     }
                }
           }
@@ -2248,7 +2248,7 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
                          resources[i] -= _responses[_responseId3].getResources()[i] * mod;
                          _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                     } else {
-                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                         _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
                     }
                }
           }
@@ -2358,7 +2358,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                               resources[i] -= _responses[_responseId1].getResources()[i] * mod;
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
                          }
                     }
                }
@@ -2384,7 +2384,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                               resources[i] -= _responses[_responseId2].getResources()[i] * mod;
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
                          }
                     }
                }
@@ -2410,7 +2410,7 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
                               resources[i] -= _responses[_responseId3].getResources()[i] * mod;
                               _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, resources, i);
                          } else {
-                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 3);
+                              _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, i + 4);
                          }
                     }
                }
