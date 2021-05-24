@@ -33,7 +33,7 @@
       "hscale": 0.44,
       "scale": 1.6,
       "scale-ipad": 1.2,
-      "idleBuffer": 0.05
+      "idleBuffer": 0.025
     },
     "Slime1":{
       "id": 3,
