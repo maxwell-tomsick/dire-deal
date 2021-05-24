@@ -199,7 +199,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
              _tutorialText[11]->setText("a card show its level. Win");
              _tutorialText[12]->setText("by shuffling in a level");
              _tutorialText[13]->setText("five card. Darker responses");
-             _tutorialText[14]->setText("are higher leveled.");
+             _tutorialText[14]->setText("are higher-leveled.");
              _tutorialText[15]->setText("");
          }
          else {
@@ -217,7 +217,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, int equi
              _tutorialText[11]->setText("a card show its level. Win");
              _tutorialText[12]->setText("by shuffling in a level");
              _tutorialText[13]->setText("five card. Darker responses");
-             _tutorialText[14]->setText("are higher leveled.");
+             _tutorialText[14]->setText("are higher-leveled.");
              _tutorialText[15]->setText("");
          }
          _tutorialBox->setVisible(true);
@@ -2189,8 +2189,30 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
                AudioEngine::get()->play("cardSound", _assets->get<Sound>("cardSound"), false, _soundVolume, false);
           }
           _deckNode->setCurrCardPos(posi);
-     }
-     else if (_response1->containsScreen(pos) & _display1) {
+     } else if ((_currentCard.getId() == 13)){
+          if (_response1->containsScreen(pos)) {
+               _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
+               _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
+               _removeCard1->setVisible(true);
+               _removeCard2->setVisible(true);
+          }
+          else if (_response2->containsScreen(pos) & _display2) {
+               _removeCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
+               _removeCard1->setTexture(_cards[_removeOptions[1]].getTexture());
+               _removeCard1->setVisible(true);
+               _removeCard2->setVisible(true);
+          }
+          else if (_response3->containsScreen(pos) & _display3) {
+               _removeCard2->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
+               _removeCard1->setTexture(_cards[_removeOptions[2]].getTexture());
+               _removeCard1->setVisible(true);
+               _removeCard2->setVisible(true);
+          } else {
+               _displayCard->setVisible(false);
+               _removeCard1->setVisible(false);
+               _removeCard2->setVisible(false);
+          }
+     } else if (_response1->containsScreen(pos) & _display1) {
          displayCard = _cards[_responses[_responseId1].getCards()[0]];
           _resourceController.setDisplayCardBurnText(displayCard, _displayCardBurnText, _assets, _displayCardBurnTexture);
           if (_fight == 5 & displayCard.getId() != 6 & displayCard.getId() != 7){
