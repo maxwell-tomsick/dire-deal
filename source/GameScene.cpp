@@ -1382,9 +1382,6 @@ void GameScene::update(float timestep) {
                }
           }
           _allRunes = redFound & blueFound & greenFound;
-          if (_currentCard.getId() < 13 || _currentCard.getId() > 15){
-               _lastCard = _currentCard;
-          }
           _currentCard = _cards[_currentDeck.back()];
           _currentDeck.pop_back();
           if (_currentCard.getId() == -1 & _item == 2){
@@ -1937,6 +1934,7 @@ string GameScene::resourceString(std::vector<int> resources) {
 void GameScene::buttonPress(const int r){
      bool win = false;
      if (r == -1){
+          _lastCard = _currentCard;
           for (int i = 0; i < _resources.size(); i++) {
                _resources[i] += _currentCard.getResource(i);
                _resourceController.setResources(_bladeText, _flourishText, _lungeText, _brawnText, _resources, -1);
