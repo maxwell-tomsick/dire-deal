@@ -2193,18 +2193,24 @@ void GameScene::touchBegan(const cugl::Vec2& pos) {
           if (_response1->containsScreen(pos)) {
                _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
+               setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[0]]);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[0]], true);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           }
           else if (_response2->containsScreen(pos) & _display2) {
                _removeCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[1]].getTexture());
+               setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[1]]);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[1]], true);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           }
           else if (_response3->containsScreen(pos) & _display3) {
                _removeCard2->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[2]].getTexture());
+               setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[2]]);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[2]], true);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           } else {
@@ -2354,18 +2360,24 @@ void GameScene::touchMoved(const cugl::Vec2& pos){
           if (_response1->containsScreen(pos)) {
                _removeCard2->setTexture(_cards[_responses[_responseId1].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[0]].getTexture());
+               setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[0]]);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[0]], true);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           }
           else if (_response2->containsScreen(pos) & _display2) {
                _removeCard2->setTexture(_cards[_responses[_responseId2].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[1]].getTexture());
+               setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[1]]);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[1]], true);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           }
           else if (_response3->containsScreen(pos) & _display3) {
                _removeCard2->setTexture(_cards[_responses[_responseId3].getCards()[0]].getTexture());
                _removeCard1->setTexture(_cards[_removeOptions[2]].getTexture());
+               setDisplayCardBurnText(_removePreviewBurnTexture, _removePreviewBurnText, _cards[_removeOptions[2]]);
+               setDisplayCardResponseType(_removePreviewResponseType, _removePreviewResponseType, _cards[_removeOptions[2]], true);
                _removeCard1->setVisible(true);
                _removeCard2->setVisible(true);
           } else {
