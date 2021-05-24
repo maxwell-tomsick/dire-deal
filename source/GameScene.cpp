@@ -945,11 +945,11 @@ void GameScene::reset() {
                  _tutorialText[2]->setText("increase with a card's");
                  _tutorialText[3]->setText("level.");
                   _tutorialText[4]->setText("");
-                 _tutorialText[5]->setText("Hold a response to see the");
+                 _tutorialText[5]->setText("Hover a response to see the");
                  _tutorialText[6]->setText("card it shuffles in. The top");
-                 _tutorialText[7]->setText("left icon shows how what");
-                 _tutorialText[8]->setText("resource its responses use.");
-                 _tutorialText[9]->setText("The top right icon shows");
+                 _tutorialText[7]->setText("left icon of the card shows");
+                 _tutorialText[8]->setText("what resource its responses");
+                 _tutorialText[9]->setText("use. The top right icon is");
                  _tutorialText[10]->setText("how much it burns for.");
                  _tutorialText[11]->setText("");
                  _tutorialText[12]->setText("Actively burning cards will");
