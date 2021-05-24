@@ -622,8 +622,8 @@
     },
     "WoundedBlueRune": {
       "id": 38,
-      "name": "Lay Blue Rune",
-      "description": "Shuffle BLUE RUNE into the Deck",
+      "name": "Lay Purple Rune",
+      "description": "Shuffle PURPLE RUNE into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 6,
@@ -637,13 +637,13 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 0.6,
+      "fontSize": 0.5,
       "animation": 1
     },
     "BlindedBlueRune": {
       "id": 39,
-      "name": "Lay Blue Rune",
-      "description": "Shuffle BLUE RUNE into the Deck",
+      "name": "Lay Purple Rune",
+      "description": "Shuffle PURPLE RUNE into the Deck",
       "cost": {
         "blade": 6,
         "flourish": 0,
@@ -657,13 +657,13 @@
       "delete": [],
       "win": false,
       "lose": false,
-      "fontSize": 0.6,
+      "fontSize": 0.5,
       "animation": 1
     },
     "BlindedGreenRune": {
       "id": 40,
-      "name": "Lay Green Rune",
-      "description": "Shuffle GREEN RUNE into the Deck",
+      "name": "Lay White Rune",
+      "description": "Shuffle WHITE RUNE into the Deck",
       "cost": {
         "blade": 6,
         "flourish": 0,
@@ -682,8 +682,8 @@
     },
     "WoundedGreenRune": {
       "id": 41,
-      "name": "Lay Green Rune",
-      "description": "Shuffle GREEN RUNE into the Deck",
+      "name": "Lay White Rune",
+      "description": "Shuffle WHITE RUNE into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 6,
@@ -703,7 +703,7 @@
     "RelayGreenRune": {
       "id": 42,
       "name": "Re-Lay Rune",
-      "description": "Shuffle GREEN RUNE into the Deck",
+      "description": "Shuffle WHITE RUNE into the Deck",
       "cost": {
         "blade": 8,
         "flourish": 0,
@@ -723,7 +723,7 @@
     "RelayBlueRune": {
       "id": 43,
       "name": "Re-Lay Rune",
-      "description": "Shuffle BLUE RUNE into the Deck",
+      "description": "Shuffle PURPLE RUNE into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 0,
@@ -743,7 +743,7 @@
     "RelayRedRune": {
       "id": 44,
       "name": "Re-Lay Rune",
-      "description": "Shuffle Red RUNE into the Deck",
+      "description": "Shuffle RED RUNE into the Deck",
       "cost": {
         "blade": 0,
         "flourish": 8,

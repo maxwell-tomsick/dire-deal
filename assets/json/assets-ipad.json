@@ -358,6 +358,16 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
+    "cultistaIdle": {
+      "file": "textures/enemy-cultista-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "cultistbIdle": {
+      "file": "textures/enemy-cultistb-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
     "enemyLabel": {
       "file": "textures/enemy-label.png",
       "minfilter": "linear",
