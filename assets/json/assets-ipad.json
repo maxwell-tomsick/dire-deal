@@ -231,7 +231,7 @@
       "magfilter": "linear"
     },
     "PoisonFlip": {
-      "file": "textures/cardflips/card-incapacitated-spritesheet.png",
+      "file": "textures/cardflips/card-poison-spritesheet.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },
@@ -321,10 +321,22 @@
       "magfilter": "linear"
     },
     "slime2Idle": {
-      "file": "textures/enemy-slime2-idle.png"
+      "file": "textures/enemy-slime2-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
     },
-    "brawlerIdle": {
-      "file": "textures/enemy-brawler-idle.png",
+    "brawleraIdle": {
+      "file": "textures/enemy-brawlera-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "brawlerbIdle": {
+      "file": "textures/enemy-brawlerb-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "brawlercIdle": {
+      "file": "textures/enemy-brawlerc-idle.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },

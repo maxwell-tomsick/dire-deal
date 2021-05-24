@@ -315,8 +315,18 @@
       "minfilter": "linear",
       "magfilter": "linear"
     },
-    "brawlerIdle": {
-      "file": "textures/enemy-brawler-idle.png",
+    "brawleraIdle": {
+      "file": "textures/enemy-brawlera-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "brawlerbIdle": {
+      "file": "textures/enemy-brawlerb-idle.png",
+      "minfilter": "linear",
+      "magfilter": "linear"
+    },
+    "brawlercIdle": {
+      "file": "textures/enemy-brawlerc-idle.png",
       "minfilter": "linear",
       "magfilter": "linear"
     },

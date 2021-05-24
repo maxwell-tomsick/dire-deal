@@ -1258,12 +1258,6 @@ void GameScene::update(float timestep) {
           _shuffleBackFlip->setVisible(false);
           _shuffleBackFlip->setFrame(_shuffleBackFlip->getSize() - 1);
           //_currEvent->setColor(Color4::WHITE);
-          _response1->setColor(Color4::WHITE);
-          _responseText1->setForeground(Color4::BLACK);
-          _responseText2->setForeground(Color4::BLACK);
-          _responseText3->setForeground(Color4::BLACK);
-          _response2->setColor(Color4::WHITE);
-          _response3->setColor(Color4::WHITE);
           if (_currentDeck.size() == 0){
                _currEvent->setText("Shuffling Next Event Deck...");
                //_currEvent->setColor(Color4::BLACK);
@@ -1298,19 +1292,7 @@ void GameScene::update(float timestep) {
                     bool itemFound = false;
                     int r = 0;
                     _mod = 1;
-                    bool redFound = false;
-                    bool blueFound = false;
-                    bool greenFound = false;
                     for (int i = 0; i < _currentDeck.size(); i++){
-                         if (_currentDeck[i] == 16){
-                              blueFound = true;
-                         }
-                         if (_currentDeck[i] == 17){
-                              greenFound = true;
-                         }
-                         if (_currentDeck[i] == 18){
-                              redFound = true;
-                         }
                          if (_currentDeck[i] == 14){
                               _mod += 1;
                          }
@@ -1324,7 +1306,6 @@ void GameScene::update(float timestep) {
                               }
                          }
                     }
-                    _allRunes = redFound & blueFound & greenFound;
                     //std::printf("r: %d\n", r);
                     if (_item == 4 && itemFound){
                          int i = rand() % r;
@@ -1375,6 +1356,32 @@ void GameScene::update(float timestep) {
           else {
                _currEvent->setVisible(false);
           }
+          bool redFound = false;
+          bool blueFound = false;
+          bool greenFound = false;
+          for (int i = 0; i < _currentDeck.size(); i++){
+               if (_currentDeck[i] == 16){
+                    blueFound = true;
+               }
+               if (_currentDeck[i] == 17){
+                    greenFound = true;
+               }
+               if (_currentDeck[i] == 18){
+                    redFound = true;
+               }
+          }
+          for (int i = 0; i < _nextDeck.size(); i++){
+               if (_nextDeck[i] == 16){
+                    blueFound = true;
+               }
+               if (_nextDeck[i] == 17){
+                    greenFound = true;
+               }
+               if (_nextDeck[i] == 18){
+                    redFound = true;
+               }
+          }
+          _allRunes = redFound & blueFound & greenFound;
           if (_currentCard.getId() < 13 || _currentCard.getId() > 15){
                _lastCard = _currentCard;
           }
@@ -1482,6 +1489,12 @@ void GameScene::update(float timestep) {
           }
      }
      if (_movement == 7){
+          _response1->setColor(Color4::WHITE);
+          _responseText1->setForeground(Color4::BLACK);
+          _responseText2->setForeground(Color4::BLACK);
+          _responseText3->setForeground(Color4::BLACK);
+          _response2->setColor(Color4::WHITE);
+          _response3->setColor(Color4::WHITE);
           //_underline->setVisible(true);
           _removeOptions = {-2,-2,-2};
           if (!_keepCards) {
